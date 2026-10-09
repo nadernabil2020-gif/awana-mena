@@ -510,7 +510,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  laptop:"لابتوب أو كمبيوتر (Chrome أو Edge)",laptopS:["افتح رابط التطبيق في Chrome أو Edge","من القائمة ⋮ اختر «حفظ ومشاركة» ثم «إنشاء اختصار» (في Edge: التطبيقات ← تثبيت هذا الموقع كتطبيق)","فعّل «فتح كنافذة» ثم اضغط إنشاء"],
  yourDevice:"جهازك",
  tUsers:"المستخدمين",layout:"شكل العرض",lyAuto:"تلقائي",lyMobile:"موبايل",lyDesktop:"لاب",account:"حسابي",signOut:"تسجيل الخروج",leaderNote:"تقدر تضيف وتعدّل في دولتك:",installed:"تم تثبيت التطبيق",
- gateSub:"متابعة النوادي والكنائس والزيارات وقصص النجاح في دول الشرق الأوسط",signInGoogle:"الدخول بحساب جوجل",
+ gateSub:"متابعة النوادي والكنائس والزيارات وقصص النجاح في دول الشرق الأوسط",signInGoogle:"الدخول بحساب جوجل",signingIn:"جارٍ تسجيل الدخول… كمّل في نافذة جوجل",
  pendingTitle:"طلبك وصل",pendingText:"حسابك اتسجّل وفي انتظار موافقة الأدمن. أول ما يوافق هتدخل على طول من غير ما تعمل حاجة.",
  disabledTitle:"الحساب موقوف",disabledText:"تم إيقاف حسابك. تواصل مع الأدمن لو محتاج تدخل.",
  nocfgTitle:"التطبيق لسه مش مربوط بـ Firebase",nocfgText:"الصق بيانات مشروع Firebase في أول ملف index.html في الجزء المكتوب عليه FIREBASE_CONFIG.",
@@ -587,7 +587,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  laptop:"Laptop or desktop (Chrome or Edge)",laptopS:["Open the app link in Chrome or Edge","From the ⋮ menu choose “Save and share” → “Create shortcut” (Edge: Apps → Install this site as an app)","Tick “Open as window”, then Create"],
  yourDevice:"your device",
  tUsers:"Users",layout:"Layout",lyAuto:"Auto",lyMobile:"Mobile",lyDesktop:"Laptop",account:"My account",signOut:"Sign out",leaderNote:"You can add and edit in your country:",installed:"App installed",
- gateSub:"Follow up clubs, churches, visits and success stories across the Middle East",signInGoogle:"Sign in with Google",
+ gateSub:"Follow up clubs, churches, visits and success stories across the Middle East",signInGoogle:"Sign in with Google",signingIn:"Signing in… continue in the Google window",
  pendingTitle:"Request received",pendingText:"Your account is registered and waiting for admin approval. Once approved you'll get in automatically.",
  disabledTitle:"Account disabled",disabledText:"Your account has been disabled. Contact the admin if you need access.",
  nocfgTitle:"The app isn't connected to Firebase yet",nocfgText:"Paste your Firebase project config at the top of index.html, in the FIREBASE_CONFIG block.",
@@ -1268,7 +1268,7 @@ function renderGate(){
   let inner;
   switch(S.auth){
     case"nocfg":inner=`${top}<div class="card"><b>${esc(t("nocfgTitle"))}</b><p>${esc(t("nocfgText"))}</p></div>`;break;
-    case"loading":inner=`${top}<div class="spin" role="status" aria-label="…"></div>`;break;
+    case"loading":case"signing":inner=`${top}<div class="spin" role="status" aria-label="…"></div>${S.auth==="signing"?`<p style="font-size:.9rem">${esc(t("signingIn"))}</p>`:""}`;break;
     case"out":inner=`${top}<p>${esc(t("gateSub"))}</p><button class="gbtn" type="button" data-signin="1">${GSVG}${esc(t("signInGoogle"))}</button>${S.authErr?`<div class="err">${esc(t("authFail"))} <span class="ltr">(${esc(S.authErr)})</span></div>`:""}${verse}`;break;
     case"pending":inner=`${top}<div class="card"><b style="font-size:1.15rem">${esc(t("pendingTitle"))}</b><p>${esc(t("pendingText"))}</p>${who}</div>${out}`;break;
     case"disabled":inner=`${top}<div class="card"><b style="font-size:1.15rem">${esc(t("disabledTitle"))}</b><p>${esc(t("disabledText"))}</p>${who}</div>${out}`;break;
@@ -1665,17 +1665,26 @@ function startData(){
     dataUnsubs.push(db.doc("config/backup").onSnapshot(s=>{S.backup=s.exists?s.data():null;render()},()=>{}));}
   else S.users=[];
 }
+let signingIn=false;
 async function signIn(){
-  if(!auth)return;S.authErr="";
+  if(!auth||signingIn)return;S.authErr="";signingIn=true;
   const p=new firebase.auth.GoogleAuthProvider();p.setCustomParameters({prompt:"select_account"});
-  try{await auth.signInWithPopup(p)}
-  catch(e){
-    if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment","auth/web-storage-unsupported"].includes(e.code)){try{await auth.signInWithRedirect(p)}catch(e2){S.authErr=e2.code||"error";render()}}
-    else if(e.code!=="auth/popup-closed-by-user"&&e.code!=="auth/cancelled-popup-request"){S.authErr=e.code||"error";render()}
-  }
+  const useRedirect=isStandalone()||matchMedia("(pointer:coarse)").matches;
+  S.auth="signing";render();
+  try{
+    if(useRedirect){await auth.signInWithRedirect(p);return}
+    await auth.signInWithPopup(p);
+  }catch(e){
+    console.error("signin",e);
+    if(["auth/popup-blocked","auth/operation-not-supported-in-this-environment","auth/web-storage-unsupported","auth/popup-closed-by-user","auth/cancelled-popup-request"].includes(e.code)){
+      try{await auth.signInWithRedirect(p);return}catch(e2){S.authErr=e2.code||"error"}}
+    else S.authErr=e.code||"error";
+    if(!auth.currentUser){S.auth="out";render()}
+  }finally{signingIn=false}
 }
 function boot(){
   if(!window.firebase||!FIREBASE_CONFIG.apiKey){S.auth="nocfg";render();return}
+  const h=location.hostname;if(/\.(web\.app|firebaseapp\.com)$/.test(h))FIREBASE_CONFIG.authDomain=h;
   firebase.initializeApp(FIREBASE_CONFIG);auth=firebase.auth();db=firebase.firestore();
   try{db.enablePersistence({synchronizeTabs:true}).catch(()=>{})}catch(e){}
   auth.getRedirectResult().catch(e=>{S.authErr=e.code||"error";render()});

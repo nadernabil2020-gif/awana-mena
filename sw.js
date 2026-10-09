@@ -1,5 +1,5 @@
 // أوانا الشرق الأوسط - service worker (يخلّي التطبيق قابل للتثبيت ويفتح حتى لو النت ضعيف)
-const CACHE = "awana-me-v7";
+const CACHE = "awana-me-v8";
 const SHELL = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./apple-touch-icon.png", "./awana-splash.png"];
 
 self.addEventListener("install", e => {
