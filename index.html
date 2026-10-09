@@ -128,10 +128,6 @@ main{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:22px 40px;
 
 /* ---------- auth gate ---------- */
 .gate{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top,0px)) 16px calc(24px + env(safe-area-inset-bottom,0px));background:var(--brand);color:#fff;position:relative;overflow:hidden;isolation:isolate}
-.gate .arcs{position:absolute;inset-inline-end:-90px;bottom:-200px;width:420px;height:420px;z-index:-1;pointer-events:none}
-.gate .arcs span{position:absolute;inset:0;border-radius:50%;border:20px solid;border-color:currentColor transparent transparent currentColor;transform:rotate(45deg)}
-.gate .arcs span:nth-child(1){color:var(--yellow)}.gate .arcs span:nth-child(2){inset:28px;color:var(--green)}.gate .arcs span:nth-child(3){inset:56px;color:var(--red)}.gate .arcs span:nth-child(4){inset:84px;color:var(--sky)}
-@media (max-width:640px){.gate .arcs{width:300px;height:300px;bottom:-200px;inset-inline-end:-80px}.gate .arcs span{border-width:15px}.gate .arcs span:nth-child(2){inset:20px}.gate .arcs span:nth-child(3){inset:40px}.gate .arcs span:nth-child(4){inset:60px}}
 .gate .box{max-width:430px;width:100%;display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center}
 .gate .logo{height:52px}
 .gate h1{font-size:2.1rem;line-height:1.2}
@@ -189,15 +185,15 @@ span.chip{cursor:default;display:inline-flex;align-items:center;gap:4px}
 .logrow time{color:var(--muted);font-size:.78rem;white-space:nowrap}
 .bkbar{background:var(--yellow);color:var(--on-yellow);border-radius:12px;padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-weight:700}
 /* ---------- hero ---------- */
-.hero{position:relative;overflow:hidden;border-radius:24px;background:var(--brand);color:#fff;padding:28px 26px 26px;display:grid;gap:14px;isolation:isolate}
-.hero .arcs{position:absolute;inset-inline-end:-70px;bottom:-150px;width:340px;height:340px;z-index:-1;pointer-events:none}
-.hero .arcs span{position:absolute;inset:0;border-radius:50%;border:16px solid;border-color:currentColor transparent transparent currentColor;transform:rotate(45deg)}
-[dir="rtl"] .hero .arcs span{transform:rotate(-45deg) scaleX(-1)}
-.hero .arcs span:nth-child(1){color:var(--yellow)}
-.hero .arcs span:nth-child(2){inset:22px;color:var(--green)}
-.hero .arcs span:nth-child(3){inset:44px;color:var(--red)}
-.hero .arcs span:nth-child(4){inset:66px;color:var(--sky)}
-@media (max-width:640px){.hero{padding:22px 20px 70px}.hero .arcs{width:190px;height:190px;bottom:-105px;inset-inline-end:-40px}.hero .arcs span{border-width:11px}.hero .arcs span:nth-child(2){inset:15px}.hero .arcs span:nth-child(3){inset:30px}.hero .arcs span:nth-child(4){inset:45px}}
+.hero{position:relative;overflow:hidden;border-radius:24px;background:var(--brand);color:#fff;padding:28px 26px 26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 28px;align-items:center;isolation:isolate}
+.hero .txt{display:grid;gap:14px;min-width:0}
+.splash{width:clamp(160px,24vw,270px);display:grid;place-items:center;flex:none}
+.splash img{width:100%;height:auto;display:block;filter:drop-shadow(0 0 1.5px #fff) drop-shadow(0 0 5px rgba(255,255,255,.75))}
+@media (max-width:640px){.hero{grid-template-columns:1fr;padding:20px}.hero .splash{order:-1;justify-self:center;width:170px}}
+body.fm{max-width:440px;margin-inline:auto;box-shadow:0 0 0 1px var(--line),0 20px 60px -20px rgba(0,0,0,.4);min-height:100vh}
+body.fm .top-in,body.fm main,body.fm .foot{max-width:100%}
+body.fm .hero p{font-size:1.4rem}body.fm .splash{width:170px}
+.gate .splash{width:190px;margin-bottom:-6px}
 .hero .eyebrow{font-size:.8rem;font-weight:700;letter-spacing:.06em;color:var(--yellow);text-transform:uppercase}
 .hero p{margin:0;font-family:var(--f-display);font-size:clamp(1.35rem,4vw,2.1rem);line-height:1.6;max-width:30ch;text-wrap:balance}
 [lang="en"] .hero p{line-height:1.35}
@@ -513,7 +509,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  android:"أندرويد (Chrome)",androidS:["افتح رابط التطبيق في Chrome","اضغط القائمة ⋮ أعلى الشاشة","اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق»"],
  laptop:"لابتوب أو كمبيوتر (Chrome أو Edge)",laptopS:["افتح رابط التطبيق في Chrome أو Edge","من القائمة ⋮ اختر «حفظ ومشاركة» ثم «إنشاء اختصار» (في Edge: التطبيقات ← تثبيت هذا الموقع كتطبيق)","فعّل «فتح كنافذة» ثم اضغط إنشاء"],
  yourDevice:"جهازك",
- tUsers:"المستخدمين",account:"حسابي",signOut:"تسجيل الخروج",leaderNote:"تقدر تضيف وتعدّل في دولتك:",installed:"تم تثبيت التطبيق",
+ tUsers:"المستخدمين",layout:"شكل العرض",lyAuto:"تلقائي",lyMobile:"موبايل",lyDesktop:"لاب",account:"حسابي",signOut:"تسجيل الخروج",leaderNote:"تقدر تضيف وتعدّل في دولتك:",installed:"تم تثبيت التطبيق",
  gateSub:"متابعة النوادي والكنائس والزيارات وقصص النجاح في دول الشرق الأوسط",signInGoogle:"الدخول بحساب جوجل",
  pendingTitle:"طلبك وصل",pendingText:"حسابك اتسجّل وفي انتظار موافقة الأدمن. أول ما يوافق هتدخل على طول من غير ما تعمل حاجة.",
  disabledTitle:"الحساب موقوف",disabledText:"تم إيقاف حسابك. تواصل مع الأدمن لو محتاج تدخل.",
@@ -590,7 +586,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  android:"Android (Chrome)",androidS:["Open the app link in Chrome","Tap the ⋮ menu at the top","Choose “Add to Home screen” or “Install app”"],
  laptop:"Laptop or desktop (Chrome or Edge)",laptopS:["Open the app link in Chrome or Edge","From the ⋮ menu choose “Save and share” → “Create shortcut” (Edge: Apps → Install this site as an app)","Tick “Open as window”, then Create"],
  yourDevice:"your device",
- tUsers:"Users",account:"My account",signOut:"Sign out",leaderNote:"You can add and edit in your country:",installed:"App installed",
+ tUsers:"Users",layout:"Layout",lyAuto:"Auto",lyMobile:"Mobile",lyDesktop:"Laptop",account:"My account",signOut:"Sign out",leaderNote:"You can add and edit in your country:",installed:"App installed",
  gateSub:"Follow up clubs, churches, visits and success stories across the Middle East",signInGoogle:"Sign in with Google",
  pendingTitle:"Request received",pendingText:"Your account is registered and waiting for admin approval. Once approved you'll get in automatically.",
  disabledTitle:"Account disabled",disabledText:"Your account has been disabled. Contact the admin if you need access.",
@@ -643,7 +639,7 @@ const S={countries:[],churches:[],clubs:[],visits:[],team:[],stories:[],extraPro
   vf:{country:"",status:"",program:"",q:""},open:{},loaded:{},offline:false};
 let db=null,auth=null,deferredInstall=null;
 const ls={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
-S.lang=ls.get("aw_lang")||"ar";S.theme=ls.get("aw_theme");S.tab=ls.get("aw_tab")||"overview";
+S.lang=ls.get("aw_lang")||"ar";S.theme=ls.get("aw_theme");S.layout=ls.get("aw_layout")||"auto";S.tab=ls.get("aw_tab")||"overview";
 if(location.hash==="#view")S.viewMode=true;
 const t=k=>(T[S.lang][k]??k);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -932,7 +928,7 @@ const addBtn=(act,label,cls="",extra="")=>{const m=/data-country="([^"]*)"/.exec
 
 function vOverview(d){
   const s=countryStats(null,d);
-  let h=`<section class="hero"><div class="arcs" aria-hidden="true"><span></span><span></span><span></span><span></span></div><div class="eyebrow">${esc(t("title"))}</div><p>«${t("verse")}»</p><cite><span class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></span>${esc(t("verseRef"))}</cite></section>`;
+  let h=`<section class="hero"><div class="txt"><div class="eyebrow">${esc(t("title"))}</div><p>«${t("verse")}»</p><cite><span class="stripe" aria-hidden="true"><i></i><i></i><i></i><i></i></span>${esc(t("verseRef"))}</cite></div><div class="splash" aria-hidden="true"><img src="awana-splash.png" alt=""></div></section>`;
   if(S.countries.length)h+=`<section class="flagwall" aria-label="${esc(t("countries"))}">${S.countries.map((c,i)=>{const x=countryStats(c.id,D());return `<button data-act="openCountry" data-id="${c.id}" style="--cc:${["var(--blue)","var(--red)","var(--green)","var(--yellow)"][i%4]}">${c.flag?flagOf(c):`<span class="badge c${i%4}" style="width:100%;aspect-ratio:3/2;height:auto;border-radius:10px;font-size:2rem">${esc(initial(c.name))}</span>`}<b>${esc(cname(c))}</b><small class="num">${nf(x.active)} ${esc(t("clubsN"))} · ${nf(x.kids)} ${esc(t("kidsN"))}</small></button>`}).join("")}</section>`;
   h+=tiles(s,true);
   if(!S.countries.length)return h+emptyBox(t("noCountries"),t("noCountriesHint"),`<div class="chips" style="justify-content:center">${seedBtn()}${addBtn("addCountry","addCountry")}</div>`);
@@ -1258,7 +1254,7 @@ async function restorePick(file){
 }
 function accountSheet(){
   const u=S.me||{};const c=S.countries.find(x=>x.id===u.countryId);
-  openModal(t("account"),`<div class="chips"><button type="button" class="chip" data-glang="1">${S.lang==="ar"?"English":"عربي"}</button><button type="button" class="chip" data-gtheme="1">${esc(t("theme"))}</button>${role()!=="viewer"?`<button type="button" class="chip ${S.viewMode?"on":""}" data-gview="1">${esc(t("view"))}</button>`:""}</div><div class="ucard" style="border:0;padding:0"><div class="hd">${avatar(u)}<div><b>${esc(u.name||"")}</b><small class="ltr" style="text-align:start">${esc(u.email||"")}</small></div></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="rolechip r-${esc(u.role)}">${esc(roleName(u.role))}</span>${u.role==="leader"&&c?`<b>${esc(cname(c))}</b>`:""}</div></div>`,null,`<button type="button" class="btn red small" data-signout="1">${esc(t("signOut"))}</button>`);
+  openModal(t("account"),`<div><b style="font-size:.85rem;color:var(--muted)">${esc(t("layout"))}</b><div class="chips" style="margin-top:6px">${[["auto","lyAuto"],["mobile","lyMobile"],["desktop","lyDesktop"]].map(([k,l])=>`<button type="button" class="chip ${S.layout===k?"on":""}" data-glayout="${k}">${esc(t(l))}</button>`).join("")}</div></div><div class="chips"><button type="button" class="chip" data-glang="1">${S.lang==="ar"?"English":"عربي"}</button><button type="button" class="chip" data-gtheme="1">${esc(t("theme"))}</button>${role()!=="viewer"?`<button type="button" class="chip ${S.viewMode?"on":""}" data-gview="1">${esc(t("view"))}</button>`:""}</div><div class="ucard" style="border:0;padding:0"><div class="hd">${avatar(u)}<div><b>${esc(u.name||"")}</b><small class="ltr" style="text-align:start">${esc(u.email||"")}</small></div></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span class="rolechip r-${esc(u.role)}">${esc(roleName(u.role))}</span>${u.role==="leader"&&c?`<b>${esc(cname(c))}</b>`:""}</div></div>`,null,`<button type="button" class="btn red small" data-signout="1">${esc(t("signOut"))}</button>`);
 }
 const GSVG='<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>';
 function renderGate(){
@@ -1279,7 +1275,7 @@ function renderGate(){
     default:inner=`${top}<div class="card"><b>${esc(t("authFail"))}</b>${S.authErr?`<small class="ltr">${esc(S.authErr)}</small>`:""}</div>${out}`;
   }
   inner+=`<button class="gbtn ghost" type="button" data-glang="1">${S.lang==="ar"?"English":"عربي"}</button>`;
-  $("gate").innerHTML=`<div class="arcs" aria-hidden="true"><span></span><span></span><span></span><span></span></div><div class="box">${inner}</div>`;
+  $("gate").innerHTML=`<div class="box"><div class="splash" aria-hidden="true"><img src="awana-splash.png" alt=""></div>${inner}</div>`;
 }
 
 /* ---------- toast & modal ---------- */
@@ -1456,6 +1452,7 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-signin]")){signIn();return}
   if(e.target.closest("[data-signout]")){closeModal();if(auth)auth.signOut();return}
   if(e.target.closest("[data-glang]")){S.lang=S.lang==="ar"?"en":"ar";ls.set("aw_lang",S.lang);closeModal();render();return}
+  const gl=e.target.closest("[data-glayout]");if(gl){S.layout=gl.dataset.glayout;ls.set("aw_layout",S.layout);applyLayout();closeModal();render();return}
   if(e.target.closest("[data-gview]")){S.viewMode=!S.viewMode;closeModal();render();return}
   if(e.target.closest("[data-gtheme]")){const dark=S.theme?S.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;S.theme=dark?"light":"dark";ls.set("aw_theme",S.theme);render();return}
 },true);
@@ -1702,6 +1699,15 @@ function boot(){
     },e=>{console.error(e);S.auth="error";S.authErr=e.code||"";render()});
   });
 }
+function applyLayout(){
+  const m=S.layout||"auto";document.body.classList.toggle("fm",m==="mobile");
+  for(const sh of document.styleSheets){let rules;try{rules=sh.cssRules}catch(e){continue}
+    for(const r of rules){if(!(r instanceof CSSMediaRule))continue;if(r.__o===undefined)r.__o=r.media.mediaText;const o=r.__o;
+      if(!/(max|min)-width/.test(o))continue;const isMax=/max-width/.test(o);
+      const v=m==="auto"?o:((m==="mobile")===isMax?"all":"not all");if(r.media.mediaText!==v)r.media.mediaText=v}}
+  const vp=document.querySelector('meta[name=viewport]');if(vp)vp.setAttribute("content",m==="desktop"?"width=1200,viewport-fit=cover":"width=device-width,initial-scale=1,viewport-fit=cover");
+}
+applyLayout();
 boot();
 })();
 </script>
