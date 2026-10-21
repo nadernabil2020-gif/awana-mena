@@ -154,6 +154,8 @@ main{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:22px 40px;
 .ucard .ctl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ucard select{border:1.5px solid var(--line);background:var(--raise);border-radius:10px;padding:8px 10px;width:100%;min-width:0}
 .rolechip{font-size:.75rem;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.r-accountant{background:var(--green);color:var(--on-green)}
+.r-manager{background:var(--yellow);color:var(--on-yellow)}
 .r-pending{background:var(--yellow);color:var(--on-yellow)}.r-admin{background:var(--blue);color:var(--on-blue)}.r-leader{background:var(--green);color:var(--on-green)}.r-viewer{background:var(--raise);color:var(--ink)}.r-disabled{background:var(--red);color:var(--on-red)}
 .tab .cnt{background:var(--yellow);color:var(--on-yellow);border-radius:999px;font-size:.72rem;padding:0 7px;line-height:1.6}
 .pgroup{display:flex;flex-direction:column;gap:8px;padding:12px 0;border-top:1px solid var(--line)}
@@ -163,7 +165,7 @@ span.chip{cursor:default;display:inline-flex;align-items:center;gap:4px}
 .x.armed{background:var(--red);color:#fff;font-size:.72rem;padding:2px 8px;border-radius:999px}
 .chip .x{border:0;background:none;color:var(--red);cursor:pointer;padding:0 2px;font-weight:700;font-size:1rem;line-height:1}
 .chip .x.armed{background:var(--red);color:#fff;border-radius:999px;font-size:.72rem;padding:1px 7px}
-.ucards{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.cards.ucards{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
 .vt td.kids{white-space:nowrap}
 @media (max-width:640px){.tbl-wrap:has(.vt){border:0;background:none;overflow:visible}.vt,.vt tbody{display:block}.vt thead{display:none}.vt tr{display:grid;grid-template-columns:1fr auto;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-inline-start:6px solid var(--tc);border-radius:14px;margin-bottom:10px;padding:8px 0}.vt td{border:0;padding:4px 14px}.vt td:first-child,.vt td:last-child{grid-column:1/-1}.vt tr.h{display:block;margin-top:-14px;border-top:0;border-radius:0 0 14px 14px}.vt tr.h td{padding:0}}
 .wa{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#25d366;color:#fff;vertical-align:middle;text-decoration:none;flex:none}
@@ -175,6 +177,16 @@ span.chip{cursor:default;display:inline-flex;align-items:center;gap:4px}
 .prow{display:flex;justify-content:space-between;gap:8px 12px;padding:10px 0;border-top:1px solid var(--line);font-size:.9rem;flex-wrap:wrap;align-items:center}
 .prow>span:first-child{flex:1 1 220px}
 .pact{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.fincards{grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.fcard{background:var(--surface);border:1.5px solid var(--line);border-top:6px solid var(--cc);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:10px}
+.fcard .hd{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.fnums{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.fnums div,.fbal{background:var(--raise);border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fnums small,.fbal small{color:var(--muted);font-size:.75rem;font-weight:700}
+.fnums b{font-size:1.05rem}
+.fbal{background:var(--green-soft)}.fbal b{font-family:var(--f-display);font-weight:400;font-size:1.6rem;color:var(--green)}
+.fbal.none{background:var(--raise)}.fbal.none b{color:var(--muted)}
+.fbal.neg{background:var(--red-soft)}.fbal.neg b{color:var(--red)}
 .qsel{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:6px 10px}
 .qrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.9rem}
 .bell{position:relative}
@@ -226,7 +238,7 @@ body.fm .hero p{font-size:1.4rem}body.fm .splash{width:170px}
 .panel[data-c] h2.sm{color:color-mix(in srgb,var(--pc) 70%,var(--ink))}
 .panel[data-c="3"] h2.sm{color:color-mix(in srgb,var(--pc) 45%,var(--ink))}
 main{--tc:var(--blue)}
-main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="users"]{--tc:var(--red)}
+main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="users"]{--tc:var(--red)}main[data-view="finance"]{--tc:var(--yellow)}
 main>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 78%,var(--ink))}
 main[data-view="stories"]>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 50%,var(--ink))}
 .tbl-wrap{border-top:6px solid var(--tc)}
@@ -509,7 +521,13 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  android:"أندرويد (Chrome)",androidS:["افتح رابط التطبيق في Chrome","اضغط القائمة ⋮ أعلى الشاشة","اختر «إضافة إلى الشاشة الرئيسية» أو «تثبيت التطبيق»"],
  laptop:"لابتوب أو كمبيوتر (Chrome أو Edge)",laptopS:["افتح رابط التطبيق في Chrome أو Edge","من القائمة ⋮ اختر «حفظ ومشاركة» ثم «إنشاء اختصار» (في Edge: التطبيقات ← تثبيت هذا الموقع كتطبيق)","فعّل «فتح كنافذة» ثم اضغط إنشاء"],
  yourDevice:"جهازك",
- tUsers:"المستخدمين",layout:"شكل العرض",lyAuto:"تلقائي",lyMobile:"موبايل",lyDesktop:"لاب",account:"حسابي",signOut:"تسجيل الخروج",leaderNote:"تقدر تضيف وتعدّل في دولتك:",installed:"تم تثبيت التطبيق",
+ tUsers:"المستخدمين",roleManager:"مدير (كل الدول)",roleAccountant:"الحسابات",
+ tFinance:"الحسابات",finSub:"الوارد والمصروف لكل دولة في الشهر، والرصيد المتبقي",month:"الشهر",income:"الوارد",expense:"المصروف",balance:"الرصيد",
+ monthIncome:"وارد الشهر",monthExpense:"مصروف الشهر",net:"صافي الشهر",runBal:"الرصيد الحالي",currency:"العملة",finEdit:"تسجيل حساب الشهر",finHistory:"سجل الحسابات",
+ noFin:"لا توجد حسابات مسجلة لهذه الدولة بعد",noFinMonth:"لم يُسجّل",finNote:"الرصيد = كل الوارد ناقص كل المصروف من أول تسجيل لحد الشهر ده",
+ acctNote:"صلاحيتك: الحسابات، وباقي التطبيق للمشاهدة فقط.",finView:"صلاحيتك على الحسابات: مشاهدة فقط.",openCountry2:"عرض السجل",kFin:"حسابات",byCurrency:"الإجمالي حسب العملة",roleHelp:"أدمن: كل حاجة ومعاها إدارة المستخدمين والنسخ الاحتياطي — مدير: يضيف ويعدّل في كل الدول ويشوف الحسابات — الحسابات: يسجّل الوارد والمصروف ويشوف الباقي — مسؤول دولة: دولته بس — مشاهدة فقط",
+ invite:"إضافة شخص بالإيميل",inviteSub:"اكتب إيميل جوجل بتاعه واختار صلاحيته. أول ما يدخل التطبيق بالإيميل ده هياخد الصلاحية على طول من غير انتظار موافقة.",inviteEmail:"إيميل جوجل",inviteBtn:"إضافة",
+ invites:"في انتظار أول دخول",badEmail:"اكتب إيميل صحيح",inviteSaved:"تمت الإضافة — هياخد الصلاحية أول ما يدخل",alreadyUser:"الشخص ده داخل قبل كده، غيّر صلاحيته من القايمة تحت",layout:"شكل العرض",lyAuto:"تلقائي",lyMobile:"موبايل",lyDesktop:"لاب",account:"حسابي",signOut:"تسجيل الخروج",leaderNote:"تقدر تضيف وتعدّل في دولتك:",installed:"تم تثبيت التطبيق",
  gateSub:"متابعة النوادي والكنائس والزيارات وقصص النجاح في دول الشرق الأوسط",signInGoogle:"الدخول بحساب جوجل",signingIn:"جارٍ تسجيل الدخول… كمّل في نافذة جوجل",
  pendingTitle:"طلبك وصل",pendingText:"حسابك اتسجّل وفي انتظار موافقة الأدمن. أول ما يوافق هتدخل على طول من غير ما تعمل حاجة.",
  disabledTitle:"الحساب موقوف",disabledText:"تم إيقاف حسابك. تواصل مع الأدمن لو محتاج تدخل.",
@@ -586,7 +604,13 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  android:"Android (Chrome)",androidS:["Open the app link in Chrome","Tap the ⋮ menu at the top","Choose “Add to Home screen” or “Install app”"],
  laptop:"Laptop or desktop (Chrome or Edge)",laptopS:["Open the app link in Chrome or Edge","From the ⋮ menu choose “Save and share” → “Create shortcut” (Edge: Apps → Install this site as an app)","Tick “Open as window”, then Create"],
  yourDevice:"your device",
- tUsers:"Users",layout:"Layout",lyAuto:"Auto",lyMobile:"Mobile",lyDesktop:"Laptop",account:"My account",signOut:"Sign out",leaderNote:"You can add and edit in your country:",installed:"App installed",
+ tUsers:"Users",roleManager:"Manager (all countries)",roleAccountant:"Accounts",
+ tFinance:"Accounts",finSub:"Income and spending per country each month, and the remaining balance",month:"Month",income:"Income",expense:"Spent",balance:"Balance",
+ monthIncome:"Month income",monthExpense:"Month spent",net:"Month net",runBal:"Current balance",currency:"Currency",finEdit:"Record month",finHistory:"Accounts history",
+ noFin:"No accounts recorded for this country yet",noFinMonth:"Not recorded",finNote:"Balance = all income minus all spending from the first entry up to this month",
+ acctNote:"Your access: accounts; the rest of the app is view only.",finView:"Your access to accounts: view only.",openCountry2:"View history",kFin:"accounts",byCurrency:"Totals by currency",roleHelp:"Admin: everything incl. users and backups — Manager: adds and edits in all countries and sees accounts — Accounts: records income and spending, views the rest — Country leader: own country only — View only",
+ invite:"Add someone by email",inviteSub:"Enter their Google email and choose access. The first time they sign in with that email they get it right away, no approval wait.",inviteEmail:"Google email",inviteBtn:"Add",
+ invites:"Waiting for first sign-in",badEmail:"Enter a valid email",inviteSaved:"Added — they get access on first sign-in",alreadyUser:"This person already signed in; change their access in the list below",layout:"Layout",lyAuto:"Auto",lyMobile:"Mobile",lyDesktop:"Laptop",account:"My account",signOut:"Sign out",leaderNote:"You can add and edit in your country:",installed:"App installed",
  gateSub:"Follow up clubs, churches, visits and success stories across the Middle East",signInGoogle:"Sign in with Google",signingIn:"Signing in… continue in the Google window",
  pendingTitle:"Request received",pendingText:"Your account is registered and waiting for admin approval. Once approved you'll get in automatically.",
  disabledTitle:"Account disabled",disabledText:"Your account has been disabled. Contact the admin if you need access.",
@@ -634,7 +658,7 @@ const COLS=["countries","churches","clubs","visits","team","stories","reports","
 
 /* ---------- state ---------- */
 const S={countries:[],churches:[],clubs:[],visits:[],team:[],stories:[],extraPrograms:[],
-  users:[],logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
+  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
   lang:"ar",theme:null,tab:"overview",countryId:null,storyCountry:"",viewMode:false,readOnly:false,
   vf:{country:"",status:"",program:"",q:""},open:{},loaded:{},offline:false};
 let db=null,auth=null,deferredInstall=null;
@@ -689,7 +713,7 @@ function goalForm(cid){
 }
 /* ---------- training & resources ---------- */
 function lastTraining(clubId){let b=null;S.trainings.forEach(tr=>{if((tr.clubIds||[]).includes(clubId)&&(!b||tr.date>b.date))b=tr});return b}
-function scopeClubs(){return S.clubs.filter(active).filter(c=>isAdmin()||role()==="viewer"||c.countryId===(S.me&&S.me.countryId))}
+function scopeClubs(){return S.clubs.filter(active).filter(c=>canAll()||role()==="viewer"||c.countryId===(S.me&&S.me.countryId))}
 function vTraining(d){
   const ed=canAny();
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tTrain"))}</h2></div><div class="chips">${ed?`<button class="btn" data-act="addTraining">${I.plus}${esc(t("addTraining"))}</button><button class="btn yellow" data-act="addRes">${I.plus}${esc(t("addRes"))}</button>`:""}</div></div>`;
@@ -729,15 +753,15 @@ function resourcesPanel(){
   let h=`<div class="panel"><div class="sec-head" style="margin-bottom:10px"><div><h2 class="sm">${dots}${esc(t("resources"))} <span class="muted num" style="font-size:1rem">(${nf(S.resources.length)})</span></h2><p>${esc(t("resSub"))}</p></div></div>`;
   if(!S.resources.length)return h+emptyBox(t("noRes"),t("noResHint"))+`</div>`;
   h+=`<div class="chips" style="margin-bottom:12px"><button class="chip ${S.resProg?"":"on"}" data-act="resProg" data-id="">${esc(t("all"))}</button>${used.map(k=>`<button class="chip ${S.resProg===k?"on":""}" data-act="resProg" data-id="${k}">${esc(k==="_g"?t("general"):progName(k))}</button>`).join("")}</div>`;
-  return h+`<div class="cards">${list.map(r=>{const [ic,col]=resIcon(r.url);const ed=r.countryId?canC(r.countryId):canAdmin();
+  return h+`<div class="cards">${list.map(r=>{const [ic,col]=resIcon(r.url);const ed=r.countryId?canC(r.countryId):canAllV();
     return `<div class="person" style="align-items:center"><span class="av" style="background:${col};color:#fff;border-radius:12px">${I[ic].replace("<svg",'<svg width="22" height="22"')}</span><div class="info"><b>${esc(r.title)}</b><span class="role" style="color:var(--muted)">${r.program?esc(progName(r.program)):esc(t("general"))} · ${r.countryId?esc(cname(S.countries.find(c=>c.id===r.countryId))):esc(t("forAll"))}</span>${r.desc?`<div class="meta"><span>${esc(r.desc)}</span></div>`:""}</div>
     <div class="acts" style="flex-direction:column"><a class="btn small" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(t("open"))}</a>${ed?`<span style="display:flex"><button class="icon" data-act="editRes" data-id="${r.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="resource" data-id="${r.id}" aria-label="${esc(t("del"))}">${I.del}</button></span>`:""}</div></div>`}).join("")}</div></div>`;
 }
 function resForm(r){
-  r=r||{countryId:isAdmin()?"":(S.me&&S.me.countryId)};
+  r=r||{countryId:canAll()?"":(S.me&&S.me.countryId)};
   openModal(r.id?t("editRes"):t("addRes"),`<div class="fgrid">${fld("rsTitle",t("resTitle"),r.title,{req:1,full:1})}${fld("rsUrl",t("resUrl"),r.url,{req:1,full:1,dir:"ltr",type:"url",im:"url"})}
    <div class="f"><label for="rsProg">${esc(t("program"))}</label><select id="rsProg"><option value="">${esc(t("general"))}</option>${programs().map(p=>`<option value="${p.k}" ${r.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select></div>
-   <div class="f"><label for="rsCountry">${esc(t("country"))}</label><select id="rsCountry">${isAdmin()?`<option value="">${esc(t("forAll"))}</option>`:""}${myCountries().map(c=>`<option value="${c.id}" ${r.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+   <div class="f"><label for="rsCountry">${esc(t("country"))}</label><select id="rsCountry">${canAll()?`<option value="">${esc(t("forAll"))}</option>`:""}${myCountries().map(c=>`<option value="${c.id}" ${r.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
    ${fld("rsDesc",t("resDesc"),r.desc,{full:1,area:1})}</div>`,async f=>{
     const data={title:val(f,"rsTitle"),url:val(f,"rsUrl"),program:f.querySelector("#rsProg").value,countryId:f.querySelector("#rsCountry").value,desc:val(f,"rsDesc"),by:S.me.id,updatedAt:Date.now(),createdAt:r.createdAt||Date.now()};
     if(!data.title||!data.url)return merr(t("req"));if(!/^https:\/\/\S+\.\S+/.test(data.url))return merr(t("badUrl"));
@@ -833,10 +857,14 @@ function logAct(action,kind,label,countryId){if(!db||!S.me)return;db.collection(
 const nf=n=>Number(n||0).toLocaleString(S.lang==="ar"?"ar-EG":"en-US");
 const role=()=>S.me?S.me.role:"";
 const isAdmin=()=>role()==="admin";
+const canAll=()=>isAdmin()||role()==="manager";
+const canFinRead=()=>isAdmin()||role()==="manager"||role()==="accountant";
+const canFinEdit=()=>!S.viewMode&&(isAdmin()||role()==="accountant");
 const canAdmin=()=>!S.viewMode&&isAdmin();
-const canC=cid=>!S.viewMode&&(isAdmin()||(role()==="leader"&&!!cid&&S.me.countryId===cid));
-const canAny=()=>!S.viewMode&&(isAdmin()||(role()==="leader"&&!!S.me.countryId));
-const myCountries=()=>S.countries.filter(c=>isAdmin()||c.id===(S.me&&S.me.countryId));
+const canAllV=()=>!S.viewMode&&canAll();
+const canC=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&!!cid&&S.me.countryId===cid));
+const canAny=()=>!S.viewMode&&(canAll()||(role()==="leader"&&!!S.me.countryId));
+const myCountries=()=>S.countries.filter(c=>canAll()||c.id===(S.me&&S.me.countryId));
 const initial=s=>(String(s||"?").trim().replace(/^ال/,"")[0]||"?");
 const cidx=id=>{const i=S.countries.findIndex(c=>c.id===id);return (i<0?0:i)%4};
 
@@ -875,8 +903,8 @@ const cname=c=>c?((S.lang==="en"&&c.nameEn)?c.nameEn:c.name):"—";
 
 /* ---------- chrome ---------- */
 const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["training","tTrain","var(--green)"]];
-const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],users:["var(--red)","#fff"]};
-const TABS=()=>isAdmin()?TABS0.concat([["users","tUsers","var(--red)"]]):TABS0;
+const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
+const TABS=()=>TABS0.concat(canFinRead()?[["finance","tFinance","var(--yellow)"]]:[]).concat(isAdmin()?[["users","tUsers","var(--red)"]]:[]);
 function applyChrome(){
   const r=document.documentElement;r.lang=S.lang;r.dir=S.lang==="ar"?"rtl":"ltr";
   if(S.theme)r.setAttribute("data-theme",S.theme);else r.removeAttribute("data-theme");
@@ -902,6 +930,7 @@ function render(){
   $("gate").hidden=inApp;$("appHeader").hidden=!inApp;$("main").hidden=!inApp;$("appFoot").hidden=!inApp;
   if(!inApp){renderGate();return}
   if(S.tab==="users"&&!isAdmin())S.tab="overview";
+  if(S.tab==="finance"&&!canFinRead())S.tab="overview";
   applyChrome();
   const m=$("main");
   if(S.offline){m.innerHTML=emptyBox(t("offline"),"");return}
@@ -909,9 +938,10 @@ function render(){
   const d=D();let h="";
   if(backupDue())h+=`<div class="bkbar"><span>${esc(t("backupDue"))}</span><button class="btn small" data-act="backupNow">${I.dl}${esc(t("backupNow"))}</button></div>`;
   if(S.viewMode)h+=`<div class="viewbar">${I.eye} ${esc(t("viewNote"))}</div>`;
+  else if(role()==="accountant")h+=`<div class="viewbar">${I.eye} ${esc(t("acctNote"))}</div>`;
   else if(role()==="viewer")h+=`<div class="viewbar">${I.eye} ${esc(t("readOnlyNote"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
-  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining}[S.tab]||vOverview)(d);
+  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,finance:vFinance}[S.tab]||vOverview)(d);
   m.innerHTML=h;m.dataset.view=S.tab;m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
 }
 const dots=`<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -924,7 +954,7 @@ function tiles(s,withCountries){
   <div class="tile yellow"><b class="num">${nf(s.kids)}</b><span>${esc(t("kids"))}</span></div>
   <div class="ring-tile"><div class="ring" style="--p:${s.pct}"><b class="num">${nf(s.pct)}%</b></div><div><strong>${esc(t("coverage"))}</strong><small class="num" style="display:block">${esc(qLabel(S.qtr))}</small><small class="num">${nf(s.visited)} / ${nf(s.active)} ${esc(t("clubsN"))}</small></div></div></div>`;
 }
-const addBtn=(act,label,cls="",extra="")=>{const m=/data-country="([^"]*)"/.exec(extra);const cid=m&&m[1];const ok=act==="addCountry"?canAdmin():cid?canC(cid):canAny();return ok?`<button class="btn ${cls}" data-act="${act}" ${extra}>${I.plus}${esc(t(label))}</button>`:""}
+const addBtn=(act,label,cls="",extra="")=>{const m=/data-country="([^"]*)"/.exec(extra);const cid=m&&m[1];const ok=act==="addCountry"?canAllV():cid?canC(cid):canAny();return ok?`<button class="btn ${cls}" data-act="${act}" ${extra}>${I.plus}${esc(t(label))}</button>`:""}
 
 function vOverview(d){
   const s=countryStats(null,d);
@@ -934,7 +964,7 @@ function vOverview(d){
   if(!S.countries.length)return h+emptyBox(t("noCountries"),t("noCountriesHint"),`<div class="chips" style="justify-content:center">${seedBtn()}${addBtn("addCountry","addCountry")}</div>`);
   const pr=programs().map(p=>{const cl=S.clubs.filter(c=>c.program===p.k);return {p,clubs:cl.length,kids:cl.reduce((a,c)=>a+(+c.kids||0),0)}}).filter(x=>x.clubs||P_DEFAULT.some(q=>q.k===x.p.k));
   const mx=Math.max(1,...pr.map(x=>x.kids));
-  h+=`<div class="grid2"><div class="panel"><div class="sec-head" style="margin-bottom:16px"><h2 class="sm">${dots}${esc(t("byProgram"))}</h2>${canAdmin()?`<button class="link" data-act="programs">${I.plus.replace("<svg",'<svg width="14" height="14"')} ${esc(t("addProgram"))}</button>`:""}</div><div class="pbars">`+
+  h+=`<div class="grid2"><div class="panel"><div class="sec-head" style="margin-bottom:16px"><h2 class="sm">${dots}${esc(t("byProgram"))}</h2>${canAllV()?`<button class="link" data-act="programs">${I.plus.replace("<svg",'<svg width="14" height="14"')} ${esc(t("addProgram"))}</button>`:""}</div><div class="pbars">`+
    pr.map(x=>`<div class="pbar"><div class="lab"><b>${esc(progName(x.p.k))}</b><small class="num">${nf(x.clubs)} ${esc(t("clubsN"))} · ${nf(x.kids)} ${esc(t("kidsN"))}</small></div><div class="track"><i style="width:${x.kids*100/mx}%;background:${PCOL[progIdx(x.p.k)][0]}"></i></div></div>`).join("")+`</div></div>`;
   const rv=[...S.visits].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,6);
   h+=`<div class="panel"><h2 class="sm" style="margin-bottom:10px">${dots}${esc(t("recent"))}</h2>`+
@@ -1006,7 +1036,7 @@ async function seedCountries(){
   try{for(const p of PRESET){if(S.countries.some(c=>c.name===p.ar))continue;await db.collection("countries").doc().set({name:p.ar,nameEn:p.en,manager:"",phone:"",email:"",notes:"",regions:p.regions||[],towns:[],dial:p.dial||"",flag:p.flag||"",createdAt:Date.now(),updatedAt:Date.now()})}
     logAct("add","country",PRESET.map(p=>p.ar).join("، "),"");toast(t("seedDone"))}catch(e){console.error(e);toast(t("failed"))}
 }
-const seedBtn=()=>canAdmin()&&PRESET.some(p=>!S.countries.some(c=>c.name===p.ar))?`<button class="btn ghost" data-act="seedCountries">${I.plus}${esc(t("seedCountries"))}</button>`:"";
+const seedBtn=()=>canAllV()&&PRESET.some(p=>!S.countries.some(c=>c.name===p.ar))?`<button class="btn ghost" data-act="seedCountries">${I.plus}${esc(t("seedCountries"))}</button>`:"";
 const pathOf=ch=>[ch.region,ch.city,ch.center,ch.village].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("");
 function churchCard(ch,d){
   const cl=d.clubsByChurch[ch.id]||[];
@@ -1049,7 +1079,7 @@ function alertItems(){
   S.stories.forEach(x=>{if((x.createdAt||0)>seen&&seen)out.push({isNew:true,at:x.createdAt,icon:"c2",title:t("alStory"),sub:x.title+" · "+cname(S.countries.find(c=>c.id===x.countryId)),go:{story:x.id}})});
   S.reports.forEach(x=>{if((x.updatedAt||0)>seen&&seen&&x.by!==S.me.id)out.push({isNew:true,at:x.updatedAt,icon:"c0",title:t("alReport"),sub:cname(S.countries.find(c=>c.id===x.countryId))+" · "+qLabel(x.quarter),go:{country:x.countryId,q:x.quarter}})});
   out.sort((a,b)=>b.at-a.at);
-  const d=D();const due=S.clubs.filter(active).filter(c=>{if(!isAdmin()&&!(S.me.countryId&&c.countryId===S.me.countryId))return false;const l=(d.vByClub[c.id]||[])[0];return !l||(Date.now()-new Date(l.date+"T12:00:00").getTime())/864e5>90}).length;
+  const d=D();const due=S.clubs.filter(active).filter(c=>{if(!canAll()&&!(S.me.countryId&&c.countryId===S.me.countryId))return false;const l=(d.vByClub[c.id]||[])[0];return !l||(Date.now()-new Date(l.date+"T12:00:00").getTime())/864e5>90}).length;
   if(due)out.push({isNew:false,icon:"c1",title:t("alVisitDue"),sub:nf(due)+" "+t("clubsN"),go:{tab:"overview"}});
   return out;
 }
@@ -1174,7 +1204,7 @@ function storyForm(s,countryId){
 
 /* ---------- team ---------- */
 function personCard(p,kind,d){
-  const ed=kind!=="mgr"&&(canAdmin()||(!!p.countryId&&canC(p.countryId)));const av={mgr:"c0",team:"c1",vol:"c2"}[kind];const rc={mgr:"var(--blue)",team:"var(--red)",vol:"var(--green)"}[kind];
+  const ed=kind!=="mgr"&&(canAllV()||(!!p.countryId&&canC(p.countryId)));const av={mgr:"c0",team:"c1",vol:"c2"}[kind];const rc={mgr:"var(--blue)",team:"var(--red)",vol:"var(--green)"}[kind];
   const sub=kind==="mgr"?p.country:(p.countryId?cname(d.C[p.countryId]):t("wholeME"));
   return `<div class="person" style="--pc2:${rc}"><span class="av ${av}">${esc(initial(p.name))}</span><div class="info"><b>${esc(p.name||"—")}</b><span class="role" style="color:${rc}">${esc(p.role||"")}</span><div class="meta"><span>${esc(sub)}</span>${p.phone?`<span style="display:flex;gap:6px;align-items:center">${phoneBits(p.phone,p.countryId||p.cid)}</span>`:""}${p.email?`<span class="ltr" style="text-align:start">${esc(p.email)}</span>`:""}${p.notes?`<span>${esc(p.notes)}</span>`:""}</div></div>
   ${ed?`<div class="acts"><button class="icon" data-act="editMember" data-id="${p.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="member" data-id="${p.id}" aria-label="${esc(t("del"))}">${I.del}</button></div>`:""}</div>`;
@@ -1190,13 +1220,14 @@ function vTeam(d){
 }
 
 /* ---------- users (admin) ---------- */
-const ROLES=["pending","viewer","leader","admin","disabled"];
-function roleName(r){return t({pending:"rolePending",viewer:"roleViewer",leader:"roleLeader",admin:"roleAdmin",disabled:"roleDisabled"}[r]||"rolePending")}
+const ROLES=["pending","viewer","leader","accountant","manager","admin","disabled"];
+function roleName(r){return t({pending:"rolePending",viewer:"roleViewer",leader:"roleLeader",manager:"roleManager",accountant:"roleAccountant",admin:"roleAdmin",disabled:"roleDisabled"}[r]||"rolePending")}
 function avatar(u,cls="av"){return u.photo?`<img src="${esc(u.photo)}" alt="" referrerpolicy="no-referrer">`:`<span class="${cls} c${(u.name||u.email||"").length%4}">${esc(initial(u.name||u.email))}</span>`}
 function vUsers(d){
-  const ord={pending:0,leader:1,admin:2,viewer:3,disabled:4};
+  const ord={pending:0,admin:1,manager:2,accountant:3,leader:4,viewer:5,disabled:6};
   const list=[...S.users].sort((a,b)=>(ord[a.role]??5)-(ord[b.role]??5)||(a.name||"").localeCompare(b.name||""));
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tUsers"))}</h2><p>${esc(t("usersSub"))}</p></div></div>`;
+  h+=invitePanel();
   if(!list.length)return h+emptyBox(t("noUsers"),"")+backupPanel()+vLog();
   const card=u=>{const self=u.id===S.me.id;
    return `<div class="ucard ${u.role==="pending"?"pending":""}"><div class="hd">${avatar(u)}<div style="flex:1"><b>${esc(u.name||u.email)}</b>${self?` <span class="rolechip r-viewer">${esc(t("you"))}</span>`:""}<small class="ltr" style="text-align:start">${esc(u.email)}</small></div><span class="rolechip r-${esc(u.role)}">${esc(roleName(u.role))}</span></div>
@@ -1205,15 +1236,35 @@ function vUsers(d){
    ${u.role==="leader"&&!u.countryId?`<small style="color:var(--red);font-weight:700">${esc(t("leaderNoCountry"))}</small>`:""}</div>`};
   return h+`<div class="cards ucards">${list.map(card).join("")}</div>`+backupPanel()+vLog();
 }
+function invitePanel(){
+  const opts=["viewer","leader","accountant","manager","admin"];
+  return `<div class="panel"><div class="sec-head" style="margin-bottom:8px"><div><h2 class="sm">${dots}${esc(t("invite"))}</h2><p>${esc(t("inviteSub"))}</p></div></div>
+   <form id="invForm" class="fgrid" style="align-items:end" novalidate>
+    <div class="f" style="grid-column:span 2"><label for="invEmail">${esc(t("inviteEmail"))}</label><input id="invEmail" type="email" dir="ltr" inputmode="email" autocomplete="off" placeholder="name@gmail.com"></div>
+    <div class="f"><label for="invRole">${esc(t("roleLbl"))}</label><select id="invRole">${opts.map(r=>`<option value="${r}">${esc(roleName(r))}</option>`).join("")}</select></div>
+    <div class="f" id="invCountryBox" hidden><label for="invCountry">${esc(t("country"))}</label><select id="invCountry"><option value="">${esc(t("pickCountry"))}</option>${S.countries.map(c=>`<option value="${c.id}">${esc(cname(c))}</option>`).join("")}</select></div>
+    <button class="btn" type="submit">${I.plus}${esc(t("inviteBtn"))}</button>
+   </form>
+   <small class="muted" style="display:block;margin-top:10px">${esc(t("roleHelp"))}</small>
+   ${S.invites.length?`<div style="margin-top:12px"><b style="font-size:.85rem">${esc(t("invites"))} (${nf(S.invites.length)})</b>${S.invites.map(iv=>`<div class="qrow"><span class="ltr" style="min-width:0;overflow-wrap:anywhere">${esc(iv.id)}</span><span style="display:flex;gap:6px;align-items:center"><span class="rolechip r-${esc(iv.role)}">${esc(roleName(iv.role))}${iv.role==="leader"&&iv.countryId?" · "+esc(cname(S.countries.find(c=>c.id===iv.countryId))):""}</span><button class="icon" data-act="delInvite" data-id="${esc(iv.id)}" aria-label="${esc(t("del"))}">${I.del}</button></span></div>`).join("")}</div>`:""}</div>`;
+}
+async function saveInvite(f){
+  const email=f.querySelector("#invEmail").value.trim().toLowerCase(),role=f.querySelector("#invRole").value,countryId=role==="leader"?f.querySelector("#invCountry").value:"";
+  if(!/^[^\s@\/]+@[^\s@\/]+\.[^\s@\/]+$/.test(email)){toast(t("badEmail"));return}
+  if(role==="leader"&&!countryId){toast(t("needCountry"));return}
+  const ex=S.users.find(u=>(u.email||"").toLowerCase()===email);if(ex){toast(t("alreadyUser"));return}
+  try{await db.doc("invites/"+email).set({role,countryId,by:S.me.id,at:Date.now()});logAct("add","user",email+" → "+roleName(role),countryId);toast(t("inviteSaved"));f.reset()}
+  catch(e){console.error(e);toast(t("failed")+" ("+(e.code||"")+")")}
+}
 async function setUser(uid,patch){
   const u=Object.assign({},S.users.find(x=>x.id===uid)||{},patch);
   try{await db.doc("users/"+uid).update(patch);
     if(u.role==="leader"&&u.countryId)await db.doc("countries/"+u.countryId).update({manager:u.name||u.email||"",email:u.email||"",leaderUid:uid}).catch(e=>console.error(e));
     logAct("edit","user",(u.name||u.email)+" → "+roleName(u.role)+(u.role==="leader"&&u.countryId?" ("+cname(S.countries.find(c=>c.id===u.countryId))+")":""),u.countryId||"");
-    toast(t("saved"))}catch(e){console.error(e);toast(t("failed"))}
+    toast(t("saved"))}catch(e){console.error(e);toast(t("failed")+" ("+(e.code||"")+")")}
 }
 function vLog(){
-  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",resource:"kRes"};
+  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",resource:"kRes",finance:"kFin"};
   const an={add:"aAdd",edit:"aEdit",del:"aDel"};const col={add:"var(--green)",edit:"var(--blue)",del:"var(--red)"};
   const fmt=ms=>{try{return new Date(ms).toLocaleString(S.lang==="ar"?"ar-EG":"en-GB",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}catch(e){return""}};
   let h=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("log"))}</h2><p>${esc(t("logSub"))}</p></div></div>`;
@@ -1232,7 +1283,7 @@ async function backupNow(){
   toast(t("preparing"));
   try{
     const out={app:"awana-me",version:1,at:Date.now(),by:S.me.email,data:{}};
-    for(const n of COLS.concat(["storyImages","users","config","logs"])){const sn=await db.collection(n).get();out.data[n]=sn.docs.map(x=>Object.assign({id:x.id},x.data()))}
+    for(const n of COLS.concat(["storyImages","users","config","logs","finance","invites"])){const sn=await db.collection(n).get();out.data[n]=sn.docs.map(x=>Object.assign({id:x.id},x.data()))}
     await save(`awana-backup-${today()}.json`,new Blob([JSON.stringify(out)],{type:"application/json"}));
     await db.doc("config/backup").set({at:Date.now(),by:S.me.email||""});
   }catch(e){console.error(e);toast(t("failed"))}
@@ -1375,7 +1426,7 @@ function memberForm(p,type){
   openModal(p.id?t("editMember"):t("addMember"),`<datalist id="lRole">${roles.map(r=>`<option value="${esc(r)}">`).join("")}</datalist><div class="fgrid">
    <div class="f"><label for="mType">${esc(t("type"))}</label><select id="mType"><option value="team" ${p.type!=="vol"?"selected":""}>${esc(t("teamT"))}</option><option value="vol" ${p.type==="vol"?"selected":""}>${esc(t("volT"))}</option></select></div>
    ${fld("mName",t("name"),p.name,{req:1})}${fld("mRole",t("role"),p.role,{list:"lRole"})}
-   <div class="f"><label for="mCountry">${esc(t("country"))}</label><select id="mCountry">${isAdmin()?`<option value="">${esc(t("wholeME"))}</option>`:""}${myCountries().map(c=>`<option value="${c.id}" ${p.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+   <div class="f"><label for="mCountry">${esc(t("country"))}</label><select id="mCountry">${canAll()?`<option value="">${esc(t("wholeME"))}</option>`:""}${myCountries().map(c=>`<option value="${c.id}" ${p.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
    ${fld("mPhone",t("phone"),p.phone,{type:"tel",dir:"ltr",im:"tel"})}${fld("mEmail",t("email"),p.email,{type:"email",dir:"ltr",im:"email"})}${fld("mNotes",t("notes"),p.notes,{full:1,area:1})}</div>`,async f=>{
     const data={type:f.querySelector("#mType").value,name:val(f,"mName"),role:val(f,"mRole"),countryId:f.querySelector("#mCountry").value,phone:val(f,"mPhone"),email:val(f,"mEmail"),notes:val(f,"mNotes"),updatedAt:Date.now(),createdAt:p.createdAt||Date.now()};
     if(!data.name)return merr(t("req"));await (p.id?db.doc("team/"+p.id):db.collection("team").doc()).set(data);logAct(p.id?"edit":"add","member",data.name,data.countryId);
@@ -1401,10 +1452,10 @@ async function delChurch(id){for(const c of S.clubs.filter(c=>c.churchId===id))a
 async function delStory(id){const s=S.stories.find(x=>x.id===id);for(const i of (s&&s.images)||[])await db.doc("storyImages/"+i).delete();await db.doc("stories/"+id).delete()}
 async function delCountry(id){for(const ch of S.churches.filter(c=>c.countryId===id))await delChurch(ch.id);for(const s of S.stories.filter(s=>s.countryId===id))await delStory(s.id);await db.doc("countries/"+id).delete();if(S.countryId===id)S.countryId=null}
 async function doDelete(kind,id){
-  const ent=kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
-  const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource")?ent.title:ent.name):"";
+  const ent=kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
+  const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+ent.month:(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource")?ent.title:ent.name):"";
   const lcid=ent?(kind==="country"?ent.id:ent.countryId):"";
-  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await db.doc("visits/"+id).delete();else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="training")await db.doc("trainings/"+id).delete();else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
+  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await db.doc("visits/"+id).delete();else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training")await db.doc("trainings/"+id).delete();else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
   catch(e){console.error(e);toast(e&&e.code==="invalid_argument"?t("noPerm"):t("failed"))}
 }
 
@@ -1431,6 +1482,9 @@ document.addEventListener("click",e=>{
    case"planVisit":planForm(id);break;
    case"planDone":{const p=S.plans.find(x=>x.id===id);if(p)visitForm(p.clubId,p.id)}break;
    case"cmpSort":S.cmpSort=id;render();break;
+   case"finEdit":finForm(id,a.dataset.m);break;
+   case"finCountry":S.finCountry=S.finCountry===id?"":id;render();setTimeout(()=>{const x=$("finHist");if(x)x.scrollIntoView({behavior:"smooth",block:"start"})},50);break;
+   case"delInvite":if(a.dataset.armed){db.doc("invites/"+id).delete().then(()=>toast(t("deleted"))).catch(e=>toast(t("failed")))}else{a.dataset.armed="1";a.classList.add("armed");a.textContent=t("sure")}break;
    case"setGoals":goalForm(a.dataset.c);break;
    case"addTraining":trainingForm();break;
    case"editTraining":trainingForm(S.trainings.find(x=>x.id===id));break;
@@ -1456,10 +1510,12 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-gview]")){S.viewMode=!S.viewMode;closeModal();render();return}
   if(e.target.closest("[data-gtheme]")){const dark=S.theme?S.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;S.theme=dark?"light":"dark";ls.set("aw_theme",S.theme);render();return}
 },true);
+document.addEventListener("submit",e=>{if(e.target.id==="invForm"){e.preventDefault();saveInvite(e.target)}});
 document.addEventListener("change",e=>{
+  if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";return}
   const ur=e.target.closest&&e.target.closest("[data-urole]");if(ur){setUser(ur.dataset.urole,{role:ur.value});return}
   const uc=e.target.closest&&e.target.closest("[data-ucountry]");if(uc){setUser(uc.dataset.ucountry,{countryId:uc.value});return}
-  if(e.target.id==="restoreFile"&&e.target.files[0]){restorePick(e.target.files[0]);e.target.value="";return}if(e.target.id==="fQtr"){S.qtr=e.target.value;render();return}if(e.target.id==="fYear"){S.gYear=+e.target.value;render();return}const m={fCountry:"country",fStatus:"status",fProg:"program"}[e.target.id];if(m){S.vf[m]=e.target.value;render()}});
+  if(e.target.id==="restoreFile"&&e.target.files[0]){restorePick(e.target.files[0]);e.target.value="";return}if(e.target.id==="fQtr"){S.qtr=e.target.value;render();return}if(e.target.id==="fMonth"){S.finMonth=e.target.value;render();return}if(e.target.id==="fYear"){S.gYear=+e.target.value;render();return}const m={fCountry:"country",fStatus:"status",fProg:"program"}[e.target.id];if(m){S.vf[m]=e.target.value;render()}});
 let qT;document.addEventListener("input",e=>{if(e.target.id==="fQ"){S.vf.q=e.target.value;clearTimeout(qT);qT=setTimeout(()=>{const pos=e.target.selectionStart;render();const i=$("fQ");if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(_){}}},250)}});
 $("btnLang").onclick=()=>{S.lang=S.lang==="ar"?"en":"ar";ls.set("aw_lang",S.lang);render()};
 $("btnTheme").onclick=()=>{const dark=S.theme?S.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;S.theme=dark?"light":"dark";ls.set("aw_theme",S.theme);render()};
@@ -1522,7 +1578,8 @@ async function exportXlsx(){
   const {H,R}=tables();const wb=XLSX.utils.book_new();
   const add=(name,k,w)=>{const ws=XLSX.utils.aoa_to_sheet([H[k]].concat(R[k]));ws["!cols"]=w.map(x=>({wch:x}));XLSX.utils.book_append_sheet(wb,ws,name.slice(0,31))};
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
-  add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("plans"),"plans",[12,14,24,16,20,30]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("currency"),t("income"),t("expense"),t("net"),t("balance"),t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,f.currency||"",+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,8,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31))}
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("plans"),"plans",[12,14,24,16,20,30]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
@@ -1655,12 +1712,70 @@ function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k]))S.loaded.ready=true;render()};
   dataUnsubs.push(db.collection(name).onSnapshot(snap=>{S[name]=snap.docs.map(x=>Object.assign({id:x.id},x.data()));done()},err=>{console.error(name,err);done()}));
 }
+/* ---------- finance ---------- */
+const CUR={eg:"EGP",iq:"IQD",jo:"JOD",ma:"MAD",lb:"USD",sy:"SYP",gulf:"USD",tn:"TND",tr:"TRY",sd:"SDG",ly:"LYD",dz:"DZD",ps:"ILS",sa:"SAR",ae:"AED",kw:"KWD",qa:"QAR",bh:"BHD",om:"OMR",ye:"YER"};
+const curMonth=()=>today().slice(0,7);
+const fid=(cid,m)=>cid+"_"+m;
+const money=(n,cur)=>`<span class="num" dir="ltr">${Number(n||0).toLocaleString(S.lang==="ar"?"ar-EG":"en-US",{maximumFractionDigits:2})}${cur?" "+esc(cur):""}</span>`;
+function monthLabel(m){try{const [y,mm]=m.split("-").map(Number);return new Date(Date.UTC(y,mm-1,15)).toLocaleDateString(S.lang==="ar"?"ar-EG":"en-GB",{month:"long",year:"numeric",timeZone:"UTC"})}catch(e){return m}}
+function finOf(cid){return S.finance.filter(f=>f.countryId===cid).sort((a,b)=>a.month.localeCompare(b.month))}
+function finStat(cid,m){
+  const list=finOf(cid).filter(f=>f.month<=m);
+  const cur=(list.length?list[list.length-1].currency:"")||CUR[(S.countries.find(c=>c.id===cid)||{}).flag]||"";
+  const row=list.find(f=>f.month===m);
+  const bal=list.reduce((s,f)=>s+(+f.income||0)-(+f.expense||0),0);
+  return {row,bal,cur,has:list.length>0};
+}
+function monthOptions(){const o=[];const now=new Date();for(let i=-1;i<24;i++){const d=new Date(Date.UTC(now.getFullYear(),now.getMonth()-i,15));o.push(d.toISOString().slice(0,7))}
+  S.finance.forEach(f=>{if(f.month&&!o.includes(f.month))o.push(f.month)});return o.sort().reverse()}
+function vFinance(d){
+  if(!canFinRead())return"";
+  const m=S.finMonth||curMonth();const ed=canFinEdit();
+  let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tFinance"))}</h2><p>${esc(t("finSub"))}</p></div><div class="chips" style="align-items:center"><label class="muted" for="fMonth" style="font-weight:700;font-size:.85rem">${esc(t("month"))}</label><select id="fMonth" class="qsel">${monthOptions().map(x=>`<option value="${x}" ${x===m?"selected":""}>${esc(monthLabel(x))}</option>`).join("")}</select></div></div>`;
+  if(!ed)h+=`<div class="viewbar">${I.eye} ${esc(t("finView"))}</div>`;
+  if(!S.countries.length)return h+emptyBox(t("noCountries"),"");
+  const rows=S.countries.map((c,i)=>({c,i,st:finStat(c.id,m)}));
+  const tot={};rows.forEach(r=>{if(!r.st.has)return;const k=r.st.cur||"—";const x=tot[k]=tot[k]||{inc:0,exp:0,bal:0};x.inc+=+(r.st.row&&r.st.row.income)||0;x.exp+=+(r.st.row&&r.st.row.expense)||0;x.bal+=r.st.bal});
+  if(Object.keys(tot).length)h+=`<div class="panel"><h2 class="sm" style="margin-bottom:10px">${dots}${esc(t("byCurrency"))} — ${esc(monthLabel(m))}</h2><div class="tbl-wrap" style="border-top:0"><table><thead><tr><th>${esc(t("currency"))}</th><th>${esc(t("monthIncome"))}</th><th>${esc(t("monthExpense"))}</th><th>${esc(t("runBal"))}</th></tr></thead><tbody>${Object.entries(tot).map(([k,x])=>`<tr><td><b>${esc(k)}</b></td><td style="color:var(--green);font-weight:700">${money(x.inc)}</td><td style="color:var(--red);font-weight:700">${money(x.exp)}</td><td style="font-weight:800">${money(x.bal)}</td></tr>`).join("")}</tbody></table></div></div>`;
+  h+=`<div class="cards fincards">${rows.map(({c,i,st})=>{const r=st.row;const col=["var(--blue)","var(--red)","var(--green)","var(--yellow)"][i%4];
+    return `<div class="fcard" style="--cc:${col}"><div class="hd">${c.flag?flagOf(c,"sm"):""}<b style="flex:1;min-width:0">${esc(cname(c))}</b>${ed?`<button class="btn small yellow" data-act="finEdit" data-id="${c.id}">${I.edit}${esc(t("finEdit"))}</button>`:""}</div>
+     <div class="fnums"><div><small>${esc(t("monthIncome"))}</small><b style="color:var(--green)">${r?money(r.income):`<span class="muted" style="font-size:.85rem">${esc(t("noFinMonth"))}</span>`}</b></div><div><small>${esc(t("monthExpense"))}</small><b style="color:var(--red)">${r?money(r.expense):"—"}</b></div></div>
+     <div class="fbal ${!st.has?"none":st.bal<0?"neg":""}"><small>${esc(t("runBal"))}</small><b>${st.has?money(st.bal,st.cur):"—"}</b></div>
+     ${r&&r.notes?`<small class="muted" style="overflow-wrap:anywhere">${esc(r.notes)}</small>`:""}
+     <button class="link" style="align-self:flex-start;font-size:.85rem" data-act="finCountry" data-id="${c.id}">${esc(t("openCountry2"))} ←</button></div>`}).join("")}</div>`;
+  h+=`<small class="muted">${esc(t("finNote"))}</small>`;
+  const fc=S.finCountry&&S.countries.find(c=>c.id===S.finCountry);
+  if(fc){const list=finOf(fc.id);let run=0;
+    h+=`<div class="panel" id="finHist"><div class="sec-head" style="margin-bottom:10px"><h2 class="sm">${dots}${esc(t("finHistory"))} — ${esc(cname(fc))}</h2></div>`+
+     (list.length?`<div class="tbl-wrap" style="border-top:0"><table><thead><tr><th>${esc(t("month"))}</th><th>${esc(t("income"))}</th><th>${esc(t("expense"))}</th><th>${esc(t("net"))}</th><th>${esc(t("balance"))}</th><th>${esc(t("notes"))}</th><th></th></tr></thead><tbody>${list.map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;
+      return `<tr><td><b>${esc(monthLabel(f.month))}</b></td><td style="color:var(--green);font-weight:700">${money(f.income)}</td><td style="color:var(--red);font-weight:700">${money(f.expense)}</td><td>${money(n)}</td><td style="font-weight:800">${money(run,f.currency)}</td><td style="min-width:140px">${esc(f.notes||"")}</td><td>${ed?`<span style="display:flex"><button class="icon" data-act="finEdit" data-id="${fc.id}" data-m="${f.month}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="finance" data-id="${f.id}" aria-label="${esc(t("del"))}">${I.del}</button></span>`:""}</td></tr>`}).reverse().join("")}</tbody></table></div>`:`<p class="muted" style="margin:0">${esc(t("noFin"))}</p>`)+`</div>`}
+  return h;
+}
+function finForm(cid,m){
+  const c=S.countries.find(x=>x.id===cid);if(!c)return;m=m||S.finMonth||curMonth();
+  const ex=S.finance.find(f=>f.id===fid(cid,m))||{};const st=finStat(cid,m);
+  const f=openModal(`${t("finEdit")} — ${cname(c)}`,`<div class="fgrid">
+   <div class="f"><label for="fnMonth">${esc(t("month"))}</label><input id="fnMonth" type="month" value="${esc(m)}" dir="ltr"></div>
+   <div class="f"><label for="fnCur">${esc(t("currency"))}</label><input id="fnCur" dir="ltr" list="lCur" value="${esc(ex.currency||st.cur||"")}"></div>
+   ${fld("fnInc",t("income"),ex.income??"",{type:"number",im:"decimal"})}${fld("fnExp",t("expense"),ex.expense??"",{type:"number",im:"decimal"})}
+   ${fld("fnNotes",t("notes"),ex.notes,{full:1,area:1})}</div>
+   <datalist id="lCur">${[...new Set(Object.values(CUR))].map(x=>`<option value="${x}">`).join("")}</datalist>`,async f=>{
+    const month=val(f,"fnMonth");if(!/^\d{4}-\d{2}$/.test(month))return merr(t("req"));
+    const num=id=>{const v=val(f,id).replace(/,/g,"");return v===""?0:Math.max(0,Number(v)||0)};
+    const data={countryId:cid,month,income:num("fnInc"),expense:num("fnExp"),currency:val(f,"fnCur").toUpperCase(),notes:val(f,"fnNotes"),by:S.me.id,byName:S.me.name||S.me.email||"",updatedAt:Date.now()};
+    await db.doc("finance/"+fid(cid,month)).set(data);logAct("edit","finance",cname(c)+" · "+month,cid);S.finMonth=month;
+  });
+  f.querySelector("#fnMonth").addEventListener("change",e=>{const x=S.finance.find(z=>z.id===fid(cid,e.target.value));
+    f.querySelector("#fnInc").value=x?x.income:"";f.querySelector("#fnExp").value=x?x.expense:"";f.querySelector("#fnNotes").value=x?(x.notes||""):"";});
+}
 function startData(){
   if(S.me&&!ls.get("aw_seen_"+S.me.id))ls.set("aw_seen_"+S.me.id,String(Date.now()));
   stopData();S.subscribed=true;S.dataRole=role();
   COLS.forEach(subscribe);
+  if(canFinRead())dataUnsubs.push(db.collection("finance").onSnapshot(s=>{S.finance=s.docs.map(x=>Object.assign({id:x.id},x.data()));render()},e=>console.error("finance",e)));else S.finance=[];
   dataUnsubs.push(db.doc("config/programs").onSnapshot(s=>{S.extraPrograms=(s.exists&&Array.isArray(s.data().extra))?s.data().extra:[];render()},()=>{}));
   if(isAdmin()){dataUnsubs.push(db.collection("users").onSnapshot(s=>{S.users=s.docs.map(x=>Object.assign({id:x.id},x.data()));render()},e=>console.error(e)));
+    dataUnsubs.push(db.collection("invites").onSnapshot(s=>{S.invites=s.docs.map(x=>Object.assign({id:x.id},x.data()));if(S.tab==="users")render()},e=>console.error(e)));
     dataUnsubs.push(db.collection("logs").orderBy("at","desc").limit(100).onSnapshot(s=>{S.logs=s.docs.map(x=>Object.assign({id:x.id},x.data()));if(S.tab==="users")render()},e=>console.error(e)));
     dataUnsubs.push(db.doc("config/backup").onSnapshot(s=>{S.backup=s.exists?s.data():null;render()},()=>{}));}
   else S.users=[];
@@ -1696,12 +1811,18 @@ function boot(){
     const owner=OWNER_EMAILS.map(x=>x.toLowerCase()).includes((u.email||"").toLowerCase());
     try{
       const snap=await ref.get();
-      if(!snap.exists)await ref.set({name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",role:owner?"admin":"pending",countryId:"",createdAt:Date.now(),lastSeen:Date.now()});
+      if(!snap.exists){
+        let role=owner?"admin":"pending",countryId="";const em=(u.email||"").toLowerCase();let inv=null;
+        if(!owner&&em){try{const iv=await db.doc("invites/"+em).get();if(iv.exists){inv=iv.data();role=inv.role;countryId=inv.countryId||""}}catch(e){console.error("invite",e)}}
+        await ref.set({name:u.displayName||"",email:u.email||"",photo:u.photoURL||"",role,countryId,createdAt:Date.now(),lastSeen:Date.now()});
+        if(inv){if(role==="leader"&&countryId)await db.doc("countries/"+countryId).update({manager:u.displayName||u.email||"",email:u.email||"",leaderUid:u.uid}).catch(e=>console.error(e));
+          await db.doc("invites/"+em).delete().catch(()=>{})}
+      }
       else{const up={name:u.displayName||snap.data().name||"",photo:u.photoURL||"",lastSeen:Date.now()};if(owner&&snap.data().role!=="admin")up.role="admin";await ref.update(up).catch(()=>{})}
     }catch(e){console.error(e);S.auth="error";S.authErr=e.code||"";render();return}
     userUnsub=ref.onSnapshot(sn=>{
       const d=sn.data()||{};S.me=Object.assign({id:u.uid,email:u.email},d);const r=d.role;
-      const ok=r==="admin"||r==="leader"||r==="viewer";
+      const ok=r==="admin"||r==="manager"||r==="accountant"||r==="leader"||r==="viewer";
       S.auth=ok?"in":r==="disabled"?"disabled":"pending";
       if(ok){if(!S.subscribed||S.dataRole!==r||S.dataCountry!==d.countryId){S.dataCountry=d.countryId;startData()}}else stopData();
       render();
