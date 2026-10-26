@@ -547,7 +547,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  qVisited:"اتزارت الربع ده",
  tTrain:"التدريب",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة الزيارة (متوسط الأرباع)",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
- trainings:"سجل التدريبات",trainSub:"التدريبات اللي اتعملت ومين حضرها",addTraining:"تسجيل تدريب",editTraining:"تعديل التدريب",trTitle:"عنوان التدريب",trainer:"المدرّب",
+ trainings:"سجل التدريبات",trainSub:"التدريبات اللي اتعملت ومين حضرها",addTraining:"تسجيل تدريب",editTraining:"تعديل التدريب",trTitle:"عنوان التدريب",trainer:"المدرّب",trType:"نوع التدريب",
  general:"عام",attendees:"الحضور من مسؤولي النوادي",others:"حضور آخرين (اسم في كل سطر)",attCount:"عدد الحضور",noTrainings:"لم يتم تسجيل تدريبات بعد",
  needTrain:"محتاجين تدريب",needTrainSub:"مسؤولي نوادي نشطة لسه ماحضروش أي تدريب",allTrained:"كل مسؤولي النوادي حضروا تدريب",trained:"اتدرب",pickCountryFirst:"اختر الدولة الأول علشان تظهر النوادي",
  resources:"مكتبة الموارد",resSub:"ملفات وفيديوهات وروابط لكل برنامج",addRes:"إضافة مورد",editRes:"تعديل المورد",resTitle:"العنوان",resUrl:"الرابط (Google Drive أو YouTube أو أي رابط)",resDesc:"وصف قصير",
@@ -630,7 +630,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  qVisited:"Visited this quarter",
  tTrain:"Training",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Visit coverage (quarterly average)",gChurches:"Churches",achieved:"Achieved",target:"Target",
- trainings:"Training log",trainSub:"Trainings held and who attended",addTraining:"Log training",editTraining:"Edit training",trTitle:"Training title",trainer:"Trainer",
+ trainings:"Training log",trainSub:"Trainings held and who attended",addTraining:"Log training",editTraining:"Edit training",trTitle:"Training title",trainer:"Trainer",trType:"Training type",
  general:"General",attendees:"Club leaders who attended",others:"Other attendees (one name per line)",attCount:"Attendance",noTrainings:"No trainings logged yet",
  needTrain:"Need training",needTrainSub:"Active club leaders who haven't attended any training",allTrained:"Every club leader has attended a training",trained:"Trained",pickCountryFirst:"Choose a country first to list its clubs",
  resources:"Resource library",resSub:"Files, videos and links for each program",addRes:"Add resource",editRes:"Edit resource",resTitle:"Title",resUrl:"Link (Google Drive, YouTube or any link)",resDesc:"Short description",
@@ -659,7 +659,10 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  androidS:["Open the app link in Chrome","Tap the ⋮ menu","Choose “Install app” or “Add to Home screen”"],
  laptopS:["Open the app link in Chrome or Edge","Click the install icon at the end of the address bar (or ⋮ menu → Install Awana)","Click “Install”"]}
 };
-const P_DEFAULT=[{k:"hekaya",ar:"عيش الحكاية",en:"Live the Story"},{k:"saoun",ar:"الساعون",en:"Al-Saoun"},{k:"kidzo",ar:"كيدزو",en:"Kidzo"},{k:"mothers",ar:"أمهات",en:"Mothers"}];
+const P_DEFAULT=[{k:"hekaya",ar:"عيش الحكاية",en:"Live the Story"},{k:"saoun",ar:"الساعون",en:"Al-Saoun"},{k:"kidzo",ar:"كيدزو",en:"Kidzo"},{k:"mothers",ar:"نادي أوانا للأمهات",en:"Awana Mothers Club"},{k:"youth",ar:"نادي الشبيبة",en:"Youth Club"}];
+const TTYPES=[{k:"leaders",ar:"تدريب قادة النوادي",en:"Club leaders training"},{k:"refresher",ar:"التدريبات التنشيطية",en:"Refresher training"},{k:"volunteers",ar:"تدريب المتطوعين",en:"Volunteer training"},{k:"pastors",ar:"لقاءات خاصة للخدام والقسوس",en:"Meetings for ministers & pastors"},{k:"vision",ar:"لقاء شركة ومشاركة لعرض الرؤية",en:"Fellowship & vision-sharing meeting"}];
+const ttName=k=>{const x=TTYPES.find(z=>z.k===k);return x?(x[S.lang]||x.ar):""};
+const ttPill=k=>k?`<span class="prog" style="background:var(--blue-soft);color:var(--blue)">${esc(ttName(k))}</span>`:"";
 const PCOL=[["var(--blue)","var(--on-blue)"],["var(--red)","var(--on-red)"],["var(--green)","var(--on-green)"],["var(--yellow)","var(--on-yellow)"],["var(--sky)","#06182f"]];
 const ME_COUNTRIES_OLD=["مصر","السودان","جنوب السودان","ليبيا","الأردن","لبنان","سوريا","العراق","فلسطين","السعودية","الإمارات","الكويت","قطر","البحرين","عُمان","اليمن","تونس","الجزائر","المغرب","موريتانيا"];
 const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources"];
@@ -731,7 +734,7 @@ function vTraining(d){
   const trs=[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
   h+=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("trainings"))} <span class="muted num" style="font-size:1rem">(${nf(trs.length)})</span></h2><p>${esc(t("trainSub"))}</p></div></div>`+
    (trs.length?trs.slice(0,15).map(tr=>{const names=(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]);
-     return `<div class="prow"><span><b>${esc(tr.title)}</b> ${tr.program?progPill(tr.program):""}<br><small class="muted">${esc(cname(d.C[tr.countryId]))}${tr.trainer?" · "+esc(t("trainer"))+": "+esc(tr.trainer):""}</small>${names.length?`<br><small class="muted" style="overflow-wrap:anywhere">${esc(names.join("، "))}</small>`:""}</span>
+     return `<div class="prow"><span><b>${esc(tr.title)}</b> ${ttPill(tr.type)} ${tr.program?progPill(tr.program):""}<br><small class="muted">${esc(cname(d.C[tr.countryId]))}${tr.trainer?" · "+esc(t("trainer"))+": "+esc(tr.trainer):""}</small>${names.length?`<br><small class="muted" style="overflow-wrap:anywhere">${esc(names.join("، "))}</small>`:""}</span>
      <span class="pact"><span class="st ok num" style="background:var(--blue);color:var(--on-blue)">${fmtDate(tr.date)}</span><span class="st num" style="background:var(--raise)">${nf(tr.count||names.length)} ${esc(t("attCount"))}</span>${canC(tr.countryId)?`<button class="icon" data-act="editTraining" data-id="${tr.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="training" data-id="${tr.id}" aria-label="${esc(t("del"))}">${I.del}</button>`:""}</span></div>`}).join(""):`<p class="muted" style="margin:0">${esc(t("noTrainings"))}</p>`)+`</div></div>`;
   h+=resourcesPanel();
   return h;
@@ -741,12 +744,13 @@ function trainingForm(tr){
   const f=openModal(tr.id?t("editTraining"):t("addTraining"),`<div class="fgrid">
    <div class="f"><label for="tCountry">${esc(t("country"))} *</label><select id="tCountry">${myCountries().map(c=>`<option value="${c.id}" ${tr.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
    ${fld("tDate",t("storyDate"),tr.date,{type:"date",req:1})}${fld("tTitle",t("trTitle"),tr.title,{req:1,full:1})}${fld("tTrainer",t("trainer"),tr.trainer)}
+   <div class="f"><label for="tType">${esc(t("trType"))}</label><select id="tType">${TTYPES.map(x=>`<option value="${x.k}" ${(tr.type||"leaders")===x.k?"selected":""}>${esc(x[S.lang]||x.ar)}</option>`).join("")}</select></div>
    <div class="f"><label for="tProg">${esc(t("program"))}</label><select id="tProg"><option value="">${esc(t("general"))}</option>${programs().map(p=>`<option value="${p.k}" ${tr.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select></div></div>
    <div class="f"><label>${esc(t("attendees"))}</label><div id="tClubs" style="display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto;background:var(--raise);border-radius:12px;padding:8px"></div></div>
    <div class="fgrid"><div class="f full"><label for="tOthers">${esc(t("others"))}</label><textarea id="tOthers">${esc((tr.others||[]).join("\n"))}</textarea></div>${fld("tNotes",t("notes"),tr.notes,{full:1,area:1})}</div>`,async f=>{
     const others=f.querySelector("#tOthers").value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
     const clubIds=[...f.querySelectorAll("#tClubs input:checked")].map(x=>x.value);
-    const data={countryId:f.querySelector("#tCountry").value,date:val(f,"tDate"),title:val(f,"tTitle"),trainer:val(f,"tTrainer"),program:f.querySelector("#tProg").value,clubIds,others,count:clubIds.length+others.length,notes:val(f,"tNotes"),by:S.me.id,updatedAt:Date.now(),createdAt:tr.createdAt||Date.now()};
+    const data={countryId:f.querySelector("#tCountry").value,date:val(f,"tDate"),title:val(f,"tTitle"),trainer:val(f,"tTrainer"),program:f.querySelector("#tProg").value,type:f.querySelector("#tType").value,clubIds,others,count:clubIds.length+others.length,notes:val(f,"tNotes"),by:S.me.id,updatedAt:Date.now(),createdAt:tr.createdAt||Date.now()};
     if(!data.countryId)return merr(t("needCountry"));if(!data.title||!data.date)return merr(t("req"));
     await (tr.id?db.doc("trainings/"+tr.id):db.collection("trainings").doc()).set(data);logAct(tr.id?"edit":"add","training",data.title,data.countryId);
   });
@@ -1562,7 +1566,7 @@ function tables(){
    team:[t("type"),t("name"),t("role"),t("country"),t("phone"),t("email"),t("notes")],
    stories:[t("storyDate"),t("country"),t("storyTitle"),t("author"),t("storyText")],
    goals:[t("year"),t("country"),t("gChurches"),t("gClubs"),t("gKids"),t("gCov"),t("achieved")+" "+t("gClubs"),t("achieved")+" "+t("gKids")],
-   trainings:[t("storyDate"),t("country"),t("trTitle"),t("program"),t("trainer"),t("attCount"),t("attendees")],
+   trainings:[t("storyDate"),t("country"),t("trTitle"),t("trType"),t("program"),t("trainer"),t("attCount"),t("attendees")],
    resources:[t("resTitle"),t("program"),t("country"),t("resUrl"),t("resDesc")],
    plans:[t("planDate"),t("country"),t("churchName"),t("program"),t("visitor"),t("notes")],
    compare:[t("country"),t("byClubs"),t("byKids"),t("byCov"),t("byGrowth")],
@@ -1572,7 +1576,7 @@ function tables(){
    visits:[...S.visits].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(v=>{const c=S.clubs.find(x=>x.id===v.clubId);const ch=c&&d.CH[c.churchId];return [fmtDate(v.date),cname(d.C[v.countryId]),ch?ch.name:"",c?progName(c.program):"",c?c.leader||"":"",v.visitor||"",v.notes||""]}),
    team:S.countries.filter(c=>c.manager).map(c=>[t("manager"),c.manager,t("manager"),cname(c),c.phone||"",c.email||"",c.notes||""]).concat(S.team.map(p=>[p.type==="vol"?t("volT"):t("teamT"),p.name,p.role||"",p.countryId?cname(d.C[p.countryId]):t("wholeME"),p.phone||"",p.email||"",p.notes||""])),
    goals:S.goals.map(g=>{const a=goalActual(g.countryId,g.year,d);return [g.year,cname(d.C[g.countryId]),g.churches||"",g.clubs||"",g.kids||"",g.cov?g.cov+"%":"",a.clubs,a.kids]}),
-   trainings:[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(tr=>[fmtDate(tr.date),cname(d.C[tr.countryId]),tr.title||"",tr.program?progName(tr.program):t("general"),tr.trainer||"",tr.count||0,(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]).join("، ")]),
+   trainings:[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(tr=>[fmtDate(tr.date),cname(d.C[tr.countryId]),tr.title||"",ttName(tr.type),tr.program?progName(tr.program):t("general"),tr.trainer||"",tr.count||0,(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]).join("، ")]),
    resources:S.resources.map(r=>[r.title||"",r.program?progName(r.program):t("general"),r.countryId?cname(d.C[r.countryId]):t("forAll"),r.url||"",r.desc||""]),
    plans:[...S.plans].sort((a,b)=>a.date.localeCompare(b.date)).map(p=>{const c=S.clubs.find(x=>x.id===p.clubId);const ch=c&&d.CH[c.churchId];return [fmtDate(p.date),cname(d.C[p.countryId]),ch?ch.name:"",c?progName(c.program):"",p.visitor||"",p.notes||""]}),
    compare:S.countries.map(c=>{const st=countryStats(c.id,d);const ser=kidsSeries(clubsOf(c.id));return [cname(c),st.active,st.kids,st.pct+"%",ser[ser.length-1].v-ser[ser.length-2].v]}),
@@ -1588,7 +1592,7 @@ async function exportXlsx(){
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
   add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("income")+" ($)",t("expense")+" ($)",t("net")+" ($)",t("balance")+" ($)",t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31));
     const bud=S.finance.filter(f=>f.kind==="budget").sort((a,b)=>(b.year-a.year));if(bud.length){const wb2=XLSX.utils.aoa_to_sheet([[t("year"),t("country"),t("yearBudget")+" ($)",t("spentOf")+" ($)"]].concat(bud.map(b=>[b.year,cname(S.countries.find(c=>c.id===b.countryId)),+b.budget||0,spentYear(b.countryId,b.year,b.year+"-12")])));wb2["!cols"]=[8,18,16,16].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,wb2,t("yearBudget").slice(0,31))}}
-  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("plans"),"plans",[12,14,24,16,20,30]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("plans"),"plans",[12,14,24,16,20,30]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
