@@ -558,7 +558,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  forAll:"لكل الدول",noRes:"لم تتم إضافة موارد بعد",noResHint:"ارفع الملف على Google Drive أو YouTube وحط الرابط هنا.",open:"فتح",badUrl:"اكتب رابط صحيح يبدأ بـ https://",
  kGoal:"أهداف",kTraining:"تدريب",kRes:"مورد",
  planVisit:"جدولة زيارة",plans:"الزيارات الجاية",plansSub:"زيارات متخططة، والمتأخرة منها",noPlans:"مفيش زيارات متخططة",planDate:"ميعاد الزيارة",
- planned:"متخطط",overdue:"متأخرة",done:"تمت",addCal:"أضف للتقويم",planFor:"زيارة نادي",
+ planned:"متخطط",planLate:"زيارة متخططة فات معادها",planToVisit:"اضغط لو تمت وسجّلها",planHint:"الزرار ده لزيارة جاية في المستقبل. لو الزيارة حصلت خلاص استخدم «تسجيل زيارة».",planPastSaved:"التاريخ فات، فاتسجلت كزيارة تمت",lateBar:"فيه {n} زيارة متخططة تاريخها فات. لو كانت زيارات تمت فعلاً، حوّلها كلها لزيارات بضغطة واحدة.",convertLate:"تحويلها لزيارات تمت",sureConv:"متأكد؟ اضغط تاني للتحويل",overdue:"متأخرة",done:"تمت",addCal:"أضف للتقويم",planFor:"زيارة نادي",
  growth:"نمو عدد الأطفال",growthSub:"إجمالي الأطفال في النوادي النشطة آخر كل ربع",growthNote:"الأرقام من أعداد الأطفال المسجلة في الزيارات",
  compare:"مقارنة الدول",compareSub:"رتّب الدول حسب",byKids:"الأطفال",byCov:"نسبة الزيارة",byGrowth:"النمو",byClubs:"النوادي",vsPrev:"عن الربع اللي فات",
  stActive:"نشط",stNew:"جديد",stPaused:"متوقف مؤقتًا",clubStatus:"حالة النادي",pausedNote:"النوادي المتوقفة مؤقتًا مش محسوبة في نسبة الزيارة",
@@ -641,7 +641,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  forAll:"All countries",noRes:"No resources yet",noResHint:"Upload the file to Google Drive or YouTube and paste the link here.",open:"Open",badUrl:"Enter a valid link starting with https://",
  kGoal:"goals",kTraining:"training",kRes:"resource",
  planVisit:"Schedule visit",plans:"Upcoming visits",plansSub:"Planned visits, including overdue ones",noPlans:"No planned visits",planDate:"Visit date",
- planned:"Planned",overdue:"Overdue",done:"Done",addCal:"Add to calendar",planFor:"Club visit",
+ planned:"Planned",planLate:"Overdue planned visit",planToVisit:"tap if done to record it",planHint:"This button is for a future visit. If the visit already happened, use Record visit.",planPastSaved:"Past date, saved as a completed visit",lateBar:"{n} planned visits are past their date. If they actually happened, convert them all to visits in one tap.",convertLate:"Convert to completed visits",sureConv:"Sure? Tap again to convert",overdue:"Overdue",done:"Done",addCal:"Add to calendar",planFor:"Club visit",
  growth:"Children growth",growthSub:"Total children in active clubs at the end of each quarter",growthNote:"Numbers come from children counts logged in visits",
  compare:"Country comparison",compareSub:"Rank countries by",byKids:"Children",byCov:"Visit coverage",byGrowth:"Growth",byClubs:"Clubs",vsPrev:"vs last quarter",
  stActive:"Active",stNew:"New",stPaused:"Paused",clubStatus:"Club status",pausedNote:"Paused clubs aren't counted in visit coverage",
@@ -841,8 +841,11 @@ function planForm(clubId){
   const names=[...new Set(S.team.map(p=>p.name).concat(S.countries.map(c=>c.manager)).filter(Boolean))];
   openModal(t("planVisit"),`<div class="panel" style="padding:12px 14px"><b>${esc(ch.name)}</b> ${progPill(c.program)}<div class="path"><span>${esc(cname(d.C[ch.countryId]))}</span>${pathOf(ch)}</div></div>
    <datalist id="lVisitor">${names.map(n=>`<option value="${esc(n)}">`).join("")}</datalist>
-   <div class="fgrid">${fld("pDate",t("planDate"),addDays(today(),7),{type:"date",req:1})}${fld("pBy",t("visitor"),"",{list:"lVisitor"})}${fld("pNotes",t("notes"),"",{full:1,area:1})}</div>`,async f=>{
+   <div class="fgrid">${fld("pDate",t("planDate"),addDays(today(),7),{type:"date",req:1})}${fld("pBy",t("visitor"),"",{list:"lVisitor"})}${fld("pNotes",t("notes"),"",{full:1,area:1})}</div>
+   <div class="viewbar" style="margin:0">${I.cal} ${esc(t("planHint"))}</div>`,async f=>{
     const date=val(f,"pDate");if(!date)return merr(t("req"));
+    if(date<today()){await db.collection("visits").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),images:[],by:S.me.id,createdAt:Date.now()});
+      logAct("add","visit",ch.name+" · "+progName(c.program)+" · "+date,ch.countryId);setTimeout(()=>toast(t("planPastSaved")),400);return}
     await db.collection("plans").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),by:S.me.id,createdAt:Date.now()});
     logAct("add","plan",ch.name+" · "+progName(c.program)+" · "+date,ch.countryId);
   });
@@ -997,7 +1000,7 @@ function vOverview(d){
   h+=`<div class="panel"><h2 class="sm" style="margin-bottom:10px">${dots}${esc(t("recent"))}</h2>`+
    (rv.length?rv.map(v=>{const cl=S.clubs.find(c=>c.id===v.clubId);const ch=cl&&d.CH[cl.churchId];return `<div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.88rem;align-items:center"><span style="min-width:0"><b>${esc(ch?ch.name:"—")}</b> ${cl?progPill(cl.program):""}<br><small class="muted">${esc(cname(d.C[v.countryId]))}${v.visitor?" · "+esc(v.visitor):""}</small></span><span class="st ok num">${fmtDate(v.date)}</span></div>`}).join(""):`<p class="muted" style="margin:0">${esc(t("noVisits"))}</p>`)+`</div></div>`;
   h+=growthPanel(null,"var(--blue)");
-  h+=`<div class="grid2">${plansPanel(d)}${needVisitPanel(d)}</div>`;
+  h+=needVisitPanel(d);
   h+=`<div class="grid2">${reportsPanel(d)}${comparePanel(d)}</div>`;
   h+=goalsOverview(d);
   h+=`<div class="sec-head"><h2 class="sm">${dots}${esc(t("byCountry"))}</h2>${addBtn("addCountry","addCountry","red")}</div>`+countryCards(d);
@@ -1022,7 +1025,7 @@ function vCountries(d){
    ${canC(c.id)?`<div class="acts"><button class="icon" data-act="editCountry" data-id="${c.id}" aria-label="${esc(t("edit"))}">${I.edit}</button>${canAdmin()?`<button class="icon" data-act="del" data-kind="country" data-id="${c.id}" aria-label="${esc(t("del"))}" title="${esc(t("cascade"))}">${I.del}</button>`:""}</div>`:""}</div>
    <div class="mgr"><div><span class="k">${esc(t("manager"))}</span><b>${esc(c.manager||"—")}</b></div>${c.phone?`<div><span class="k">${esc(t("phone"))}</span>${phoneBits(c.phone,c.id)}</div>`:""}${c.email?`<div><span class="k">${esc(t("email"))}</span><span class="ltr">${esc(c.email)}</span></div>`:""}${c.notes?`<div style="flex-basis:100%"><span class="k">${esc(t("notes"))}</span>${esc(c.notes)}</div>`:""}</div>
    <div class="pills"><span class="num">${nf(s.churches)} ${esc(t("churches"))}</span><span class="num">${nf(s.clubs)} ${esc(t("clubs"))}</span><span class="num">${nf(s.kids)} ${esc(t("kids"))}</span><span class="num">${esc(t("coverage"))} ${nf(s.pct)}%</span></div></section>`;
-  h+=`<div class="grid2">${growthPanel(c.id,["var(--blue)","var(--red)","var(--green)","var(--yellow)"][ci])}${plansPanel(d,c.id)}</div>`;
+  h+=growthPanel(c.id,["var(--blue)","var(--red)","var(--green)","var(--yellow)"][ci]);
   h+=goalPanel(c,d);
   h+=reportPanel(c);
   h+=placesPanel(c);
@@ -1143,10 +1146,22 @@ function vVisits(d){
   h+=`<div class="chips"><span class="st ok num" style="font-size:.85rem;padding:5px 12px">${nf(vc)} ${esc(t("visitedY"))}</span><span class="st no num" style="font-size:.85rem;padding:5px 12px">${nf(rows.length-vc)} ${esc(t("neverVisited"))}</span></div>`;
   h+=`<div class="tbl-wrap"><table class="vt"><thead><tr><th>${esc(t("churchName"))}</th><th>${esc(t("program"))}</th><th>${esc(t("leader"))}</th><th>${esc(t("kids"))}</th><th>${esc(t("lastVisit"))}</th><th></th></tr></thead><tbody>`+
    rows.map(r=>{const c=r.c,ch=r.ch,vs=d.vByClub[c.id]||[];const open=S.open[c.id];
-    return `<tr><td><b>${esc(ch.name)}</b><div class="path"><span>${esc(cname(d.C[ch.countryId]))}</span>${ch.city?`<span>${esc(ch.city)}</span>`:""}${ch.village?`<span>${esc(ch.village)}</span>`:""}</div></td><td>${progPill(c.program)}</td><td>${esc(c.leader||"—")}${c.phone?`<div class="muted" style="font-size:.82rem;display:flex;gap:6px;align-items:center">${phoneBits(c.phone,ch.countryId)}</div>`:""}</td><td class="num kids"><b>${nf(c.kids)}</b>${trend(vs)}</td><td>${visitStatus(c,d)}${(()=>{const p=S.plans.filter(p=>p.clubId===c.id).sort((a,b)=>a.date.localeCompare(b.date))[0];return p?`<div class="num" style="font-size:.76rem;font-weight:700;color:${p.date<today()?"var(--red)":"var(--blue)"};margin-top:3px">${esc(t("planned"))}: ${fmtDate(p.date)}</div>`:""})()}${vs.length?`<div><button class="link" style="font-size:.8rem" data-act="toggleHist" data-id="${c.id}">${nf(vs.length)} ${esc(t("visits"))}</button></div>`:""}</td><td>${canE(ch)?`<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn small ${r.v?"ghost":"yellow"}" data-act="addVisit" data-id="${c.id}">${I.check}${esc(t("markVisit"))}</button><button class="btn ghost small" data-act="planVisit" data-id="${c.id}" title="${esc(t("planVisit"))}">${I.cal}</button><button class="btn ghost small" data-act="editClub" data-id="${c.id}" title="${esc(t("editClub"))}" aria-label="${esc(t("editClub"))}">${I.edit}</button></div>`:""}</td></tr>`+
+    return `<tr><td><b>${esc(ch.name)}</b><div class="path"><span>${esc(cname(d.C[ch.countryId]))}</span>${ch.city?`<span>${esc(ch.city)}</span>`:""}${ch.village?`<span>${esc(ch.village)}</span>`:""}</div></td><td>${progPill(c.program)}</td><td>${esc(c.leader||"—")}${c.phone?`<div class="muted" style="font-size:.82rem;display:flex;gap:6px;align-items:center">${phoneBits(c.phone,ch.countryId)}</div>`:""}</td><td class="num kids"><b>${nf(c.kids)}</b>${trend(vs)}</td><td>${visitStatus(c,d)}${vs.length?`<div><button class="link" style="font-size:.8rem" data-act="toggleHist" data-id="${c.id}">${nf(vs.length)} ${esc(t("visits"))}</button></div>`:""}</td><td>${canE(ch)?`<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn small ${r.v?"ghost":"yellow"}" data-act="addVisit" data-id="${c.id}">${I.check}${esc(t("markVisit"))}</button><button class="btn ghost small" data-act="editClub" data-id="${c.id}" title="${esc(t("editClub"))}" aria-label="${esc(t("editClub"))}">${I.edit}</button></div>`:""}</td></tr>`+
     (open&&vs.length?`<tr class="h"><td colspan="6" style="padding:0"><div class="vhist">${vs.map(v=>`<div><b class="num">${fmtDate(v.date)}</b>${typeof v.kids==="number"?`<span class="num">${nf(v.kids)} ${esc(t("kidsN"))}</span>`:""}${v.visitor?`<span>${esc(t("visitor"))}: ${esc(v.visitor)}</span>`:""}${v.notes?`<span class="muted">${esc(v.notes)}</span>`:""}${(v.images||[]).length?`<span class="vthumbs">${v.images.map(i=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(i)}" data-img="${esc(i)}" aria-label="${esc(t("visitPhotos"))}"></button>`).join("")}</span>`:""}${canE(ch)?`<span style="display:flex;margin-inline-start:auto"><button class="icon" data-act="editVisit" data-id="${v.id}" aria-label="${esc(t("editVisit"))}" title="${esc(t("editVisit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="visit" data-id="${v.id}" aria-label="${esc(t("del"))}">${I.del}</button></span>`:""}</div>`).join("")}</div></td></tr>`:"")}).join("")+`</tbody></table></div>`;
   return h;
 }
+function latePlans(d){return S.plans.filter(p=>p.date<today()&&canE(d.CH[p.churchId])&&S.clubs.some(c=>c.id===p.clubId))}
+let convBusy=false;
+async function autoConvertPlans(){if(convBusy||S.viewMode||!S.me)return;const d=D();const list=latePlans(d);if(!list.length)return;convBusy=true;
+  try{for(const p of list){const ch=d.CH[p.churchId];
+      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
+      await db.doc("plans/"+p.id).delete()}}catch(e){console.error("convert",e)}finally{convBusy=false}}
+async function convertLate(btn){const d=D();const list=latePlans(d);if(!list.length)return;
+  if(!btn.dataset.armed){btn.dataset.armed="1";btn.textContent=t("sureConv");return}btn.disabled=true;btn.textContent=t("saving");
+  try{for(const p of list){const ch=d.CH[p.churchId];
+      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
+      await db.doc("plans/"+p.id).delete()}
+    logAct("add","visit",t("convertLate")+" ("+list.length+")",S.me.countryId||"");toast(t("saved"))}catch(e){console.error(e);toast(t("failed"))}}
 function visitRows(d){
   const f=S.vf,q=f.q.trim().toLowerCase();
   return S.clubs.filter(active).map(c=>({c,ch:d.CH[c.churchId],v:!!d.vQ[c.id]})).filter(r=>{
@@ -1554,6 +1569,7 @@ document.addEventListener("click",e=>{
    case"addVisit":visitForm(id);break;
    case"editClub":clubForm(id);break;
    case"editVisit":visitForm(null,null,id);break;
+   case"convertLate":convertLate(a);break;
    case"viewPhoto":viewPhoto(id);break;
    case"toggleHist":S.open[id]=!S.open[id];render();break;
    case"addMember":memberForm(null,a.dataset.type);break;
@@ -1668,7 +1684,7 @@ async function exportXlsx(){
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
   add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("income")+" ($)",t("expense")+" ($)",t("net")+" ($)",t("balance")+" ($)",t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31));
     const bud=S.finance.filter(f=>f.kind==="budget").sort((a,b)=>(b.year-a.year));if(bud.length){const wb2=XLSX.utils.aoa_to_sheet([[t("year"),t("country"),t("yearBudget")+" ($)",t("spentOf")+" ($)"]].concat(bud.map(b=>[b.year,cname(S.countries.find(c=>c.id===b.countryId)),+b.budget||0,spentYear(b.countryId,b.year,b.year+"-12")])));wb2["!cols"]=[8,18,16,16].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,wb2,t("yearBudget").slice(0,31))}}
-  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("plans"),"plans",[12,14,24,16,20,30]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
@@ -1798,7 +1814,7 @@ async function exportStoryDocx(id){
 let dataUnsubs=[],userUnsub=null;
 function stopData(){dataUnsubs.forEach(f=>{try{f()}catch(e){}});dataUnsubs=[];S.subscribed=false;S.loaded={};S.synced=false}
 function subscribe(name){
-  const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes()}render()};
+  const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
   let q=db.collection(name);
   if(scoped()&&name!=="countries"&&name!=="resources"){q=q.where("countryId","==",S.me.countryId);
     if(["churches","clubs","visits","plans"].includes(name)){q=q.where("region","==",myReg());if(myArea())q=q.where("area","==",myArea())}}
