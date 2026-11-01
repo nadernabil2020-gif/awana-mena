@@ -505,7 +505,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  byProgram:"البرامج",ofThem:"منهم",pausedN:"متوقف",inPaused:"في نوادي متوقفة",byCountry:"الدول",clubsN:"نادي",kidsN:"طفل",
  country:"الدولة",manager:"مسؤول الدولة",phone:"التليفون",email:"البريد",notes:"ملاحظات",
  addCountry:"إضافة دولة",editCountry:"تعديل الدولة",countryName:"اسم الدولة",managerName:"اسم مسؤول الدولة",
- addChurch:"إضافة كنيسة",editChurch:"تعديل الكنيسة",churchName:"الكنيسة",region:"المنطقة",city:"المدينة",center:"المركز",village:"القرية",pastor:"قسيس الكنيسة (اختياري)",pastorL:"القسيس",pastorPhone:"تليفون القسيس (اختياري)",editClub:"تعديل النادي",editVisit:"تعديل الزيارة",visitPhotos:"صور الزيارة (لحد ٣ صور)",
+ addChurch:"إضافة كنيسة",editChurch:"تعديل الكنيسة",churchName:"الكنيسة",region:"المنطقة",city:"المدينة",center:"المركز",village:"القرية",pastor:"قسيس الكنيسة (اختياري)",pastorL:"القسيس",pastorPhone:"تليفون القسيس (اختياري)",editClub:"تعديل النادي",editVisit:"تعديل الزيارة",trPhotos:"صور التدريب (لحد ٣ صور)",archTitle:"أرشيف الصور",archSub:"نزّل الصور في ملف ZIP متقسم ومتسمي، وبعدها امسحها من التطبيق علشان يفضل خفيف.",archAll:"الصور الموجودة في التطبيق دلوقتي",archFrom:"من تاريخ",archTo:"لحد تاريخ",archVisits:"زيارات",archTrain:"تدريبات",archDl:"تنزيل الصور",archDel:"مسح الصور اللي اتنزلت من التطبيق",archSure:"متأكد؟ اتأكد إن ملف ZIP اتحفظ عندك، واضغط تاني",archDone:"الصور اتمسحت من التطبيق",archHint:"الخطوات: ١) نزّل الصور ٢) افتح ملف ZIP واتأكد إنه سليم واحفظه في جوجل درايف ٣) ارجع هنا ودوس «مسح الصور اللي اتنزلت». القصص مش متعلّمة علشان صورها بتطلع في PDF و Word.",archNone:"مفيش صور في الفترة دي.",archZip:"صور أوانا",archMiss:"صور ماتنزلتش:",archIn:"صور في الأرشيف",visitPhotos:"صور الزيارة (لحد ٣ صور)",
  program:"البرنامج",leader:"مسؤول النادي",kidsCount:"عدد الأطفال",addClub:"إضافة نادي",clubsOfChurch:"نوادي الكنيسة",
  save:"حفظ",cancel:"إلغاء",close:"إغلاق",del:"حذف",sure:"تأكيد الحذف؟",saved:"تم الحفظ",deleted:"تم الحذف",
  allCountries:"كل الدول",noCountries:"لا توجد دول مسجلة بعد",noCountriesHint:"ابدأ بتسجيل أول دولة ومسؤولها، ثم أضف الكنائس والنوادي.",
@@ -588,7 +588,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  byProgram:"Programs",ofThem:"incl.",pausedN:"paused",inPaused:"in paused clubs",byCountry:"Countries",clubsN:"clubs",kidsN:"children",
  country:"Country",manager:"Country leader",phone:"Phone",email:"Email",notes:"Notes",
  addCountry:"Add country",editCountry:"Edit country",countryName:"Country name",managerName:"Country leader name",
- addChurch:"Add church",editChurch:"Edit church",churchName:"Church",region:"Region",city:"City",center:"District",village:"Village",pastor:"Church pastor (optional)",pastorL:"Pastor",pastorPhone:"Pastor phone (optional)",editClub:"Edit club",editVisit:"Edit visit",visitPhotos:"Visit photos (up to 3)",
+ addChurch:"Add church",editChurch:"Edit church",churchName:"Church",region:"Region",city:"City",center:"District",village:"Village",pastor:"Church pastor (optional)",pastorL:"Pastor",pastorPhone:"Pastor phone (optional)",editClub:"Edit club",editVisit:"Edit visit",trPhotos:"Training photos (up to 3)",archTitle:"Photo archive",archSub:"Download photos as a named, organized ZIP, then remove them from the app to keep it light.",archAll:"Photos currently in the app",archFrom:"From",archTo:"To",archVisits:"Visits",archTrain:"Trainings",archDl:"Download photos",archDel:"Remove downloaded photos from the app",archSure:"Sure? Make sure the ZIP is saved, then tap again",archDone:"Photos removed from the app",archHint:"Steps: 1) download 2) open the ZIP, check it and save it to Google Drive 3) come back and tap Remove. Stories are unchecked because their photos appear in PDF and Word exports.",archNone:"No photos in this period.",archZip:"Awana photos",archMiss:"Photos not downloaded:",archIn:"photos archived",visitPhotos:"Visit photos (up to 3)",
  program:"Program",leader:"Club leader",kidsCount:"Children",addClub:"Add club",clubsOfChurch:"Church clubs",
  save:"Save",cancel:"Cancel",close:"Close",del:"Delete",sure:"Confirm delete?",saved:"Saved",deleted:"Deleted",
  allCountries:"All countries",noCountries:"No countries yet",noCountriesHint:"Register the first country and its leader, then add churches and clubs.",
@@ -736,7 +736,7 @@ function vTraining(d){
   const trs=[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
   h+=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("trainings"))} <span class="muted num" style="font-size:1rem">(${nf(trs.length)})</span></h2><p>${esc(t("trainSub"))}</p></div></div>`+
    (trs.length?trs.slice(0,15).map(tr=>{const names=(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]);
-     return `<div class="prow"><span><b>${esc(tr.title)}</b> ${ttPill(tr.type)} ${tr.program?progPill(tr.program):""}<br><small class="muted">${esc(cname(d.C[tr.countryId]))}${tr.trainer?" · "+esc(t("trainer"))+": "+esc(tr.trainer):""}</small>${names.length?`<br><small class="muted" style="overflow-wrap:anywhere">${esc(names.join("، "))}</small>`:""}</span>
+     return `<div class="prow"><span><b>${esc(tr.title)}</b> ${ttPill(tr.type)} ${tr.program?progPill(tr.program):""}<br><small class="muted">${esc(cname(d.C[tr.countryId]))}${tr.trainer?" · "+esc(t("trainer"))+": "+esc(tr.trainer):""}</small>${names.length?`<br><small class="muted" style="overflow-wrap:anywhere">${esc(names.join("، "))}</small>`:""}${tr.archived?`<br><small class="muted num">📦 ${nf(tr.archived)} ${esc(t("archIn"))}</small>`:""}${(tr.images||[]).length?`<span class="vthumbs" style="margin-top:6px">${tr.images.map(i=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(i)}" data-img="${esc(i)}" aria-label="${esc(t("trPhotos"))}"></button>`).join("")}</span>`:""}</span>
      <span class="pact"><span class="st ok num" style="background:var(--blue);color:var(--on-blue)">${fmtDate(tr.date)}</span><span class="st num" style="background:var(--raise)">${nf(tr.count||names.length)} ${esc(t("attCount"))}</span>${canE(tr)?`<button class="icon" data-act="editTraining" data-id="${tr.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="training" data-id="${tr.id}" aria-label="${esc(t("del"))}">${I.del}</button>`:""}</span></div>`}).join(""):`<p class="muted" style="margin:0">${esc(t("noTrainings"))}</p>`)+`</div></div>`;
   h+=resourcesPanel();
   return h;
@@ -749,13 +749,30 @@ function trainingForm(tr){
    <div class="f"><label for="tType">${esc(t("trType"))}</label><select id="tType">${TTYPES.map(x=>`<option value="${x.k}" ${(tr.type||"leaders")===x.k?"selected":""}>${esc(x[S.lang]||x.ar)}</option>`).join("")}</select></div>
    <div class="f"><label for="tProg">${esc(t("program"))}</label><select id="tProg"><option value="">${esc(t("general"))}</option>${programs().map(p=>`<option value="${p.k}" ${tr.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select></div></div>
    <div class="f"><label>${esc(t("attendees"))}</label><div id="tClubs" style="display:flex;flex-direction:column;gap:4px;max-height:260px;overflow:auto;background:var(--raise);border-radius:12px;padding:8px"></div></div>
-   <div class="fgrid"><div class="f full"><label for="tOthers">${esc(t("others"))}</label><textarea id="tOthers">${esc((tr.others||[]).join("\n"))}</textarea></div>${fld("tNotes",t("notes"),tr.notes,{full:1,area:1})}</div>`,async f=>{
+   <div class="fgrid"><div class="f full"><label for="tOthers">${esc(t("others"))}</label><textarea id="tOthers">${esc((tr.others||[]).join("\n"))}</textarea></div>${fld("tNotes",t("notes"),tr.notes,{full:1,area:1})}</div>
+   <div class="f"><label>${esc(t("trPhotos"))}</label><div class="slots vslots">${[0,1,2].map(i=>`<label class="slot" id="tslot${i}">${I.img.replace("<svg",'<svg width="24" height="24"')}<span>${esc(t("addPhoto"))}</span><input type="file" accept="image/*" data-tslot="${i}" aria-label="${esc(t("addPhoto"))}"><button type="button" class="rm" data-trm="${i}" hidden aria-label="${esc(t("del"))}">${I.x}</button></label>`).join("")}</div></div>`,async f=>{
     const others=f.querySelector("#tOthers").value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
     const clubIds=[...f.querySelectorAll("#tClubs input:checked")].map(x=>x.value);
     const data={countryId:f.querySelector("#tCountry").value,date:val(f,"tDate"),title:val(f,"tTitle"),trainer:val(f,"tTrainer"),program:f.querySelector("#tProg").value,type:f.querySelector("#tType").value,clubIds,others,count:clubIds.length+others.length,notes:val(f,"tNotes"),by:S.me.id,updatedAt:Date.now(),createdAt:tr.createdAt||Date.now()};Object.assign(data,stampScope(tr));
     if(!data.countryId)return merr(t("needCountry"));if(!data.title||!data.date)return merr(t("req"));
-    await (tr.id?db.doc("trainings/"+tr.id):db.collection("trainings").doc()).set(data);logAct(tr.id?"edit":"add","training",data.title,data.countryId);
+    $("msave").textContent=t("saving");
+    const ref=tr.id?db.doc("trainings/"+tr.id):db.collection("trainings").doc();const ids=[];
+    for(const sl of tslots){
+      if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({trainingId:ref.id,countryId:data.countryId,region:data.region,area:data.area,data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}
+      else if(sl.id)ids.push(sl.id);
+    }
+    data.images=ids;await ref.set(data);
+    for(const old of (tr.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete().catch(()=>{});
+    logAct(tr.id?"edit":"add","training",data.title+(ids.length?" · 📷"+ids.length:""),data.countryId);
   });
+  const tslots=[0,1,2].map(i=>({id:(tr.images||[])[i]||null,data:null}));
+  const tpaint=i=>{const el=f.querySelector("#tslot"+i),sl=tslots[i],rm=el.querySelector(".rm");const u=sl.data||(sl.id&&imgCache[sl.id]);
+    if(sl.data||sl.id){el.classList.add("has");rm.hidden=false;if(u)el.style.backgroundImage=`url("${u}")`;else loadImg(sl.id).then(x=>{if(x)el.style.backgroundImage=`url("${x}")`})}
+    else{el.classList.remove("has");rm.hidden=true;el.style.backgroundImage=""}};
+  [0,1,2].forEach(tpaint);
+  f.addEventListener("change",async e=>{const inp=e.target.closest("[data-tslot]");if(!inp||!inp.files[0])return;const i=+inp.dataset.tslot;
+    try{tslots[i].data=await compressImage(inp.files[0]);tpaint(i)}catch(err){merr(t("imgFail"))}inp.value=""});
+  f.addEventListener("click",e=>{const b=e.target.closest("[data-trm]");if(!b)return;e.preventDefault();e.stopPropagation();const i=+b.dataset.trm;tslots[i]={id:null,data:null};tpaint(i)});
   const fill=()=>{const cid=f.querySelector("#tCountry").value;const d=D();const list=S.clubs.filter(c=>c.countryId===cid&&active(c));
     f.querySelector("#tClubs").innerHTML=list.length?list.map(c=>{const ch=d.CH[c.churchId]||{};return `<label style="display:flex;gap:8px;align-items:center;font-size:.88rem;padding:4px 2px;cursor:pointer"><input type="checkbox" value="${c.id}" ${(tr.clubIds||[]).includes(c.id)?"checked":""} style="width:18px;height:18px;flex:none"><span><b>${esc(c.leader||"—")}</b> · ${esc(progName(c.program))} · <span class="muted">${esc(ch.name||"")}</span></span></label>`}).join(""):`<span class="muted" style="font-size:.85rem">${esc(t("noClubs"))}</span>`};
   fill();f.querySelector("#tCountry").addEventListener("change",fill);
@@ -1147,7 +1164,7 @@ function vVisits(d){
   h+=`<div class="tbl-wrap"><table class="vt"><thead><tr><th>${esc(t("churchName"))}</th><th>${esc(t("program"))}</th><th>${esc(t("leader"))}</th><th>${esc(t("kids"))}</th><th>${esc(t("lastVisit"))}</th><th></th></tr></thead><tbody>`+
    rows.map(r=>{const c=r.c,ch=r.ch,vs=d.vByClub[c.id]||[];const open=S.open[c.id];
     return `<tr><td><b>${esc(ch.name)}</b><div class="path"><span>${esc(cname(d.C[ch.countryId]))}</span>${ch.city?`<span>${esc(ch.city)}</span>`:""}${ch.village?`<span>${esc(ch.village)}</span>`:""}</div></td><td>${progPill(c.program)}</td><td>${esc(c.leader||"—")}${c.phone?`<div class="muted" style="font-size:.82rem;display:flex;gap:6px;align-items:center">${phoneBits(c.phone,ch.countryId)}</div>`:""}</td><td class="num kids"><b>${nf(c.kids)}</b>${trend(vs)}</td><td>${visitStatus(c,d)}${vs.length?`<div><button class="link" style="font-size:.8rem" data-act="toggleHist" data-id="${c.id}">${nf(vs.length)} ${esc(t("visits"))}</button></div>`:""}</td><td>${canE(ch)?`<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn small ${r.v?"ghost":"yellow"}" data-act="addVisit" data-id="${c.id}">${I.check}${esc(t("markVisit"))}</button><button class="btn ghost small" data-act="editClub" data-id="${c.id}" title="${esc(t("editClub"))}" aria-label="${esc(t("editClub"))}">${I.edit}</button></div>`:""}</td></tr>`+
-    (open&&vs.length?`<tr class="h"><td colspan="6" style="padding:0"><div class="vhist">${vs.map(v=>`<div><b class="num">${fmtDate(v.date)}</b>${typeof v.kids==="number"?`<span class="num">${nf(v.kids)} ${esc(t("kidsN"))}</span>`:""}${v.visitor?`<span>${esc(t("visitor"))}: ${esc(v.visitor)}</span>`:""}${v.notes?`<span class="muted">${esc(v.notes)}</span>`:""}${(v.images||[]).length?`<span class="vthumbs">${v.images.map(i=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(i)}" data-img="${esc(i)}" aria-label="${esc(t("visitPhotos"))}"></button>`).join("")}</span>`:""}${canE(ch)?`<span style="display:flex;margin-inline-start:auto"><button class="icon" data-act="editVisit" data-id="${v.id}" aria-label="${esc(t("editVisit"))}" title="${esc(t("editVisit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="visit" data-id="${v.id}" aria-label="${esc(t("del"))}">${I.del}</button></span>`:""}</div>`).join("")}</div></td></tr>`:"")}).join("")+`</tbody></table></div>`;
+    (open&&vs.length?`<tr class="h"><td colspan="6" style="padding:0"><div class="vhist">${vs.map(v=>`<div><b class="num">${fmtDate(v.date)}</b>${typeof v.kids==="number"?`<span class="num">${nf(v.kids)} ${esc(t("kidsN"))}</span>`:""}${v.visitor?`<span>${esc(t("visitor"))}: ${esc(v.visitor)}</span>`:""}${v.notes?`<span class="muted">${esc(v.notes)}</span>`:""}${v.archived?`<span class="muted num" style="font-size:.78rem">📦 ${nf(v.archived)} ${esc(t("archIn"))}</span>`:""}${(v.images||[]).length?`<span class="vthumbs">${v.images.map(i=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(i)}" data-img="${esc(i)}" aria-label="${esc(t("visitPhotos"))}"></button>`).join("")}</span>`:""}${canE(ch)?`<span style="display:flex;margin-inline-start:auto"><button class="icon" data-act="editVisit" data-id="${v.id}" aria-label="${esc(t("editVisit"))}" title="${esc(t("editVisit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="visit" data-id="${v.id}" aria-label="${esc(t("del"))}">${I.del}</button></span>`:""}</div>`).join("")}</div></td></tr>`:"")}).join("")+`</tbody></table></div>`;
   return h;
 }
 function latePlans(d){return S.plans.filter(p=>p.date<today()&&canE(d.CH[p.churchId])&&S.clubs.some(c=>c.id===p.clubId))}
@@ -1273,14 +1290,14 @@ function vUsers(d){
   const list=[...S.users].sort((a,b)=>(ord[a.role]??5)-(ord[b.role]??5)||(a.name||"").localeCompare(b.name||""));
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tUsers"))}</h2><p>${esc(t("usersSub"))}</p></div></div>`;
   h+=invitePanel();
-  if(!list.length)return h+emptyBox(t("noUsers"),"")+backupPanel()+vLog();
+  if(!list.length)return h+emptyBox(t("noUsers"),"")+backupPanel()+photosPanel()+vLog();
   const card=u=>{const self=u.id===S.me.id;
    return `<div class="ucard ${u.role==="pending"?"pending":""}"><div class="hd">${avatar(u)}<div style="flex:1"><b>${esc(u.name||u.email)}</b>${self?` <span class="rolechip r-viewer">${esc(t("you"))}</span>`:""}<small class="ltr" style="text-align:start">${esc(u.email)}</small></div><span class="rolechip r-${esc(u.role)}">${esc(u.role==="leader"&&u.region?t(u.area?"roleAreaL":"roleRegL"):roleName(u.role))}${scopeLabel(u)?" · "+esc(scopeLabel(u)):""}</span></div>
    <div class="ctl"><select data-urole="${u.id}" ${self||S.viewMode?"disabled":""} aria-label="${esc(t("roleLbl"))}">${ROLES.map(r=>`<option value="${r}" ${u.role===r?"selected":""}>${esc(roleName(r))}</option>`).join("")}</select>
    <select data-ucountry="${u.id}" ${u.role==="leader"?"":"hidden"} ${S.viewMode?"disabled":""} aria-label="${esc(t("country"))}"><option value="">${esc(t("pickCountry"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${u.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
    ${u.role==="leader"&&u.countryId?scopeSelects(u):""}
    ${u.role==="leader"&&!u.countryId?`<small style="color:var(--red);font-weight:700">${esc(t("leaderNoCountry"))}</small>`:""}</div>`};
-  return h+`<div class="cards ucards">${list.map(card).join("")}</div>`+backupPanel()+vLog();
+  return h+`<div class="cards ucards">${list.map(card).join("")}</div>`+backupPanel()+photosPanel()+vLog();
 }
 function scopeSelects(u){const co=S.countries.find(c=>c.id===u.countryId)||{};const regs=co.regions||[];const ar=u.region?areasOf(u.countryId,u.region):[];
   return `<div class="ctl"><select data-ureg="${u.id}" ${S.viewMode?"disabled":""} aria-label="${esc(t("scopeReg"))}"><option value="">${esc(t("scopeAllCountry"))}</option>${regs.concat(u.region&&!regs.includes(u.region)?[u.region]:[]).map(r=>`<option value="${esc(r)}" ${u.region===r?"selected":""}>${esc(t("scopeRegOnly"))} ${esc(r)}</option>`).join("")}</select>
@@ -1327,6 +1344,48 @@ function vLog(){
   if(!S.logs.length)return h+`<p class="muted" style="margin:0">${esc(t("noLog"))}</p></div>`;
   return h+S.logs.map(l=>`<div class="logrow"><time class="num">${fmt(l.at)}</time><b>${esc(l.byName)}</b><span style="color:${col[l.action]||"var(--ink)"};font-weight:700">${esc(t(an[l.action]||"aEdit"))}</span><span>${esc(t(kn[l.kind]||"kCountry"))}:</span><span style="min-width:0;overflow-wrap:anywhere">${esc(l.label)}</span></div>`).join("")+`</div>`;
 }
+/* ---------- photo archive: download photos as a named ZIP, then remove them from the app ---------- */
+function archDefaults(){if(S.arch)return S.arch;const n=new Date();const a=new Date(Date.UTC(n.getFullYear(),n.getMonth()-1,1)),b=new Date(Date.UTC(n.getFullYear(),n.getMonth(),0));
+  return S.arch={from:a.toISOString().slice(0,10),to:b.toISOString().slice(0,10),v:true,t:true,s:false,ready:null,busy:""}}
+function archItems(){const A=archDefaults(),d=D();const out=[];const inR=x=>x&&x>=A.from&&x<=A.to;
+  const cn=cid=>cname(d.C[cid]);
+  if(A.v)S.visits.forEach(v=>{if(!(v.images||[]).length||!inR(v.date))return;const ch=d.CH[v.churchId]||{};const c=S.clubs.find(x=>x.id===v.clubId)||{};
+    out.push({col:"visits",doc:v,folder:t("archVisits")+"/"+safeName(cn(v.countryId)),base:[v.date,ch.name,progName(c.program),c.leader].filter(Boolean).join(" - ")})});
+  if(A.t)S.trainings.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
+    out.push({col:"trainings",doc:x,folder:t("archTrain")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,x.trainer].filter(Boolean).join(" - ")})});
+  if(A.s)S.stories.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
+    out.push({col:"stories",doc:x,folder:t("stories")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title].filter(Boolean).join(" - ")})});
+  return out}
+function photosPanel(){if(!isAdmin())return"";const A=archDefaults();const items=archItems();const n=items.reduce((s,i)=>s+i.doc.images.length,0);
+  const all=[S.visits,S.trainings,S.stories].reduce((s,a)=>s+a.reduce((x,o)=>x+((o.images||[]).length),0),0);
+  const ck=(id,k,l)=>`<label style="display:flex;gap:6px;align-items:center;font-weight:700;font-size:.9rem"><input type="checkbox" id="${id}" ${A[k]?"checked":""} style="width:18px;height:18px">${esc(l)}</label>`;
+  return `<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("archTitle"))}</h2><p>${esc(t("archSub"))}</p></div></div>
+   <p class="num" style="margin:0 0 10px;font-weight:700">${esc(t("archAll"))}: ${nf(all)}</p>
+   <div class="fgrid" style="align-items:end"><div class="f"><label for="archFrom">${esc(t("archFrom"))}</label><input id="archFrom" type="date" value="${esc(A.from)}"></div><div class="f"><label for="archTo">${esc(t("archTo"))}</label><input id="archTo" type="date" value="${esc(A.to)}"></div></div>
+   <div class="chips" style="margin:10px 0">${ck("archV","v",t("archVisits"))}${ck("archT","t",t("archTrain"))}${ck("archS","s",t("stories"))}</div>
+   <div class="chips" style="align-items:center"><button class="btn green" data-act="archDl" ${n&&!A.busy?"":"disabled"}>${I.dl}${esc(A.busy||t("archDl"))} ${n?`(<span class="num">${nf(n)}</span>)`:""}</button>
+    ${A.ready?`<button class="btn red" data-act="archDel">${I.del}${esc(t("archDel"))} (<span class="num">${nf(A.ready.reduce((s,i)=>s+i.ids.length,0))}</span>)</button>`:""}</div>
+   <small class="muted" style="display:block;margin-top:10px">${esc(n?t("archHint"):t("archNone"))}</small></div>`}
+async function archDownload(){const A=archDefaults();const items=archItems();if(!items.length)return;
+  try{await loadScript(LIB.zip)}catch(e){toast(t("failed"));return}
+  const zip=new JSZip();const root=zip.folder(safeName(t("archZip")+" "+A.from+" — "+A.to));const done=[];let k=0,tot=items.reduce((s,i)=>s+i.doc.images.length,0),miss=0;const used={};
+  for(const it of items){const ok=[];
+    for(let j=0;j<it.doc.images.length;j++){const id=it.doc.images[j];A.busy=t("preparing")+" "+(++k)+" / "+tot;render();
+      try{const sn=await db.doc("storyImages/"+id).get();const u=sn.exists?(sn.data().data||""):"";
+        if(!u){miss++;continue}const ext=/^data:image\/png/.test(u)?"png":"jpg";let nm=safeName(it.base).slice(0,90)+" - "+(j+1);while(used[it.folder+nm])nm+="_";used[it.folder+nm]=1;
+        root.folder(it.folder).file(nm+"."+ext,u.split(",")[1],{base64:true});ok.push(id)}catch(e){console.error(e);miss++}}
+    if(ok.length)done.push({col:it.col,id:it.doc.id,ids:ok})}
+  A.busy=t("preparing");render();
+  const blob=await zip.generateAsync({type:"blob"});A.busy="";
+  await save(safeName(t("archZip")+" "+A.from+" - "+A.to)+".zip",blob);
+  A.ready=done.length?done:null;render();if(miss)toast(t("archMiss")+" "+miss);
+}
+async function archDelete(btn){const A=archDefaults();if(!A.ready)return;
+  if(!btn.dataset.armed){btn.dataset.armed="1";btn.textContent=t("archSure");return}btn.disabled=true;btn.textContent=t("saving");
+  let n=0;try{for(const r of A.ready){const o=S[r.col].find(x=>x.id===r.id);if(!o)continue;
+      for(const id of r.ids){await db.doc("storyImages/"+id).delete().catch(()=>{});delete imgCache[id];n++}
+      await db.doc(r.col+"/"+r.id).update({images:(o.images||[]).filter(x=>!r.ids.includes(x)),archived:(+o.archived||0)+r.ids.length,archivedAt:Date.now()})}
+    logAct("del","restore",t("archTitle")+": "+n+" ("+A.from+" — "+A.to+")","");A.ready=null;toast(t("archDone"));render()}catch(e){console.error(e);toast(t("failed"))}}
 function backupPanel(){
   const b=S.backup;const fmt=ms=>new Date(ms).toLocaleDateString(S.lang==="ar"?"ar-EG":"en-GB");
   return `<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("backup"))}</h2><p>${esc(t("backupSub"))}</p></div></div>
@@ -1516,7 +1575,7 @@ function visitForm(clubId,planId,visitId){
     try{slots[i].data=await compressImage(inp.files[0]);paint(i)}catch(err){merr(t("imgFail"))}inp.value=""});
   form.addEventListener("click",e=>{const b=e.target.closest("[data-vrm]");if(!b)return;e.preventDefault();e.stopPropagation();const i=+b.dataset.vrm;slots[i]={id:null,data:null};paint(i)});
 }
-function viewPhoto(id){openModal(t("visitPhotos"),`<div data-img="${esc(id)}" style="width:100%;aspect-ratio:4/3;border-radius:14px;background:var(--raise) center/contain no-repeat"></div>`,null);hydrateImgs($("modalRoot"))}
+function viewPhoto(id){openModal(t("photos"),`<div data-img="${esc(id)}" style="width:100%;aspect-ratio:4/3;border-radius:14px;background:var(--raise) center/contain no-repeat"></div>`,null);hydrateImgs($("modalRoot"))}
 async function delVisit(id){const v=S.visits.find(x=>x.id===id);for(const i of (v&&v.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("visits/"+id).delete()}
 function memberForm(p,type){
   p=p||{type:type||"team"};const roles=[...new Set(S.team.map(x=>x.role).filter(Boolean))];
@@ -1552,7 +1611,7 @@ async function doDelete(kind,id){
   const ent=kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
   const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+(ent.month||ent.year):(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource")?ent.title:ent.name):"";
   const lcid=ent?(kind==="country"?ent.id:ent.countryId):"";
-  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training")await db.doc("trainings/"+id).delete();else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
+  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
   catch(e){console.error(e);toast(e&&e.code==="invalid_argument"?t("noPerm"):t("failed"))}
 }
 
@@ -1579,6 +1638,8 @@ document.addEventListener("click",e=>{
    case"addPlace":placeForm(a.dataset.c);break;
    case"delPlace":if(a.dataset.armed)delPlace(a.dataset.c,a.dataset.kind,a.dataset.name);else{a.dataset.armed="1";a.classList.add("armed");a.textContent=t("sure");setTimeout(()=>{if(a.isConnected){delete a.dataset.armed;a.classList.remove("armed");a.textContent="×"}},3500)}break;
    case"backupNow":backupNow();break;
+   case"archDl":archDownload();break;
+   case"archDel":archDelete(a);break;
    case"writeReport":reportForm(a.dataset.c);break;
    case"planVisit":planForm(id);break;
    case"planDone":{const p=S.plans.find(x=>x.id===id);if(p)visitForm(p.clubId,p.id)}break;
@@ -1613,6 +1674,7 @@ document.addEventListener("click",e=>{
 },true);
 document.addEventListener("submit",e=>{if(e.target.id==="invForm"){e.preventDefault();saveInvite(e.target)}});
 document.addEventListener("change",e=>{
+  if(/^arch(From|To|V|T|S)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
   if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";invScopeFill();return}
   if(e.target.id==="invCountry"||e.target.id==="invRegion"){invScopeFill();return}
   const ug=e.target.closest&&e.target.closest("[data-ureg]");if(ug){setUser(ug.dataset.ureg,{region:ug.value,area:""});return}
