@@ -386,6 +386,10 @@ tr.click:hover td{background:var(--raise)}
 .vhist{padding:6px 16px 12px;font-size:.84rem;display:flex;flex-direction:column;gap:4px;background:var(--raise)}
 .vhist div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .vthumbs{display:flex;gap:6px}
+.abar{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:4px 0 14px}.abar.sub{margin-top:-4px}
+.abtn{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:start;padding:12px 14px;border-radius:16px;border:2px solid var(--line);border-inline-start:6px solid var(--ac);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit;min-height:64px}
+.abtn b{font-size:1rem}.abtn small{font-size:.78rem;font-weight:700;color:var(--muted)}.abtn .num{position:absolute;top:8px;inset-inline-end:10px;background:var(--raise);border-radius:999px;padding:1px 9px;font-weight:800;font-size:.8rem}
+.abtn.on{background:var(--ac);border-color:var(--ac);color:#fff}.abtn.on small{color:#fff;opacity:.9}.abtn.on .num{background:rgba(255,255,255,.25);color:#fff}
 .g-c{display:flex;align-items:center;gap:8px;font-size:1.1rem;margin:18px 0 8px}
 .g-r{border:1.5px solid var(--line);border-inline-start:6px solid var(--blue);border-radius:16px;margin:0 0 14px;background:var(--surface)}
 .g-r>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;font-size:1.05rem}
@@ -565,7 +569,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  authFail:"تعذّر تسجيل الدخول. حاول مرة تانية.",signedAs:"داخل باسم",
  usersSub:"وافق على الطلبات الجديدة وحدد صلاحية كل شخص",noUsers:"لا يوجد مستخدمين بعد",
  rolePending:"في انتظار الموافقة",roleViewer:"مشاهدة فقط",roleLeader:"مسؤول دولة",roleAdmin:"أدمن",roleDisabled:"موقوف",
- pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",noRegion:"بدون منطقة",noArea:"بدون منطقة فرعية",regLeaders:"مسؤولين المناطق",noMgr:"بدون مسؤول دولة",mgrCleared:"اتشال — دوس حفظ",editName:"تعديل الاسم",shownName:"الاسم اللي يظهر في التطبيق",nameNote:"الاسم ده هيفضل ثابت ومش هيتغير لما الشخص يدخل بحساب جوجل.",scopeAreaPh:"المنطقة الفرعية (اختياري) — اكتب أو اختار",scopeHow:"اختار الدولة (والمنطقة لو عايز) تحت، وبعدين دوس «إضافة مكان» علشان يتحفظ 👇",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
+ pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",noRegion:"بدون منطقة",noArea:"بدون منطقة فرعية",regLeaders:"مسؤولين المناطق",allAreas:"كل المناطق",allOf:"كل",noMgr:"بدون مسؤول دولة",mgrCleared:"اتشال — دوس حفظ",editName:"تعديل الاسم",shownName:"الاسم اللي يظهر في التطبيق",nameNote:"الاسم ده هيفضل ثابت ومش هيتغير لما الشخص يدخل بحساب جوجل.",scopeAreaPh:"المنطقة الفرعية (اختياري) — اكتب أو اختار",scopeHow:"اختار الدولة (والمنطقة لو عايز) تحت، وبعدين دوس «إضافة مكان» علشان يتحفظ 👇",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
  qVisited:"اتزارت الربع ده",
  tTrain:"التدريب",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة النوادي اللي اتزارت",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
@@ -648,7 +652,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  authFail:"Couldn't sign in. Please try again.",signedAs:"Signed in as",
  usersSub:"Approve new requests and set each person's access",noUsers:"No users yet",
  rolePending:"Waiting for approval",roleViewer:"View only",roleLeader:"Country leader",roleAdmin:"Admin",roleDisabled:"Disabled",
- pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",noRegion:"No region",noArea:"No sub-area",regLeaders:"Region leaders",noMgr:"No country leader",mgrCleared:"Cleared — tap Save",editName:"Edit name",shownName:"Name shown in the app",nameNote:"This name stays fixed and won't be replaced by the Google account name at sign-in.",scopeAreaPh:"Sub-area (optional) — type or pick",scopeHow:"Pick the country (and region if needed) below, then tap Add place to save 👇",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
+ pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",noRegion:"No region",noArea:"No sub-area",regLeaders:"Region leaders",allAreas:"All regions",allOf:"All of",noMgr:"No country leader",mgrCleared:"Cleared — tap Save",editName:"Edit name",shownName:"Name shown in the app",nameNote:"This name stays fixed and won't be replaced by the Google account name at sign-in.",scopeAreaPh:"Sub-area (optional) — type or pick",scopeHow:"Pick the country (and region if needed) below, then tap Add place to save 👇",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
  qVisited:"Visited this quarter",
  tTrain:"Training",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Clubs visited",gChurches:"Churches",achieved:"Achieved",target:"Target",
@@ -751,7 +755,8 @@ function vTraining(d){
   const need=scopeClubs().filter(c=>!lastTraining(c.id)).map(c=>({c,ch:d.CH[c.churchId]})).filter(x=>x.ch);
   h+=`<div class="grid2"><div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("needTrain"))} <span class="muted num" style="font-size:1rem">(${nf(need.length)})</span></h2><p>${esc(t("needTrainSub"))}</p></div></div>`+
    (need.length?need.slice(0,12).map(x=>`<div class="qrow"><span style="min-width:0"><b>${esc(x.c.leader||"—")}</b> ${progPill(x.c.program)}<br><small class="muted">${esc(x.ch.name)} · ${esc(cname(d.C[x.ch.countryId]))}</small></span>${x.c.phone?`<span>${phoneBits(x.c.phone,x.c.countryId)}</span>`:""}</div>`).join("")+(need.length>12?`<p class="muted num" style="margin:8px 0 0">+${nf(need.length-12)}</p>`:""):`<p class="muted" style="margin:0">${esc(t("allTrained"))}</p>`)+`</div>`;
-  const trs=[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const tcid=effCountry("");h+=areaBar(tcid,cntBy(S.trainings,tcid,x=>x.region,x=>x.area));
+  const trs=[...S.trainings].filter(x=>areaPass(x,tcid)).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
   h+=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("trainings"))} <span class="muted num" style="font-size:1rem">(${nf(trs.length)})</span></h2><p>${esc(t("trainSub"))}</p></div></div>`+
    (trs.length?grouped(trs.slice(0,60),x=>({c:x.countryId,r:x.region,a:x.area}),its=>its.map(tr=>{const names=(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]);
      return `<div class="prow"><span><b>${esc(tr.title)}</b> ${ttPill(tr.type)} ${tr.program?progPill(tr.program):""}<br><small class="muted">${esc(cname(d.C[tr.countryId]))}${tr.trainer?" · "+esc(t("trainer"))+": "+esc(tr.trainer):""}</small>${names.length?`<br><small class="muted" style="overflow-wrap:anywhere">${esc(names.join("، "))}</small>`:""}${tr.archived?`<br><small class="muted num">📦 ${nf(tr.archived)} ${esc(t("archIn"))}</small>`:""}${(tr.images||[]).length?`<span class="vthumbs" style="margin-top:6px">${tr.images.map(i=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(i)}" data-img="${esc(i)}" aria-label="${esc(t("trPhotos"))}"></button>`).join("")}</span>`:""}</span>
@@ -795,14 +800,35 @@ function leadersBox(c){let L=c.leaders||{};if(scoped()){const ks=myLeaderKeys(c.
   const ord=regOrder(c.id,new Set(Object.keys(L).map(k=>k.split("|")[0])));
   return `<div style="flex-basis:100%"><span class="k">${esc(t("regLeaders"))}</span><div class="ldrs">${ord.map(r=>{const subs=Object.keys(L).filter(k=>k.startsWith(r+"|"));
     return `<div class="ldr"><b>${esc(r)}</b>${L[r]?`<span>👤 ${esc(L[r].n)}</span>`:""}${subs.length?`<small>${subs.map(k=>`${esc(k.split("|").slice(1).join(" › "))}: ${esc(L[k].n)}`).join(" · ")}</small>`:""}</div>`}).join("")}</div></div>`}
+/* ---------- area buttons: pick a region / sub-area to see only its data ---------- */
+function effCountry(pref){if(pref)return pref;const cs=[...new Set(myScopes().map(x=>x.c))];if(scoped()&&cs.length===1)return cs[0];if(S.countries.length===1)return S.countries[0].id;return ""}
+function regionsFor(cid){const co=S.countries.find(c=>c.id===cid)||{};let regs=(co.regions||[]).slice();
+  S.churches.forEach(h=>{if(h.countryId===cid&&h.region&&!regs.includes(h.region))regs.push(h.region)});
+  if(scoped()){const m=myScopes().filter(x=>x.c===cid);if(m.length&&!m.some(x=>!x.r))regs=regs.filter(r=>m.some(x=>x.r===r))}return regs}
+function areasFor(cid,r){const co=S.countries.find(c=>c.id===cid)||{};
+  if(scoped()){const m=myScopes().filter(x=>x.c===cid);if(m.length&&!m.some(x=>!x.r||(x.r===r&&!x.a)))return [...new Set(m.filter(x=>x.r===r&&x.a).map(x=>x.a))]}
+  const L=Object.keys(co.leaders||{}).filter(k=>k.startsWith(r+"|")).map(k=>k.split("|")[1]);
+  return [...new Set((co.towns||[]).filter(x=>x.r===r).map(x=>x.n).concat(S.churches.filter(h=>h.countryId===cid&&h.region===r).map(h=>h.city)).concat(L).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}
+function afOf(cid){const af=S.af&&S.af.c===cid?S.af:{c:cid,r:"",a:""};const regs=regionsFor(cid);return {c:cid,r:regs.length===1?regs[0]:af.r,a:af.a,regs}}
+function areaPass(o,cid){if(!cid||!S.af||S.af.c!==cid)return true;const f=afOf(cid);if(o.countryId!==cid)return false;
+  return (!f.r||(o.region||"")===f.r)&&(!f.a||(o.area??o.city??o.town??"")===f.a)}
+// cnt(r,a) => number
+function areaBar(cid,cnt){if(!cid)return "";const f=afOf(cid);if(!f.regs.length)return "";let h="";
+  const btn=(r,a,label,lead,n,on,col)=>`<button type="button" class="abtn ${on?"on":""}" style="--ac:${col}" data-act="af" data-c="${esc(cid)}" data-r="${esc(r)}" data-a="${esc(a)}"><b>${esc(label)}</b>${lead?`<small>👤 ${esc(lead)}</small>`:""}<span class="num">${nf(n)}</span></button>`;
+  const cols=["var(--blue)","var(--red)","var(--green)","var(--yellow)"];
+  if(f.regs.length>1)h+=`<div class="abar">${btn("","",t("allAreas"),"",cnt("",""),!f.r,"var(--ink)")}${f.regs.map((r,i)=>btn(r,"",r,leaderOf(cid,r,""),cnt(r,""),f.r===r&&!f.a,cols[i%4])).join("")}</div>`;
+  if(f.r){const ar=areasFor(cid,f.r);if(ar.length>1||(ar.length===1&&f.regs.length===1))h+=`<div class="abar sub">${btn(f.r,"",t("allOf")+" "+f.r,leaderOf(cid,f.r,""),cnt(f.r,""),!f.a,"var(--blue)")}${ar.map((a,i)=>btn(f.r,a,a,leaderOf(cid,f.r,a),cnt(f.r,a),f.a===a,cols[(i+1)%4])).join("")}</div>`}
+  return h}
+const cntBy=(items,cid,gr,ga)=>(r,a)=>items.filter(x=>x.countryId===cid&&(!r||(gr(x)||"")===r)&&(!a||(ga(x)||"")===a)).length;
 /* ---------- competitions ---------- */
 function compPlace(x){return [x.region,x.town].filter(Boolean).join(" › ")}
 function vComps(d){
   const ed=canAny();const f=S.compCountry||"";
-  const list=[...S.competitions].filter(x=>!f||x.countryId===f).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const ccid=effCountry(f);const list=[...S.competitions].filter(x=>(!f||x.countryId===f)&&areaPass(x,ccid)).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
   const T=list.reduce((o,x)=>{o.ch+=+x.churchCount||0;o.c+=+x.contestants||0;o.t+=+x.teamCount||0;o.v+=+x.volCount||0;return o},{ch:0,c:0,t:0,v:0});
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tComp"))}</h2><p>${esc(t("compSub"))}</p></div><div class="chips" style="align-items:center">${S.countries.length>1?`<select id="compCountry" class="qsel" aria-label="${esc(t("country"))}"><option value="">${esc(t("allCountries"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${f===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select>`:""}${ed?`<button class="btn red" data-act="addComp">${I.plus}${esc(t("addComp"))}</button>`:""}</div></div>`;
   h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile red"><b class="num">${nf(list.length)}</b><span>${esc(t("tComp"))}</span></div><div class="tile blue"><b class="num">${nf(T.ch)}</b><span>${esc(t("churches"))}</span></div><div class="tile yellow"><b class="num">${nf(T.c)}</b><span>${esc(t("contestants"))}</span></div><div class="tile green"><b class="num">${nf(T.t+T.v)}</b><span>${esc(t("team"))} + ${esc(t("volunteers"))}</span></div></div>`;
+  h+=areaBar(ccid,cntBy(S.competitions,ccid,x=>x.region,x=>x.town));
   if(!list.length)return h+emptyBox(t("noComps"),t("noCompsHint"),ed?`<button class="btn red" data-act="addComp">${I.plus}${esc(t("addComp"))}</button>`:"");
   return h+grouped(list,x=>({c:x.countryId,r:x.region,a:x.town}),its=>`<div class="cards comps">${its.map((x,i)=>{const col=["var(--red)","var(--blue)","var(--green)","var(--yellow)"][i%4];const chn=(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]);
     return `<div class="panel comp" style="border-top:5px solid ${col};display:flex;flex-direction:column;gap:10px">
@@ -1187,8 +1213,10 @@ function vCountries(d){
   const cs=S.stories.filter(x=>x.countryId===c.id).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
   h+=`<div class="sec-head"><h2 class="sm">${dots}${esc(t("stories"))} <span class="muted num" style="font-size:1rem">(${nf(cs.length)})</span></h2>${addBtn("addStory","addStory","yellow",`data-country="${c.id}"`)}</div>`;
   h+=cs.length?`<div class="stories">${cs.map(x=>storyCard(x,d)).join("")}</div>`:emptyBox(t("noStories"),t("noStoriesHint"));
-  const chs=S.churches.filter(x=>x.countryId===c.id).sort((a,b)=>(a.region||"").localeCompare(b.region||"")||(a.city||"").localeCompare(b.city||"")||(a.name||"").localeCompare(b.name||""));
+  const chsAll=S.churches.filter(x=>x.countryId===c.id);const abar=areaBar(c.id,cntBy(chsAll,c.id,x=>x.region,x=>x.city));
+  const chs=chsAll.filter(x=>areaPass(x,c.id)).sort((a,b)=>(a.region||"").localeCompare(b.region||"")||(a.city||"").localeCompare(b.city||"")||(a.name||"").localeCompare(b.name||""));
   h+=`<div class="sec-head"><h2 class="sm">${dots}${esc(t("churches"))} <span class="muted num" style="font-size:1rem">(${nf(chs.length)})</span></h2>${addBtn("addChurch","addChurch","",`data-country="${c.id}"`)}</div>`;
+  h+=abar;
   if(!chs.length)return h+emptyBox(t("noChurches"),t("noChurchesHint"));
   return h+grouped(chs,ch=>({c:ch.countryId,r:ch.region,a:ch.city}),its=>`<div style="display:flex;flex-direction:column;gap:12px">`+its.map(ch=>churchCard(ch,d)).join("")+`</div>`);
 }
@@ -1298,7 +1326,9 @@ function vVisits(d){
   <select id="fProg" aria-label="${esc(t("program"))}"><option value="">${esc(t("allPrograms"))}</option>${programs().map(p=>`<option value="${p.k}" ${f.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select>
   <input id="fQ" type="search" value="${esc(f.q)}" placeholder="${esc(t("search"))}"></div>`;
   if(!S.clubs.length)return h+emptyBox(t("noClubs"),t("noChurchesHint"));
-  const rows=visitRows(d);const vc=rows.filter(r=>r.v).length;
+  const vcid=effCountry(f.country);const rows0=visitRows(d);
+  h+=areaBar(vcid,cntBy(rows0.map(r=>r.ch),vcid,x=>x.region,x=>x.city));
+  const rows=rows0.filter(r=>areaPass(r.ch,vcid));const vc=rows.filter(r=>r.v).length;
   h+=`<div class="chips"><span class="st ok num" style="font-size:.85rem;padding:5px 12px">${nf(vc)} ${esc(t("visitedY"))}</span><span class="st no num" style="font-size:.85rem;padding:5px 12px">${nf(rows.length-vc)} ${esc(t("neverVisited"))}</span></div>`;
   h+=`<div class="tbl-wrap"><table class="vt"><thead><tr><th>${esc(t("churchName"))}</th><th>${esc(t("program"))}</th><th>${esc(t("leader"))}</th><th>${esc(t("kids"))}</th><th>${esc(t("lastVisit"))}</th><th></th></tr></thead><tbody>`+
    (()=>{const multiC=new Set(rows.map(r=>r.ch.countryId)).size>1;const co=id=>S.countries.find(c=>c.id===id)||{};const rix=(cid,r)=>{const i=(co(cid).regions||[]).indexOf(r);return r===""?999:i<0?99:i};
@@ -1805,6 +1835,7 @@ document.addEventListener("click",e=>{
    case"editClub":clubForm(id);break;
    case"editVisit":visitForm(null,null,id);break;
    case"addComp":compForm();break;
+   case"af":S.af={c:a.dataset.c,r:a.dataset.r,a:a.dataset.a};render();break;
    case"editUserName":{const u=S.users.find(z=>z.id===id);if(!u)break;openModal(t("editName"),`<small class="muted ltr" style="display:block;text-align:start">${esc(u.email)}</small>${fld("unName",t("shownName"),u.name,{req:1})}<small class="muted">${esc(t("nameNote"))}</small>`,async f=>{
      const n=val(f,"unName");if(!n)return merr(t("req"));await db.doc("users/"+u.id).update({name:n,nameLocked:true});
      for(const c of S.countries.filter(c=>c.leaderUid===u.id))await db.doc("countries/"+c.id).update({manager:n}).catch(()=>{});
