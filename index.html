@@ -2163,11 +2163,12 @@ function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
   let qs=[db.collection(name)];const sc=myScopes();
   if(scoped()&&name!=="countries"&&name!=="resources"){
-    if(["churches","clubs","visits","plans"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
+    if(["churches","clubs","visits","plans","trainings","competitions"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
     else qs=[...new Set(sc.map(x=>x.c))].map(c=>db.collection(name).where("countryId","==",c));}
   const parts=qs.map(()=>null);
   const merge=()=>{if(!parts.every(Boolean))return;const m={};parts.forEach(p=>p.forEach(x=>m[x.id]=x));let a=Object.values(m);
-    if(name==="countries"&&scoped())a=a.filter(c=>sc.some(x=>x.c===c.id));S[name]=a;done()};
+    if(name==="countries"&&scoped())a=a.filter(c=>sc.some(x=>x.c===c.id));
+    if(scoped()&&["churches","clubs","visits","plans","trainings","competitions"].includes(name))a=a.filter(o=>inScope(o));S[name]=a;done()};
   qs.forEach((q,i)=>dataUnsubs.push(q.onSnapshot(snap=>{parts[i]=snap.docs.map(x=>Object.assign({id:x.id},x.data()));merge()},err=>{console.error(name,err);parts[i]=parts[i]||[];merge()})));
 }
 // يكتب المنطقة والمنطقة الفرعية على النوادي والزيارات والخطط القديمة (علشان صلاحيات مسؤولي المناطق)
@@ -2177,6 +2178,9 @@ async function syncScopes(){
   try{const mine=o=>canAll()||inScope(o);const ups=[];const CH={};S.churches.forEach(c=>CH[c.id]=c);
     S.churches.filter(mine).forEach(c=>{if((c.area??null)!==(c.city||"")||(c.center??null)!==(c.center||"")||(c.region??null)!==(c.region||""))ups.push(["churches/"+c.id,{area:c.city||"",center:c.center||"",region:c.region||""}])});
     for(const col of ["clubs","visits","plans"])S[col].filter(mine).forEach(o=>{const c=CH[o.churchId];if(!c)return;const r=c.region||"",a=c.city||"",m=c.center||"";if((o.region??null)!==r||(o.area??null)!==a||(o.center??null)!==m)ups.push([col+"/"+o.id,{region:r,area:a,center:m}])});
+    // تدريبات قديمة من غير منطقة: خد المنطقة من أول نادي حاضر
+    S.trainings.filter(mine).forEach(x=>{if(x.region||!(x.clubIds||[]).length)return;const cl=S.clubs.find(c=>c.id===x.clubIds[0]);const c=cl&&CH[cl.churchId];if(!c||!c.region)return;
+      ups.push(["trainings/"+x.id,{region:c.region,area:c.city||"",center:c.center||"",places:[{r:c.region,a:c.city||""}]}])});
     for(let i=0;i<ups.length;i+=400){const b=db.batch();ups.slice(i,i+400).forEach(([p,d])=>b.update(db.doc(p),d));await b.commit()}
     S.synced=true;
   }catch(e){console.error("syncScopes",e)}finally{syncing=false}
