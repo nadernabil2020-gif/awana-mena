@@ -386,6 +386,10 @@ tr.click:hover td{background:var(--raise)}
 .vhist{padding:6px 16px 12px;font-size:.84rem;display:flex;flex-direction:column;gap:4px;background:var(--raise)}
 .vhist div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .vthumbs{display:flex;gap:6px}
+.comps{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
+.cnums{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.cnums div{background:var(--raise);border-radius:12px;padding:8px 4px;text-align:center;display:flex;flex-direction:column}.cnums b{font-size:1.35rem;line-height:1.1}.cnums small{font-size:.72rem;font-weight:700;color:var(--muted)}
+.cphotos{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.cphotos .vth{width:100%;height:auto;aspect-ratio:1}
+.cslots{grid-template-columns:repeat(3,1fr)}
 .vth{width:46px;height:46px;border-radius:10px;border:2px solid var(--line);background:var(--surface) center/cover no-repeat;cursor:zoom-in;padding:0}
 .vslots{grid-template-columns:repeat(3,1fr)}
 
@@ -549,7 +553,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  rolePending:"في انتظار الموافقة",roleViewer:"مشاهدة فقط",roleLeader:"مسؤول دولة",roleAdmin:"أدمن",roleDisabled:"موقوف",
  pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
  qVisited:"اتزارت الربع ده",
- tTrain:"التدريب",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
+ tTrain:"التدريب",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة النوادي اللي اتزارت",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
  trainings:"سجل التدريبات",trainSub:"التدريبات اللي اتعملت ومين حضرها",addTraining:"تسجيل تدريب",editTraining:"تعديل التدريب",trTitle:"عنوان التدريب",trainer:"المدرّب",trType:"نوع التدريب",
  general:"عام",attendees:"الحضور من مسؤولي النوادي",others:"حضور آخرين (اسم في كل سطر)",attCount:"عدد الحضور",noTrainings:"لم يتم تسجيل تدريبات بعد",
@@ -632,7 +636,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  rolePending:"Waiting for approval",roleViewer:"View only",roleLeader:"Country leader",roleAdmin:"Admin",roleDisabled:"Disabled",
  pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
  qVisited:"Visited this quarter",
- tTrain:"Training",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
+ tTrain:"Training",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Clubs visited",gChurches:"Churches",achieved:"Achieved",target:"Target",
  trainings:"Training log",trainSub:"Trainings held and who attended",addTraining:"Log training",editTraining:"Edit training",trTitle:"Training title",trainer:"Trainer",trType:"Training type",
  general:"General",attendees:"Club leaders who attended",others:"Other attendees (one name per line)",attCount:"Attendance",noTrainings:"No trainings logged yet",
@@ -669,11 +673,11 @@ const ttName=k=>{const x=TTYPES.find(z=>z.k===k);return x?(x[S.lang]||x.ar):""};
 const ttPill=k=>k?`<span class="prog" style="background:var(--blue-soft);color:var(--blue)">${esc(ttName(k))}</span>`:"";
 const PCOL=[["var(--blue)","var(--on-blue)"],["var(--red)","var(--on-red)"],["var(--green)","var(--on-green)"],["var(--yellow)","var(--on-yellow)"],["var(--sky)","#06182f"]];
 const ME_COUNTRIES_OLD=["مصر","السودان","جنوب السودان","ليبيا","الأردن","لبنان","سوريا","العراق","فلسطين","السعودية","الإمارات","الكويت","قطر","البحرين","عُمان","اليمن","تونس","الجزائر","المغرب","موريتانيا"];
-const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources"];
+const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources","competitions"];
 
 /* ---------- state ---------- */
 const S={countries:[],churches:[],clubs:[],visits:[],team:[],stories:[],extraPrograms:[],
-  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
+  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],competitions:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
   lang:"ar",theme:null,tab:"overview",countryId:null,storyCountry:"",viewMode:false,readOnly:false,
   vf:{country:"",status:"",program:"",q:""},open:{},loaded:{},offline:false};
 let db=null,auth=null,deferredInstall=null;
@@ -740,6 +744,73 @@ function vTraining(d){
      <span class="pact"><span class="st ok num" style="background:var(--blue);color:var(--on-blue)">${fmtDate(tr.date)}</span><span class="st num" style="background:var(--raise)">${nf(tr.count||names.length)} ${esc(t("attCount"))}</span>${canE(tr)?`<button class="icon" data-act="editTraining" data-id="${tr.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="training" data-id="${tr.id}" aria-label="${esc(t("del"))}">${I.del}</button>`:""}</span></div>`}).join(""):`<p class="muted" style="margin:0">${esc(t("noTrainings"))}</p>`)+`</div></div>`;
   h+=resourcesPanel();
   return h;
+}
+/* ---------- competitions ---------- */
+function compPlace(x){return [x.region,x.town].filter(Boolean).join(" › ")}
+function vComps(d){
+  const ed=canAny();const f=S.compCountry||"";
+  const list=[...S.competitions].filter(x=>!f||x.countryId===f).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const T=list.reduce((o,x)=>{o.ch+=+x.churchCount||0;o.c+=+x.contestants||0;o.t+=+x.teamCount||0;o.v+=+x.volCount||0;return o},{ch:0,c:0,t:0,v:0});
+  let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tComp"))}</h2><p>${esc(t("compSub"))}</p></div><div class="chips" style="align-items:center">${S.countries.length>1?`<select id="compCountry" class="qsel" aria-label="${esc(t("country"))}"><option value="">${esc(t("allCountries"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${f===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select>`:""}${ed?`<button class="btn red" data-act="addComp">${I.plus}${esc(t("addComp"))}</button>`:""}</div></div>`;
+  h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile red"><b class="num">${nf(list.length)}</b><span>${esc(t("tComp"))}</span></div><div class="tile blue"><b class="num">${nf(T.ch)}</b><span>${esc(t("churches"))}</span></div><div class="tile yellow"><b class="num">${nf(T.c)}</b><span>${esc(t("contestants"))}</span></div><div class="tile green"><b class="num">${nf(T.t+T.v)}</b><span>${esc(t("team"))} + ${esc(t("volunteers"))}</span></div></div>`;
+  if(!list.length)return h+emptyBox(t("noComps"),t("noCompsHint"),ed?`<button class="btn red" data-act="addComp">${I.plus}${esc(t("addComp"))}</button>`:"");
+  return h+`<div class="cards comps">${list.map((x,i)=>{const col=["var(--red)","var(--blue)","var(--green)","var(--yellow)"][i%4];const chn=(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]);
+    return `<div class="panel comp" style="border-top:5px solid ${col};display:flex;flex-direction:column;gap:10px">
+     <div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><div style="min-width:0"><h3 style="margin:0 0 4px;font-size:1.15rem">${I.trophy.replace("<svg",'<svg width="18" height="18" style="vertical-align:-3px;color:'+col+'"')} ${esc(x.title||t("tComp"))}</h3>
+      <div class="path"><span>${esc(cname(d.C[x.countryId]))}</span>${compPlace(x)?compPlace(x).split(" › ").map(z=>`<span>${esc(z)}</span>`).join(""):""}</div></div>
+      <span class="st ok num" style="background:${col};color:#fff;flex:none">${fmtDate(x.date)}</span></div>
+     <div class="cnums"><div><b class="num">${nf(x.churchCount||0)}</b><small>${esc(t("churches"))}</small></div><div><b class="num">${nf(x.contestants||0)}</b><small>${esc(t("contestants"))}</small></div><div><b class="num">${nf(x.teamCount||0)}</b><small>${esc(t("team"))}</small></div><div><b class="num">${nf(x.volCount||0)}</b><small>${esc(t("volunteers"))}</small></div></div>
+     ${chn.length?`<small class="muted" style="overflow-wrap:anywhere"><b style="color:var(--ink)">${esc(t("churches"))}:</b> ${esc(chn.join("، "))}</small>`:""}
+     ${x.notes?`<small class="muted" style="overflow-wrap:anywhere">${esc(x.notes)}</small>`:""}
+     ${(x.images||[]).length?`<div class="cphotos">${x.images.map(id=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(id)}" data-img="${esc(id)}" aria-label="${esc(t("photos"))}"></button>`).join("")}</div>`:""}
+     ${x.archived?`<small class="muted num">📦 ${nf(x.archived)} ${esc(t("archIn"))}</small>`:""}
+     ${canE(x)?`<div style="display:flex;gap:6px;justify-content:flex-end"><button class="icon" data-act="editComp" data-id="${x.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="comp" data-id="${x.id}" aria-label="${esc(t("del"))}">${I.del}</button></div>`:""}</div>`}).join("")}</div>`;
+}
+function compForm(x){
+  x=x||{countryId:(S.me&&S.me.countryId)||S.compCountry||((myCountries()[0]||{}).id),date:today(),churchIds:[],region:myReg(),town:myArea()};
+  const N=6;const slots=[...Array(N)].map((_,i)=>({id:(x.images||[])[i]||null,data:null}));
+  const f=openModal(x.id?t("editComp"):t("addComp"),`<div class="fgrid">
+   ${fld("cpTitle",t("compTitle"),x.title,{full:1})}
+   <div class="f"><label for="cpCountry">${esc(t("country"))} *</label><select id="cpCountry">${myCountries().map(c=>`<option value="${c.id}" ${x.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+   ${fld("cpDate",t("compDate"),x.date,{type:"date",req:1})}${fld("cpRegion",t("region"),x.region,{list:"lcpRegion"})}${fld("cpTown",t("city"),x.town,{list:"lcpTown"})}
+   ${fld("cpCont",t("contestants"),String(x.contestants??""),{type:"number",im:"numeric"})}${fld("cpTeam",t("teamCount"),String(x.teamCount??""),{type:"number",im:"numeric"})}${fld("cpVol",t("volCount"),String(x.volCount??""),{type:"number",im:"numeric"})}</div>
+   <datalist id="lcpRegion"></datalist><datalist id="lcpTown"></datalist>
+   <div class="f"><label>${esc(t("compChurches"))} <span class="muted num" id="cpChN"></span></label><div id="cpChurches" style="display:flex;flex-direction:column;gap:4px;max-height:220px;overflow:auto;background:var(--raise);border-radius:12px;padding:8px"></div></div>
+   <div class="fgrid"><div class="f full"><label for="cpOther">${esc(t("compOtherCh"))}</label><textarea id="cpOther">${esc((x.otherChurches||[]).join("\n"))}</textarea></div>${fld("cpNotes",t("notes"),x.notes,{full:1,area:1})}</div>
+   <div class="f"><label>${esc(t("compPhotos"))}</label><div class="slots cslots">${slots.map((_,i)=>`<label class="slot" id="cslot${i}">${I.img.replace("<svg",'<svg width="22" height="22"')}<span>${esc(t("addPhoto"))}</span><input type="file" accept="image/*" data-cslot="${i}" aria-label="${esc(t("addPhoto"))}"><button type="button" class="rm" data-crm="${i}" hidden aria-label="${esc(t("del"))}">${I.x}</button></label>`).join("")}</div></div>`,async f=>{
+    const n=id=>Math.max(0,parseInt(toEn(val(f,id)),10)||0);
+    const churchIds=[...f.querySelectorAll("#cpChurches input:checked")].map(i=>i.value);
+    const otherChurches=f.querySelector("#cpOther").value.split(/\n+/).map(z=>z.trim()).filter(Boolean);
+    const data={countryId:f.querySelector("#cpCountry").value,title:val(f,"cpTitle"),date:val(f,"cpDate"),region:val(f,"cpRegion"),town:val(f,"cpTown"),churchIds,otherChurches,churchCount:churchIds.length+otherChurches.length,
+      contestants:n("cpCont"),teamCount:n("cpTeam"),volCount:n("cpVol"),notes:val(f,"cpNotes"),by:(x.by||S.me.id),updatedAt:Date.now(),createdAt:x.createdAt||Date.now(),archived:x.archived||0};
+    if(scoped()){data.countryId=S.me.countryId;data.region=myReg();if(myArea())data.town=myArea()}
+    data.area=data.town;
+    if(!data.countryId)return merr(t("needCountry"));if(!data.date)return merr(t("req"));
+    $("msave").textContent=t("saving");
+    const ref=x.id?db.doc("competitions/"+x.id):db.collection("competitions").doc();const ids=[];
+    for(const sl of slots){if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({compId:ref.id,countryId:data.countryId,region:data.region,area:data.area,data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}else if(sl.id)ids.push(sl.id)}
+    data.images=ids;await ref.set(data);
+    for(const old of (x.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete().catch(()=>{});
+    logAct(x.id?"edit":"add","comp",(data.title||t("tComp"))+" · "+data.date,data.countryId);
+  });
+  if(scoped()){["cpRegion"].concat(myArea()?["cpTown"]:[]).forEach(id=>{const e=f.querySelector("#"+id);e.readOnly=true;e.style.opacity=".7"})}
+  const fill=()=>{const cid=f.querySelector("#cpCountry").value,reg=f.querySelector("#cpRegion").value.trim(),town=f.querySelector("#cpTown").value.trim();const co=S.countries.find(c=>c.id===cid)||{};
+    const opts=a=>[...new Set(a.filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("");
+    f.querySelector("#lcpRegion").innerHTML=opts((co.regions||[]).concat(S.churches.filter(c=>c.countryId===cid).map(c=>c.region)));
+    f.querySelector("#lcpTown").innerHTML=opts((co.towns||[]).filter(z=>!reg||!z.r||z.r===reg).map(z=>z.n).concat(S.churches.filter(c=>c.countryId===cid&&(!reg||c.region===reg)).map(c=>c.city)));
+    const sel=new Set([...f.querySelectorAll("#cpChurches input:checked")].map(i=>i.value).concat(x.churchIds||[]));
+    const list=S.churches.filter(c=>c.countryId===cid&&(sel.has(c.id)||((!reg||c.region===reg)&&(!town||c.city===town)))).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+    f.querySelector("#cpChurches").innerHTML=list.length?list.map(c=>`<label style="display:flex;gap:8px;align-items:center;font-size:.88rem;padding:4px 2px;cursor:pointer"><input type="checkbox" value="${c.id}" ${sel.has(c.id)?"checked":""} style="width:18px;height:18px;flex:none"><span><b>${esc(c.name)}</b> <span class="muted">${esc(placeTxt(c))}</span></span></label>`).join(""):`<span class="muted" style="font-size:.85rem">${esc(t("noChurchesHere"))}</span>`;cnt()};
+  const cnt=()=>{const a=f.querySelectorAll("#cpChurches input:checked").length,b=f.querySelector("#cpOther").value.split(/\n+/).filter(z=>z.trim()).length;f.querySelector("#cpChN").textContent="("+nf(a+b)+")"};
+  fill();["cpCountry","cpRegion","cpTown"].forEach(id=>f.querySelector("#"+id).addEventListener(id==="cpCountry"?"change":"input",fill));
+  f.querySelector("#cpChurches").addEventListener("change",cnt);f.querySelector("#cpOther").addEventListener("input",cnt);
+  const paint=i=>{const el=f.querySelector("#cslot"+i),sl=slots[i],rm=el.querySelector(".rm");const u=sl.data||(sl.id&&imgCache[sl.id]);
+    if(sl.data||sl.id){el.classList.add("has");rm.hidden=false;if(u)el.style.backgroundImage=`url("${u}")`;else loadImg(sl.id).then(z=>{if(z)el.style.backgroundImage=`url("${z}")`})}
+    else{el.classList.remove("has");rm.hidden=true;el.style.backgroundImage=""}};
+  slots.forEach((_,i)=>paint(i));
+  f.addEventListener("change",async e=>{const inp=e.target.closest("[data-cslot]");if(!inp||!inp.files[0])return;const i=+inp.dataset.cslot;
+    try{slots[i].data=await compressImage(inp.files[0]);paint(i)}catch(err){merr(t("imgFail"))}inp.value=""});
+  f.addEventListener("click",e=>{const b=e.target.closest("[data-crm]");if(!b)return;e.preventDefault();e.stopPropagation();const i=+b.dataset.crm;slots[i]={id:null,data:null};paint(i)});
 }
 function trainingForm(tr){
   tr=tr||{countryId:(S.me&&S.me.countryId)||((myCountries()[0]||{}).id),date:today(),clubIds:[]};
@@ -915,7 +986,7 @@ const cidx=id=>{const i=S.countries.findIndex(c=>c.id===id);return (i<0?0:i)%4};
 
 /* ---------- icons ---------- */
 const sv=(p,w=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
-const I={cap:sv('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>'),link:sv('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),play:sv('<circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/>'),target:sv('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),cal:sv('<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>'),bell:sv('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/>'),edit:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>'),del:sv('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'),
+const I={trophy:sv('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8 20h8M10 17h4"/>'),cap:sv('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>'),link:sv('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),play:sv('<circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/>'),target:sv('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),cal:sv('<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>'),bell:sv('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/>'),edit:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>'),del:sv('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'),
  plus:sv('<path d="M12 5v14M5 12h14"/>',2.4),eye:sv('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
  pen:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/>'),dl:sv('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
  sun:sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
@@ -947,8 +1018,8 @@ function countryStats(cid,d){
 const cname=c=>c?((S.lang==="en"&&c.nameEn)?c.nameEn:c.name):"—";
 
 /* ---------- chrome ---------- */
-const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["training","tTrain","var(--green)"]];
-const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
+const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["training","tTrain","var(--green)"],["competitions","tComp","var(--red)"]];
+const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],competitions:["var(--red)","#fff"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
 const TABS=()=>TABS0.concat(canFinRead()?[["finance","tFinance","var(--yellow)"]]:[]).concat(isAdmin()?[["users","tUsers","var(--red)"]]:[]);
 function applyChrome(){
   const r=document.documentElement;r.lang=S.lang;r.dir=S.lang==="ar"?"rtl":"ltr";
@@ -988,7 +1059,7 @@ function render(){
   else if(role()==="manager")h+=`<div class="viewbar">${I.eye} ${esc(t("mgrNote"))}</div>`;
   else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))} › ${esc(scopeLabel(S.me))}</b> — ${esc(t("scopeBar2"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
-  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,finance:vFinance}[S.tab]||vOverview)(d);
+  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,finance:vFinance}[S.tab]||vOverview)(d);
   m.innerHTML=h;m.dataset.view=S.tab;m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
 }
 const dots=`<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -1338,7 +1409,7 @@ async function setUser(uid,patch){
     toast(t("saved"))}catch(e){console.error(e);toast(t("failed")+" ("+(e.code||"")+")")}
 }
 function vLog(){
-  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",resource:"kRes",finance:"kFin"};
+  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",comp:"kComp",resource:"kRes",finance:"kFin"};
   const an={add:"aAdd",edit:"aEdit",del:"aDel"};const col={add:"var(--green)",edit:"var(--blue)",del:"var(--red)"};
   const fmt=ms=>{try{return new Date(ms).toLocaleString(S.lang==="ar"?"ar-EG":"en-GB",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}catch(e){return""}};
   let h=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("log"))}</h2><p>${esc(t("logSub"))}</p></div></div>`;
@@ -1347,23 +1418,25 @@ function vLog(){
 }
 /* ---------- photo archive: download photos as a named ZIP, then remove them from the app ---------- */
 function archDefaults(){if(S.arch)return S.arch;const n=new Date();const a=new Date(Date.UTC(n.getFullYear(),n.getMonth()-1,1)),b=new Date(Date.UTC(n.getFullYear(),n.getMonth(),0));
-  return S.arch={from:a.toISOString().slice(0,10),to:b.toISOString().slice(0,10),v:true,t:true,s:false,ready:null,busy:""}}
+  return S.arch={from:a.toISOString().slice(0,10),to:b.toISOString().slice(0,10),v:true,t:true,c:true,s:false,ready:null,busy:""}}
 function archItems(){const A=archDefaults(),d=D();const out=[];const inR=x=>x&&x>=A.from&&x<=A.to;
   const cn=cid=>cname(d.C[cid]);
   if(A.v)S.visits.forEach(v=>{if(!(v.images||[]).length||!inR(v.date))return;const ch=d.CH[v.churchId]||{};const c=S.clubs.find(x=>x.id===v.clubId)||{};
     out.push({col:"visits",doc:v,folder:t("archVisits")+"/"+safeName(cn(v.countryId)),base:[v.date,ch.name,progName(c.program),c.leader].filter(Boolean).join(" - ")})});
   if(A.t)S.trainings.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
     out.push({col:"trainings",doc:x,folder:t("archTrain")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,x.trainer].filter(Boolean).join(" - ")})});
+  if(A.c)S.competitions.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
+    out.push({col:"competitions",doc:x,folder:t("tComp")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,compPlace(x)].filter(Boolean).join(" - ")})});
   if(A.s)S.stories.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
     out.push({col:"stories",doc:x,folder:t("stories")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title].filter(Boolean).join(" - ")})});
   return out}
 function photosPanel(){if(!isAdmin())return"";const A=archDefaults();const items=archItems();const n=items.reduce((s,i)=>s+i.doc.images.length,0);
-  const all=[S.visits,S.trainings,S.stories].reduce((s,a)=>s+a.reduce((x,o)=>x+((o.images||[]).length),0),0);
+  const all=[S.visits,S.trainings,S.competitions,S.stories].reduce((s,a)=>s+a.reduce((x,o)=>x+((o.images||[]).length),0),0);
   const ck=(id,k,l)=>`<label style="display:flex;gap:6px;align-items:center;font-weight:700;font-size:.9rem"><input type="checkbox" id="${id}" ${A[k]?"checked":""} style="width:18px;height:18px">${esc(l)}</label>`;
   return `<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("archTitle"))}</h2><p>${esc(t("archSub"))}</p></div></div>
    <p class="num" style="margin:0 0 10px;font-weight:700">${esc(t("archAll"))}: ${nf(all)}</p>
    <div class="fgrid" style="align-items:end"><div class="f"><label for="archFrom">${esc(t("archFrom"))}</label><input id="archFrom" type="date" value="${esc(A.from)}"></div><div class="f"><label for="archTo">${esc(t("archTo"))}</label><input id="archTo" type="date" value="${esc(A.to)}"></div></div>
-   <div class="chips" style="margin:10px 0">${ck("archV","v",t("archVisits"))}${ck("archT","t",t("archTrain"))}${ck("archS","s",t("stories"))}</div>
+   <div class="chips" style="margin:10px 0">${ck("archV","v",t("archVisits"))}${ck("archT","t",t("archTrain"))}${ck("archC","c",t("tComp"))}${ck("archS","s",t("stories"))}</div>
    <div class="chips" style="align-items:center"><button class="btn green" data-act="archDl" ${n&&!A.busy?"":"disabled"}>${I.dl}${esc(A.busy||t("archDl"))} ${n?`(<span class="num">${nf(n)}</span>)`:""}</button>
     ${A.ready?`<button class="btn red" data-act="archDel">${I.del}${esc(t("archDel"))} (<span class="num">${nf(A.ready.reduce((s,i)=>s+i.ids.length,0))}</span>)</button>`:""}</div>
    <small class="muted" style="display:block;margin-top:10px">${esc(n?t("archHint"):t("archNone"))}</small></div>`}
@@ -1616,13 +1689,13 @@ function askDelPass(label,fn){const f=openModal(t("delTitle"),`<div class="viewb
     if(val(f,"delPass")!==DEL_PASS){merr(t("badPass"));f.querySelector("#delPass").value="";f.querySelector("#delPass").focus();setTimeout(()=>{const x=$("msave");if(x)x.textContent=t("del")},0);return false}
     closeModal();await fn();return false});
   const b=$("msave");if(b){b.textContent=t("del");b.classList.add("red")}setTimeout(()=>{const i=f.querySelector("#delPass");i&&i.focus()},40)}
-function delLabel(kind,id){const ent=kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
+function delLabel(kind,id){const ent=kind==="comp"?S.competitions.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
   if(!ent)return"";if(kind==="visit"){const ch=S.churches.find(c=>c.id===ent.churchId)||{};return (ch.name||"")+" · "+fmtDate(ent.date)}if(kind==="country")return cname(ent);return ent.title||ent.name||""}
 async function doDelete(kind,id){
-  const ent=kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
+  const ent=kind==="comp"?S.competitions.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
   const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+(ent.month||ent.year):(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource")?ent.title:ent.name):"";
   const lcid=ent?(kind==="country"?ent.id:ent.countryId):"";
-  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
+  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="comp"){const x=S.competitions.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("competitions/"+id).delete()}else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
   catch(e){console.error(e);toast(e&&e.code==="invalid_argument"?t("noPerm"):t("failed"))}
 }
 
@@ -1639,6 +1712,8 @@ document.addEventListener("click",e=>{
    case"addVisit":visitForm(id);break;
    case"editClub":clubForm(id);break;
    case"editVisit":visitForm(null,null,id);break;
+   case"addComp":compForm();break;
+   case"editComp":compForm(S.competitions.find(x=>x.id===id));break;
    case"convertLate":convertLate(a);break;
    case"viewPhoto":viewPhoto(id);break;
    case"toggleHist":S.open[id]=!S.open[id];render();break;
@@ -1684,7 +1759,8 @@ document.addEventListener("click",e=>{
 },true);
 document.addEventListener("submit",e=>{if(e.target.id==="invForm"){e.preventDefault();saveInvite(e.target)}});
 document.addEventListener("change",e=>{
-  if(/^arch(From|To|V|T|S)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
+  if(e.target.id==="compCountry"){S.compCountry=e.target.value;render();return}
+  if(/^arch(From|To|V|T|S|C)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
   if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";invScopeFill();return}
   if(e.target.id==="invCountry"||e.target.id==="invRegion"){invScopeFill();return}
   const ug=e.target.closest&&e.target.closest("[data-ureg]");if(ug){setUser(ug.dataset.ureg,{region:ug.value,area:""});return}
@@ -1731,6 +1807,7 @@ function tables(){
    stories:[t("storyDate"),t("country"),t("storyTitle"),t("author"),t("storyText")],
    goals:[t("year"),t("country"),t("gChurches"),t("gClubs"),t("gKids"),t("gCov"),t("achieved")+" "+t("gClubs"),t("achieved")+" "+t("gKids")],
    trainings:[t("storyDate"),t("country"),t("trTitle"),t("trType"),t("program"),t("trainer"),t("attCount"),t("attendees")],
+   comps:[t("compDate"),t("country"),t("compTitle"),t("region"),t("city"),t("churchesN"),t("contestants"),t("teamCount"),t("volCount"),t("compChurches"),t("notes")],
    resources:[t("resTitle"),t("program"),t("country"),t("resUrl"),t("resDesc")],
    plans:[t("planDate"),t("country"),t("churchName"),t("program"),t("visitor"),t("notes")],
    compare:[t("country"),t("byClubs"),t("byKids"),t("byCov"),t("byGrowth")],
@@ -1741,6 +1818,7 @@ function tables(){
    team:S.countries.filter(c=>c.manager).map(c=>[t("manager"),c.manager,t("manager"),cname(c),c.phone||"",c.email||"",c.notes||""]).concat(S.team.map(p=>[p.type==="vol"?t("volT"):t("teamT"),p.name,p.role||"",p.countryId?cname(d.C[p.countryId]):t("wholeME"),p.phone||"",p.email||"",p.notes||""])),
    goals:S.goals.map(g=>{const a=goalActual(g.countryId,g.year,d);return [g.year,cname(d.C[g.countryId]),g.churches||"",g.clubs||"",g.kids||"",g.cov?g.cov+"%":"",a.clubs,a.kids]}),
    trainings:[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(tr=>[fmtDate(tr.date),cname(d.C[tr.countryId]),tr.title||"",ttName(tr.type),tr.program?progName(tr.program):t("general"),tr.trainer||"",tr.count||0,(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]).join("، ")]),
+   comps:[...S.competitions].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.title||"",x.region||"",x.town||"",x.churchCount||0,x.contestants||0,x.teamCount||0,x.volCount||0,(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]).join("، "),x.notes||""]),
    resources:S.resources.map(r=>[r.title||"",r.program?progName(r.program):t("general"),r.countryId?cname(d.C[r.countryId]):t("forAll"),r.url||"",r.desc||""]),
    plans:[...S.plans].sort((a,b)=>a.date.localeCompare(b.date)).map(p=>{const c=S.clubs.find(x=>x.id===p.clubId);const ch=c&&d.CH[c.churchId];return [fmtDate(p.date),cname(d.C[p.countryId]),ch?ch.name:"",c?progName(c.program):"",p.visitor||"",p.notes||""]}),
    compare:S.countries.map(c=>{const st=countryStats(c.id,d);const ser=kidsSeries(clubsOf(c.id));return [cname(c),st.active,st.kids,st.pct+"%",ser[ser.length-1].v-ser[ser.length-2].v]}),
@@ -1756,7 +1834,7 @@ async function exportXlsx(){
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
   add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("income")+" ($)",t("expense")+" ($)",t("net")+" ($)",t("balance")+" ($)",t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31));
     const bud=S.finance.filter(f=>f.kind==="budget").sort((a,b)=>(b.year-a.year));if(bud.length){const wb2=XLSX.utils.aoa_to_sheet([[t("year"),t("country"),t("yearBudget")+" ($)",t("spentOf")+" ($)"]].concat(bud.map(b=>[b.year,cname(S.countries.find(c=>c.id===b.countryId)),+b.budget||0,spentYear(b.countryId,b.year,b.year+"-12")])));wb2["!cols"]=[8,18,16,16].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,wb2,t("yearBudget").slice(0,31))}}
-  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("tComp"),"comps",[12,14,26,16,16,10,10,10,10,60,30]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
