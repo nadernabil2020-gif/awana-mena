@@ -791,7 +791,9 @@ async function syncLeaders(){if(leadersBusy||!isAdmin()||S.viewMode||!S.users.le
   try{const want={};S.countries.forEach(c=>want[c.id]={});
     S.users.filter(u=>u.role==="leader").forEach(u=>scopesOf(u).forEach(x=>{if(!x.r||!want[x.c])return;const k=x.a?x.r+"|"+x.a+(x.m?"|"+x.m:""):x.r;if(!want[x.c][k])want[x.c][k]={n:u.name||u.email||"",e:u.email||"",u:u.id}}));
     for(const c of S.countries){const cur=c.leaders||{};const w=want[c.id];const norm=o=>JSON.stringify(Object.keys(o).sort().map(k=>[k,o[k].n,o[k].u]));
-      if(norm(cur)!==norm(w))await db.doc("countries/"+c.id).update({leaders:w}).catch(e=>console.error("leaders",e))}}
+      if(norm(cur)!==norm(w))await db.doc("countries/"+c.id).update({leaders:w}).catch(e=>console.error("leaders",e));
+      // مسؤول الدولة اتشالت صلاحيته على الدولة كلها؟ امسح اسمه من على الدولة
+      if(c.leaderUid){const u=S.users.find(z=>z.id===c.leaderUid);if(!u||u.role!=="leader"||!scopesOf(u).some(x=>x.c===c.id&&!x.r))await db.doc("countries/"+c.id).update({manager:"",email:"",leaderUid:""}).catch(e=>console.error("mgr",e))}}}
   finally{leadersBusy=false}}
 // مسؤول المنطقة يشوف اسمه هو بس (ومسؤولين المناطق الفرعية تحته)، مش مسؤول الدولة ولا باقي المناطق
 function myLeaderKeys(cid){return myScopes().filter(x=>x.c===cid&&x.r).map(x=>x.a?x.r+"|"+x.a+(x.m?"|"+x.m:""):x.r)}
