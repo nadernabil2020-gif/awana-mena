@@ -387,7 +387,7 @@ tr.click:hover td{background:var(--raise)}
 .vhist div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .vthumbs{display:flex;gap:6px}
 .schips{display:flex;flex-wrap:wrap;gap:6px}.schip{display:inline-flex;align-items:center;gap:4px;background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:.82rem;border-radius:999px;padding:4px 6px 4px 10px}.schip button{border:0;background:transparent;color:inherit;cursor:pointer;padding:0;display:grid;place-items:center;width:20px;height:20px}.schip svg{width:14px;height:14px}
-.addscope select[hidden]{display:none}
+.addscope [hidden]{display:none}
 .comps{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
 .cnums{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.cnums div{background:var(--raise);border-radius:12px;padding:8px 4px;text-align:center;display:flex;flex-direction:column}.cnums b{font-size:1.35rem;line-height:1.1}.cnums small{font-size:.72rem;font-weight:700;color:var(--muted)}
 .cphotos{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.cphotos .vth{width:100%;height:auto;aspect-ratio:1}
@@ -553,7 +553,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  authFail:"تعذّر تسجيل الدخول. حاول مرة تانية.",signedAs:"داخل باسم",
  usersSub:"وافق على الطلبات الجديدة وحدد صلاحية كل شخص",noUsers:"لا يوجد مستخدمين بعد",
  rolePending:"في انتظار الموافقة",roleViewer:"مشاهدة فقط",roleLeader:"مسؤول دولة",roleAdmin:"أدمن",roleDisabled:"موقوف",
- pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
+ pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",scopeAreaPh:"المنطقة الفرعية (اختياري) — اكتب أو اختار",scopeHow:"اختار الدولة (والمنطقة لو عايز) تحت، وبعدين دوس «إضافة مكان» علشان يتحفظ 👇",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
  qVisited:"اتزارت الربع ده",
  tTrain:"التدريب",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة النوادي اللي اتزارت",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
@@ -636,7 +636,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  authFail:"Couldn't sign in. Please try again.",signedAs:"Signed in as",
  usersSub:"Approve new requests and set each person's access",noUsers:"No users yet",
  rolePending:"Waiting for approval",roleViewer:"View only",roleLeader:"Country leader",roleAdmin:"Admin",roleDisabled:"Disabled",
- pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
+ pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",scopeAreaPh:"Sub-area (optional) — type or pick",scopeHow:"Pick the country (and region if needed) below, then tap Add place to save 👇",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
  qVisited:"Visited this quarter",
  tTrain:"Training",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Clubs visited",gChurches:"Churches",achieved:"Achieved",target:"Target",
@@ -786,12 +786,12 @@ function compForm(x){
     const data={countryId:f.querySelector("#cpCountry").value,title:val(f,"cpTitle"),date:val(f,"cpDate"),region:val(f,"cpRegion"),town:val(f,"cpTown"),churchIds,otherChurches,churchCount:churchIds.length+otherChurches.length,
       contestants:n("cpCont"),teamCount:n("cpTeam"),volCount:n("cpVol"),notes:val(f,"cpNotes"),by:(x.by||S.me.id),updatedAt:Date.now(),createdAt:x.createdAt||Date.now(),archived:x.archived||0};
     if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.town=myArea()}
-    data.area=data.town;
+    data.area=data.town;data.center=myCenter()||x.center||"";
     if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
     if(!data.countryId)return merr(t("needCountry"));if(!data.date)return merr(t("req"));
     $("msave").textContent=t("saving");
     const ref=x.id?db.doc("competitions/"+x.id):db.collection("competitions").doc();const ids=[];
-    for(const sl of slots){if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({compId:ref.id,countryId:data.countryId,region:data.region,area:data.area,data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}else if(sl.id)ids.push(sl.id)}
+    for(const sl of slots){if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({compId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center||"",data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}else if(sl.id)ids.push(sl.id)}
     data.images=ids;await ref.set(data);
     for(const old of (x.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete().catch(()=>{});
     logAct(x.id?"edit":"add","comp",(data.title||t("tComp"))+" · "+data.date,data.countryId);
@@ -832,7 +832,7 @@ function trainingForm(tr){
     $("msave").textContent=t("saving");
     const ref=tr.id?db.doc("trainings/"+tr.id):db.collection("trainings").doc();const ids=[];
     for(const sl of tslots){
-      if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({trainingId:ref.id,countryId:data.countryId,region:data.region,area:data.area,data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}
+      if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({trainingId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center||"",data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}
       else if(sl.id)ids.push(sl.id);
     }
     data.images=ids;await ref.set(data);
@@ -935,9 +935,9 @@ function planForm(clubId){
    <div class="fgrid">${fld("pDate",t("planDate"),addDays(today(),7),{type:"date",req:1})}${fld("pBy",t("visitor"),"",{list:"lVisitor"})}${fld("pNotes",t("notes"),"",{full:1,area:1})}</div>
    <div class="viewbar" style="margin:0">${I.cal} ${esc(t("planHint"))}</div>`,async f=>{
     const date=val(f,"pDate");if(!date)return merr(t("req"));
-    if(date<today()){await db.collection("visits").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),images:[],by:S.me.id,createdAt:Date.now()});
+    if(date<today()){await db.collection("visits").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),images:[],by:S.me.id,createdAt:Date.now()});
       logAct("add","visit",ch.name+" · "+progName(c.program)+" · "+date,ch.countryId);setTimeout(()=>toast(t("planPastSaved")),400);return}
-    await db.collection("plans").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),by:S.me.id,createdAt:Date.now()});
+    await db.collection("plans").doc().set({clubId:c.id,churchId:ch.id,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",date,visitor:val(f,"pBy"),notes:val(f,"pNotes"),by:S.me.id,createdAt:Date.now()});
     logAct("add","plan",ch.name+" · "+progName(c.program)+" · "+date,ch.countryId);
   });
 }
@@ -973,23 +973,24 @@ const canAdmin=()=>!S.viewMode&&isAdmin();
 const canAllV=()=>!S.viewMode&&canAll();
 // نطاق المسؤول: ممكن يكون أكتر من دولة أو منطقة. كل نطاق {c: الدولة, r: المنطقة الكبيرة, a: المنطقة الفرعية}
 function scopesOf(u){if(!u||u.role!=="leader")return[];
-  if(Array.isArray(u.scopes)&&u.scopes.length)return u.scopes.map(k=>{const [c,r,a]=String(k).split("|");return {c:c||"",r:r||"",a:(r&&a)||""}}).filter(x=>x.c);
-  return u.countryId?[{c:u.countryId,r:u.region||"",a:(u.region&&u.area)||""}]:[]}
-const scopeKey=x=>x.c+(x.r?"|"+x.r+(x.a?"|"+x.a:""):"");
+  if(Array.isArray(u.scopes)&&u.scopes.length)return u.scopes.map(k=>{const [c,r,a,m]=String(k).split("|");return {c:c||"",r:r||"",a:(r&&a)||"",m:(r&&a&&m)||""}}).filter(x=>x.c);
+  return u.countryId?[{c:u.countryId,r:u.region||"",a:(u.region&&u.area)||"",m:""}]:[]}
+const scopeKey=x=>x.c+(x.r?"|"+x.r+(x.a?"|"+x.a+(x.m?"|"+x.m:""):""):"");
 const myScopes=()=>scopesOf(S.me);
 const myReg=()=>{const m=myScopes();return (m.length===1&&m[0].r)||""};
 const myArea=()=>{const m=myScopes();return (m.length===1&&m[0].a)||""};
+const myCenter=()=>{const m=myScopes();return (m.length===1&&m[0].m)||""};
 const scoped=()=>{const m=myScopes();return m.length>1||m.some(x=>x.r)};
-const matchScope=(x,o)=>o.countryId===x.c&&(!x.r||(o.region||"")===x.r)&&(!x.a||(o.area??o.city??"")===x.a);
+const matchScope=(x,o)=>o.countryId===x.c&&(!x.r||(o.region||"")===x.r)&&(!x.a||(o.area??o.city??"")===x.a)&&(!x.m||(o.center||"")===x.m);
 const inScope=o=>!!o&&myScopes().some(x=>matchScope(x,o));
 const canC=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&!!cid&&myScopes().some(x=>x.c===cid&&!x.r)));
 const canE=o=>!S.viewMode&&!!o&&(canAll()||(role()==="leader"&&inScope(o)));
 const canAddIn=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&myScopes().some(x=>x.c===cid)));
 const stampScope=(o,cid)=>{if(role()!=="leader")return {region:(o&&o.region)||"",area:(o&&o.area)||""};
-  const m=myScopes().filter(x=>x.c===cid);if(o&&o.region!==undefined&&m.some(x=>matchScope(x,{countryId:cid,region:o.region||"",area:o.area||""})))return {region:o.region||"",area:o.area||""};
-  const x=m.find(z=>!z.r)||m[0]||{};return {region:x.r||"",area:x.a||""}};
-const scopeTxt=x=>[cname(S.countries.find(c=>c.id===x.c)),x.r,x.a].filter(Boolean).join(" › ");
-function scopeLabel(u){const m=scopesOf(u);if(!m.length||(m.length===1&&!m[0].r))return "";return m.map(x=>m.every(z=>z.c===m[0].c)?[x.r||cname(S.countries.find(c=>c.id===x.c)),x.a].filter(Boolean).join(" › "):scopeTxt(x)).join("، ")}
+  const m=myScopes().filter(x=>x.c===cid);if(o&&o.region!==undefined&&m.some(x=>matchScope(x,{countryId:cid,region:o.region||"",area:o.area||"",center:o.center||""})))return {region:o.region||"",area:o.area||"",center:o.center||""};
+  const x=m.find(z=>!z.r)||m[0]||{};return {region:x.r||"",area:x.a||"",center:x.m||""}};
+const scopeTxt=x=>[cname(S.countries.find(c=>c.id===x.c)),x.r,x.a,x.m].filter(Boolean).join(" › ");
+function scopeLabel(u){const m=scopesOf(u);if(!m.length||(m.length===1&&!m[0].r))return "";return m.map(x=>m.every(z=>z.c===m[0].c)?[x.r||cname(S.countries.find(c=>c.id===x.c)),x.a,x.m].filter(Boolean).join(" › "):scopeTxt(x)).join("، ")}
 function areasOf(cid,reg){const co=S.countries.find(c=>c.id===cid)||{};return [...new Set((co.towns||[]).filter(x=>x.r===reg).map(x=>x.n).concat(S.churches.filter(c=>c.countryId===cid&&c.region===reg).map(c=>c.city)).filter(Boolean))]}
 const canAny=()=>!S.viewMode&&(canAll()||(role()==="leader"&&myScopes().length>0));
 const canAnyC=()=>canAny()&&(canAll()||myScopes().some(x=>!x.r));
@@ -1073,7 +1074,7 @@ function render(){
   else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(myScopes().map(scopeTxt).join("، "))}</b> — ${esc(t("scopeBar2"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
   h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,finance:vFinance}[S.tab]||vOverview)(d);
-  m.innerHTML=h;m.dataset.view=S.tab;m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
+  m.innerHTML=h;m.dataset.view=S.tab;if(S.tab==="users")restoreDrafts();m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
 }
 const dots=`<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
 function emptyBox(title,hint,btn){return `<div class="empty">${dots}<b>${esc(title)}</b>${hint?`<span>${esc(hint)}</span>`:""}${btn||""}</div>`}
@@ -1256,12 +1257,12 @@ function latePlans(d){return S.plans.filter(p=>p.date<today()&&canE(d.CH[p.churc
 let convBusy=false;
 async function autoConvertPlans(){if(convBusy||S.viewMode||!S.me)return;const d=D();const list=latePlans(d);if(!list.length)return;convBusy=true;
   try{for(const p of list){const ch=d.CH[p.churchId];
-      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
+      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
       await db.doc("plans/"+p.id).delete()}}catch(e){console.error("convert",e)}finally{convBusy=false}}
 async function convertLate(btn){const d=D();const list=latePlans(d);if(!list.length)return;
   if(!btn.dataset.armed){btn.dataset.armed="1";btn.textContent=t("sureConv");return}btn.disabled=true;btn.textContent=t("saving");
   try{for(const p of list){const ch=d.CH[p.churchId];
-      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
+      if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
       await db.doc("plans/"+p.id).delete()}
     logAct("add","visit",t("convertLate")+" ("+list.length+")",(myScopes()[0]||{}).c||"");toast(t("saved"))}catch(e){console.error(e);toast(t("failed"))}}
 function visitRows(d){
@@ -1332,7 +1333,7 @@ function storyForm(s,countryId){
     const ref=s.id?db.doc("stories/"+s.id):db.collection("stories").doc();
     const ids=[];
     for(const sl of slots){
-      if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({storyId:ref.id,countryId:data.countryId,region:data.region,area:data.area,data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}
+      if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({storyId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center||"",data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}
       else if(sl.id)ids.push(sl.id);
     }
     for(const old of (s.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete();
@@ -1384,15 +1385,22 @@ function vUsers(d){
   return h+`<div class="cards ucards">${list.map(card).join("")}</div>`+backupPanel()+photosPanel()+vLog();
 }
 function scopeEditor(u){const m=scopesOf(u);const dis=S.viewMode?"disabled":"";
-  return `<div class="schips">${m.length?m.map((x,i)=>`<span class="schip">${esc(scopeTxt(x))}<button type="button" data-act="rmScope" data-id="${u.id}" data-i="${i}" ${dis} aria-label="${esc(t("del"))}">${I.x}</button></span>`).join(""):`<small style="color:var(--red);font-weight:700">${esc(t("leaderNoCountry"))}</small>`}</div>
+  return `<div class="schips">${m.length?m.map((x,i)=>`<span class="schip">${esc(scopeTxt(x))}<button type="button" data-act="rmScope" data-id="${u.id}" data-i="${i}" ${dis} aria-label="${esc(t("del"))}">${I.x}</button></span>`).join(""):`<small style="color:var(--yellow-ink,#b7791f);font-weight:700">${esc(t("scopeHow"))}</small>`}</div>
    <div class="ctl addscope" data-uid="${u.id}"><select class="as-c" ${dis} aria-label="${esc(t("country"))}"><option value="">${esc(t("pickCountry"))}</option>${S.countries.map(c=>`<option value="${c.id}">${esc(cname(c))}</option>`).join("")}</select>
-   <select class="as-r" ${dis} hidden aria-label="${esc(t("scopeReg"))}"></select><select class="as-a" ${dis} hidden aria-label="${esc(t("scopeArea"))}"></select>
+   <select class="as-r" ${dis} hidden aria-label="${esc(t("scopeReg"))}"></select><input class="as-a" ${dis} hidden list="asl-${u.id}" placeholder="${esc(t("scopeAreaPh"))}" aria-label="${esc(t("scopeArea"))}" autocomplete="off"><datalist id="asl-${u.id}"></datalist>
    <button type="button" class="btn small green" data-act="addScope" data-id="${u.id}" ${dis}>${I.plus}${esc(t(m.length?"addScopeMore":"addScope"))}</button></div>`}
+S.scopeDraft={};
+function saveDraft(box){S.scopeDraft[box.dataset.uid]={c:box.querySelector(".as-c").value,r:box.querySelector(".as-r").value,a:box.querySelector(".as-a").value}}
+document.addEventListener("input",e=>{const bx=e.target.closest&&e.target.closest(".addscope");if(bx)saveDraft(bx)});
+function restoreDrafts(){document.querySelectorAll(".addscope").forEach(box=>{const d=S.scopeDraft[box.dataset.uid];if(!d||!d.c)return;
+  box.querySelector(".as-c").value=d.c;scopeFill(box);box.querySelector(".as-r").value=d.r;scopeFill(box);box.querySelector(".as-a").value=d.a||""})}
 function scopeFill(box){const c=box.querySelector(".as-c").value,r=box.querySelector(".as-r"),a=box.querySelector(".as-a");const co=S.countries.find(x=>x.id===c)||{};
   if(r.dataset.c!==c){r.dataset.c=c;r.innerHTML=`<option value="">${esc(t("scopeAllCountry"))}</option>`+(co.regions||[]).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");}
-  r.hidden=!c||!(co.regions||[]).length;const ar=r.value?areasOf(c,r.value):[];
-  a.innerHTML=`<option value="">${esc(t("scopeAllReg"))}</option>`+ar.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");a.hidden=!r.value||!ar.length}
-async function setScopes(uid,list){const u=S.users.find(x=>x.id===uid)||{};const f=list[0]||{c:"",r:"",a:""};
+  r.hidden=!c||!(co.regions||[]).length;const R=r.value;
+  const inR=h=>h.countryId===c&&(h.region||"")===R;
+  const opts=R?[...new Set((co.towns||[]).filter(x=>x.r===R||!x.r).map(x=>x.n).concat(S.churches.filter(inR).map(h=>h.city)).filter(Boolean))].sort().flatMap(x=>[x].concat([...new Set(S.churches.filter(h=>inR(h)&&h.city===x&&h.center).map(h=>h.center))].map(m=>x+" › "+m))):[];
+  const dl=box.querySelector("datalist");if(dl)dl.innerHTML=opts.map(x=>`<option value="${esc(x)}">`).join("");a.hidden=!R;if(!R)a.value=""}
+async function setScopes(uid,list){const u=S.users.find(x=>x.id===uid)||{};const f=list[0]||{c:"",r:"",a:"",m:""};
   await setUser(uid,{scopes:list.map(scopeKey),scopeCountries:[...new Set(list.map(x=>x.c))],countryId:f.c,region:f.r,area:f.a});
   for(const x of list.slice(1))if(!x.r)await db.doc("countries/"+x.c).update({manager:u.name||u.email||"",email:u.email||"",leaderUid:uid}).catch(()=>{})}
 function scopeSelects(u){const co=S.countries.find(c=>c.id===u.countryId)||{};const regs=co.regions||[];const ar=u.region?areasOf(u.countryId,u.region):[];
@@ -1586,25 +1594,25 @@ function churchForm(ch,countryId){
   ch=ch||{countryId};const d=D();const cls=ch.id?(d.clubsByChurch[ch.id]||[]):[];
   const f=openModal(ch.id?t("editChurch"):t("addChurch"),`<div class="fgrid">
    <div class="f"><label for="hCountry">${esc(t("country"))} *</label><select id="hCountry">${myCountries().map(c=>`<option value="${c.id}" ${ch.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
-   ${fld("hName",t("churchName"),ch.name,{req:1})}${fld("hRegion",t("region"),myReg()||ch.region,{list:"lRegion"})}${fld("hCity",t("city"),myArea()||ch.city,{list:"lCity"})}${fld("hCenter",t("center"),ch.center,{list:"lCenter"})}${fld("hVillage",t("village"),ch.village)}${fld("hPastor",t("pastor"),ch.pastor)}${fld("hPastorPh",t("pastorPhone"),ch.pastorPhone,{type:"tel",im:"tel",dir:"ltr"})}</div>
+   ${fld("hName",t("churchName"),ch.name,{req:1})}${fld("hRegion",t("region"),myReg()||ch.region,{list:"lRegion"})}${fld("hCity",t("city"),myArea()||ch.city,{list:"lCity"})}${fld("hCenter",t("center"),myCenter()||ch.center,{list:"lCenter"})}${fld("hVillage",t("village"),ch.village)}${fld("hPastor",t("pastor"),ch.pastor)}${fld("hPastorPh",t("pastorPhone"),ch.pastorPhone,{type:"tel",im:"tel",dir:"ltr"})}</div>
    <datalist id="lRegion"></datalist><datalist id="lCity"></datalist><datalist id="lCenter"></datalist>
    <div style="display:flex;justify-content:space-between;align-items:center"><b>${esc(t("clubsOfChurch"))}</b><button type="button" class="btn ghost small" id="addClubRow">${I.plus}${esc(t("addClub"))}</button></div>
    <div id="clubRows" style="display:flex;flex-direction:column;gap:8px">${(cls.length?cls:[{}]).map(clubRowHTML).join("")}</div>
    <div class="f" id="rmPassBox" hidden style="background:var(--red-soft,#fde8e8);border-radius:12px;padding:10px"><label for="rmPass" style="color:var(--red)">${esc(t("rmClubPass"))}</label><input id="rmPass" type="password" inputmode="numeric" autocomplete="off" dir="ltr" style="letter-spacing:6px;text-align:center"></div>`,async f=>{
     {const left=new Set([...f.querySelectorAll(".clubrow")].map(r=>r.dataset.id).filter(Boolean));if(cls.some(c=>!left.has(c.id))&&val(f,"rmPass")!==DEL_PASS)return merr(t("badPass"))}
     const data={countryId:f.querySelector("#hCountry").value,name:val(f,"hName"),region:val(f,"hRegion"),city:val(f,"hCity"),center:val(f,"hCenter"),village:val(f,"hVillage"),pastor:val(f,"hPastor"),pastorPhone:val(f,"hPastorPh"),updatedAt:Date.now(),createdAt:ch.createdAt||Date.now()};
-    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.city=myArea()}data.area=data.city;
+    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.city=myArea();if(myCenter())data.center=myCenter()}data.area=data.city;
     if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
     if(!data.countryId)return merr(t("needCountry"));if(!data.name)return merr(t("req"));
     const ref=ch.id?db.doc("churches/"+ch.id):db.collection("churches").doc();await ref.set(data);
     const keep=new Set();
     for(const r of f.querySelectorAll(".clubrow")){
-      const cd={churchId:ref.id,countryId:data.countryId,region:data.region,area:data.area,program:r.querySelector(".k-prog").value,leader:r.querySelector(".k-leader").value.trim(),phone:r.querySelector(".k-phone").value.trim(),kids:Math.max(0,parseInt(r.querySelector(".k-kids").value,10)||0),status:r.querySelector(".k-st").value,updatedAt:Date.now()};
+      const cd={churchId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center,program:r.querySelector(".k-prog").value,leader:r.querySelector(".k-leader").value.trim(),phone:r.querySelector(".k-phone").value.trim(),kids:Math.max(0,parseInt(r.querySelector(".k-kids").value,10)||0),status:r.querySelector(".k-st").value,updatedAt:Date.now()};
       if(!r.dataset.id&&!cd.leader&&!cd.phone&&!cd.kids)continue;
       if(r.dataset.id){keep.add(r.dataset.id);await db.doc("clubs/"+r.dataset.id).set(cd)}else await db.collection("clubs").doc().set(cd);
     }
     for(const c of cls)if(!keep.has(c.id))await delClub(c.id);
-    if(ch.id)for(const [col,arr] of [["visits",S.visits],["plans",S.plans]])for(const v of arr.filter(v=>v.churchId===ch.id))if(v.countryId!==data.countryId||(v.region||"")!==data.region||(v.area||"")!==data.area)await db.doc(col+"/"+v.id).update({countryId:data.countryId,region:data.region,area:data.area}).catch(e=>console.error(e));
+    if(ch.id)for(const [col,arr] of [["visits",S.visits],["plans",S.plans]])for(const v of arr.filter(v=>v.churchId===ch.id))if(v.countryId!==data.countryId||(v.region||"")!==data.region||(v.area||"")!==data.area||(v.center||"")!==data.center)await db.doc(col+"/"+v.id).update({countryId:data.countryId,region:data.region,area:data.area,center:data.center}).catch(e=>console.error(e));
     const co=S.countries.find(x=>x.id===data.countryId);
     if(co){const regs=(co.regions||[]).slice(),towns=(co.towns||[]).slice();let ch2=false;
       if(data.region&&!regs.includes(data.region)){regs.push(data.region);ch2=true}
@@ -1618,7 +1626,7 @@ function churchForm(ch,countryId){
     f.querySelector("#lRegion").innerHTML=opts((co.regions||[]).concat(own.map(x=>x.region)));
     f.querySelector("#lCity").innerHTML=opts((co.towns||[]).filter(x=>!reg||!x.r||x.r===reg).map(x=>x.n).concat(own.filter(x=>!reg||x.region===reg).map(x=>x.city)));
     f.querySelector("#lCenter").innerHTML=opts(own.map(x=>x.center));};
-  if(myReg()){const r=f.querySelector("#hRegion");r.readOnly=true;r.style.opacity=".7";if(myArea()){const c=f.querySelector("#hCity");c.readOnly=true;c.style.opacity=".7"}}
+  if(myReg()){const r=f.querySelector("#hRegion");r.readOnly=true;r.style.opacity=".7";if(myArea()){const c=f.querySelector("#hCity");c.readOnly=true;c.style.opacity=".7"}if(myCenter()){const c=f.querySelector("#hCenter");c.readOnly=true;c.style.opacity=".7"}}
   fillLists();f.querySelector("#hCountry").addEventListener("change",fillLists);f.querySelector("#hRegion").addEventListener("input",fillLists);
   const box=f.querySelector("#clubRows");
   f.querySelector("#addClubRow").onclick=()=>{box.insertAdjacentHTML("beforeend",clubRowHTML({}));box.lastElementChild.querySelector("select").focus()};
@@ -1631,7 +1639,7 @@ function clubForm(id){
    ${fld("kLeader",t("leader"),c.leader)}${fld("kPhone",t("phone"),c.phone,{type:"tel",im:"tel",dir:"ltr"})}${fld("kKids",t("kidsCount"),String(c.kids??""),{type:"number",im:"numeric"})}
    <div class="f"><label for="kSt">${esc(t("clubStatus"))}</label><select id="kSt">${["active","new","paused"].map(k=>`<option value="${k}" ${(c.status||"active")===k?"selected":""}>${esc(t(ST[k][0]))}</option>`).join("")}</select></div></div>`,async f=>{
     const kids=Math.max(0,parseInt(toEn(val(f,"kKids")),10)||0);
-    const up={program:f.querySelector("#kProg").value,leader:val(f,"kLeader"),phone:val(f,"kPhone"),kids,status:f.querySelector("#kSt").value,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",updatedAt:Date.now()};
+    const up={program:f.querySelector("#kProg").value,leader:val(f,"kLeader"),phone:val(f,"kPhone"),kids,status:f.querySelector("#kSt").value,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",updatedAt:Date.now()};
     await db.doc("clubs/"+c.id).update(up);
     logAct("edit","church",ch.name+" · "+progName(up.program)+(kids!==(+c.kids||0)?" · "+t("kids")+": "+(+c.kids||0)+" → "+kids:""),ch.countryId);
   });
@@ -1652,7 +1660,7 @@ function visitForm(clubId,planId,visitId){
     const kraw=toEn(val(f,"vKids"));const kids=kraw===""?null:Math.max(0,parseInt(kraw,10)||0);
     $("msave").textContent=t("saving");
     const ref=ev?db.doc("visits/"+ev.id):db.collection("visits").doc();
-    const sc={countryId:ch.countryId,region:ch.region||"",area:ch.city||""};
+    const sc={countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||""};
     const ids=[];
     for(const sl of slots){
       if(sl.data){const ir=db.collection("storyImages").doc();await ir.set(Object.assign({visitId:ref.id,data:sl.data},sc));imgCache[ir.id]=sl.data;ids.push(ir.id)}
@@ -1740,9 +1748,9 @@ document.addEventListener("click",e=>{
    case"addComp":compForm();break;
    case"editComp":compForm(S.competitions.find(x=>x.id===id));break;
    case"convertLate":convertLate(a);break;
-   case"addScope":{const box=a.closest(".addscope");const x={c:box.querySelector(".as-c").value,r:box.querySelector(".as-r").value,a:""};x.a=x.r?box.querySelector(".as-a").value:"";
+   case"addScope":{const box=a.closest(".addscope");const x={c:box.querySelector(".as-c").value,r:box.querySelector(".as-r").value,a:"",m:""};if(x.r){const v=box.querySelector(".as-a").value.split(/\s*›\s*|\|/).map(z=>z.trim());x.a=v[0]||"";x.m=(x.a&&v[1])||""}
      if(!x.c){toast(t("needCountry"));break}const u=S.users.find(z=>z.id===id);const m=scopesOf(u);if(m.some(z=>scopeKey(z)===scopeKey(x))){toast(t("scopeDup"));break}
-     setScopes(id,m.concat([x]))}break;
+     delete S.scopeDraft[id];setScopes(id,m.concat([x]))}break;
    case"rmScope":{const u=S.users.find(z=>z.id===id);const m=scopesOf(u);m.splice(+a.dataset.i,1);setScopes(id,m)}break;
    case"viewPhoto":viewPhoto(id);break;
    case"toggleHist":S.open[id]=!S.open[id];render();break;
@@ -1788,7 +1796,7 @@ document.addEventListener("click",e=>{
 },true);
 document.addEventListener("submit",e=>{if(e.target.id==="invForm"){e.preventDefault();saveInvite(e.target)}});
 document.addEventListener("change",e=>{
-  {const bx=e.target.closest&&e.target.closest(".addscope");if(bx){scopeFill(bx);return}}
+  {const bx=e.target.closest&&e.target.closest(".addscope");if(bx){scopeFill(bx);saveDraft(bx);return}}
   if(e.target.id==="compCountry"){S.compCountry=e.target.value;render();return}
   if(/^arch(From|To|V|T|S|C)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
   if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";invScopeFill();return}
@@ -1997,7 +2005,7 @@ function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
   let qs=[db.collection(name)];const sc=myScopes();
   if(scoped()&&name!=="countries"&&name!=="resources"){
-    if(["churches","clubs","visits","plans"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a)q=q.where("area","==",x.a)}return q});
+    if(["churches","clubs","visits","plans"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
     else qs=[...new Set(sc.map(x=>x.c))].map(c=>db.collection(name).where("countryId","==",c));}
   const parts=qs.map(()=>null);
   const merge=()=>{if(!parts.every(Boolean))return;const m={};parts.forEach(p=>p.forEach(x=>m[x.id]=x));let a=Object.values(m);
@@ -2007,10 +2015,10 @@ function subscribe(name){
 // يكتب المنطقة والمنطقة الفرعية على النوادي والزيارات والخطط القديمة (علشان صلاحيات مسؤولي المناطق)
 let syncing=false;
 async function syncScopes(){
-  if(syncing||S.synced||!S.me||!(canAll()||(role()==="leader"&&!scoped())))return;syncing=true;
-  try{const mine=o=>canAll()||o.countryId===S.me.countryId;const ups=[];const CH={};S.churches.forEach(c=>CH[c.id]=c);
-    S.churches.filter(mine).forEach(c=>{if((c.area??null)!==(c.city||""))ups.push(["churches/"+c.id,{area:c.city||""}])});
-    for(const col of ["clubs","visits","plans"])S[col].filter(mine).forEach(o=>{const c=CH[o.churchId];if(!c)return;const r=c.region||"",a=c.city||"";if((o.region??null)!==r||(o.area??null)!==a)ups.push([col+"/"+o.id,{region:r,area:a}])});
+  if(syncing||S.synced||!S.me||S.viewMode||!(canAll()||(role()==="leader"&&myScopes().some(x=>!x.r))))return;syncing=true;
+  try{const mine=o=>canAll()||inScope(o);const ups=[];const CH={};S.churches.forEach(c=>CH[c.id]=c);
+    S.churches.filter(mine).forEach(c=>{if((c.area??null)!==(c.city||"")||(c.center??null)!==(c.center||"")||(c.region??null)!==(c.region||""))ups.push(["churches/"+c.id,{area:c.city||"",center:c.center||"",region:c.region||""}])});
+    for(const col of ["clubs","visits","plans"])S[col].filter(mine).forEach(o=>{const c=CH[o.churchId];if(!c)return;const r=c.region||"",a=c.city||"",m=c.center||"";if((o.region??null)!==r||(o.area??null)!==a||(o.center??null)!==m)ups.push([col+"/"+o.id,{region:r,area:a,center:m}])});
     for(let i=0;i<ups.length;i+=400){const b=db.batch();ups.slice(i,i+400).forEach(([p,d])=>b.update(db.doc(p),d));await b.commit()}
     S.synced=true;
   }catch(e){console.error("syncScopes",e)}finally{syncing=false}
