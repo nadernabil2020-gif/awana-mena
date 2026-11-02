@@ -389,7 +389,7 @@ tr.click:hover td{background:var(--raise)}
 .tpick{display:flex;flex-wrap:wrap;gap:6px;max-height:200px;overflow:auto;background:var(--raise);border-radius:12px;padding:8px}
 .tpk{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:.86rem;font-weight:700}
 .tpk input{position:absolute;opacity:0;width:0;height:0}.tpk small{font-weight:600;color:var(--muted);font-size:.72rem}
-.tpk.on{background:var(--blue);border-color:var(--blue);color:#fff}.tpk.on small{color:#fff;opacity:.85}
+.tpk[hidden]{display:none}.tpk.on{background:var(--blue);border-color:var(--blue);color:#fff}.tpk.on small{color:#fff;opacity:.85}
 .rcards{grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}.rcard{display:flex;flex-direction:column;gap:10px}
 .abar{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:4px 0 14px}.abar.sub{margin-top:-4px}
 .abtn{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:start;padding:12px 14px;border-radius:16px;border:2px solid var(--line);border-inline-start:6px solid var(--ac);background:var(--surface);color:var(--ink);cursor:pointer;font:inherit;min-height:64px}
@@ -828,11 +828,14 @@ function areaBar(cid,cnt){if(!cid)return "";const f=afOf(cid);if(!f.regs.length)
   return h}
 const cntBy=(items,cid,gr,ga)=>(r,a)=>items.filter(x=>x.countryId===cid&&(!r||(gr(x)||"")===r)&&(!a||(ga(x)||"")===a)).length;
 /* ---------- team picker (choose team members in visits / trainings / competitions) ---------- */
-function teamPick(sel,cid){sel=new Set(sel||[]);const list=S.team.filter(p=>!cid||!p.countryId||p.countryId===cid||sel.has(p.id)).sort((a,b)=>(a.type==="vol")-(b.type==="vol")||(a.name||"").localeCompare(b.name||""));
-  return list.length?list.map(p=>`<label class="tpk ${sel.has(p.id)?"on":""}"><input type="checkbox" value="${p.id}" ${sel.has(p.id)?"checked":""}><span>${esc(p.name)}</span>${p.role?`<small>${esc(p.role)}</small>`:""}</label>`).join(""):`<span class="muted" style="font-size:.85rem">${esc(t("noTeamPick"))}</span>`}
-const teamPickBox=(sel,cid)=>`<div class="f full"><label>${esc(t("teamPart"))} <span class="muted num tpn"></span></label><div class="tpick">${teamPick(sel,cid)}</div></div>`;
+// كل الفريق بيظهر: أعضاء الدولة دي الأول، وبعدين الشرق الأوسط كله، وبعدين باقي الدول
+function teamPick(sel,cid){sel=new Set(sel||[]);const rank=p=>p.countryId===cid?0:!p.countryId?1:2;
+  const list=[...S.team].sort((a,b)=>rank(a)-rank(b)||(a.type==="vol")-(b.type==="vol")||(a.name||"").localeCompare(b.name||""));
+  return list.length?list.map(p=>`<label class="tpk ${sel.has(p.id)?"on":""}" data-n="${esc(((p.name||"")+" "+(p.role||"")).toLowerCase())}"><input type="checkbox" value="${p.id}" ${sel.has(p.id)?"checked":""}><span>${esc(p.name)}</span>${p.role?`<small>${esc(p.role)}</small>`:""}${rank(p)===2&&p.countryId?`<small>· ${esc(cname(S.countries.find(c=>c.id===p.countryId)))}</small>`:""}</label>`).join(""):`<span class="muted" style="font-size:.85rem">${esc(t("noTeamPick"))}</span>`}
+const teamPickBox=(sel,cid)=>`<div class="f full"><label>${esc(t("teamPart"))} <span class="muted num tpn"></span></label>${S.team.length>12?`<input type="search" class="tpq" placeholder="${esc(t("search"))}" style="margin-bottom:6px">`:""}<div class="tpick">${teamPick(sel,cid)}</div></div>`;
 function wireTeamPick(f,getCid){const box=f.querySelector(".tpick");if(!box)return;const n=()=>{const k=box.querySelectorAll("input:checked").length;f.querySelector(".tpn").textContent=k?"("+nf(k)+")":""};
   box.addEventListener("change",e=>{const l=e.target.closest(".tpk");if(l)l.classList.toggle("on",e.target.checked);n()});n();
+  const q=f.querySelector(".tpq");if(q)q.addEventListener("input",()=>{const v=q.value.trim().toLowerCase();box.querySelectorAll(".tpk").forEach(l=>{l.hidden=!!v&&!l.dataset.n.includes(v)&&!l.querySelector("input").checked})});
   if(getCid)return ()=>{const cur=[...box.querySelectorAll("input:checked")].map(i=>i.value);box.innerHTML=teamPick(cur,getCid());n()}}
 const pickedTeam=f=>[...f.querySelectorAll(".tpick input:checked")].map(i=>i.value);
 const teamNames=ids=>(ids||[]).map(id=>(S.team.find(p=>p.id===id)||{}).name).filter(Boolean);
