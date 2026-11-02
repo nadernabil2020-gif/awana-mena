@@ -386,6 +386,8 @@ tr.click:hover td{background:var(--raise)}
 .vhist{padding:6px 16px 12px;font-size:.84rem;display:flex;flex-direction:column;gap:4px;background:var(--raise)}
 .vhist div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .vthumbs{display:flex;gap:6px}
+.schips{display:flex;flex-wrap:wrap;gap:6px}.schip{display:inline-flex;align-items:center;gap:4px;background:var(--blue-soft);color:var(--blue);font-weight:700;font-size:.82rem;border-radius:999px;padding:4px 6px 4px 10px}.schip button{border:0;background:transparent;color:inherit;cursor:pointer;padding:0;display:grid;place-items:center;width:20px;height:20px}.schip svg{width:14px;height:14px}
+.addscope select[hidden]{display:none}
 .comps{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
 .cnums{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.cnums div{background:var(--raise);border-radius:12px;padding:8px 4px;text-align:center;display:flex;flex-direction:column}.cnums b{font-size:1.35rem;line-height:1.1}.cnums small{font-size:.72rem;font-weight:700;color:var(--muted)}
 .cphotos{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.cphotos .vth{width:100%;height:auto;aspect-ratio:1}
@@ -551,7 +553,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  authFail:"تعذّر تسجيل الدخول. حاول مرة تانية.",signedAs:"داخل باسم",
  usersSub:"وافق على الطلبات الجديدة وحدد صلاحية كل شخص",noUsers:"لا يوجد مستخدمين بعد",
  rolePending:"في انتظار الموافقة",roleViewer:"مشاهدة فقط",roleLeader:"مسؤول دولة",roleAdmin:"أدمن",roleDisabled:"موقوف",
- pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
+ pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
  qVisited:"اتزارت الربع ده",
  tTrain:"التدريب",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة النوادي اللي اتزارت",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
@@ -634,7 +636,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  authFail:"Couldn't sign in. Please try again.",signedAs:"Signed in as",
  usersSub:"Approve new requests and set each person's access",noUsers:"No users yet",
  rolePending:"Waiting for approval",roleViewer:"View only",roleLeader:"Country leader",roleAdmin:"Admin",roleDisabled:"Disabled",
- pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
+ pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
  qVisited:"Visited this quarter",
  tTrain:"Training",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Clubs visited",gChurches:"Churches",achieved:"Achieved",target:"Target",
@@ -730,7 +732,7 @@ function goalForm(cid){
 }
 /* ---------- training & resources ---------- */
 function lastTraining(clubId){let b=null;S.trainings.forEach(tr=>{if((tr.clubIds||[]).includes(clubId)&&(!b||tr.date>b.date))b=tr});return b}
-function scopeClubs(){return S.clubs.filter(active).filter(c=>seeAll()||c.countryId===(S.me&&S.me.countryId))}
+function scopeClubs(){return S.clubs.filter(active).filter(c=>seeAll()||inScope(c))}
 function vTraining(d){
   const ed=canAny();
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tTrain"))}</h2></div><div class="chips">${ed?`<button class="btn" data-act="addTraining">${I.plus}${esc(t("addTraining"))}</button>${scoped()?"":`<button class="btn yellow" data-act="addRes">${I.plus}${esc(t("addRes"))}</button>`}`:""}</div></div>`;
@@ -783,8 +785,9 @@ function compForm(x){
     const otherChurches=f.querySelector("#cpOther").value.split(/\n+/).map(z=>z.trim()).filter(Boolean);
     const data={countryId:f.querySelector("#cpCountry").value,title:val(f,"cpTitle"),date:val(f,"cpDate"),region:val(f,"cpRegion"),town:val(f,"cpTown"),churchIds,otherChurches,churchCount:churchIds.length+otherChurches.length,
       contestants:n("cpCont"),teamCount:n("cpTeam"),volCount:n("cpVol"),notes:val(f,"cpNotes"),by:(x.by||S.me.id),updatedAt:Date.now(),createdAt:x.createdAt||Date.now(),archived:x.archived||0};
-    if(scoped()){data.countryId=S.me.countryId;data.region=myReg();if(myArea())data.town=myArea()}
+    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.town=myArea()}
     data.area=data.town;
+    if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
     if(!data.countryId)return merr(t("needCountry"));if(!data.date)return merr(t("req"));
     $("msave").textContent=t("saving");
     const ref=x.id?db.doc("competitions/"+x.id):db.collection("competitions").doc();const ids=[];
@@ -793,7 +796,7 @@ function compForm(x){
     for(const old of (x.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete().catch(()=>{});
     logAct(x.id?"edit":"add","comp",(data.title||t("tComp"))+" · "+data.date,data.countryId);
   });
-  if(scoped()){["cpRegion"].concat(myArea()?["cpTown"]:[]).forEach(id=>{const e=f.querySelector("#"+id);e.readOnly=true;e.style.opacity=".7"})}
+  if(myReg()){["cpRegion"].concat(myArea()?["cpTown"]:[]).forEach(id=>{const e=f.querySelector("#"+id);e.readOnly=true;e.style.opacity=".7"})}
   const fill=()=>{const cid=f.querySelector("#cpCountry").value,reg=f.querySelector("#cpRegion").value.trim(),town=f.querySelector("#cpTown").value.trim();const co=S.countries.find(c=>c.id===cid)||{};
     const opts=a=>[...new Set(a.filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("");
     f.querySelector("#lcpRegion").innerHTML=opts((co.regions||[]).concat(S.churches.filter(c=>c.countryId===cid).map(c=>c.region)));
@@ -824,7 +827,7 @@ function trainingForm(tr){
    <div class="f"><label>${esc(t("trPhotos"))}</label><div class="slots vslots">${[0,1,2].map(i=>`<label class="slot" id="tslot${i}">${I.img.replace("<svg",'<svg width="24" height="24"')}<span>${esc(t("addPhoto"))}</span><input type="file" accept="image/*" data-tslot="${i}" aria-label="${esc(t("addPhoto"))}"><button type="button" class="rm" data-trm="${i}" hidden aria-label="${esc(t("del"))}">${I.x}</button></label>`).join("")}</div></div>`,async f=>{
     const others=f.querySelector("#tOthers").value.split(/\n+/).map(x=>x.trim()).filter(Boolean);
     const clubIds=[...f.querySelectorAll("#tClubs input:checked")].map(x=>x.value);
-    const data={countryId:f.querySelector("#tCountry").value,date:val(f,"tDate"),title:val(f,"tTitle"),trainer:val(f,"tTrainer"),program:f.querySelector("#tProg").value,type:f.querySelector("#tType").value,clubIds,others,count:clubIds.length+others.length,notes:val(f,"tNotes"),by:S.me.id,updatedAt:Date.now(),createdAt:tr.createdAt||Date.now()};Object.assign(data,stampScope(tr));
+    const data={countryId:f.querySelector("#tCountry").value,date:val(f,"tDate"),title:val(f,"tTitle"),trainer:val(f,"tTrainer"),program:f.querySelector("#tProg").value,type:f.querySelector("#tType").value,clubIds,others,count:clubIds.length+others.length,notes:val(f,"tNotes"),by:S.me.id,updatedAt:Date.now(),createdAt:tr.createdAt||Date.now()};Object.assign(data,stampScope(tr,data.countryId));
     if(!data.countryId)return merr(t("needCountry"));if(!data.title||!data.date)return merr(t("req"));
     $("msave").textContent=t("saving");
     const ref=tr.id?db.doc("trainings/"+tr.id):db.collection("trainings").doc();const ids=[];
@@ -968,19 +971,29 @@ const canFinRead=()=>isAdmin()||role()==="manager"||role()==="accountant";
 const canFinEdit=()=>!S.viewMode&&(isAdmin()||role()==="accountant");
 const canAdmin=()=>!S.viewMode&&isAdmin();
 const canAllV=()=>!S.viewMode&&canAll();
-const myReg=()=>(role()==="leader"&&S.me&&S.me.region)||"";
-const myArea=()=>(myReg()&&S.me.area)||"";
-const scoped=()=>!!myReg();
-const inScope=o=>!!o&&!!S.me&&o.countryId===S.me.countryId&&(o.region||"")===myReg()&&(!myArea()||(o.area??o.city??"")===myArea());
-const canC=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&!scoped()&&!!cid&&S.me.countryId===cid));
-const canE=o=>!S.viewMode&&!!o&&(canAll()||(role()==="leader"&&!!o.countryId&&S.me.countryId===o.countryId&&(!scoped()||inScope(o))));
-const canAddIn=cid=>canC(cid)||(!S.viewMode&&scoped()&&cid===S.me.countryId);
-const stampScope=o=>scoped()?{region:myReg(),area:myArea()}:{region:(o&&o.region)||"",area:(o&&o.area)||""};
-function scopeLabel(u){if(!u||u.role!=="leader"||!u.region)return "";return u.area?u.region+" › "+u.area:u.region}
+// نطاق المسؤول: ممكن يكون أكتر من دولة أو منطقة. كل نطاق {c: الدولة, r: المنطقة الكبيرة, a: المنطقة الفرعية}
+function scopesOf(u){if(!u||u.role!=="leader")return[];
+  if(Array.isArray(u.scopes)&&u.scopes.length)return u.scopes.map(k=>{const [c,r,a]=String(k).split("|");return {c:c||"",r:r||"",a:(r&&a)||""}}).filter(x=>x.c);
+  return u.countryId?[{c:u.countryId,r:u.region||"",a:(u.region&&u.area)||""}]:[]}
+const scopeKey=x=>x.c+(x.r?"|"+x.r+(x.a?"|"+x.a:""):"");
+const myScopes=()=>scopesOf(S.me);
+const myReg=()=>{const m=myScopes();return (m.length===1&&m[0].r)||""};
+const myArea=()=>{const m=myScopes();return (m.length===1&&m[0].a)||""};
+const scoped=()=>{const m=myScopes();return m.length>1||m.some(x=>x.r)};
+const matchScope=(x,o)=>o.countryId===x.c&&(!x.r||(o.region||"")===x.r)&&(!x.a||(o.area??o.city??"")===x.a);
+const inScope=o=>!!o&&myScopes().some(x=>matchScope(x,o));
+const canC=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&!!cid&&myScopes().some(x=>x.c===cid&&!x.r)));
+const canE=o=>!S.viewMode&&!!o&&(canAll()||(role()==="leader"&&inScope(o)));
+const canAddIn=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&myScopes().some(x=>x.c===cid)));
+const stampScope=(o,cid)=>{if(role()!=="leader")return {region:(o&&o.region)||"",area:(o&&o.area)||""};
+  const m=myScopes().filter(x=>x.c===cid);if(o&&o.region!==undefined&&m.some(x=>matchScope(x,{countryId:cid,region:o.region||"",area:o.area||""})))return {region:o.region||"",area:o.area||""};
+  const x=m.find(z=>!z.r)||m[0]||{};return {region:x.r||"",area:x.a||""}};
+const scopeTxt=x=>[cname(S.countries.find(c=>c.id===x.c)),x.r,x.a].filter(Boolean).join(" › ");
+function scopeLabel(u){const m=scopesOf(u);if(!m.length||(m.length===1&&!m[0].r))return "";return m.map(x=>m.every(z=>z.c===m[0].c)?[x.r||cname(S.countries.find(c=>c.id===x.c)),x.a].filter(Boolean).join(" › "):scopeTxt(x)).join("، ")}
 function areasOf(cid,reg){const co=S.countries.find(c=>c.id===cid)||{};return [...new Set((co.towns||[]).filter(x=>x.r===reg).map(x=>x.n).concat(S.churches.filter(c=>c.countryId===cid&&c.region===reg).map(c=>c.city)).filter(Boolean))]}
-const canAny=()=>!S.viewMode&&(canAll()||(role()==="leader"&&!!S.me.countryId));
-const canAnyC=()=>canAny()&&!scoped();
-const myCountries=()=>S.countries.filter(c=>canAll()||c.id===(S.me&&S.me.countryId));
+const canAny=()=>!S.viewMode&&(canAll()||(role()==="leader"&&myScopes().length>0));
+const canAnyC=()=>canAny()&&(canAll()||myScopes().some(x=>!x.r));
+const myCountries=()=>S.countries.filter(c=>canAll()||myScopes().some(x=>x.c===c.id));
 const initial=s=>(String(s||"?").trim().replace(/^ال/,"")[0]||"?");
 const cidx=id=>{const i=S.countries.findIndex(c=>c.id===id);return (i<0?0:i)%4};
 
@@ -1057,7 +1070,7 @@ function render(){
   else if(role()==="accountant")h+=`<div class="viewbar">${I.eye} ${esc(t("acctNote"))}</div>`;
   else if(role()==="viewer")h+=`<div class="viewbar">${I.eye} ${esc(t("readOnlyNote"))}</div>`;
   else if(role()==="manager")h+=`<div class="viewbar">${I.eye} ${esc(t("mgrNote"))}</div>`;
-  else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))} › ${esc(scopeLabel(S.me))}</b> — ${esc(t("scopeBar2"))}</div>`;
+  else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(myScopes().map(scopeTxt).join("، "))}</b> — ${esc(t("scopeBar2"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
   h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,finance:vFinance}[S.tab]||vOverview)(d);
   m.innerHTML=h;m.dataset.view=S.tab;m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
@@ -1202,7 +1215,7 @@ function alertItems(){
   S.stories.forEach(x=>{if((x.createdAt||0)>seen&&seen)out.push({isNew:true,at:x.createdAt,icon:"c2",title:t("alStory"),sub:x.title+" · "+cname(S.countries.find(c=>c.id===x.countryId)),go:{story:x.id}})});
   S.reports.forEach(x=>{if((x.updatedAt||0)>seen&&seen&&x.by!==S.me.id)out.push({isNew:true,at:x.updatedAt,icon:"c0",title:t("alReport"),sub:cname(S.countries.find(c=>c.id===x.countryId))+" · "+qLabel(x.quarter),go:{country:x.countryId,q:x.quarter}})});
   out.sort((a,b)=>b.at-a.at);
-  const d=D();const due=S.clubs.filter(active).filter(c=>{if(!seeAll()&&!(S.me.countryId&&c.countryId===S.me.countryId))return false;const l=(d.vByClub[c.id]||[])[0];return !l||(Date.now()-new Date(l.date+"T12:00:00").getTime())/864e5>90}).length;
+  const d=D();const due=S.clubs.filter(active).filter(c=>{if(!seeAll()&&!inScope(c))return false;const l=(d.vByClub[c.id]||[])[0];return !l||(Date.now()-new Date(l.date+"T12:00:00").getTime())/864e5>90}).length;
   if(due)out.push({isNew:false,icon:"c1",title:t("alVisitDue"),sub:nf(due)+" "+t("clubsN"),go:{tab:"overview"}});
   return out;
 }
@@ -1250,7 +1263,7 @@ async function convertLate(btn){const d=D();const list=latePlans(d);if(!list.len
   try{for(const p of list){const ch=d.CH[p.churchId];
       if(!S.visits.some(v=>v.clubId===p.clubId&&v.date===p.date))await db.collection("visits").doc().set({clubId:p.clubId,churchId:p.churchId,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",date:p.date,visitor:p.visitor||"",notes:p.notes||"",images:[],by:S.me.id,createdAt:Date.now()});
       await db.doc("plans/"+p.id).delete()}
-    logAct("add","visit",t("convertLate")+" ("+list.length+")",S.me.countryId||"");toast(t("saved"))}catch(e){console.error(e);toast(t("failed"))}}
+    logAct("add","visit",t("convertLate")+" ("+list.length+")",(myScopes()[0]||{}).c||"");toast(t("saved"))}catch(e){console.error(e);toast(t("failed"))}}
 function visitRows(d){
   const f=S.vf,q=f.q.trim().toLowerCase();
   return S.clubs.filter(active).map(c=>({c,ch:d.CH[c.churchId],v:!!d.vQ[c.id]})).filter(r=>{
@@ -1313,7 +1326,7 @@ function storyForm(s,countryId){
    ${fld("sDate",t("storyDate"),s.date,{type:"date"})}${fld("sTitle",t("storyTitle"),s.title,{req:1,full:1})}${fld("sAuthor",t("author"),s.author??(c?c.manager:""),{full:1})}
    <div class="f full"><label for="sText">${esc(t("storyText"))} *</label><textarea id="sText" style="min-height:170px">${esc(s.text||"")}</textarea></div></div>
    <div class="f"><label>${esc(t("photos"))}</label><div class="slots">${slotHTML(0)}${slotHTML(1)}</div></div>`,async f=>{
-    const data={countryId:f.querySelector("#sCountry").value,date:val(f,"sDate")||today(),title:val(f,"sTitle"),author:val(f,"sAuthor"),text:f.querySelector("#sText").value.trim(),updatedAt:Date.now(),createdAt:s.createdAt||Date.now()};Object.assign(data,stampScope(s));
+    const data={countryId:f.querySelector("#sCountry").value,date:val(f,"sDate")||today(),title:val(f,"sTitle"),author:val(f,"sAuthor"),text:f.querySelector("#sText").value.trim(),updatedAt:Date.now(),createdAt:s.createdAt||Date.now()};Object.assign(data,stampScope(s,data.countryId));
     if(!data.countryId)return merr(t("needCountry"));if(!data.title||!data.text)return merr(t("req"));
     $("msave").textContent=t("saving");
     const ref=s.id?db.doc("stories/"+s.id):db.collection("stories").doc();
@@ -1364,13 +1377,24 @@ function vUsers(d){
   h+=invitePanel();
   if(!list.length)return h+emptyBox(t("noUsers"),"")+backupPanel()+photosPanel()+vLog();
   const card=u=>{const self=u.id===S.me.id;
-   return `<div class="ucard ${u.role==="pending"?"pending":""}"><div class="hd">${avatar(u)}<div style="flex:1"><b>${esc(u.name||u.email)}</b>${self?` <span class="rolechip r-viewer">${esc(t("you"))}</span>`:""}<small class="ltr" style="text-align:start">${esc(u.email)}</small></div><span class="rolechip r-${esc(u.role)}">${esc(u.role==="leader"&&u.region?t(u.area?"roleAreaL":"roleRegL"):roleName(u.role))}${scopeLabel(u)?" · "+esc(scopeLabel(u)):""}</span></div>
+   return `<div class="ucard ${u.role==="pending"?"pending":""}"><div class="hd">${avatar(u)}<div style="flex:1"><b>${esc(u.name||u.email)}</b>${self?` <span class="rolechip r-viewer">${esc(t("you"))}</span>`:""}<small class="ltr" style="text-align:start">${esc(u.email)}</small></div><span class="rolechip r-${esc(u.role)}">${esc(u.role==="leader"?(scopesOf(u).length>1?t("roleMultiL"):scopesOf(u).some(x=>x.r)?t(scopesOf(u)[0].a?"roleAreaL":"roleRegL"):roleName(u.role)):roleName(u.role))}${u.role==="leader"&&scopesOf(u).length?" · "+esc(scopesOf(u).map(scopeTxt).join("، ")):""}</span></div>
    <div class="ctl"><select data-urole="${u.id}" ${self||S.viewMode?"disabled":""} aria-label="${esc(t("roleLbl"))}">${ROLES.map(r=>`<option value="${r}" ${u.role===r?"selected":""}>${esc(roleName(r))}</option>`).join("")}</select>
-   <select data-ucountry="${u.id}" ${u.role==="leader"?"":"hidden"} ${S.viewMode?"disabled":""} aria-label="${esc(t("country"))}"><option value="">${esc(t("pickCountry"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${u.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
-   ${u.role==="leader"&&u.countryId?scopeSelects(u):""}
-   ${u.role==="leader"&&!u.countryId?`<small style="color:var(--red);font-weight:700">${esc(t("leaderNoCountry"))}</small>`:""}</div>`};
+   </div>
+   ${u.role==="leader"?scopeEditor(u):""}</div>`};
   return h+`<div class="cards ucards">${list.map(card).join("")}</div>`+backupPanel()+photosPanel()+vLog();
 }
+function scopeEditor(u){const m=scopesOf(u);const dis=S.viewMode?"disabled":"";
+  return `<div class="schips">${m.length?m.map((x,i)=>`<span class="schip">${esc(scopeTxt(x))}<button type="button" data-act="rmScope" data-id="${u.id}" data-i="${i}" ${dis} aria-label="${esc(t("del"))}">${I.x}</button></span>`).join(""):`<small style="color:var(--red);font-weight:700">${esc(t("leaderNoCountry"))}</small>`}</div>
+   <div class="ctl addscope" data-uid="${u.id}"><select class="as-c" ${dis} aria-label="${esc(t("country"))}"><option value="">${esc(t("pickCountry"))}</option>${S.countries.map(c=>`<option value="${c.id}">${esc(cname(c))}</option>`).join("")}</select>
+   <select class="as-r" ${dis} hidden aria-label="${esc(t("scopeReg"))}"></select><select class="as-a" ${dis} hidden aria-label="${esc(t("scopeArea"))}"></select>
+   <button type="button" class="btn small green" data-act="addScope" data-id="${u.id}" ${dis}>${I.plus}${esc(t(m.length?"addScopeMore":"addScope"))}</button></div>`}
+function scopeFill(box){const c=box.querySelector(".as-c").value,r=box.querySelector(".as-r"),a=box.querySelector(".as-a");const co=S.countries.find(x=>x.id===c)||{};
+  if(r.dataset.c!==c){r.dataset.c=c;r.innerHTML=`<option value="">${esc(t("scopeAllCountry"))}</option>`+(co.regions||[]).map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");}
+  r.hidden=!c||!(co.regions||[]).length;const ar=r.value?areasOf(c,r.value):[];
+  a.innerHTML=`<option value="">${esc(t("scopeAllReg"))}</option>`+ar.map(x=>`<option value="${esc(x)}">${esc(x)}</option>`).join("");a.hidden=!r.value||!ar.length}
+async function setScopes(uid,list){const u=S.users.find(x=>x.id===uid)||{};const f=list[0]||{c:"",r:"",a:""};
+  await setUser(uid,{scopes:list.map(scopeKey),scopeCountries:[...new Set(list.map(x=>x.c))],countryId:f.c,region:f.r,area:f.a});
+  for(const x of list.slice(1))if(!x.r)await db.doc("countries/"+x.c).update({manager:u.name||u.email||"",email:u.email||"",leaderUid:uid}).catch(()=>{})}
 function scopeSelects(u){const co=S.countries.find(c=>c.id===u.countryId)||{};const regs=co.regions||[];const ar=u.region?areasOf(u.countryId,u.region):[];
   return `<div class="ctl"><select data-ureg="${u.id}" ${S.viewMode?"disabled":""} aria-label="${esc(t("scopeReg"))}"><option value="">${esc(t("scopeAllCountry"))}</option>${regs.concat(u.region&&!regs.includes(u.region)?[u.region]:[]).map(r=>`<option value="${esc(r)}" ${u.region===r?"selected":""}>${esc(t("scopeRegOnly"))} ${esc(r)}</option>`).join("")}</select>
    ${u.region?`<select data-uarea="${u.id}" ${S.viewMode?"disabled":""} aria-label="${esc(t("scopeArea"))}"><option value="">${esc(t("scopeAllReg"))}</option>${ar.concat(u.area&&!ar.includes(u.area)?[u.area]:[]).map(a=>`<option value="${esc(a)}" ${u.area===a?"selected":""}>${esc(t("scopeAreaOnly"))} ${esc(a)}</option>`).join("")}</select>`:""}</div>`}
@@ -1562,14 +1586,15 @@ function churchForm(ch,countryId){
   ch=ch||{countryId};const d=D();const cls=ch.id?(d.clubsByChurch[ch.id]||[]):[];
   const f=openModal(ch.id?t("editChurch"):t("addChurch"),`<div class="fgrid">
    <div class="f"><label for="hCountry">${esc(t("country"))} *</label><select id="hCountry">${myCountries().map(c=>`<option value="${c.id}" ${ch.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
-   ${fld("hName",t("churchName"),ch.name,{req:1})}${fld("hRegion",t("region"),scoped()?myReg():ch.region,{list:"lRegion"})}${fld("hCity",t("city"),myArea()||ch.city,{list:"lCity"})}${fld("hCenter",t("center"),ch.center,{list:"lCenter"})}${fld("hVillage",t("village"),ch.village)}${fld("hPastor",t("pastor"),ch.pastor)}${fld("hPastorPh",t("pastorPhone"),ch.pastorPhone,{type:"tel",im:"tel",dir:"ltr"})}</div>
+   ${fld("hName",t("churchName"),ch.name,{req:1})}${fld("hRegion",t("region"),myReg()||ch.region,{list:"lRegion"})}${fld("hCity",t("city"),myArea()||ch.city,{list:"lCity"})}${fld("hCenter",t("center"),ch.center,{list:"lCenter"})}${fld("hVillage",t("village"),ch.village)}${fld("hPastor",t("pastor"),ch.pastor)}${fld("hPastorPh",t("pastorPhone"),ch.pastorPhone,{type:"tel",im:"tel",dir:"ltr"})}</div>
    <datalist id="lRegion"></datalist><datalist id="lCity"></datalist><datalist id="lCenter"></datalist>
    <div style="display:flex;justify-content:space-between;align-items:center"><b>${esc(t("clubsOfChurch"))}</b><button type="button" class="btn ghost small" id="addClubRow">${I.plus}${esc(t("addClub"))}</button></div>
    <div id="clubRows" style="display:flex;flex-direction:column;gap:8px">${(cls.length?cls:[{}]).map(clubRowHTML).join("")}</div>
    <div class="f" id="rmPassBox" hidden style="background:var(--red-soft,#fde8e8);border-radius:12px;padding:10px"><label for="rmPass" style="color:var(--red)">${esc(t("rmClubPass"))}</label><input id="rmPass" type="password" inputmode="numeric" autocomplete="off" dir="ltr" style="letter-spacing:6px;text-align:center"></div>`,async f=>{
     {const left=new Set([...f.querySelectorAll(".clubrow")].map(r=>r.dataset.id).filter(Boolean));if(cls.some(c=>!left.has(c.id))&&val(f,"rmPass")!==DEL_PASS)return merr(t("badPass"))}
     const data={countryId:f.querySelector("#hCountry").value,name:val(f,"hName"),region:val(f,"hRegion"),city:val(f,"hCity"),center:val(f,"hCenter"),village:val(f,"hVillage"),pastor:val(f,"hPastor"),pastorPhone:val(f,"hPastorPh"),updatedAt:Date.now(),createdAt:ch.createdAt||Date.now()};
-    if(scoped()){data.countryId=S.me.countryId;data.region=myReg();if(myArea())data.city=myArea()}data.area=data.city;
+    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.city=myArea()}data.area=data.city;
+    if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
     if(!data.countryId)return merr(t("needCountry"));if(!data.name)return merr(t("req"));
     const ref=ch.id?db.doc("churches/"+ch.id):db.collection("churches").doc();await ref.set(data);
     const keep=new Set();
@@ -1593,7 +1618,7 @@ function churchForm(ch,countryId){
     f.querySelector("#lRegion").innerHTML=opts((co.regions||[]).concat(own.map(x=>x.region)));
     f.querySelector("#lCity").innerHTML=opts((co.towns||[]).filter(x=>!reg||!x.r||x.r===reg).map(x=>x.n).concat(own.filter(x=>!reg||x.region===reg).map(x=>x.city)));
     f.querySelector("#lCenter").innerHTML=opts(own.map(x=>x.center));};
-  if(scoped()){const r=f.querySelector("#hRegion");r.readOnly=true;r.style.opacity=".7";if(myArea()){const c=f.querySelector("#hCity");c.readOnly=true;c.style.opacity=".7"}}
+  if(myReg()){const r=f.querySelector("#hRegion");r.readOnly=true;r.style.opacity=".7";if(myArea()){const c=f.querySelector("#hCity");c.readOnly=true;c.style.opacity=".7"}}
   fillLists();f.querySelector("#hCountry").addEventListener("change",fillLists);f.querySelector("#hRegion").addEventListener("input",fillLists);
   const box=f.querySelector("#clubRows");
   f.querySelector("#addClubRow").onclick=()=>{box.insertAdjacentHTML("beforeend",clubRowHTML({}));box.lastElementChild.querySelector("select").focus()};
@@ -1715,6 +1740,10 @@ document.addEventListener("click",e=>{
    case"addComp":compForm();break;
    case"editComp":compForm(S.competitions.find(x=>x.id===id));break;
    case"convertLate":convertLate(a);break;
+   case"addScope":{const box=a.closest(".addscope");const x={c:box.querySelector(".as-c").value,r:box.querySelector(".as-r").value,a:""};x.a=x.r?box.querySelector(".as-a").value:"";
+     if(!x.c){toast(t("needCountry"));break}const u=S.users.find(z=>z.id===id);const m=scopesOf(u);if(m.some(z=>scopeKey(z)===scopeKey(x))){toast(t("scopeDup"));break}
+     setScopes(id,m.concat([x]))}break;
+   case"rmScope":{const u=S.users.find(z=>z.id===id);const m=scopesOf(u);m.splice(+a.dataset.i,1);setScopes(id,m)}break;
    case"viewPhoto":viewPhoto(id);break;
    case"toggleHist":S.open[id]=!S.open[id];render();break;
    case"addMember":memberForm(null,a.dataset.type);break;
@@ -1759,6 +1788,7 @@ document.addEventListener("click",e=>{
 },true);
 document.addEventListener("submit",e=>{if(e.target.id==="invForm"){e.preventDefault();saveInvite(e.target)}});
 document.addEventListener("change",e=>{
+  {const bx=e.target.closest&&e.target.closest(".addscope");if(bx){scopeFill(bx);return}}
   if(e.target.id==="compCountry"){S.compCountry=e.target.value;render();return}
   if(/^arch(From|To|V|T|S|C)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
   if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";invScopeFill();return}
@@ -1766,7 +1796,7 @@ document.addEventListener("change",e=>{
   const ug=e.target.closest&&e.target.closest("[data-ureg]");if(ug){setUser(ug.dataset.ureg,{region:ug.value,area:""});return}
   const ua=e.target.closest&&e.target.closest("[data-uarea]");if(ua){setUser(ua.dataset.uarea,{area:ua.value});return}
   const ur=e.target.closest&&e.target.closest("[data-urole]");if(ur){setUser(ur.dataset.urole,{role:ur.value});return}
-  const uc=e.target.closest&&e.target.closest("[data-ucountry]");if(uc){setUser(uc.dataset.ucountry,{countryId:uc.value,region:"",area:""});return}
+  const uc=e.target.closest&&e.target.closest("[data-ucountry]");if(uc){setUser(uc.dataset.ucountry,{countryId:uc.value,region:"",area:"",scopes:uc.value?[uc.value]:[],scopeCountries:uc.value?[uc.value]:[]});return}
   if(e.target.id==="restoreFile"&&e.target.files[0]){restorePick(e.target.files[0]);e.target.value="";return}if(e.target.id==="fQtr"){S.qtr=e.target.value;render();return}if(e.target.id==="fMonth"){S.finMonth=e.target.value;render();return}if(e.target.id==="fYear"){S.gYear=+e.target.value;render();return}const m={fCountry:"country",fStatus:"status",fProg:"program"}[e.target.id];if(m){S.vf[m]=e.target.value;render()}});
 let qT;document.addEventListener("input",e=>{if(e.target.id==="fQ"){S.vf.q=e.target.value;clearTimeout(qT);qT=setTimeout(()=>{const pos=e.target.selectionStart;render();const i=$("fQ");if(i){i.focus();try{i.setSelectionRange(pos,pos)}catch(_){}}},250)}});
 $("btnLang").onclick=()=>{S.lang=S.lang==="ar"?"en":"ar";ls.set("aw_lang",S.lang);render()};
@@ -1965,10 +1995,14 @@ let dataUnsubs=[],userUnsub=null;
 function stopData(){dataUnsubs.forEach(f=>{try{f()}catch(e){}});dataUnsubs=[];S.subscribed=false;S.loaded={};S.synced=false}
 function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
-  let q=db.collection(name);
-  if(scoped()&&name!=="countries"&&name!=="resources"){q=q.where("countryId","==",S.me.countryId);
-    if(["churches","clubs","visits","plans"].includes(name)){q=q.where("region","==",myReg());if(myArea())q=q.where("area","==",myArea())}}
-  dataUnsubs.push(q.onSnapshot(snap=>{let a=snap.docs.map(x=>Object.assign({id:x.id},x.data()));if(name==="countries"&&scoped())a=a.filter(c=>c.id===S.me.countryId);S[name]=a;done()},err=>{console.error(name,err);done()}));
+  let qs=[db.collection(name)];const sc=myScopes();
+  if(scoped()&&name!=="countries"&&name!=="resources"){
+    if(["churches","clubs","visits","plans"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a)q=q.where("area","==",x.a)}return q});
+    else qs=[...new Set(sc.map(x=>x.c))].map(c=>db.collection(name).where("countryId","==",c));}
+  const parts=qs.map(()=>null);
+  const merge=()=>{if(!parts.every(Boolean))return;const m={};parts.forEach(p=>p.forEach(x=>m[x.id]=x));let a=Object.values(m);
+    if(name==="countries"&&scoped())a=a.filter(c=>sc.some(x=>x.c===c.id));S[name]=a;done()};
+  qs.forEach((q,i)=>dataUnsubs.push(q.onSnapshot(snap=>{parts[i]=snap.docs.map(x=>Object.assign({id:x.id},x.data()));merge()},err=>{console.error(name,err);parts[i]=parts[i]||[];merge()})));
 }
 // يكتب المنطقة والمنطقة الفرعية على النوادي والزيارات والخطط القديمة (علشان صلاحيات مسؤولي المناطق)
 let syncing=false;
@@ -2103,7 +2137,7 @@ function boot(){
       const d=sn.data()||{};S.me=Object.assign({id:u.uid,email:u.email},d);const r=d.role;
       const ok=r==="admin"||r==="manager"||r==="accountant"||r==="leader"||r==="viewer";
       S.auth=ok?"in":r==="disabled"?"disabled":"pending";
-      const sk=(d.countryId||"")+"|"+(d.region||"")+"|"+(d.area||"");
+      const sk=(d.countryId||"")+"|"+(d.region||"")+"|"+(d.area||"")+"|"+(d.scopes||[]).join(",");
       if(ok){if(!S.subscribed||S.dataRole!==r||S.dataScope!==sk){S.dataScope=sk;startData()}}else stopData();
       render();
     },e=>{console.error(e);S.auth="error";S.authErr=e.code||"";render()});
