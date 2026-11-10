@@ -1123,7 +1123,7 @@ const myScopes=()=>scopesOf(S.me);
 const myReg=()=>{const m=myScopes();return (m.length===1&&m[0].r)||""};
 const myArea=()=>{const m=myScopes();return (m.length===1&&m[0].a)||""};
 const myCenter=()=>{const m=myScopes();return (m.length===1&&m[0].m)||""};
-const scoped=()=>{const m=myScopes();return m.length>1||m.some(x=>x.r)};
+const scoped=()=>{const m=myScopes();return m.length>1||m.some(x=>x.r)||(role()==="leader"&&!!S.me&&Array.isArray(S.me.scopes)&&S.me.scopes.length>0)};
 const matchScope=(x,o)=>o.countryId===x.c&&(!x.r||(o.region||"")===x.r)&&(!x.a||(o.area??o.city??"")===x.a)&&(!x.m||(o.center||"")===x.m);
 const inScope=o=>!!o&&myScopes().some(x=>matchScope(x,o));
 const canC=cid=>!S.viewMode&&(canAll()||(role()==="leader"&&!!cid&&myScopes().some(x=>x.c===cid&&!x.r)));
