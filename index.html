@@ -431,9 +431,10 @@ tr.click:hover td{background:var(--raise)}
 .f input,.f select,.f textarea{border:1.5px solid var(--line);background:var(--raise);border-radius:11px;padding:9px 11px;width:100%}
 .f textarea{min-height:70px;resize:vertical}
 .f.full{grid-column:1/-1}
-.clubrow{display:grid;grid-template-columns:1.1fr 1.2fr 1.1fr .6fr .9fr auto;gap:6px;align-items:end;padding:10px;border-radius:12px;background:var(--raise)}
+.clubrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;gap:6px;align-items:end;padding:10px;border-radius:12px;background:var(--raise)}
 .clubrow .f input,.clubrow .f select{background:var(--surface)}
-@media (max-width:560px){.clubrow{grid-template-columns:1fr 1fr}.clubrow .icon{grid-column:1/-1;justify-self:end}}
+.clubrow>.icon{grid-column:5;grid-row:1/3;align-self:center}
+@media (max-width:560px){.clubrow{grid-template-columns:1fr 1fr}.clubrow .icon{grid-column:1/-1;grid-row:auto;justify-self:end}}
 .sheet-foot{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;position:sticky;bottom:calc(-16px - env(safe-area-inset-bottom,0px));background:var(--surface);padding-block:12px calc(4px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);margin-inline:-18px;padding-inline:18px}
 .err{color:var(--red);font-size:.85rem;font-weight:600;min-height:1em}
 .steps{display:flex;flex-direction:column;gap:12px}
@@ -534,7 +535,7 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  country:"الدولة",manager:"مسؤول الدولة",phone:"التليفون",email:"البريد",notes:"ملاحظات",
  addCountry:"إضافة دولة",editCountry:"تعديل الدولة",countryName:"اسم الدولة",managerName:"اسم مسؤول الدولة",
  addChurch:"إضافة كنيسة",editChurch:"تعديل الكنيسة",churchName:"الكنيسة",region:"المنطقة",city:"المدينة",center:"المركز",village:"القرية",pastor:"قسيس الكنيسة (اختياري)",pastorL:"القسيس",pastorPhone:"تليفون القسيس (اختياري)",editClub:"تعديل النادي",editVisit:"تعديل الزيارة",newVisit:"زيارة جديدة",delTitle:"تأكيد الحذف",delWarn:"هيتمسح نهائيًا:",delPassL:"اكتب كلمة سر الحذف",badPass:"كلمة السر غلط",rmClubPass:"شيلت نادي متسجل — اكتب كلمة سر الحذف علشان يتمسح",trPhotos:"صور التدريب (لحد ٣ صور)",archTitle:"أرشيف الصور",archSub:"نزّل الصور في ملف ZIP متقسم ومتسمي، وبعدها امسحها من التطبيق علشان يفضل خفيف.",archAll:"الصور الموجودة في التطبيق دلوقتي",archFrom:"من تاريخ",archTo:"لحد تاريخ",archVisits:"زيارات",archTrain:"تدريبات",archDl:"تنزيل الصور",archDel:"مسح الصور اللي اتنزلت من التطبيق",archSure:"متأكد؟ اتأكد إن ملف ZIP اتحفظ عندك، واضغط تاني",archDone:"الصور اتمسحت من التطبيق",archHint:"الخطوات: ١) نزّل الصور ٢) افتح ملف ZIP واتأكد إنه سليم واحفظه في جوجل درايف ٣) ارجع هنا ودوس «مسح الصور اللي اتنزلت». القصص مش متعلّمة علشان صورها بتطلع في PDF و Word.",archNone:"مفيش صور في الفترة دي.",archZip:"صور أوانا",archMiss:"صور ماتنزلتش:",archIn:"صور في الأرشيف",visitPhotos:"صور الزيارة (لحد ٣ صور)",
- program:"البرنامج",leader:"مسؤول النادي",kidsCount:"عدد الأطفال",addClub:"إضافة نادي",clubsOfChurch:"نوادي الكنيسة",
+ program:"البرنامج",leader:"مسؤول النادي",kidsCount:"عدد الأطفال",servants:"عدد الخدام",servN:"خدام",meetDay:"يوم النادي",meetTime:"الساعة",meetWhen:"ميعاد النادي",days:["الأحد","الاتنين","التلات","الأربع","الخميس","الجمعة","السبت"],amPm:["ص","م"],addClub:"إضافة نادي",clubsOfChurch:"نوادي الكنيسة",
  save:"حفظ",cancel:"إلغاء",close:"إغلاق",del:"حذف",sure:"تأكيد الحذف؟",saved:"تم الحفظ",deleted:"تم الحذف",
  allCountries:"كل الدول",noCountries:"لا توجد دول مسجلة بعد",noCountriesHint:"ابدأ بتسجيل أول دولة ومسؤولها، ثم أضف الكنائس والنوادي.",
  noChurches:"لا توجد كنائس في هذه الدولة بعد",noChurchesHint:"أضف كنيسة بموقعها (المنطقة، المدينة، المركز، القرية) ونواديها.",
@@ -617,7 +618,7 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  country:"Country",manager:"Country leader",phone:"Phone",email:"Email",notes:"Notes",
  addCountry:"Add country",editCountry:"Edit country",countryName:"Country name",managerName:"Country leader name",
  addChurch:"Add church",editChurch:"Edit church",churchName:"Church",region:"Region",city:"City",center:"District",village:"Village",pastor:"Church pastor (optional)",pastorL:"Pastor",pastorPhone:"Pastor phone (optional)",editClub:"Edit club",editVisit:"Edit visit",newVisit:"New visit",delTitle:"Confirm delete",delWarn:"This will be permanently deleted:",delPassL:"Enter the delete password",badPass:"Wrong password",rmClubPass:"You removed a saved club — enter the delete password to delete it",trPhotos:"Training photos (up to 3)",archTitle:"Photo archive",archSub:"Download photos as a named, organized ZIP, then remove them from the app to keep it light.",archAll:"Photos currently in the app",archFrom:"From",archTo:"To",archVisits:"Visits",archTrain:"Trainings",archDl:"Download photos",archDel:"Remove downloaded photos from the app",archSure:"Sure? Make sure the ZIP is saved, then tap again",archDone:"Photos removed from the app",archHint:"Steps: 1) download 2) open the ZIP, check it and save it to Google Drive 3) come back and tap Remove. Stories are unchecked because their photos appear in PDF and Word exports.",archNone:"No photos in this period.",archZip:"Awana photos",archMiss:"Photos not downloaded:",archIn:"photos archived",visitPhotos:"Visit photos (up to 3)",
- program:"Program",leader:"Club leader",kidsCount:"Children",addClub:"Add club",clubsOfChurch:"Church clubs",
+ program:"Program",leader:"Club leader",kidsCount:"Children",servants:"Servants",servN:"servants",meetDay:"Club day",meetTime:"Time",meetWhen:"Club time",days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],amPm:["AM","PM"],addClub:"Add club",clubsOfChurch:"Church clubs",
  save:"Save",cancel:"Cancel",close:"Close",del:"Delete",sure:"Confirm delete?",saved:"Saved",deleted:"Deleted",
  allCountries:"All countries",noCountries:"No countries yet",noCountriesHint:"Register the first country and its leader, then add churches and clubs.",
  noChurches:"No churches in this country yet",noChurchesHint:"Add a church with its location (region, city, district, village) and its clubs.",
@@ -1381,7 +1382,7 @@ function needVisitPanel(d){
   if(!due.length)return h+`<p class="muted" style="margin:0">${esc(t("allGood"))}</p></div>`;
   return h+due.slice(0,6).map(x=>`<div style="display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--line);font-size:.88rem;align-items:center"><span style="min-width:0"><b>${esc(x.ch.name)}</b> ${progPill(x.c.program)}<br><small class="muted">${esc(cname(d.C[x.ch.countryId]))}${placeTxt(x.ch)?" · "+esc(placeTxt(x.ch)):""}</small></span><span class="st no num">${x.days===null?esc(t("neverVisited")):nf(x.days)+" "+esc(t("daysN"))}</span></div>`).join("")+`</div>`;
 }
-function clubRow(c,d){const tr=lastTraining(c.id);return `<div class="club ${c.status==="paused"?"paused":""}"><div>${progPill(c.program)}${stPill(c.status)}${tr?` <span class="prog" style="background:var(--green-soft);color:var(--green)" title="${esc(tr.title||"")}">${I.cap.replace("<svg",'<svg width="13" height="13" style="margin-inline-end:3px"')}${esc(t("trained"))} <span class="num">${fmtDate(tr.date).slice(3)}</span></span>`:""}</div><div class="who"><b>${esc(c.leader||"—")}</b> ${c.phone?`<span class="muted" style="font-size:.85rem">${phoneBits(c.phone,c.countryId)}</span>`:""}</div><div class="kids num"><b>${nf(c.kids)}</b> <small class="muted">${esc(t("kidsN"))}</small>${canE(d.CH[c.churchId])?` <button class="icon" data-act="editClub" data-id="${c.id}" aria-label="${esc(t("editClub"))}" title="${esc(t("editClub"))}" style="width:30px;height:30px">${I.edit}</button>`:""}</div><div>${c.status==="paused"?"":visitStatus(c,d)}${c.status!=="paused"&&canE(d.CH[c.churchId])?`<button class="btn small ${d.vQ[c.id]?"green":"yellow"}" data-act="addVisit" data-id="${c.id}" style="margin-top:6px">${I.plus}${esc(t(d.vQ[c.id]?"newVisit":"markVisit"))}</button>`:""}</div></div>`}
+function clubRow(c,d){const tr=lastTraining(c.id);return `<div class="club ${c.status==="paused"?"paused":""}"><div>${progPill(c.program)}${stPill(c.status)}${tr?` <span class="prog" style="background:var(--green-soft);color:var(--green)" title="${esc(tr.title||"")}">${I.cap.replace("<svg",'<svg width="13" height="13" style="margin-inline-end:3px"')}${esc(t("trained"))} <span class="num">${fmtDate(tr.date).slice(3)}</span></span>`:""}</div><div class="who"><b>${esc(c.leader||"—")}</b> ${c.phone?`<span class="muted" style="font-size:.85rem">${phoneBits(c.phone,c.countryId)}</span>`:""}${(+c.servants||meetTxt(c))?`<div class="muted" style="font-size:.82rem;margin-top:2px">${[+c.servants?`<span class="num">${nf(c.servants)}</span> ${esc(t("servN"))}`:"",meetTxt(c)?`🕒 ${esc(meetTxt(c))}`:""].filter(Boolean).join(" · ")}</div>`:""}</div><div class="kids num"><b>${nf(c.kids)}</b> <small class="muted">${esc(t("kidsN"))}</small>${canE(d.CH[c.churchId])?` <button class="icon" data-act="editClub" data-id="${c.id}" aria-label="${esc(t("editClub"))}" title="${esc(t("editClub"))}" style="width:30px;height:30px">${I.edit}</button>`:""}</div><div>${c.status==="paused"?"":visitStatus(c,d)}${c.status!=="paused"&&canE(d.CH[c.churchId])?`<button class="btn small ${d.vQ[c.id]?"green":"yellow"}" data-act="addVisit" data-id="${c.id}" style="margin-top:6px">${I.plus}${esc(t(d.vQ[c.id]?"newVisit":"markVisit"))}</button>`:""}</div></div>`}
 
 function vVisits(d){
   const f=S.vf;let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tVisits"))}</h2><p>${esc(t("visitsLog"))}</p></div></div>`;
@@ -1739,12 +1740,18 @@ function countryForm(c){
   {const b=cf.querySelector("#cClearMgr");if(b)b.onclick=()=>{["cMgr","cPhone","cEmail"].forEach(id=>{const e=cf.querySelector("#"+id);if(e)e.value=""});b.textContent=t("mgrCleared")}}
   cf.querySelector("#cName").addEventListener("input",e=>{const p=PRESET.find(x=>x.ar===e.target.value.trim());const en=cf.querySelector("#cNameEn");if(p&&!en.value)en.value=p.en;const dl=cf.querySelector("#cDial");if(p&&!dl.value)dl.value=p.dial||"";const fg=cf.querySelector("#cFlag");if(p&&!fg.value)fg.value=p.flag||""});
 }
+const daySel=(cls,id,v)=>`<select ${id?`id="${id}"`:""} class="${cls}"><option value="">—</option>${t("days").map((n,i)=>`<option value="${i}" ${String(v??"")===String(i)?"selected":""}>${esc(n)}</option>`).join("")}</select>`;
+function fmtTime(h){if(!h)return"";const [H,M]=h.split(":").map(Number);if(isNaN(H))return h;const ap=t("amPm")[H<12?0:1];return `${((H+11)%12)+1}:${String(M||0).padStart(2,"0")} ${ap}`}
+function meetTxt(c){const d=c.day!==undefined&&c.day!==""?t("days")[+c.day]:"";return [d,fmtTime(c.time)].filter(Boolean).join(" ")}
 function clubRowHTML(c){c=c||{};return `<div class="clubrow" data-id="${esc(c.id||"")}">
    <div class="f"><label>${esc(t("program"))}</label><select class="k-prog">${programs().map(p=>`<option value="${p.k}" ${c.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select></div>
    <div class="f"><label>${esc(t("leader"))}</label><input class="k-leader" value="${esc(c.leader||"")}"></div>
    <div class="f"><label>${esc(t("phone"))}</label><input class="k-phone" type="tel" dir="ltr" inputmode="tel" value="${esc(c.phone||"")}"></div>
    <div class="f"><label>${esc(t("kidsCount"))}</label><input class="k-kids" type="number" min="0" inputmode="numeric" value="${esc(c.kids??"")}"></div>
    <div class="f"><label>${esc(t("clubStatus"))}</label><select class="k-st">${["active","new","paused"].map(k=>`<option value="${k}" ${(c.status||(c.id?"active":"new"))===k?"selected":""}>${esc(t(ST[k][0]))}</option>`).join("")}</select></div>
+   <div class="f"><label>${esc(t("servants"))}</label><input class="k-serv" type="number" min="0" inputmode="numeric" value="${esc(c.servants??"")}"></div>
+   <div class="f"><label>${esc(t("meetDay"))}</label>${daySel("k-day","",c.day)}</div>
+   <div class="f"><label>${esc(t("meetTime"))}</label><input class="k-time" type="time" dir="ltr" value="${esc(c.time||"")}"></div>
    <button type="button" class="icon" data-rmc="1" aria-label="${esc(t("del"))}">${I.del}</button></div>`}
 function churchForm(ch,countryId){
   ch=ch||{countryId};const d=D();const cls=ch.id?(d.clubsByChurch[ch.id]||[]):[];
@@ -1763,8 +1770,8 @@ function churchForm(ch,countryId){
     const ref=ch.id?db.doc("churches/"+ch.id):db.collection("churches").doc();await ref.set(data);
     const keep=new Set();
     for(const r of f.querySelectorAll(".clubrow")){
-      const cd={churchId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center,program:r.querySelector(".k-prog").value,leader:r.querySelector(".k-leader").value.trim(),phone:r.querySelector(".k-phone").value.trim(),kids:Math.max(0,parseInt(r.querySelector(".k-kids").value,10)||0),status:r.querySelector(".k-st").value,updatedAt:Date.now()};
-      if(!r.dataset.id&&!cd.leader&&!cd.phone&&!cd.kids)continue;
+      const cd={churchId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center,program:r.querySelector(".k-prog").value,leader:r.querySelector(".k-leader").value.trim(),phone:r.querySelector(".k-phone").value.trim(),kids:Math.max(0,parseInt(r.querySelector(".k-kids").value,10)||0),servants:Math.max(0,parseInt(toEn(r.querySelector(".k-serv").value),10)||0),day:r.querySelector(".k-day").value,time:r.querySelector(".k-time").value,status:r.querySelector(".k-st").value,updatedAt:Date.now()};
+      if(!r.dataset.id&&!cd.leader&&!cd.phone&&!cd.kids&&!cd.servants&&cd.day===""&&!cd.time)continue;
       if(r.dataset.id){keep.add(r.dataset.id);await db.doc("clubs/"+r.dataset.id).set(cd)}else await db.collection("clubs").doc().set(cd);
     }
     for(const c of cls)if(!keep.has(c.id))await delClub(c.id);
@@ -1792,10 +1799,10 @@ function clubForm(id){
   const d=D();const c=S.clubs.find(x=>x.id===id);const ch=c&&d.CH[c.churchId];if(!c||!ch||!canE(ch))return;
   openModal(t("editClub"),`<div class="panel" style="padding:12px 14px"><b>${esc(ch.name)}</b><div class="path"><span>${esc(cname(d.C[ch.countryId]))}</span>${pathOf(ch)}</div></div>
    <div class="fgrid"><div class="f"><label for="kProg">${esc(t("program"))}</label><select id="kProg">${programs().map(p=>`<option value="${p.k}" ${c.program===p.k?"selected":""}>${esc(progName(p.k))}</option>`).join("")}</select></div>
-   ${fld("kLeader",t("leader"),c.leader)}${fld("kPhone",t("phone"),c.phone,{type:"tel",im:"tel",dir:"ltr"})}${fld("kKids",t("kidsCount"),String(c.kids??""),{type:"number",im:"numeric"})}
+   ${fld("kLeader",t("leader"),c.leader)}${fld("kPhone",t("phone"),c.phone,{type:"tel",im:"tel",dir:"ltr"})}${fld("kKids",t("kidsCount"),String(c.kids??""),{type:"number",im:"numeric"})}${fld("kServ",t("servants"),String(c.servants??""),{type:"number",im:"numeric"})}<div class="f"><label for="kDay">${esc(t("meetDay"))}</label>${daySel("","kDay",c.day)}</div>${fld("kTime",t("meetTime"),c.time,{type:"time",dir:"ltr"})}
    <div class="f"><label for="kSt">${esc(t("clubStatus"))}</label><select id="kSt">${["active","new","paused"].map(k=>`<option value="${k}" ${(c.status||"active")===k?"selected":""}>${esc(t(ST[k][0]))}</option>`).join("")}</select></div></div>`,async f=>{
     const kids=Math.max(0,parseInt(toEn(val(f,"kKids")),10)||0);
-    const up={program:f.querySelector("#kProg").value,leader:val(f,"kLeader"),phone:val(f,"kPhone"),kids,status:f.querySelector("#kSt").value,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",updatedAt:Date.now()};
+    const up={program:f.querySelector("#kProg").value,leader:val(f,"kLeader"),phone:val(f,"kPhone"),kids,servants:Math.max(0,parseInt(toEn(val(f,"kServ")),10)||0),day:f.querySelector("#kDay").value,time:val(f,"kTime"),status:f.querySelector("#kSt").value,countryId:ch.countryId,region:ch.region||"",area:ch.city||"",center:ch.center||"",updatedAt:Date.now()};
     await db.doc("clubs/"+c.id).update(up);
     logAct("edit","church",ch.name+" · "+progName(up.program)+(kids!==(+c.kids||0)?" · "+t("kids")+": "+(+c.kids||0)+" → "+kids:""),ch.countryId);
   });
@@ -2002,9 +2009,9 @@ const safeName=s=>String(s||"story").replace(/[\\/:*?"<>|]+/g," ").trim().slice(
 function tables(){
   const d=D();
   const clubRowsAll=S.clubs.map(c=>{const ch=d.CH[c.churchId];if(!ch)return null;const vs=d.vByClub[c.id]||[];
-    return {country:cname(d.C[ch.countryId]),cid:ch.countryId,region:ch.region||"",city:ch.city||"",center:ch.center||"",village:ch.village||"",church:ch.name||"",program:progName(c.program),leader:c.leader||"",phone:c.phone||"",kids:+c.kids||0,last:vs[0]?fmtDate(vs[0].date):t("notVisited"),n:vs.length,clubId:c.id}}).filter(Boolean)
+    return {country:cname(d.C[ch.countryId]),cid:ch.countryId,region:ch.region||"",city:ch.city||"",center:ch.center||"",village:ch.village||"",church:ch.name||"",program:progName(c.program),leader:c.leader||"",phone:c.phone||"",kids:+c.kids||0,serv:+c.servants||0,meet:meetTxt(c),last:vs[0]?fmtDate(vs[0].date):t("notVisited"),n:vs.length,clubId:c.id}}).filter(Boolean)
     .sort((a,b)=>a.country.localeCompare(b.country)||a.region.localeCompare(b.region)||a.city.localeCompare(b.city)||a.church.localeCompare(b.church));
-  const H={clubs:[t("country"),t("region"),t("city"),t("center"),t("village"),t("churchName"),t("program"),t("leader"),t("phone"),t("kidsCount"),t("lastVisit"),t("visits")],
+  const H={clubs:[t("country"),t("region"),t("city"),t("center"),t("village"),t("churchName"),t("program"),t("leader"),t("phone"),t("kidsCount"),t("servants"),t("meetWhen"),t("lastVisit"),t("visits")],
    countries:[t("country"),t("manager"),t("phone"),t("email"),t("churches"),t("clubs"),t("kids"),t("visited"),t("coverage")],
    visits:[t("visitDate"),t("country"),t("region"),t("city"),t("center"),t("village"),t("churchName"),t("program"),t("leader"),t("kidsAtVisit"),t("visitor"),t("notes")],
    team:[t("type"),t("name"),t("role"),t("country"),t("phone"),t("email"),t("notes")],
@@ -2016,7 +2023,7 @@ function tables(){
    plans:[t("planDate"),t("country"),t("churchName"),t("program"),t("visitor"),t("notes")],
    compare:[t("country"),t("byClubs"),t("byKids"),t("byCov"),t("byGrowth")],
    reports:[t("quarter"),t("country"),t("reportBy"),t("rAch"),t("rChal"),t("rPray"),t("rNeeds"),t("rNext")]};
-  const R={clubs:clubRowsAll.map(r=>[r.country,r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.last,r.n]),
+  const R={clubs:clubRowsAll.map(r=>[r.country,r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.serv,r.meet,r.last,r.n]),
    countries:S.countries.map(c=>{const x=countryStats(c.id,d);return [cname(c),c.manager||"",c.phone||"",c.email||"",x.churches,x.clubs,x.kids,x.visited,x.pct+"%"]}),
    visits:[...S.visits].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(v=>{const c=S.clubs.find(x=>x.id===v.clubId);const ch=c&&d.CH[c.churchId];return [fmtDate(v.date),cname(d.C[v.countryId]),ch?ch.region||"":"",ch?ch.city||"":"",ch?ch.center||"":"",ch?ch.village||"":"",ch?ch.name:"",c?progName(c.program):"",c?c.leader||"":"",typeof v.kids==="number"?v.kids:"",v.visitor||"",v.notes||""]}),
    team:S.countries.filter(c=>c.manager).map(c=>[t("manager"),c.manager,t("manager"),cname(c),c.phone||"",c.email||"",c.notes||""]).concat(S.team.map(p=>[p.type==="vol"?t("volT"):t("teamT"),p.name,p.role||"",p.countryId?cname(d.C[p.countryId]):t("wholeME"),p.phone||"",p.email||"",p.notes||""])),
@@ -2059,10 +2066,10 @@ async function exportPdf(){
   if(S.tab==="countries"&&S.countryId&&d.C[S.countryId]){
     const c=d.C[S.countryId];const s=countryStats(c.id,d);title+=" — "+cname(c);
     body=`<div class="sub">${esc(t("manager"))}: ${esc(c.manager||"—")} ${c.phone?"· "+esc(c.phone):""} · ${esc(t("churches"))}: ${nf(s.churches)} · ${esc(t("clubs"))}: ${nf(s.clubs)} · ${esc(t("kids"))}: ${nf(s.kids)} · ${esc(t("coverage"))}: ${nf(s.pct)}%</div>`+
-      htmlTable(H.clubs.slice(1),clubRowsAll.filter(r=>r.cid===c.id).map(r=>[r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.last,r.n]));
+      htmlTable(H.clubs.slice(1),clubRowsAll.filter(r=>r.cid===c.id).map(r=>[r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.serv,r.meet,r.last,r.n]));
   }else if(S.tab==="visits"){
     const ids=new Set(visitRows(d).map(r=>r.c.id));
-    body=`<h2>${esc(t("tVisits"))}</h2>`+htmlTable(H.clubs,clubRowsAll.filter(r=>ids.has(r.clubId)).map(r=>[r.country,r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.last,r.n]))+`<h2>${esc(t("visitsLog"))}</h2>`+htmlTable(H.visits,R.visits);
+    body=`<h2>${esc(t("tVisits"))}</h2>`+htmlTable(H.clubs,clubRowsAll.filter(r=>ids.has(r.clubId)).map(r=>[r.country,r.region,r.city,r.center,r.village,r.church,r.program,r.leader,r.phone,r.kids,r.serv,r.meet,r.last,r.n]))+`<h2>${esc(t("visitsLog"))}</h2>`+htmlTable(H.visits,R.visits);
   }else if(S.tab==="team"){body=`<h2>${esc(t("tTeam"))}</h2>`+htmlTable(H.team,R.team)}
   else if(S.tab==="stories"){body=`<h2>${esc(t("stories"))}</h2>`+htmlTable(H.stories.slice(0,4),R.stories.map(r=>r.slice(0,4)))}
   else{const s=countryStats(null,d);
