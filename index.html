@@ -247,7 +247,7 @@ body.fm .hero p{font-size:1.4rem}body.fm .splash{width:170px}
 .panel[data-c] h2.sm{color:color-mix(in srgb,var(--pc) 70%,var(--ink))}
 .panel[data-c="3"] h2.sm{color:color-mix(in srgb,var(--pc) 45%,var(--ink))}
 main{--tc:var(--blue)}
-main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="users"]{--tc:var(--red)}main[data-view="finance"]{--tc:var(--yellow)}
+main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="meetings"]{--tc:var(--blue)}main[data-view="users"]{--tc:var(--red)}main[data-view="finance"]{--tc:var(--yellow)}
 main>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 78%,var(--ink))}
 main[data-view="stories"]>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 50%,var(--ink))}
 .tbl-wrap{border-top:6px solid var(--tc)}
@@ -455,6 +455,15 @@ tr.click:hover td{background:var(--raise)}
 .foot{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:0 30px;color:var(--muted);font-size:.82rem;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
 .foot .stripe{width:140px;border-radius:4px;overflow:hidden}
 
+
+main[data-view="reports"]{--tc:var(--blue)}
+.rpaud{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.rpa{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;background:var(--raise);border:2px solid transparent}
+.rpa small{color:var(--muted,#667085);font-size:.8rem}.rpa.on{border-color:var(--blue);background:var(--surface)}.rpa:focus-visible{outline:2px solid var(--blue)}
+.rpwrap{overflow-x:auto;margin-top:14px;border-radius:16px;box-shadow:0 2px 14px rgba(0,0,0,.08)}
+.rpv{background:#fff;color:#111;font-family:var(--f-body);width:794px;max-width:none;margin:0 auto}
+.rpv table{width:100%;border-collapse:collapse}
+@media (max-width:820px){.rpv{zoom:.48}}
 #reportHost{position:fixed;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none}
 #report{background:#fff;color:#111;font-family:var(--f-body)}
 #report.wide{width:1060px;padding:0 0 20px}
@@ -576,9 +585,9 @@ ar:{title:"أوانا الشرق الأوسط",brandName:"الشرق الأوس�
  authFail:"تعذّر تسجيل الدخول. حاول مرة تانية.",signedAs:"داخل باسم",
  usersSub:"وافق على الطلبات الجديدة وحدد صلاحية كل شخص",noUsers:"لا يوجد مستخدمين بعد",
  rolePending:"في انتظار الموافقة",roleViewer:"مشاهدة فقط",roleLeader:"مسؤول دولة",roleAdmin:"أدمن",roleDisabled:"موقوف",
- pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",noRegion:"بدون منطقة",noArea:"بدون منطقة فرعية",regLeaders:"مسؤولين المناطق",teams:"الفرق",teamOf:"فريق",teamGeneral:"فريق عام (بدون منطقة)",teamReg:"الفريق (المنطقة)",attNum:"عدد الحاضرين",trPlaces:"المنطقة والمدينة (لو التدريب مجمع ضيف كل الأماكن)",addPlaceT:"إضافة مكان تاني",tRoles:"أدوار الفريق",rolesSub:"كل عضو في الفريق ودوره، ومشاركاته في الزيارات والتدريبات والمسابقات",usersToTeam:"نقل المستخدمين للفريق",usersToTeamDone:"اتضاف {a} للفريق واتحدث {u}",teamPart:"أعضاء الفريق المشاركين",noTeamPick:"مفيش أعضاء فريق في الدولة دي — ضيفهم من «أدوار الفريق»",leaderOf:"مسؤول",lastAct:"آخر مشاركة",showAct:"عرض المشاركات",hideAct:"إخفاء المشاركات",visit1:"زيارة",training1:"تدريب",comp1:"مسابقة",rolesHint:"دوس «نقل المستخدمين للفريق» علشان كل المستخدمين يتضافوا بأدوارهم.",allAreas:"كل المناطق",allOf:"كل",noMgr:"بدون مسؤول دولة",mgrCleared:"اتشال — دوس حفظ",editName:"تعديل الاسم",shownName:"الاسم اللي يظهر في التطبيق",nameNote:"الاسم ده هيفضل ثابت ومش هيتغير لما الشخص يدخل بحساب جوجل.",scopeAreaPh:"المنطقة الفرعية (اختياري) — اكتب أو اختار",scopeHow:"اختار الدولة (والمنطقة لو عايز) تحت، وبعدين دوس «إضافة مكان» علشان يتحفظ 👇",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
+ pickCountry:"اختر الدولة",you:"أنت",roleLbl:"الصلاحية",leaderNoCountry:"اختر دولة لمسؤول الدولة علشان يقدر يعدّل",scopeReg:"المنطقة الكبيرة",roleRegL:"مسؤول منطقة",roleMultiL:"مسؤول أكتر من مكان",addScope:"إضافة مكان",noRegion:"بدون منطقة",noArea:"بدون منطقة فرعية",regLeaders:"مسؤولين المناطق",teams:"الفرق",teamOf:"فريق",teamGeneral:"فريق عام (بدون منطقة)",teamReg:"الفريق (المنطقة)",attNum:"عدد الحاضرين",trPlaces:"المنطقة والمدينة (لو التدريب مجمع ضيف كل الأماكن)",addPlaceT:"إضافة مكان تاني",tRoles:"أدوار الفريق",rolesSub:"كل عضو في الفريق ودوره، ومشاركاته في الزيارات والتدريبات واللقاءات والمسابقات",usersToTeam:"نقل المستخدمين للفريق",usersToTeamDone:"اتضاف {a} للفريق واتحدث {u}",teamPart:"أعضاء الفريق المشاركين",noTeamPick:"مفيش أعضاء فريق في الدولة دي — ضيفهم من «أدوار الفريق»",leaderOf:"مسؤول",lastAct:"آخر مشاركة",showAct:"عرض المشاركات",hideAct:"إخفاء المشاركات",visit1:"زيارة",training1:"تدريب",comp1:"مسابقة",rolesHint:"دوس «نقل المستخدمين للفريق» علشان كل المستخدمين يتضافوا بأدوارهم.",allAreas:"كل المناطق",allOf:"كل",noMgr:"بدون مسؤول دولة",mgrCleared:"اتشال — دوس حفظ",editName:"تعديل الاسم",shownName:"الاسم اللي يظهر في التطبيق",nameNote:"الاسم ده هيفضل ثابت ومش هيتغير لما الشخص يدخل بحساب جوجل.",scopeAreaPh:"المنطقة الفرعية (اختياري) — اكتب أو اختار",scopeHow:"اختار الدولة (والمنطقة لو عايز) تحت، وبعدين دوس «إضافة مكان» علشان يتحفظ 👇",addScopeMore:"إضافة مكان تاني",scopeDup:"المكان ده مضاف قبل كده",outScope:"المكان ده برة صلاحيتك. صلاحيتك على:",roleAreaL:"مسؤول منطقة فرعية",scopeArea:"المنطقة الفرعية",scopeAllCountry:"كل الدولة (مسؤول دولة)",scopeAllReg:"كل المنطقة (مسؤول المنطقة كلها)",scopeRegOnly:"مسؤول:",scopeAreaOnly:"منطقة فرعية:",scopeBar:"صلاحيتك على",scopeBar2:"بتشوف وتعدّل بيانات منطقتك بس.",
  qVisited:"اتزارت الربع ده",
- tTrain:"التدريب",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
+ tTrain:"التدريب",tMeet:"اللقاءات",meetSub:"لقاءات أوانا مع القادة والأهالي والكنائس",addMeet:"إضافة لقاء",editMeet:"تعديل اللقاء",meetTitle:"اسم اللقاء",meetDate:"تاريخ اللقاء",meetType:"نوع اللقاء",meetAtt:"عدد الحضور",meetChurches:"الكنائس اللي حضرت",meetPhotos:"صور اللقاء (لحد ٦ صور)",noMeets:"لسه مفيش لقاءات",noMeetsHint:"سجّل أول لقاء بالتاريخ والمكان والكنائس وعدد الحضور والصور.",mt_leaders:"لقاء قادة نوادي",mt_parents:"لقاء أهالي",mt_pastors:"لقاء قسوس وكنائس",mt_intro:"لقاء تعريفي بأوانا",mt_other:"لقاء آخر",kMeet:"لقاء",tComp:"المسابقات",compSub:"مسابقات أوانا في كل دولة ومنطقة",addComp:"إضافة مسابقة",editComp:"تعديل المسابقة",compTitle:"اسم المسابقة",compDate:"تاريخ المسابقة",contestants:"المتسابقين",teamCount:"عدد الفريق",volCount:"عدد المتطوعين",compChurches:"الكنائس المشاركة",compOtherCh:"كنائس تانية مش متسجلة (كل كنيسة في سطر)",compPhotos:"صور المسابقة (لحد ٦ صور)",noComps:"لسه مفيش مسابقات",noCompsHint:"سجّل أول مسابقة بالتاريخ والمكان والكنائس والأعداد والصور.",noChurchesHere:"مفيش كنائس متسجلة في المكان ده — اكتبها تحت",churchesN:"عدد الكنائس",kComp:"مسابقة",goals:"أهداف السنة",goalsSub:"المستهدف مقابل المحقق",setGoals:"تحديد الأهداف",year:"السنة",noGoals:"لم يتم تحديد أهداف لهذه السنة",
  gClubs:"نوادي نشطة",gKids:"أطفال",gCov:"نسبة النوادي اللي اتزارت",gChurches:"كنائس",achieved:"المحقق",target:"المستهدف",
  trainings:"سجل التدريبات",trainSub:"التدريبات اللي اتعملت ومين حضرها",addTraining:"تسجيل تدريب",editTraining:"تعديل التدريب",trTitle:"عنوان التدريب",trainer:"المدرّب",trType:"نوع التدريب",
  general:"عام",attendees:"الحضور من مسؤولي النوادي",others:"حضور آخرين (اسم في كل سطر)",attCount:"عدد الحضور",noTrainings:"لم يتم تسجيل تدريبات بعد",
@@ -659,9 +668,9 @@ en:{title:"Awana Middle East",brandName:"Middle East",sub:"Clubs, churches and v
  authFail:"Couldn't sign in. Please try again.",signedAs:"Signed in as",
  usersSub:"Approve new requests and set each person's access",noUsers:"No users yet",
  rolePending:"Waiting for approval",roleViewer:"View only",roleLeader:"Country leader",roleAdmin:"Admin",roleDisabled:"Disabled",
- pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",noRegion:"No region",noArea:"No sub-area",regLeaders:"Region leaders",teams:"Teams",teamOf:"Team",teamGeneral:"General team (no region)",teamReg:"Team (region)",attNum:"Number of attendees",trPlaces:"Region and city (for a joint training add every place)",addPlaceT:"Add another place",tRoles:"Team roles",rolesSub:"Every team member, their role, and their part in visits, trainings and competitions",usersToTeam:"Copy users to team",usersToTeamDone:"{a} added to the team, {u} updated",teamPart:"Team members taking part",noTeamPick:"No team members in this country — add them from Team roles",leaderOf:"Leader of",lastAct:"Last activity",showAct:"Show activities",hideAct:"Hide activities",visit1:"Visit",training1:"Training",comp1:"Competition",rolesHint:"Tap Copy users to team to add all users with their roles.",allAreas:"All regions",allOf:"All of",noMgr:"No country leader",mgrCleared:"Cleared — tap Save",editName:"Edit name",shownName:"Name shown in the app",nameNote:"This name stays fixed and won't be replaced by the Google account name at sign-in.",scopeAreaPh:"Sub-area (optional) — type or pick",scopeHow:"Pick the country (and region if needed) below, then tap Add place to save 👇",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
+ pickCountry:"Choose country",you:"You",roleLbl:"Access",leaderNoCountry:"Choose a country so this leader can edit",scopeReg:"Main region",roleRegL:"Region leader",roleMultiL:"Leader of several places",addScope:"Add place",noRegion:"No region",noArea:"No sub-area",regLeaders:"Region leaders",teams:"Teams",teamOf:"Team",teamGeneral:"General team (no region)",teamReg:"Team (region)",attNum:"Number of attendees",trPlaces:"Region and city (for a joint training add every place)",addPlaceT:"Add another place",tRoles:"Team roles",rolesSub:"Every team member, their role, and their part in visits, trainings, meetings and competitions",usersToTeam:"Copy users to team",usersToTeamDone:"{a} added to the team, {u} updated",teamPart:"Team members taking part",noTeamPick:"No team members in this country — add them from Team roles",leaderOf:"Leader of",lastAct:"Last activity",showAct:"Show activities",hideAct:"Hide activities",visit1:"Visit",training1:"Training",comp1:"Competition",rolesHint:"Tap Copy users to team to add all users with their roles.",allAreas:"All regions",allOf:"All of",noMgr:"No country leader",mgrCleared:"Cleared — tap Save",editName:"Edit name",shownName:"Name shown in the app",nameNote:"This name stays fixed and won't be replaced by the Google account name at sign-in.",scopeAreaPh:"Sub-area (optional) — type or pick",scopeHow:"Pick the country (and region if needed) below, then tap Add place to save 👇",addScopeMore:"Add another place",scopeDup:"This place is already added",outScope:"This place is outside your access. Your access:",roleAreaL:"Sub-area leader",scopeArea:"Sub-area",scopeAllCountry:"Whole country (country leader)",scopeAllReg:"Whole region (region leader)",scopeRegOnly:"Leader of:",scopeAreaOnly:"Sub-area:",scopeBar:"Your access:",scopeBar2:"You see and edit your area's data only.",
  qVisited:"Visited this quarter",
- tTrain:"Training",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
+ tTrain:"Training",tMeet:"Meetings",meetSub:"Awana meetings with leaders, parents and churches",addMeet:"Add meeting",editMeet:"Edit meeting",meetTitle:"Meeting name",meetDate:"Meeting date",meetType:"Meeting type",meetAtt:"Attendance",meetChurches:"Churches that attended",meetPhotos:"Meeting photos (up to 6)",noMeets:"No meetings yet",noMeetsHint:"Record the first meeting with date, place, churches, attendance and photos.",mt_leaders:"Club leaders meeting",mt_parents:"Parents meeting",mt_pastors:"Pastors & churches meeting",mt_intro:"Awana intro meeting",mt_other:"Other meeting",kMeet:"meeting",tComp:"Competitions",compSub:"Awana competitions in every country and region",addComp:"Add competition",editComp:"Edit competition",compTitle:"Competition name",compDate:"Competition date",contestants:"Contestants",teamCount:"Team members",volCount:"Volunteers",compChurches:"Participating churches",compOtherCh:"Other churches not registered (one per line)",compPhotos:"Competition photos (up to 6)",noComps:"No competitions yet",noCompsHint:"Record the first competition with date, place, churches, numbers and photos.",noChurchesHere:"No registered churches here — type them below",churchesN:"Churches",kComp:"competition",goals:"Yearly goals",goalsSub:"Target vs achieved",setGoals:"Set goals",year:"Year",noGoals:"No goals set for this year",
  gClubs:"Active clubs",gKids:"Children",gCov:"Clubs visited",gChurches:"Churches",achieved:"Achieved",target:"Target",
  trainings:"Training log",trainSub:"Trainings held and who attended",addTraining:"Log training",editTraining:"Edit training",trTitle:"Training title",trainer:"Trainer",trType:"Training type",
  general:"General",attendees:"Club leaders who attended",others:"Other attendees (one name per line)",attCount:"Attendance",noTrainings:"No trainings logged yet",
@@ -698,11 +707,11 @@ const ttName=k=>{const x=TTYPES.find(z=>z.k===k);return x?(x[S.lang]||x.ar):""};
 const ttPill=k=>k?`<span class="prog" style="background:var(--blue-soft);color:var(--blue)">${esc(ttName(k))}</span>`:"";
 const PCOL=[["var(--blue)","var(--on-blue)"],["var(--red)","var(--on-red)"],["var(--green)","var(--on-green)"],["var(--yellow)","var(--on-yellow)"],["var(--sky)","#06182f"]];
 const ME_COUNTRIES_OLD=["مصر","السودان","جنوب السودان","ليبيا","الأردن","لبنان","سوريا","العراق","فلسطين","السعودية","الإمارات","الكويت","قطر","البحرين","عُمان","اليمن","تونس","الجزائر","المغرب","موريتانيا"];
-const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources","competitions"];
+const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources","competitions","meetings"];
 
 /* ---------- state ---------- */
 const S={countries:[],churches:[],clubs:[],visits:[],team:[],stories:[],extraPrograms:[],
-  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],competitions:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
+  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],competitions:[],meetings:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
   lang:"ar",theme:null,tab:"overview",countryId:null,storyCountry:"",viewMode:false,readOnly:false,
   vf:{country:"",status:"",program:"",q:""},open:{},loaded:{},offline:false};
 let db=null,auth=null,deferredInstall=null;
@@ -864,21 +873,21 @@ function vRoles(d){if(!isAdmin()&&!regionBoss())return"";const boss=!isAdmin();c
   const q=(S.rolesQ||"").trim().toLowerCase();const cf=S.rolesC||"";
   // الزيارات والتدريبات القديمة أو اللي اتسجلت من خطة الزيارات بيبقى فيها اسم القائم بالزيارة/المدرّب مكتوب بس، فبنطابقه بالاسم كمان
   const who=nameMatcher(S.team);const vW=new Map(S.visits.map(x=>[x.id,who(x.visitor,x.countryId)])),tW=new Map(S.trainings.map(x=>[x.id,who(x.trainer,x.countryId)]));
-  const act=p=>{const v=S.visits.filter(x=>(x.teamIds||[]).includes(p.id)||vW.get(x.id).has(p.id)),tr=S.trainings.filter(x=>(x.teamIds||[]).includes(p.id)||tW.get(x.id).has(p.id)),cp=S.competitions.filter(x=>(x.teamIds||[]).includes(p.id));
-    const last=[...v,...tr,...cp].map(x=>x.date||"").sort().pop()||"";return {v,tr,cp,last}};
+  const act=p=>{const v=S.visits.filter(x=>(x.teamIds||[]).includes(p.id)||vW.get(x.id).has(p.id)),tr=S.trainings.filter(x=>(x.teamIds||[]).includes(p.id)||tW.get(x.id).has(p.id)),cp=S.competitions.filter(x=>(x.teamIds||[]).includes(p.id)),mt=S.meetings.filter(x=>(x.teamIds||[]).includes(p.id));
+    const last=[...v,...tr,...mt,...cp].map(x=>x.date||"").sort().pop()||"";return {v,tr,mt,cp,last}};
   const list=S.team.filter(p=>(!boss||bossR.some(x=>x.c===p.countryId&&x.r===(p.region||"")))&&(!cf||(cf==="me"?!p.countryId:p.countryId===cf))&&(!q||((p.name||"")+" "+(p.role||"")+" "+(p.email||"")).toLowerCase().includes(q)))
     .map(p=>({p,a:act(p)})).sort((x,y)=>(x.p.type==="vol")-(y.p.type==="vol")||(x.p.name||"").localeCompare(y.p.name||""));
   let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tRoles"))}</h2><p>${esc(t("rolesSub"))}</p></div><div class="chips">${canAdmin()&&!boss?`<button class="btn green" data-act="usersToTeam">${I.plus}${esc(t("usersToTeam"))}</button><button class="btn" data-act="addMember">${I.plus}${esc(t("addMember"))}</button>`:""}</div></div>`;
   h+=boss?`<div class="filters"><input id="rolesQ" type="search" value="${esc(S.rolesQ||"")}" placeholder="${esc(t("search"))}"></div>`:`<div class="filters"><select id="rolesC" aria-label="${esc(t("country"))}"><option value="">${esc(t("allCountries"))}</option><option value="me" ${cf==="me"?"selected":""}>${esc(t("wholeME"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${cf===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select><input id="rolesQ" type="search" value="${esc(S.rolesQ||"")}" placeholder="${esc(t("search"))}"></div>`;
   if(!list.length)return h+emptyBox(t("noTeam"),t("rolesHint"));
-  const T=list.reduce((o,{a})=>{o.v+=a.v.length;o.t+=a.tr.length;o.c+=a.cp.length;return o},{v:0,t:0,c:0});
-  h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile blue"><b class="num">${nf(list.length)}</b><span>${esc(t("team"))}</span></div><div class="tile green"><b class="num">${nf(T.v)}</b><span>${esc(t("visits"))}</span></div><div class="tile yellow"><b class="num">${nf(T.t)}</b><span>${esc(t("trainings"))}</span></div><div class="tile red"><b class="num">${nf(T.c)}</b><span>${esc(t("tComp"))}</span></div></div>`;
+  const T=list.reduce((o,{a})=>{o.v+=a.v.length;o.t+=a.tr.length;o.m+=a.mt.length;o.c+=a.cp.length;return o},{v:0,t:0,m:0,c:0});
+  h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile blue"><b class="num">${nf(list.length)}</b><span>${esc(t("team"))}</span></div><div class="tile green"><b class="num">${nf(T.v)}</b><span>${esc(t("visits"))}</span></div><div class="tile yellow"><b class="num">${nf(T.t)}</b><span>${esc(t("trainings"))}</span></div><div class="tile blue"><b class="num">${nf(T.m)}</b><span>${esc(t("tMeet"))}</span></div><div class="tile red"><b class="num">${nf(T.c)}</b><span>${esc(t("tComp"))}</span></div></div>`;
   const rcard=({p,a})=>{const u=p.userId&&S.users.find(z=>z.id===p.userId);const open=S.open["r_"+p.id];
-    const items=[...a.v.map(x=>({d:x.date,k:t("visit1"),l:((d.CH[x.churchId]||{}).name||"")})),...a.tr.map(x=>({d:x.date,k:t("training1"),l:x.title||""})),...a.cp.map(x=>({d:x.date,k:t("comp1"),l:x.title||""}))].sort((x,y)=>(y.d||"").localeCompare(x.d||""));
+    const items=[...a.v.map(x=>({d:x.date,k:t("visit1"),l:((d.CH[x.churchId]||{}).name||"")})),...a.tr.map(x=>({d:x.date,k:t("training1"),l:x.title||""})),...a.mt.map(x=>({d:x.date,k:t("kMeet"),l:x.title||meetTypeName(x.type||"other")})),...a.cp.map(x=>({d:x.date,k:t("comp1"),l:x.title||""}))].sort((x,y)=>(y.d||"").localeCompare(x.d||""));
     return `<div class="panel rcard"><div class="hd" style="display:flex;gap:10px;align-items:center">${avatar({name:p.name,photo:u&&u.photo})}<div style="flex:1;min-width:0"><b>${esc(p.name)}</b> <span class="rolechip r-${p.type==="vol"?"viewer":"leader"}">${esc(p.type==="vol"?t("volT"):t("teamT"))}</span>
       <small class="muted" style="display:block;overflow-wrap:anywhere">${esc(p.role||"—")}</small><small class="muted">${esc(p.countryId?cname(d.C[p.countryId]):t("wholeME"))}${u?" · 🔑 "+esc(roleName(u.role)):""}</small></div>
       ${boss?"":`<button class="icon" data-act="editMember" data-id="${p.id}" aria-label="${esc(t("edit"))}">${I.edit}</button>`}</div>
-     <div class="cnums" style="grid-template-columns:repeat(3,1fr)"><div><b class="num">${nf(a.v.length)}</b><small>${esc(t("visits"))}</small></div><div><b class="num">${nf(a.tr.length)}</b><small>${esc(t("trainings"))}</small></div><div><b class="num">${nf(a.cp.length)}</b><small>${esc(t("tComp"))}</small></div></div>
+     <div class="cnums" style="grid-template-columns:repeat(4,1fr)"><div><b class="num">${nf(a.v.length)}</b><small>${esc(t("visits"))}</small></div><div><b class="num">${nf(a.tr.length)}</b><small>${esc(t("trainings"))}</small></div><div><b class="num">${nf(a.mt.length)}</b><small>${esc(t("tMeet"))}</small></div><div><b class="num">${nf(a.cp.length)}</b><small>${esc(t("tComp"))}</small></div></div>
      ${a.last?`<small class="muted num">${esc(t("lastAct"))}: ${fmtDate(a.last)}</small>`:""}
      ${p.phone?`<span>${phoneBits(p.phone,p.countryId)}</span>`:""}
      ${items.length?`<button class="link" style="align-self:flex-start;font-size:.85rem" data-act="toggleRole" data-id="${p.id}">${esc(open?t("hideAct"):t("showAct"))} (${nf(items.length)})</button>${open?`<div class="vhist" style="border-radius:12px">${items.slice(0,30).map(x=>`<div><b class="num">${fmtDate(x.d)}</b><span class="prog" style="background:var(--raise)">${esc(x.k)}</span><span>${esc(x.l)}</span></div>`).join("")}</div>`:""}`:""}</div>`};
@@ -958,6 +967,79 @@ function compForm(x){
   f.addEventListener("change",async e=>{const inp=e.target.closest("[data-cslot]");if(!inp||!inp.files[0])return;const i=+inp.dataset.cslot;
     try{slots[i].data=await compressImage(inp.files[0]);paint(i)}catch(err){merr(t("imgFail"))}inp.value=""});
   f.addEventListener("click",e=>{const b=e.target.closest("[data-crm]");if(!b)return;e.preventDefault();e.stopPropagation();const i=+b.dataset.crm;slots[i]={id:null,data:null};paint(i)});
+}
+
+const MEET_TYPES=["leaders","parents","pastors","intro","other"];
+const meetTypeName=k=>t("mt_"+k);
+function vMeets(d){
+  const ed=canAny();const f=S.meetCountry||"";
+  const ccid=effCountry(f);const list=[...S.meetings].filter(x=>(!f||x.countryId===f)&&areaPass(x,ccid)).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const T=list.reduce((o,x)=>{o.ch+=+x.churchCount||0;o.a+=+x.attendees||0;o.t+=(x.teamIds||[]).length;return o},{ch:0,a:0,t:0});
+  let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tMeet"))}</h2><p>${esc(t("meetSub"))}</p></div><div class="chips" style="align-items:center">${S.countries.length>1?`<select id="meetCountry" class="qsel" aria-label="${esc(t("country"))}"><option value="">${esc(t("allCountries"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${f===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select>`:""}${ed?`<button class="btn" data-act="addMeet">${I.plus}${esc(t("addMeet"))}</button>`:""}</div></div>`;
+  h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile red"><b class="num">${nf(list.length)}</b><span>${esc(t("tMeet"))}</span></div><div class="tile blue"><b class="num">${nf(T.ch)}</b><span>${esc(t("churches"))}</span></div><div class="tile yellow"><b class="num">${nf(T.a)}</b><span>${esc(t("meetAtt"))}</span></div><div class="tile green"><b class="num">${nf(T.t)}</b><span>${esc(t("teamPart"))}</span></div></div>`;
+  h+=areaBar(ccid,cntBy(S.meetings,ccid,x=>x.region,x=>x.town));
+  if(!list.length)return h+emptyBox(t("noMeets"),t("noMeetsHint"),ed?`<button class="btn" data-act="addMeet">${I.plus}${esc(t("addMeet"))}</button>`:"");
+  return h+grouped(list,x=>({c:x.countryId,r:x.region,a:x.town}),its=>`<div class="cards comps meets">${its.map((x,i)=>{const col=["var(--red)","var(--blue)","var(--green)","var(--yellow)"][i%4];const chn=(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]);
+    return `<div class="panel comp meet" style="border-top:5px solid ${col};display:flex;flex-direction:column;gap:10px">
+     <div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><div style="min-width:0"><h3 style="margin:0 0 4px;font-size:1.15rem">${I.meet.replace("<svg",'<svg width="18" height="18" style="vertical-align:-3px;color:'+col+'"')} ${esc(x.title||t("tMeet"))}</h3>
+      <div class="path"><span>${esc(cname(d.C[x.countryId]))}</span>${compPlace(x)?compPlace(x).split(" › ").map(z=>`<span>${esc(z)}</span>`).join(""):""}</div></div>
+      <span class="st ok num" style="background:${col};color:#fff;flex:none">${fmtDate(x.date)}</span></div>
+     <div class="cnums" style="grid-template-columns:repeat(3,1fr)"><div><b class="num">${nf(x.churchCount||0)}</b><small>${esc(t("churches"))}</small></div><div><b class="num">${nf(x.attendees||0)}</b><small>${esc(t("meetAtt"))}</small></div><div><b class="num">${nf((x.teamIds||[]).length)}</b><small>${esc(t("team"))}</small></div></div>
+     ${x.type?`<span class="prog" style="align-self:flex-start;background:var(--raise)">${esc(meetTypeName(x.type))}</span>`:""}
+     ${chn.length?`<small class="muted" style="overflow-wrap:anywhere"><b style="color:var(--ink)">${esc(t("churches"))}:</b> ${esc(chn.join("، "))}</small>`:""}
+     ${(x.teamIds||[]).length?`<small class="muted" style="overflow-wrap:anywhere"><b style="color:var(--ink)">👥 ${esc(t("teamPart"))}:</b> ${esc(teamNames(x.teamIds).join("، "))}</small>`:""}
+     ${x.notes?`<small class="muted" style="overflow-wrap:anywhere">${esc(x.notes)}</small>`:""}
+     ${(x.images||[]).length?`<div class="cphotos">${x.images.map(id=>`<button type="button" class="vth" data-act="viewPhoto" data-id="${esc(id)}" data-img="${esc(id)}" aria-label="${esc(t("photos"))}"></button>`).join("")}</div>`:""}
+     ${x.archived?`<small class="muted num">📦 ${nf(x.archived)} ${esc(t("archIn"))}</small>`:""}
+     ${canE(x)?`<div style="display:flex;gap:6px;justify-content:flex-end"><button class="icon" data-act="editMeet" data-id="${x.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="meet" data-id="${x.id}" aria-label="${esc(t("del"))}">${I.del}</button></div>`:""}</div>`}).join("")}</div>`,its=>nf(its.length));
+}
+function meetForm(x){
+  x=x||{countryId:(S.me&&S.me.countryId)||S.meetCountry||((myCountries()[0]||{}).id),date:today(),churchIds:[],region:myReg(),town:myArea()};
+  const N=6;const slots=[...Array(N)].map((_,i)=>({id:(x.images||[])[i]||null,data:null}));
+  const f=openModal(x.id?t("editMeet"):t("addMeet"),`<div class="fgrid">
+   ${fld("mtTitle",t("meetTitle"),x.title,{full:1})}
+   <div class="f"><label for="mtCountry">${esc(t("country"))} *</label><select id="mtCountry">${myCountries().map(c=>`<option value="${c.id}" ${x.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+   ${fld("mtDate",t("meetDate"),x.date,{type:"date",req:1})}${fld("mtRegion",t("region"),x.region,{list:"lmtRegion"})}${fld("mtTown",t("city"),x.town,{list:"lmtTown"})}
+   <div class="f"><label for="mtType">${esc(t("meetType"))}</label><select id="mtType">${MEET_TYPES.map(k=>`<option value="${k}" ${(x.type||"leaders")===k?"selected":""}>${esc(meetTypeName(k))}</option>`).join("")}</select></div>${fld("mtAtt",t("meetAtt"),String(x.attendees??""),{type:"number",im:"numeric"})}</div>
+   <datalist id="lmtRegion"></datalist><datalist id="lmtTown"></datalist>
+   <div class="f"><label>${esc(t("meetChurches"))} <span class="muted num" id="mtChN"></span></label><div id="mtChurches" style="display:flex;flex-direction:column;gap:4px;max-height:220px;overflow:auto;background:var(--raise);border-radius:12px;padding:8px"></div></div>
+   <div class="fgrid">${teamPickBox(x.teamIds,x.countryId,x.region||myReg())}<div class="f full"><label for="mtOther">${esc(t("compOtherCh"))}</label><textarea id="mtOther">${esc((x.otherChurches||[]).join("\n"))}</textarea></div>${fld("mtNotes",t("notes"),x.notes,{full:1,area:1})}</div>
+   <div class="f"><label>${esc(t("meetPhotos"))}</label><div class="slots cslots">${slots.map((_,i)=>`<label class="slot" id="mslot${i}">${I.img.replace("<svg",'<svg width="22" height="22"')}<span>${esc(t("addPhoto"))}</span><input type="file" accept="image/*" data-mslot="${i}" aria-label="${esc(t("addPhoto"))}"><button type="button" class="rm" data-mrm="${i}" hidden aria-label="${esc(t("del"))}">${I.x}</button></label>`).join("")}</div></div>`,async f=>{
+    const n=id=>Math.max(0,parseInt(toEn(val(f,id)),10)||0);
+    const churchIds=[...f.querySelectorAll("#mtChurches input:checked")].map(i=>i.value);
+    const otherChurches=f.querySelector("#mtOther").value.split(/\n+/).map(z=>z.trim()).filter(Boolean);
+    const data={countryId:f.querySelector("#mtCountry").value,title:val(f,"mtTitle"),date:val(f,"mtDate"),region:val(f,"mtRegion"),town:val(f,"mtTown"),churchIds,otherChurches,churchCount:churchIds.length+otherChurches.length,
+      type:f.querySelector("#mtType").value,attendees:n("mtAtt"),teamIds:pickedTeam(f),notes:val(f,"mtNotes"),by:(x.by||S.me.id),updatedAt:Date.now(),createdAt:x.createdAt||Date.now(),archived:x.archived||0};
+    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.town=myArea()}
+    data.area=data.town;data.center=myCenter()||x.center||"";
+    if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
+    if(!data.countryId)return merr(t("needCountry"));if(!data.date)return merr(t("req"));
+    $("msave").textContent=t("saving");
+    const ref=x.id?db.doc("meetings/"+x.id):db.collection("meetings").doc();const ids=[];
+    for(const sl of slots){if(sl.data){const ir=db.collection("storyImages").doc();await ir.set({meetId:ref.id,countryId:data.countryId,region:data.region,area:data.area,center:data.center||"",data:sl.data});imgCache[ir.id]=sl.data;ids.push(ir.id)}else if(sl.id)ids.push(sl.id)}
+    data.images=ids;await ref.set(data);
+    for(const old of (x.images||[]))if(!ids.includes(old))await db.doc("storyImages/"+old).delete().catch(()=>{});
+    logAct(x.id?"edit":"add","meet",(data.title||t("tMeet"))+" · "+data.date,data.countryId);
+  });
+  if(myReg()){["mtRegion"].concat(myArea()?["mtTown"]:[]).forEach(id=>{const e=f.querySelector("#"+id);e.readOnly=true;e.style.opacity=".7"})}
+  const fill=()=>{const cid=f.querySelector("#mtCountry").value,reg=f.querySelector("#mtRegion").value.trim(),town=f.querySelector("#mtTown").value.trim();const co=S.countries.find(c=>c.id===cid)||{};
+    const opts=a=>[...new Set(a.filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("");
+    f.querySelector("#lmtRegion").innerHTML=opts((co.regions||[]).concat(S.churches.filter(c=>c.countryId===cid).map(c=>c.region)));
+    f.querySelector("#lmtTown").innerHTML=opts((co.towns||[]).filter(z=>!reg||!z.r||z.r===reg).map(z=>z.n).concat(S.churches.filter(c=>c.countryId===cid&&(!reg||c.region===reg)).map(c=>c.city)));
+    const sel=new Set([...f.querySelectorAll("#mtChurches input:checked")].map(i=>i.value).concat(x.churchIds||[]));
+    const list=S.churches.filter(c=>c.countryId===cid&&(sel.has(c.id)||((!reg||c.region===reg)&&(!town||c.city===town)))).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+    f.querySelector("#mtChurches").innerHTML=list.length?list.map(c=>`<label style="display:flex;gap:8px;align-items:center;font-size:.88rem;padding:4px 2px;cursor:pointer"><input type="checkbox" value="${c.id}" ${sel.has(c.id)?"checked":""} style="width:18px;height:18px;flex:none"><span><b>${esc(c.name)}</b> <span class="muted">${esc(placeTxt(c))}</span></span></label>`).join(""):`<span class="muted" style="font-size:.85rem">${esc(t("noChurchesHere"))}</span>`;cnt()};
+  const cnt=()=>{const a=f.querySelectorAll("#mtChurches input:checked").length,b=f.querySelector("#mtOther").value.split(/\n+/).filter(z=>z.trim()).length;f.querySelector("#mtChN").textContent="("+nf(a+b)+")"};
+  {const rf=wireTeamPick(f,()=>f.querySelector("#mtCountry").value);f.querySelector("#mtCountry").addEventListener("change",rf)}
+  fill();["mtCountry","mtRegion","mtTown"].forEach(id=>f.querySelector("#"+id).addEventListener(id==="mtCountry"?"change":"input",fill));
+  f.querySelector("#mtChurches").addEventListener("change",cnt);f.querySelector("#mtOther").addEventListener("input",cnt);
+  const paint=i=>{const el=f.querySelector("#mslot"+i),sl=slots[i],rm=el.querySelector(".rm");const u=sl.data||(sl.id&&imgCache[sl.id]);
+    if(sl.data||sl.id){el.classList.add("has");rm.hidden=false;if(u)el.style.backgroundImage=`url("${u}")`;else loadImg(sl.id).then(z=>{if(z)el.style.backgroundImage=`url("${z}")`})}
+    else{el.classList.remove("has");rm.hidden=true;el.style.backgroundImage=""}};
+  slots.forEach((_,i)=>paint(i));
+  f.addEventListener("change",async e=>{const inp=e.target.closest("[data-mslot]");if(!inp||!inp.files[0])return;const i=+inp.dataset.mslot;
+    try{slots[i].data=await compressImage(inp.files[0]);paint(i)}catch(err){merr(t("imgFail"))}inp.value=""});
+  f.addEventListener("click",e=>{const b=e.target.closest("[data-mrm]");if(!b)return;e.preventDefault();e.stopPropagation();const i=+b.dataset.mrm;slots[i]={id:null,data:null};paint(i)});
 }
 function trainingForm(tr){
   tr=tr||{countryId:(S.me&&S.me.countryId)||((myCountries()[0]||{}).id),date:today(),clubIds:[]};
@@ -1154,7 +1236,7 @@ const cidx=id=>{const i=S.countries.findIndex(c=>c.id===id);return (i<0?0:i)%4};
 
 /* ---------- icons ---------- */
 const sv=(p,w=2)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
-const I={trophy:sv('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8 20h8M10 17h4"/>'),cap:sv('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>'),link:sv('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),play:sv('<circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/>'),target:sv('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),cal:sv('<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>'),bell:sv('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/>'),edit:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>'),del:sv('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'),
+const I={meet:sv('<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M14 20a4.5 4.5 0 0 1 7-3.7"/>'),trophy:sv('<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4"/><path d="M12 13v4M8 20h8M10 17h4"/>'),cap:sv('<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>'),link:sv('<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>'),play:sv('<circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/>'),target:sv('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),cal:sv('<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>'),bell:sv('<path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a1.9 1.9 0 0 0 3.4 0"/>'),edit:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/>'),del:sv('<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>'),
  plus:sv('<path d="M12 5v14M5 12h14"/>',2.4),eye:sv('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'),
  pen:sv('<path d="M4 20h4L19 9l-4-4L4 16z"/>'),dl:sv('<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>'),
  sun:sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),
@@ -1186,8 +1268,8 @@ function countryStats(cid,d){
 const cname=c=>c?((S.lang==="en"&&c.nameEn)?c.nameEn:c.name):"—";
 
 /* ---------- chrome ---------- */
-const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["training","tTrain","var(--green)"],["competitions","tComp","var(--red)"]];
-const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],competitions:["var(--red)","#fff"],roles:["#ffffff","var(--brand-deep)"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
+const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["training","tTrain","var(--green)"],["meetings","tMeet","var(--blue)"],["competitions","tComp","var(--red)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["reports","tReports","var(--sky)"]];
+const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],competitions:["var(--red)","#fff"],meetings:["var(--blue)","#fff"],reports:["#ffffff","var(--brand-deep)"],roles:["#ffffff","var(--brand-deep)"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
 const TABS=()=>TABS0.concat(canFinRead()?[["finance","tFinance","var(--yellow)"]]:[]).concat(isAdmin()||regionBoss()?[["roles","tRoles","var(--sky)"]]:[]).concat(isAdmin()?[["users","tUsers","var(--red)"]]:[]);
 function applyChrome(){
   const r=document.documentElement;r.lang=S.lang;r.dir=S.lang==="ar"?"rtl":"ltr";
@@ -1227,7 +1309,7 @@ function render(){
   else if(role()==="manager")h+=`<div class="viewbar">${I.eye} ${esc(t("mgrNote"))}</div>`;
   else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(myScopes().map(scopeTxt).join("، "))}</b> — ${esc(t("scopeBar2"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
-  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,roles:vRoles,finance:vFinance}[S.tab]||vOverview)(d);
+  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,meetings:vMeets,reports:vReports,roles:vRoles,finance:vFinance}[S.tab]||vOverview)(d);
   m.innerHTML=h;m.dataset.view=S.tab;if(S.tab==="users")restoreDrafts();m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
 }
 const dots=`<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -1607,7 +1689,7 @@ async function setUser(uid,patch){
     toast(t("saved"))}catch(e){console.error(e);toast(t("failed")+" ("+(e.code||"")+")")}
 }
 function vLog(){
-  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",comp:"kComp",resource:"kRes",finance:"kFin"};
+  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",comp:"kComp",meet:"kMeet",resource:"kRes",finance:"kFin"};
   const an={add:"aAdd",edit:"aEdit",del:"aDel"};const col={add:"var(--green)",edit:"var(--blue)",del:"var(--red)"};
   const fmt=ms=>{try{return new Date(ms).toLocaleString(S.lang==="ar"?"ar-EG":"en-GB",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}catch(e){return""}};
   let h=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("log"))}</h2><p>${esc(t("logSub"))}</p></div></div>`;
@@ -1616,7 +1698,7 @@ function vLog(){
 }
 /* ---------- photo archive: download photos as a named ZIP, then remove them from the app ---------- */
 function archDefaults(){if(S.arch)return S.arch;const n=new Date();const a=new Date(Date.UTC(n.getFullYear(),n.getMonth()-1,1)),b=new Date(Date.UTC(n.getFullYear(),n.getMonth(),0));
-  return S.arch={from:a.toISOString().slice(0,10),to:b.toISOString().slice(0,10),v:true,t:true,c:true,s:false,ready:null,busy:""}}
+  return S.arch={from:a.toISOString().slice(0,10),to:b.toISOString().slice(0,10),v:true,t:true,c:true,m:true,s:false,ready:null,busy:""}}
 function archItems(){const A=archDefaults(),d=D();const out=[];const inR=x=>x&&x>=A.from&&x<=A.to;
   const cn=cid=>cname(d.C[cid]);
   if(A.v)S.visits.forEach(v=>{if(!(v.images||[]).length||!inR(v.date))return;const ch=d.CH[v.churchId]||{};const c=S.clubs.find(x=>x.id===v.clubId)||{};
@@ -1625,16 +1707,18 @@ function archItems(){const A=archDefaults(),d=D();const out=[];const inR=x=>x&&x
     out.push({col:"trainings",doc:x,folder:t("archTrain")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,x.trainer].filter(Boolean).join(" - ")})});
   if(A.c)S.competitions.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
     out.push({col:"competitions",doc:x,folder:t("tComp")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,compPlace(x)].filter(Boolean).join(" - ")})});
+  if(A.m)S.meetings.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
+    out.push({col:"meetings",doc:x,folder:t("tMeet")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title,compPlace(x)].filter(Boolean).join(" - ")})});
   if(A.s)S.stories.forEach(x=>{if(!(x.images||[]).length||!inR(x.date))return;
     out.push({col:"stories",doc:x,folder:t("stories")+"/"+safeName(cn(x.countryId)),base:[x.date,x.title].filter(Boolean).join(" - ")})});
   return out}
 function photosPanel(){if(!isAdmin())return"";const A=archDefaults();const items=archItems();const n=items.reduce((s,i)=>s+i.doc.images.length,0);
-  const all=[S.visits,S.trainings,S.competitions,S.stories].reduce((s,a)=>s+a.reduce((x,o)=>x+((o.images||[]).length),0),0);
+  const all=[S.visits,S.trainings,S.competitions,S.meetings,S.stories].reduce((s,a)=>s+a.reduce((x,o)=>x+((o.images||[]).length),0),0);
   const ck=(id,k,l)=>`<label style="display:flex;gap:6px;align-items:center;font-weight:700;font-size:.9rem"><input type="checkbox" id="${id}" ${A[k]?"checked":""} style="width:18px;height:18px">${esc(l)}</label>`;
   return `<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("archTitle"))}</h2><p>${esc(t("archSub"))}</p></div></div>
    <p class="num" style="margin:0 0 10px;font-weight:700">${esc(t("archAll"))}: ${nf(all)}</p>
    <div class="fgrid" style="align-items:end"><div class="f"><label for="archFrom">${esc(t("archFrom"))}</label><input id="archFrom" type="date" value="${esc(A.from)}"></div><div class="f"><label for="archTo">${esc(t("archTo"))}</label><input id="archTo" type="date" value="${esc(A.to)}"></div></div>
-   <div class="chips" style="margin:10px 0">${ck("archV","v",t("archVisits"))}${ck("archT","t",t("archTrain"))}${ck("archC","c",t("tComp"))}${ck("archS","s",t("stories"))}</div>
+   <div class="chips" style="margin:10px 0">${ck("archV","v",t("archVisits"))}${ck("archT","t",t("archTrain"))}${ck("archM","m",t("tMeet"))}${ck("archC","c",t("tComp"))}${ck("archS","s",t("stories"))}</div>
    <div class="chips" style="align-items:center"><button class="btn green" data-act="archDl" ${n&&!A.busy?"":"disabled"}>${I.dl}${esc(A.busy||t("archDl"))} ${n?`(<span class="num">${nf(n)}</span>)`:""}</button>
     ${A.ready?`<button class="btn red" data-act="archDel">${I.del}${esc(t("archDel"))} (<span class="num">${nf(A.ready.reduce((s,i)=>s+i.ids.length,0))}</span>)</button>`:""}</div>
    <small class="muted" style="display:block;margin-top:10px">${esc(n?t("archHint"):t("archNone"))}</small></div>`}
@@ -1897,15 +1981,239 @@ function askDelPass(label,fn){const f=openModal(t("delTitle"),`<div class="viewb
     if(val(f,"delPass")!==DEL_PASS){merr(t("badPass"));f.querySelector("#delPass").value="";f.querySelector("#delPass").focus();setTimeout(()=>{const x=$("msave");if(x)x.textContent=t("del")},0);return false}
     closeModal();await fn();return false});
   const b=$("msave");if(b){b.textContent=t("del");b.classList.add("red")}setTimeout(()=>{const i=f.querySelector("#delPass");i&&i.focus()},40)}
-function delLabel(kind,id){const ent=kind==="comp"?S.competitions.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
+function delLabel(kind,id){const ent=kind==="meet"?S.meetings.find(x=>x.id===id):kind==="comp"?S.competitions.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
   if(!ent)return"";if(kind==="visit"){const ch=S.churches.find(c=>c.id===ent.churchId)||{};return (ch.name||"")+" · "+fmtDate(ent.date)}if(kind==="country")return cname(ent);return ent.title||ent.name||""}
 async function doDelete(kind,id){
-  const ent=kind==="comp"?S.competitions.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
-  const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+(ent.month||ent.year):(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource")?ent.title:ent.name):"";
+  const ent=kind==="meet"?S.meetings.find(x=>x.id===id):kind==="comp"?S.competitions.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
+  const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+(ent.month||ent.year):(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource"||kind==="meet"||kind==="comp")?(ent.title||ent.date):ent.name):"";
   const lcid=ent?(kind==="country"?ent.id:ent.countryId):"";
-  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="comp"){const x=S.competitions.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("competitions/"+id).delete()}else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
+  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="comp"){const x=S.competitions.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("competitions/"+id).delete()}else if(kind==="meet"){const x=S.meetings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("meetings/"+id).delete()}else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
   catch(e){console.error(e);toast(e&&e.code==="invalid_argument"?t("noPerm"):t("failed"))}
 }
+
+/* ---------- التقارير: تقرير بفلتر الفترة والمكان، بـ ٣ أشكال (داعمين / ميداني / دولة) + PDF + Excel ---------- */
+Object.assign(T.ar,{tReports:"التقارير",rpSub:"اختار الفترة والمكان وشكل التقرير، وشوفه هنا قبل ما تنزّله PDF أو Excel",
+ rpPeriod:"الفترة",rpPlace:"المكان",rpAud:"شكل التقرير",rpFrom:"من",rpTo:"إلى",rpAllME:"الشرق الأوسط كله",rpAllReg:"كل المناطق",
+ rp_m:"الشهر ده",rp_pm:"الشهر اللي فات",rp_q:"الربع ده",rp_pq:"الربع اللي فات",rp_y:"السنة دي",rp_py:"السنة اللي فاتت",rp_c:"من تاريخ لتاريخ",
+ aud_board:"للداعمين والإدارة",aud_boardS:"أرقام واضحة ورسوم وقصص بالصور",aud_field:"ميداني للمسؤولين",aud_fieldS:"مين محتاج زيارة وتدريب وبيانات ناقصة",aud_country:"تقرير شامل",aud_countryS:"كل التفاصيل والجداول",
+ rpTitle_board:"تقرير أوانا",rpTitle_field:"التقرير الميداني",rpTitle_country:"التقرير الشامل",
+ rpPdf:"تنزيل PDF",rpXlsx:"تنزيل Excel",rpLoading:"بيتجهز…",rpSnap:"الصورة الحالية",rpAct:"نشاط الفترة",rpVsPrev:"مقارنة بنفس المدة اللي قبلها",
+ rpServ:"خدام",rpCovP:"نوادي اتزارت في الفترة",rpVisited:"نوادي اتزارت",rpNewCh:"كنائس جديدة",rpStories:"قصص نجاح",rpTrAtt:"حضور التدريبات",rpMtAtt:"حضور اللقاءات",rpCont:"متسابقين",
+ rpChVisits:"الزيارات كل شهر",rpChKids:"نمو عدد الأطفال (كل ربع)",rpChProg:"النوادي والأطفال حسب البرنامج",rpGoals:"أهداف السنة",rpBreak:"التوزيع",
+ rpFollow:"محتاج متابعة",rpStale:"نوادي بقالها أكتر من ٣ شهور من غير زيارة",rpUntr:"قادة نوادي لسه ما اتدربوش",rpPaused:"نوادي متوقفة",rpGaps:"بيانات ناقصة",
+ rpNoVisit:"ما اتزارش خالص",rpDays:"يوم",rpLastV:"آخر زيارة",rpMissing:"الناقص",gPhone:"تليفون",gKids:"عدد الأطفال",gTime:"ميعاد النادي",gServ:"عدد الخدام",gLeader:"اسم المسؤول",gPlace:"المنطقة/المدينة",
+ rpTeam:"نشاط الفريق في الفترة",rpTotal:"الإجمالي",rpPlans:"زيارات مخططة (الـ ٣٠ يوم الجايين)",rpNone:"مفيش",rpAllGood:"كله تمام 👌",rpMore:"وكمان",
+ rpSummary:"الملخص",rpMetric:"البند",rpCur:"الفترة دي",rpPrev:"الفترة اللي قبلها",rpChange:"التغيير",rpPhotosNote:"صور القصص بتظهر في الـ PDF",rpPeriodL:"الفترة",rpPlaceL:"المكان",rpDaysSince:"أيام من آخر زيارة",
+ rpStaleSh:"محتاج زيارة",rpUntrSh:"محتاج تدريب",rpGapsSh:"بيانات ناقصة",rpTeamSh:"نشاط الفريق",rpCity:"المدينة"});
+Object.assign(T.en,{tReports:"Reports",rpSub:"Pick the period, place and report type, preview it here, then download PDF or Excel",
+ rpPeriod:"Period",rpPlace:"Place",rpAud:"Report type",rpFrom:"From",rpTo:"To",rpAllME:"Whole Middle East",rpAllReg:"All regions",
+ rp_m:"This month",rp_pm:"Last month",rp_q:"This quarter",rp_pq:"Last quarter",rp_y:"This year",rp_py:"Last year",rp_c:"Custom dates",
+ aud_board:"Donors & board",aud_boardS:"Clear numbers, charts and stories with photos",aud_field:"Field (leaders)",aud_fieldS:"Who needs a visit, training, missing data",aud_country:"Full report",aud_countryS:"All details and tables",
+ rpTitle_board:"Awana report",rpTitle_field:"Field report",rpTitle_country:"Full report",
+ rpPdf:"Download PDF",rpXlsx:"Download Excel",rpLoading:"Preparing…",rpSnap:"Current picture",rpAct:"Activity in the period",rpVsPrev:"vs. the same length before",
+ rpServ:"Servants",rpCovP:"clubs visited in the period",rpVisited:"Clubs visited",rpNewCh:"New churches",rpStories:"Success stories",rpTrAtt:"Training attendance",rpMtAtt:"Meeting attendance",rpCont:"Contestants",
+ rpChVisits:"Visits per month",rpChKids:"Children growth (per quarter)",rpChProg:"Clubs and children by program",rpGoals:"Yearly goals",rpBreak:"Breakdown",
+ rpFollow:"Needs follow-up",rpStale:"Clubs not visited for over 3 months",rpUntr:"Club leaders not trained yet",rpPaused:"Paused clubs",rpGaps:"Missing data",
+ rpNoVisit:"never visited",rpDays:"days",rpLastV:"Last visit",rpMissing:"Missing",gPhone:"phone",gKids:"children count",gTime:"club time",gServ:"servants",gLeader:"leader name",gPlace:"region/city",
+ rpTeam:"Team activity in the period",rpTotal:"Total",rpPlans:"Planned visits (next 30 days)",rpNone:"None",rpAllGood:"All good 👌",rpMore:"and",
+ rpSummary:"Summary",rpMetric:"Item",rpCur:"This period",rpPrev:"Previous period",rpChange:"Change",rpPhotosNote:"Story photos appear in the PDF",rpPeriodL:"Period",rpPlaceL:"Place",rpDaysSince:"Days since last visit",
+ rpStaleSh:"Needs visit",rpUntrSh:"Needs training",rpGapsSh:"Missing data",rpTeamSh:"Team activity",rpCity:"City"});
+const EXCELJS_URL="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js";
+const RP_PRESETS=["m","pm","q","pq","y","py","c"],RP_AUD=["board","field","country"];
+const dayDiff=(a,b)=>Math.round((Date.parse(b+"T12:00:00Z")-Date.parse(a+"T12:00:00Z"))/864e5);
+const isoDay=ms=>{try{return new Date(ms).toISOString().slice(0,10)}catch(e){return""}};
+function rpSetPreset(R,p){R.preset=p;const td=today();const [y,m]=td.split("-").map(Number);const iso=dt=>dt.toISOString().slice(0,10);
+  if(p==="m"){R.from=td.slice(0,8)+"01";R.to=td}
+  else if(p==="pm"){R.from=iso(new Date(Date.UTC(y,m-2,1)));R.to=iso(new Date(Date.UTC(y,m-1,0)))}
+  else if(p==="q"){const q=Math.floor((m-1)/3);R.from=`${y}-${String(q*3+1).padStart(2,"0")}-01`;R.to=td}
+  else if(p==="pq"){let q=Math.floor((m-1)/3)-1,yy=y;if(q<0){q=3;yy--}R.from=`${yy}-${String(q*3+1).padStart(2,"0")}-01`;R.to=iso(new Date(Date.UTC(yy,q*3+3,0)))}
+  else if(p==="y"){R.from=y+"-01-01";R.to=td}
+  else if(p==="py"){R.from=(y-1)+"-01-01";R.to=(y-1)+"-12-31"}
+  return R}
+function rpDefaults(){if(S.rep)return S.rep;const cs=[...new Set(myScopes().map(x=>x.c))];
+  return S.rep=rpSetPreset({cid:scoped()&&cs.length===1?cs[0]:(S.countries.length===1?S.countries[0].id:""),reg:"",aud:"board"},"q")}
+function rpRegions(cid){if(!cid)return[];const co=S.countries.find(c=>c.id===cid)||{};return [...new Set((co.regions||[]).concat(S.churches.filter(c=>c.countryId===cid).map(c=>c.region)).filter(Boolean))].sort((a,b)=>a.localeCompare(b))}
+function rpPlaceTxt(R){return R.cid?cname(S.countries.find(c=>c.id===R.cid))+(R.reg?" › "+R.reg:""):t("rpAllME")}
+const pctCh=(a,b)=>!b?(a?null:0):Math.round((a-b)*100/b);
+
+function rpData(){
+  const R=rpDefaults(),d=D();const cid=R.cid,reg=R.reg;
+  const inP=o=>(!cid||o.countryId===cid)&&(!reg||(o.region||"")===reg);
+  const inR=(x,a,b)=>!!x&&x>=a&&x<=b;
+  const L=Math.max(1,dayDiff(R.from,R.to)+1),pF=addDays(R.from,-L),pT=addDays(R.from,-1);
+  const churches=S.churches.filter(inP);const chIds=new Set(churches.map(c=>c.id));
+  const clubs=S.clubs.filter(c=>chIds.has(c.churchId));const act=clubs.filter(active);
+  const trIn=x=>(!cid||x.countryId===cid)&&(!reg||trPlaces(x).some(p=>p.r===reg)||(!trPlaces(x).length&&(x.region||"")===reg));
+  const per=(a,b)=>{const V=S.visits.filter(v=>chIds.has(v.churchId)&&inR(v.date,a,b));
+    const TR=S.trainings.filter(x=>trIn(x)&&inR(x.date,a,b)),MT=S.meetings.filter(x=>inP(x)&&inR(x.date,a,b)),CP=S.competitions.filter(x=>inP(x)&&inR(x.date,a,b));
+    const ST=S.stories.filter(x=>(!cid||x.countryId===cid)&&(!reg||!x.region||x.region===reg)&&inR(x.date,a,b));
+    const NC=churches.filter(c=>c.createdAt&&inR(isoDay(c.createdAt),a,b));
+    const vis=new Set(V.map(v=>v.clubId));
+    return {V,TR,MT,CP,ST,NC,vis,visited:act.filter(c=>vis.has(c.id)).length,trAtt:TR.reduce((s,x)=>s+(+(x.attendees??x.count)||0),0),mtAtt:MT.reduce((s,x)=>s+(+x.attendees||0),0),cpCont:CP.reduce((s,x)=>s+(+x.contestants||0),0)}};
+  const cur=per(R.from,R.to),prev=per(pF,pT);
+  const kids=act.reduce((s,c)=>s+(+c.kids||0),0),serv=act.reduce((s,c)=>s+(+c.servants||0),0);
+  const cov=act.length?Math.round(cur.visited*100/act.length):0;
+  // الزيارات كل شهر (آخر ١٢ شهر في الفترة)
+  const months=[];{let [y,m]=R.from.split("-").map(Number);const [y2,m2]=R.to.split("-").map(Number);while(y<y2||(y===y2&&m<=m2)){months.push(y+"-"+String(m).padStart(2,"0"));m++;if(m>12){m=1;y++}}}
+  const mVis=months.slice(-12).map(k=>({l:k.slice(5)+"/"+k.slice(2,4),v:cur.V.filter(v=>v.date.slice(0,7)===k).length}));
+  const kq=kidsSeries(clubs).map(x=>({l:String(x.q).replace(/^\d\d(\d\d)-Q(\d)$/,"Q$2/$1"),v:x.v}));
+  const progs=programs().map(p=>{const cl=act.filter(c=>c.program===p.k);return {n:progName(p.k),c:cl.length,k:cl.reduce((s,c)=>s+(+c.kids||0),0)}}).filter(x=>x.c);
+  // الأهداف (سنة نهاية الفترة) — على مستوى الدولة أو كل الدول
+  const yr=+R.to.slice(0,4);let goals=null;
+  if(!reg){const gs=S.goals.filter(g=>+g.year===yr&&(!cid||g.countryId===cid));
+    if(gs.length){const st=countryStats(cid||null,d);const sum=k=>gs.reduce((s,g)=>s+(+g[k]||0),0);
+      goals={churches:[st.churches,sum("churches")],clubs:[st.active,sum("clubs")],kids:[st.kids,sum("kids")],cov:[st.pct,cid?(+gs[0].cov||0):Math.round(sum("cov")/gs.length)]}}}
+  // التوزيع: حسب الدولة، أو المنطقة، أو المدينة
+  const lvl=!cid?"country":!reg?"region":"city";
+  const keyOf=ch=>lvl==="country"?ch.countryId:lvl==="region"?(ch.region||"—"):(ch.city||"—");
+  const nameOf=k=>lvl==="country"?cname(d.C[k]):k;
+  const bk={};churches.forEach(ch=>{const k=keyOf(ch);const b=bk[k]=bk[k]||{n:nameOf(k),ch:0,cl:0,kids:0,serv:0,vis:0,v:0};b.ch++;
+    (d.clubsByChurch[ch.id]||[]).filter(active).forEach(c=>{b.cl++;b.kids+=+c.kids||0;b.serv+=+c.servants||0;if(cur.vis.has(c.id))b.vis++});
+    b.v+=cur.V.filter(v=>v.churchId===ch.id).length});
+  const breakdown=Object.values(bk).map(b=>Object.assign(b,{pct:b.cl?Math.round(b.vis*100/b.cl):0})).sort((a,b)=>b.kids-a.kids);
+  // محتاج متابعة (لحد نهاية الفترة)
+  const lim=addDays(R.to,-90);const row=c=>{const ch=d.CH[c.churchId]||{};const lv=(d.vByClub[c.id]||[]).find(v=>v.date&&v.date<=R.to);
+    return {c,ch,last:lv?lv.date:"",days:lv?dayDiff(lv.date,R.to):null}};
+  const stale=act.map(row).filter(x=>!x.last||x.last<lim).sort((a,b)=>(a.last||"").localeCompare(b.last||""));
+  const untr=act.filter(c=>!lastTraining(c.id)).map(row);
+  const paused=clubs.filter(c=>!active(c)).map(row);
+  const gaps=act.map(c=>{const ch=d.CH[c.churchId]||{};const m=[];if(!c.leader)m.push(t("gLeader"));if(!c.phone)m.push(t("gPhone"));if(!(+c.kids))m.push(t("gKids"));if(!(+c.servants))m.push(t("gServ"));if(c.day===undefined||c.day===""||!c.time)m.push(t("gTime"));if(!ch.region||!ch.city)m.push(t("gPlace"));return {c,ch,m}}).filter(x=>x.m.length);
+  // نشاط الفريق في الفترة
+  const who=nameMatcher(S.team);
+  const team=S.team.filter(p=>(!cid||!p.countryId||p.countryId===cid)&&(!reg||!p.region||p.region===reg)).map(p=>{
+    const v=cur.V.filter(x=>(x.teamIds||[]).includes(p.id)||who(x.visitor,x.countryId).has(p.id)).length,
+      tr=cur.TR.filter(x=>(x.teamIds||[]).includes(p.id)||who(x.trainer,x.countryId).has(p.id)).length,
+      mt=cur.MT.filter(x=>(x.teamIds||[]).includes(p.id)).length,cp=cur.CP.filter(x=>(x.teamIds||[]).includes(p.id)).length;
+    return {p,v,tr,mt,cp,tot:v+tr+mt+cp}}).filter(x=>x.tot).sort((a,b)=>b.tot-a.tot);
+  const td=today();const plans=S.plans.filter(p=>chIds.has(p.churchId)&&p.date>=td&&p.date<=addDays(td,30)).sort((a,b)=>a.date.localeCompare(b.date));
+  return {R,d,cur,prev,pF,pT,churches,clubs,act,kids,serv,cov,mVis,kq,progs,goals,lvl,breakdown,stale,untr,paused,gaps,team,plans};
+}
+
+/* ---- عناصر التقرير (HTML بستايل inline علشان يطلع زي ما هو في الـ PDF) ---- */
+const RC={blue:"#0057a8",red:"#e0262d",green:"#3f9b2c",yellow:"#f7b500",sky:"#5ea8f0",ink:"#1f2937",mut:"#667085",line:"#d7deea",soft:"#f3f6fb"};
+const rpH2=(s,col)=>`<div class="avoid" style="display:flex;align-items:center;gap:8px;margin:22px 0 10px"><span style="width:6px;height:22px;border-radius:3px;background:${col||RC.blue}"></span><h2 style="margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;color:${RC.blue}">${esc(s)}</h2></div>`;
+const rpTile=(n,l,col,sub)=>`<div style="background:${col};color:${col===RC.yellow?"#231900":"#fff"};border-radius:12px;padding:10px 12px;min-width:0"><div style="font-family:var(--f-display);font-size:24px;line-height:1.2">${n}</div><div style="font-size:12px;font-weight:700">${esc(l)}</div>${sub?`<div style="font-size:11px;opacity:.9;margin-top:2px">${sub}</div>`:""}</div>`;
+const rpDelta=(a,b)=>{const p=pctCh(a,b);if(p===null)return`<span style="color:${RC.green};font-weight:700">▲ ${S.lang==="ar"?"جديد":"new"}</span>`;if(!p)return`<span style="color:${RC.mut};font-weight:700">= ${nf(0)}%</span>`;
+  return `<span style="color:${p>0?RC.green:RC.red};font-weight:700">${p>0?"▲":"▼"} ${nf(Math.abs(p))}%</span>`};
+const rpStat=(n,l,a,b)=>`<div style="background:${RC.soft};border:1px solid ${RC.line};border-radius:12px;padding:10px 12px;min-width:0"><div style="font-family:var(--f-display);font-size:22px;color:${RC.blue};line-height:1.2">${nf(n)}</div><div style="font-size:12px;font-weight:700;color:${RC.ink}">${esc(l)}</div><div style="font-size:11px;margin-top:3px;color:${RC.mut}">${rpDelta(a,b)} <span>(${nf(b)})</span></div></div>`;
+const rpGrid=(cols,inner)=>`<div class="avoid" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:10px">${inner}</div>`;
+function rpBars(items,col){if(!items.length||!items.some(x=>x.v))return`<div style="color:${RC.mut};font-size:12px">${esc(t("rpNone"))}</div>`;const mx=Math.max(...items.map(x=>x.v),1);
+  return `<div style="display:flex;align-items:flex-end;gap:6px;height:150px;padding-top:16px">${items.map(x=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0"><div style="font-size:10.5px;font-weight:700;color:${RC.ink};margin-bottom:2px">${nf(x.v)}</div><div style="width:70%;max-width:38px;height:${Math.max(2,Math.round(x.v*110/mx))}px;background:${col};border-radius:5px 5px 0 0"></div><div style="font-size:10px;color:${RC.mut};margin-top:4px;white-space:nowrap" dir="ltr">${esc(x.l)}</div></div>`).join("")}</div>`}
+function rpHBars(items){if(!items.length)return`<div style="color:${RC.mut};font-size:12px">${esc(t("rpNone"))}</div>`;const mx=Math.max(...items.map(x=>x.k),1);const cols=[RC.blue,RC.red,RC.green,RC.yellow,RC.sky];
+  return items.map((x,i)=>`<div style="display:grid;grid-template-columns:110px 1fr 90px;gap:8px;align-items:center;margin:5px 0;font-size:12px"><b style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(x.n)}</b><div style="background:${RC.soft};border-radius:6px;height:14px;overflow:hidden"><div style="height:100%;width:${Math.max(2,Math.round(x.k*100/mx))}%;background:${cols[i%5]}"></div></div><span style="color:${RC.mut}">${nf(x.k)} ${esc(t("kidsN"))} · ${nf(x.c)}</span></div>`).join("")}
+function rpGoalBar(l,a,g,col,suf){const p=g?Math.min(100,Math.round(a*100/g)):0;return `<div style="margin:8px 0"><div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700"><span>${esc(l)}</span><span>${nf(a)}${suf||""} / ${nf(g)}${suf||""} · ${nf(p)}%</span></div><div style="background:${RC.soft};border-radius:6px;height:12px;overflow:hidden;margin-top:3px"><div style="height:100%;width:${p}%;background:${col}"></div></div></div>`}
+const rpTable=(head,rows,small)=>rows.length?`<table style="font-size:${small?10.5:11.5}px;width:100%;border-collapse:collapse"><thead><tr>${head.map(h=>`<th style="background:#e6eef8;color:#223;border:1px solid #c9d3e3;padding:5px 6px;text-align:start">${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr style="page-break-inside:avoid">${r.map(c=>`<td style="border:1px solid #c9d3e3;padding:5px 6px;vertical-align:top">${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`:`<div style="color:${RC.green};font-size:12.5px;font-weight:700">${esc(t("rpAllGood"))}</div>`;
+const rpLastTxt=x=>x.last?`${fmtDate(x.last)} <span style="color:${RC.mut}">(${nf(x.days)} ${esc(t("rpDays"))})</span>`:`<span style="color:${RC.red}">${esc(t("rpNoVisit"))}</span>`;
+
+async function rpHTML(X,withPhotos){
+  const {R,cur,prev,d}=X;const aud=R.aud;
+  const head=`<div class="rband" style="background:${RC.blue};color:#fff;display:flex;justify-content:space-between;align-items:center;padding:24px 34px"><div><div style="font-family:var(--f-display);font-size:24px">${esc(t("rpTitle_"+aud))}</div><div style="font-size:13px;font-weight:700;margin-top:4px">${esc(rpPlaceTxt(R))}</div><div style="font-size:12px;opacity:.9;margin-top:2px" class="num">${esc(t("rpFrom"))} ${fmtDate(R.from)} ${esc(t("rpTo"))} ${fmtDate(R.to)} · ${esc(t("printed"))}: ${fmtDate(today())}</div></div><img src="${LOGO_W}" alt="Awana" style="height:44px;width:auto"></div>${rStripe}`;
+  let b="";
+  // ١) الصورة الحالية
+  b+=rpH2(t("rpSnap"))+rpGrid(5,rpTile(nf(X.churches.length),t("churches"),RC.blue)+rpTile(nf(X.act.length),t("clubs"),RC.red)+rpTile(nf(X.kids),t("kids"),RC.green)+rpTile(nf(X.serv),t("rpServ"),RC.yellow)+rpTile(nf(X.cov)+"%",t("coverage"),RC.sky,`${nf(cur.visited)} / ${nf(X.act.length)} ${esc(t("rpCovP"))}`));
+  // ٢) نشاط الفترة + المقارنة
+  b+=rpH2(t("rpAct"),RC.green)+`<div style="font-size:11.5px;color:${RC.mut};margin:-4px 0 8px">${esc(t("rpVsPrev"))}: ${fmtDate(X.pF)} – ${fmtDate(X.pT)}</div>`+
+    rpGrid(4,rpStat(cur.V.length,t("visits"),cur.V.length,prev.V.length)+rpStat(cur.visited,t("rpVisited"),cur.visited,prev.visited)+rpStat(cur.TR.length,t("tTrain"),cur.TR.length,prev.TR.length)+rpStat(cur.MT.length,t("tMeet"),cur.MT.length,prev.MT.length)+
+      rpStat(cur.CP.length,t("tComp"),cur.CP.length,prev.CP.length)+rpStat(cur.NC.length,t("rpNewCh"),cur.NC.length,prev.NC.length)+rpStat(cur.trAtt+cur.mtAtt,t("rpTrAtt")+" + "+t("rpMtAtt"),cur.trAtt+cur.mtAtt,prev.trAtt+prev.mtAtt)+rpStat(cur.ST.length,t("rpStories"),cur.ST.length,prev.ST.length));
+  // ٣) رسوم
+  if(aud!=="field"){
+    b+=`<div class="avoid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">`+
+      `<div>${rpH2(t("rpChVisits"),RC.green)}${rpBars(X.mVis,RC.green)}</div><div>${rpH2(t("rpChKids"),RC.yellow)}${rpBars(X.kq,RC.yellow)}</div></div>`+
+      `<div class="avoid">${rpH2(t("rpChProg"),RC.red)}${rpHBars(X.progs)}</div>`;
+  }
+  // ٤) الأهداف
+  if(X.goals&&aud!=="field"){const g=X.goals;b+=`<div class="avoid">${rpH2(t("rpGoals")+" "+R.to.slice(0,4),RC.blue)}${rpGoalBar(t("gChurches"),g.churches[0],g.churches[1],RC.red)}${rpGoalBar(t("gClubs"),g.clubs[0],g.clubs[1],RC.green)}${rpGoalBar(t("gKids"),g.kids[0],g.kids[1],RC.yellow)}${rpGoalBar(t("gCov"),g.cov[0],g.cov[1],RC.blue,"%")}</div>`}
+  // ٥) التوزيع
+  if(X.breakdown.length>1||aud==="country"){const lh={country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl];
+    b+=rpH2(t("rpBreak"),RC.sky)+rpTable([lh,t("churches"),t("clubs"),t("kids"),t("rpServ"),t("visits"),t("coverage")],X.breakdown.map(x=>[`<b>${esc(x.n)}</b>`,nf(x.ch),nf(x.cl),nf(x.kids),nf(x.serv),nf(x.v),nf(x.pct)+"%"]))}
+  // ٦) قصص النجاح
+  if(cur.ST.length&&aud!=="field"){b+=rpH2(t("rpStories"),RC.yellow);
+    if(aud==="board"){const list=[...cur.ST].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,4);
+      for(const s of list){let img="";if(withPhotos&&(s.images||[])[0]){const u=await loadImg(s.images[0]);if(u)img=`<div style="width:150px;flex:none;border-radius:10px;background:#eef2f8 url('${u}') center/cover no-repeat;min-height:110px"></div>`}
+        const txt=String(s.text||"");b+=`<div class="avoid" style="display:flex;gap:12px;background:${RC.soft};border-radius:12px;padding:12px;margin-bottom:10px">${img}<div style="min-width:0"><div style="font-weight:700;color:${RC.blue};font-size:14px">${esc(s.title||"")}</div><div style="font-size:11px;color:${RC.mut};margin:2px 0 6px">${esc(cname(d.C[s.countryId]))} · ${fmtDate(s.date)}${s.author?" · "+esc(s.author):""}</div><div style="font-size:12.5px;line-height:1.8;color:${RC.ink}">${esc(txt.length>420?txt.slice(0,420)+"…":txt)}</div></div></div>`}
+      if(!withPhotos&&list.some(s=>(s.images||[]).length))b+=`<div style="font-size:11px;color:${RC.mut}">📷 ${esc(t("rpPhotosNote"))}</div>`}
+    else b+=rpTable([t("storyDate"),t("country"),t("storyTitle"),t("author")],cur.ST.map(s=>[fmtDate(s.date),esc(cname(d.C[s.countryId])),`<b>${esc(s.title||"")}</b>`,esc(s.author||"")]))}
+  // ٧) نشاط الفريق
+  if(aud!=="board"){b+=rpH2(t("rpTeam"),RC.blue)+rpTable([t("name"),t("role"),t("visits"),t("tTrain"),t("tMeet"),t("tComp"),t("rpTotal")],X.team.slice(0,aud==="field"?40:25).map(x=>[`<b>${esc(x.p.name)}</b>`,esc(x.p.role||""),nf(x.v),nf(x.tr),nf(x.mt),nf(x.cp),`<b>${nf(x.tot)}</b>`]))}
+  // ٨) محتاج متابعة
+  if(aud!=="board"){const lim=aud==="field"?400:30;const more=n=>n>lim?`<div style="font-size:11px;color:${RC.mut};margin-top:4px">${esc(t("rpMore"))} ${nf(n-lim)}…</div>`:"";
+    const ph=x=>aud==="field"?`<td></td>`:"";const chTxt=x=>`<b>${esc(x.ch.name||"")}</b><div style="color:${RC.mut};font-size:10px">${esc(placeTxt(x.ch))}</div>`;
+    b+=rpH2(t("rpFollow")+` (${nf(X.stale.length+X.untr.length+X.gaps.length)})`,RC.red);
+    b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:10px 0 6px;color:${RC.red}">🕒 ${esc(t("rpStale"))} (${nf(X.stale.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone"),t("rpLastV")],X.stale.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`,rpLastTxt(x)]),1)+more(X.stale.length);
+    b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.green}">🎓 ${esc(t("rpUntr"))} (${nf(X.untr.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone")],X.untr.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`]),1)+more(X.untr.length);
+    if(X.paused.length)b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.mut}">⏸ ${esc(t("rpPaused"))} (${nf(X.paused.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone"),t("kids")],X.paused.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`,nf(x.c.kids)]),1)+more(X.paused.length);
+    b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:#b07f00">📝 ${esc(t("rpGaps"))} (${nf(X.gaps.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("rpMissing")],X.gaps.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span style="color:${RC.red}">${esc(x.m.join("، "))}</span>`]),1)+more(X.gaps.length);
+  }
+  // ٩) الزيارات المخططة
+  if(aud==="field"){b+=rpH2(t("rpPlans"),RC.green)+rpTable([t("planDate"),t("churchName"),t("program"),t("visitor")],X.plans.map(p=>{const c=S.clubs.find(x=>x.id===p.clubId)||{};const ch=d.CH[p.churchId]||{};return [fmtDate(p.date),`<b>${esc(ch.name||"")}</b>`,esc(progName(c.program)),esc(p.visitor||"")]}))}
+  const foot=`<div class="avoid" style="margin-top:24px;background:${RC.blue};color:#fff;border-radius:16px;padding:14px 20px;text-align:center"><div style="font-family:var(--f-display);font-size:15px;line-height:1.7">«${t("verse").replace(/<\/?b>/g,"")}»</div><div style="color:${RC.yellow};font-weight:700;font-size:12px;margin-top:4px">${esc(t("verseRef"))}</div></div>`;
+  return head+`<div style="padding:4px 30px 24px;color:${RC.ink}">${b}${foot}</div>`;
+}
+
+/* ---- صفحة التقارير ---- */
+let rpTok=0;
+function vReports(){
+  const R=rpDefaults();const cs=scoped()?myCountries():S.countries;
+  let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tReports"))}</h2><p>${esc(t("rpSub"))}</p></div><div class="chips"><button class="btn" data-act="rpPdf">${I.dl}${esc(t("rpPdf"))}</button><button class="btn green" data-act="rpXlsx">${I.dl}${esc(t("rpXlsx"))}</button></div></div>`;
+  h+=`<div class="panel"><div class="fgrid" style="align-items:end">
+    <div class="f"><label for="rpPreset">${esc(t("rpPeriod"))}</label><select id="rpPreset">${RP_PRESETS.map(k=>`<option value="${k}" ${R.preset===k?"selected":""}>${esc(t("rp_"+k))}</option>`).join("")}</select></div>
+    <div class="f"><label for="rpFrom">${esc(t("rpFrom"))}</label><input id="rpFrom" type="date" value="${esc(R.from)}"></div>
+    <div class="f"><label for="rpTo">${esc(t("rpTo"))}</label><input id="rpTo" type="date" value="${esc(R.to)}"></div>
+    <div class="f"><label for="rpCountry">${esc(t("country"))}</label><select id="rpCountry">${cs.length>1||!scoped()?`<option value="">${esc(t("rpAllME"))}</option>`:""}${cs.map(c=>`<option value="${c.id}" ${R.cid===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+    ${R.cid?`<div class="f"><label for="rpRegion">${esc(t("region"))}</label><select id="rpRegion"><option value="">${esc(t("rpAllReg"))}</option>${rpRegions(R.cid).map(r=>`<option ${R.reg===r?"selected":""}>${esc(r)}</option>`).join("")}</select></div>`:""}
+   </div>
+   <div style="font-weight:700;margin:14px 0 8px">${esc(t("rpAud"))}</div>
+   <div class="rpaud">${RP_AUD.map(k=>`<button type="button" class="rpa ${R.aud===k?"on":""}" data-act="rpAud" data-id="${k}"><b>${esc(t("aud_"+k))}</b><small>${esc(t("aud_"+k+"S"))}</small></button>`).join("")}</div></div>`;
+  h+=`<div class="rpwrap"><div class="rpv" id="rpPreview"><div style="padding:40px;text-align:center;color:#667085">${esc(t("rpLoading"))}</div></div></div>`;
+  const tok=++rpTok;setTimeout(async()=>{try{const html=await rpHTML(rpData(),false);if(tok!==rpTok)return;const el=$("rpPreview");if(el)el.innerHTML=html}catch(e){console.error("report",e);const el=$("rpPreview");if(el)el.innerHTML=`<div style="padding:30px;color:#e0262d">${esc(t("failed"))}</div>`}},0);
+  return h;
+}
+async function rpPdf(){toast(t("preparing"));try{await loadScript(LIB.pdf)}catch(e){toast(t("failed"));return}
+  const X=rpData();const html=await rpHTML(X,true);
+  await renderPdf(html,"a4","portrait",safeName(`${t("rpTitle_"+X.R.aud)} ${rpPlaceTxt(X.R)} ${X.R.from} - ${X.R.to}`)+".pdf")}
+async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}catch(e){toast(t("failed"));return}
+  try{const X=rpData(),{R,cur,prev,d}=X;const wb=new ExcelJS.Workbook();wb.creator="Awana Middle East";const rtl=S.lang==="ar";
+    const D8=s=>{if(!s)return null;const [y,m,dd]=s.split("-").map(Number);return new Date(Date.UTC(y,m-1,dd))};
+    const sheet=(name,cols,rows)=>{const ws=wb.addWorksheet(name.slice(0,31),{views:[{rightToLeft:rtl,state:"frozen",ySplit:1}]});
+      ws.columns=cols.map(c=>({header:c[0],key:c[0],width:c[1]||14,style:c[2]==="d"?{numFmt:"dd/mm/yyyy"}:c[2]==="p"?{numFmt:"0%"}:{}}));
+      rows.forEach(r=>ws.addRow(r));const hr=ws.getRow(1);hr.font={bold:true,color:{argb:"FFFFFFFF"}};hr.fill={type:"pattern",pattern:"solid",fgColor:{argb:"FF0057A8"}};hr.alignment={vertical:"middle",wrapText:true};hr.height=22;
+      if(rows.length)ws.autoFilter={from:{row:1,column:1},to:{row:1,column:cols.length}};return ws};
+    // الملخص
+    const ws0=wb.addWorksheet(t("rpSummary"),{views:[{rightToLeft:rtl}]});ws0.columns=[{width:34},{width:16},{width:16},{width:12}];
+    ws0.addRow([t("rpTitle_"+R.aud)]).font={bold:true,size:16,color:{argb:"FF0057A8"}};
+    ws0.addRow([t("rpPlaceL"),rpPlaceTxt(R)]);ws0.addRow([t("rpPeriodL"),fmtDate(R.from)+" – "+fmtDate(R.to)]);ws0.addRow([t("printed"),fmtDate(today())]);ws0.addRow([]);
+    const hh=ws0.addRow([t("rpSnap")]);hh.font={bold:true,color:{argb:"FF0057A8"}};
+    [[t("churches"),X.churches.length],[t("clubs"),X.act.length],[t("kids"),X.kids],[t("rpServ"),X.serv]].forEach(r=>ws0.addRow(r));
+    const cr=ws0.addRow([t("coverage"),X.act.length?X.cov/100:0]);cr.getCell(2).numFmt="0%";ws0.addRow([]);
+    const h2=ws0.addRow([t("rpMetric"),t("rpCur"),t("rpPrev"),t("rpChange")]);h2.font={bold:true,color:{argb:"FFFFFFFF"}};h2.fill={type:"pattern",pattern:"solid",fgColor:{argb:"FF0057A8"}};
+    [[t("visits"),cur.V.length,prev.V.length],[t("rpVisited"),cur.visited,prev.visited],[t("trainings"),cur.TR.length,prev.TR.length],[t("rpTrAtt"),cur.trAtt,prev.trAtt],[t("tMeet"),cur.MT.length,prev.MT.length],[t("rpMtAtt"),cur.mtAtt,prev.mtAtt],[t("tComp"),cur.CP.length,prev.CP.length],[t("rpCont"),cur.cpCont,prev.cpCont],[t("rpNewCh"),cur.NC.length,prev.NC.length],[t("rpStories"),cur.ST.length,prev.ST.length]]
+      .forEach(([l,a,b2])=>{const r=ws0.addRow([l,a,b2,b2?(a-b2)/b2:null]);r.getCell(4).numFmt="0%"});
+    if(X.goals){ws0.addRow([]);const gh=ws0.addRow([t("rpGoals")+" "+R.to.slice(0,4),t("achieved"),t("goals"),"%"]);gh.font={bold:true,color:{argb:"FF0057A8"}};
+      const g=X.goals;[[t("gChurches"),g.churches],[t("gClubs"),g.clubs],[t("gKids"),g.kids]].forEach(([l,[a,b2]])=>{const r=ws0.addRow([l,a,b2,b2?a/b2:null]);r.getCell(4).numFmt="0%"})}
+    // التوزيع
+    sheet(t("rpBreak"),[[{country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl],22],[t("churches"),10],[t("clubs"),10],[t("kids"),10],[t("rpServ"),10],[t("visits"),10],[t("coverage"),10,"p"]],X.breakdown.map(x=>[x.n,x.ch,x.cl,x.kids,x.serv,x.v,x.pct/100]));
+    // النوادي
+    sheet(t("clubs"),[[t("country"),14],[t("region"),14],[t("city"),14],[t("churchName"),24],[t("program"),14],[t("leader"),20],[t("phone"),16],[t("kidsCount"),10],[t("servants"),10],[t("meetWhen"),16],[t("clubStatus"),10],[t("rpLastV"),12,"d"],[t("rpDaysSince"),12],[t("visits")+" ("+t("rpPeriodL")+")",12]],
+      X.clubs.map(c=>{const ch=d.CH[c.churchId]||{};const lv=(d.vByClub[c.id]||[]).find(v=>v.date&&v.date<=R.to);return [cname(d.C[ch.countryId]),ch.region||"",ch.city||"",ch.name||"",progName(c.program),c.leader||"",c.phone||"",+c.kids||0,+c.servants||0,meetTxt(c),t(ST[c.status||"active"][0]),lv?D8(lv.date):null,lv?dayDiff(lv.date,R.to):null,cur.V.filter(v=>v.clubId===c.id).length]}));
+    // الزيارات
+    sheet(t("tVisits"),[[t("visitDate"),12,"d"],[t("country"),14],[t("region"),14],[t("city"),14],[t("churchName"),24],[t("program"),14],[t("leader"),18],[t("kidsAtVisit"),10],[t("visitor"),22],[t("notes"),40]],
+      [...cur.V].sort((a,b)=>b.date.localeCompare(a.date)).map(v=>{const c=S.clubs.find(x=>x.id===v.clubId)||{};const ch=d.CH[v.churchId]||{};return [D8(v.date),cname(d.C[v.countryId]),ch.region||"",ch.city||"",ch.name||"",progName(c.program),c.leader||"",typeof v.kids==="number"?v.kids:null,v.visitor||teamNames(v.teamIds).join("، "),v.notes||""]}));
+    sheet(t("trainings"),[[t("storyDate"),12,"d"],[t("country"),14],[t("trTitle"),28],[t("trType"),16],[t("program"),14],[t("trainer"),18],[t("attCount"),10],[t("teamPart"),26]],
+      [...cur.TR].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.title||"",ttName(x.type),x.program?progName(x.program):t("general"),x.trainer||"",+(x.attendees??x.count)||0,teamNames(x.teamIds).join("، ")]));
+    sheet(t("tMeet"),[[t("meetDate"),12,"d"],[t("country"),14],[t("meetTitle"),26],[t("meetType"),18],[t("region"),14],[t("city"),14],[t("meetAtt"),10],[t("churchesN"),10],[t("teamPart"),26],[t("notes"),36]],
+      [...cur.MT].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.title||"",meetTypeName(x.type||"other"),x.region||"",x.town||"",+x.attendees||0,+x.churchCount||0,teamNames(x.teamIds).join("، "),x.notes||""]));
+    sheet(t("tComp"),[[t("compDate"),12,"d"],[t("country"),14],[t("compTitle"),26],[t("region"),14],[t("city"),14],[t("churchesN"),10],[t("contestants"),10],[t("teamCount"),10],[t("volCount"),10],[t("notes"),36]],
+      [...cur.CP].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.title||"",x.region||"",x.town||"",+x.churchCount||0,+x.contestants||0,+x.teamCount||0,+x.volCount||0,x.notes||""]));
+    sheet(t("stories"),[[t("storyDate"),12,"d"],[t("country"),14],[t("storyTitle"),30],[t("author"),18],[t("storyText"),80]],[...cur.ST].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(s=>[D8(s.date),cname(d.C[s.countryId]),s.title||"",s.author||"",s.text||""]));
+    const fr=x=>{const ch=x.ch;return [ch.name||"",ch.region||"",ch.city||"",progName(x.c.program),x.c.leader||"",x.c.phone||""]};
+    const fc=[[t("churchName"),24],[t("region"),14],[t("city"),14],[t("program"),14],[t("leader"),20],[t("phone"),16]];
+    sheet(t("rpStaleSh"),fc.concat([[t("rpLastV"),12,"d"],[t("rpDaysSince"),12]]),X.stale.map(x=>fr(x).concat([x.last?D8(x.last):null,x.days])));
+    sheet(t("rpUntrSh"),fc,X.untr.map(fr));
+    sheet(t("rpGapsSh"),fc.concat([[t("rpMissing"),40]]),X.gaps.map(x=>fr(x).concat([x.m.join("، ")])));
+    sheet(t("rpTeamSh"),[[t("name"),22],[t("role"),20],[t("country"),14],[t("visits"),10],[t("trainings"),10],[t("tMeet"),10],[t("tComp"),10],[t("rpTotal"),10]],X.team.map(x=>[x.p.name||"",x.p.role||"",x.p.countryId?cname(d.C[x.p.countryId]):t("wholeME"),x.v,x.tr,x.mt,x.cp,x.tot]));
+    const buf=await wb.xlsx.writeBuffer();
+    await save(safeName(`${t("rpTitle_"+R.aud)} ${rpPlaceTxt(R)} ${R.from} - ${R.to}`)+".xlsx",new Blob([buf],{type:"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}));
+  }catch(e){console.error(e);toast(t("failed"))}}
 
 /* ---------- events ---------- */
 document.addEventListener("click",e=>{
@@ -1921,6 +2229,10 @@ document.addEventListener("click",e=>{
    case"editClub":clubForm(id);break;
    case"editVisit":visitForm(null,null,id);break;
    case"addComp":compForm();break;
+   case"addMeet":meetForm();break;
+   case"rpAud":rpDefaults().aud=id;render();break;
+   case"rpPdf":rpPdf();break;
+   case"rpXlsx":rpXlsx();break;
    case"usersToTeam":usersToTeam(a);break;
    case"toggleRole":S.open["r_"+id]=!S.open["r_"+id];render();break;
    case"af":S.af={c:a.dataset.c,r:a.dataset.r,a:a.dataset.a};render();break;
@@ -1929,6 +2241,7 @@ document.addEventListener("click",e=>{
      for(const c of S.countries.filter(c=>c.leaderUid===u.id))await db.doc("countries/"+c.id).update({manager:n}).catch(()=>{});
      logAct("edit","user",(u.email||"")+" → "+n,"")})}break;
    case"editComp":compForm(S.competitions.find(x=>x.id===id));break;
+   case"editMeet":meetForm(S.meetings.find(x=>x.id===id));break;
    case"convertLate":convertLate(a);break;
    case"addScope":{const box=a.closest(".addscope");const x={c:box.querySelector(".as-c").value,r:box.querySelector(".as-r").value,a:"",m:""};if(x.r){const v=box.querySelector(".as-a").value.split(/\s*›\s*|\|/).map(z=>z.trim());x.a=v[0]||"";x.m=(x.a&&v[1])||""}
      if(!x.c){toast(t("needCountry"));break}const u=S.users.find(z=>z.id===id);const m=scopesOf(u);if(m.some(z=>scopeKey(z)===scopeKey(x))){toast(t("scopeDup"));break}
@@ -1981,7 +2294,11 @@ document.addEventListener("change",e=>{
   {const bx=e.target.closest&&e.target.closest(".addscope");if(bx){scopeFill(bx);saveDraft(bx);return}}
   if(e.target.id==="rolesC"){S.rolesC=e.target.value;render();return}
   if(e.target.id==="compCountry"){S.compCountry=e.target.value;render();return}
-  if(/^arch(From|To|V|T|S|C)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
+  if(e.target.id==="meetCountry"){S.meetCountry=e.target.value;render();return}
+  if(/^rp(Preset|From|To|Country|Region)$/.test(e.target.id)){const R=rpDefaults(),v=e.target.value,id=e.target.id;
+    if(id==="rpPreset"){if(v!=="c")rpSetPreset(R,v);else R.preset="c"}else if(id==="rpFrom"||id==="rpTo"){if(v){R[id==="rpFrom"?"from":"to"]=v;R.preset="c";if(R.from>R.to){const x=R.from;R.from=R.to;R.to=x}}}
+    else if(id==="rpCountry"){R.cid=v;R.reg=""}else R.reg=v;render();return}
+  if(/^arch(From|To|V|T|S|C|M)$/.test(e.target.id)){const A=archDefaults(),id=e.target.id;if(id==="archFrom")A.from=e.target.value;else if(id==="archTo")A.to=e.target.value;else A[id.slice(4).toLowerCase()]=e.target.checked;A.ready=null;render();return}
   if(e.target.id==="invRole"){const b=$("invCountryBox");if(b)b.hidden=e.target.value!=="leader";invScopeFill();return}
   if(e.target.id==="invCountry"||e.target.id==="invRegion"){invScopeFill();return}
   const ug=e.target.closest&&e.target.closest("[data-ureg]");if(ug){setUser(ug.dataset.ureg,{region:ug.value,area:""});return}
@@ -1999,8 +2316,8 @@ $("btnBell").onclick=alertsSheet;
 window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e});
 window.addEventListener("appinstalled",()=>{deferredInstall=null;toast(t("installed"))});
 if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
-$("btnExport").onclick=()=>{$("exportMenu").innerHTML=`<button data-x="xlsx">${esc(t("xlsAll"))}<small>${esc(t("xlsSub"))}</small></button><button data-x="pdf">${esc(t("pdfCur"))}<small>${esc(t("pdfSub"))}</small></button>${isAdmin()?`<button data-x="json">${esc(t("backupJson"))}<small>${esc(t("backupJsonSub"))}</small></button>`:""}`;$("menuHost").hidden=false};
-$("menuHost").addEventListener("click",e=>{const b=e.target.closest("[data-x]");$("menuHost").hidden=true;if(b)({xlsx:exportXlsx,pdf:exportPdf,json:backupNow}[b.dataset.x])()});
+$("btnExport").onclick=()=>{$("exportMenu").innerHTML=`<button data-x="rep">📊 ${esc(t("tReports"))}<small>${esc(t("rpSub"))}</small></button><button data-x="xlsx">${esc(t("xlsAll"))}<small>${esc(t("xlsSub"))}</small></button><button data-x="pdf">${esc(t("pdfCur"))}<small>${esc(t("pdfSub"))}</small></button>${isAdmin()?`<button data-x="json">${esc(t("backupJson"))}<small>${esc(t("backupJsonSub"))}</small></button>`:""}`;$("menuHost").hidden=false};
+$("menuHost").addEventListener("click",e=>{const b=e.target.closest("[data-x]");$("menuHost").hidden=true;if(b)({rep:()=>{S.tab="reports";render();window.scrollTo(0,0)},xlsx:exportXlsx,pdf:exportPdf,json:backupNow}[b.dataset.x])()});
 try{matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{if(!S.theme)applyChrome()})}catch(e){}
 
 /* ---------- export helpers ---------- */
@@ -2028,6 +2345,7 @@ function tables(){
    stories:[t("storyDate"),t("country"),t("storyTitle"),t("author"),t("storyText")],
    goals:[t("year"),t("country"),t("gChurches"),t("gClubs"),t("gKids"),t("gCov"),t("achieved")+" "+t("gClubs"),t("achieved")+" "+t("gKids")],
    trainings:[t("storyDate"),t("country"),t("trTitle"),t("trType"),t("program"),t("trainer"),t("attCount"),t("attendees")],
+   meets:[t("meetDate"),t("country"),t("meetTitle"),t("meetType"),t("region"),t("city"),t("meetAtt"),t("churchesN"),t("meetChurches"),t("teamPart"),t("notes")],
    comps:[t("compDate"),t("country"),t("compTitle"),t("region"),t("city"),t("churchesN"),t("contestants"),t("teamCount"),t("volCount"),t("compChurches"),t("notes")],
    resources:[t("resTitle"),t("program"),t("country"),t("resUrl"),t("resDesc")],
    plans:[t("planDate"),t("country"),t("churchName"),t("program"),t("visitor"),t("notes")],
@@ -2039,6 +2357,7 @@ function tables(){
    team:S.countries.filter(c=>c.manager).map(c=>[t("manager"),c.manager,t("manager"),cname(c),c.phone||"",c.email||"",c.notes||""]).concat(S.team.map(p=>[p.type==="vol"?t("volT"):t("teamT"),p.name,p.role||"",p.countryId?cname(d.C[p.countryId]):t("wholeME"),p.phone||"",p.email||"",p.notes||""])),
    goals:S.goals.map(g=>{const a=goalActual(g.countryId,g.year,d);return [g.year,cname(d.C[g.countryId]),g.churches||"",g.clubs||"",g.kids||"",g.cov?g.cov+"%":"",a.clubs,a.kids]}),
    trainings:[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(tr=>[fmtDate(tr.date),cname(d.C[tr.countryId]),tr.title||"",ttName(tr.type),tr.program?progName(tr.program):t("general"),tr.trainer||"",tr.attendees??(tr.count||0),(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]).join("، ")]),
+   meets:[...S.meetings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.title||"",meetTypeName(x.type||"other"),x.region||"",x.town||"",x.attendees||0,x.churchCount||0,(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]).join("، "),teamNames(x.teamIds).join("، "),x.notes||""]),
    comps:[...S.competitions].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.title||"",x.region||"",x.town||"",x.churchCount||0,x.contestants||0,x.teamCount||0,x.volCount||0,(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]).join("، "),x.notes||""]),
    resources:S.resources.map(r=>[r.title||"",r.program?progName(r.program):t("general"),r.countryId?cname(d.C[r.countryId]):t("forAll"),r.url||"",r.desc||""]),
    plans:[...S.plans].sort((a,b)=>a.date.localeCompare(b.date)).map(p=>{const c=S.clubs.find(x=>x.id===p.clubId);const ch=c&&d.CH[c.churchId];return [fmtDate(p.date),cname(d.C[p.countryId]),ch?ch.name:"",c?progName(c.program):"",p.visitor||"",p.notes||""]}),
@@ -2055,7 +2374,7 @@ async function exportXlsx(){
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
   add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("income")+" ($)",t("expense")+" ($)",t("net")+" ($)",t("balance")+" ($)",t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31));
     const bud=S.finance.filter(f=>f.kind==="budget").sort((a,b)=>(b.year-a.year));if(bud.length){const wb2=XLSX.utils.aoa_to_sheet([[t("year"),t("country"),t("yearBudget")+" ($)",t("spentOf")+" ($)"]].concat(bud.map(b=>[b.year,cname(S.countries.find(c=>c.id===b.countryId)),+b.budget||0,spentYear(b.countryId,b.year,b.year+"-12")])));wb2["!cols"]=[8,18,16,16].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,wb2,t("yearBudget").slice(0,31))}}
-  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("tComp"),"comps",[12,14,26,16,16,10,10,10,10,60,30]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("tMeet"),"meets",[12,14,26,18,14,14,10,10,40,30,30]);add(t("tComp"),"comps",[12,14,26,16,16,10,10,10,10,60,30]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
@@ -2188,12 +2507,12 @@ function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
   let qs=[db.collection(name)];const sc=myScopes();
   if(scoped()&&name!=="countries"&&name!=="resources"){
-    if(["churches","clubs","visits","plans","trainings","competitions"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
+    if(["churches","clubs","visits","plans","trainings","competitions","meetings"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
     else qs=[...new Set(sc.map(x=>x.c))].map(c=>db.collection(name).where("countryId","==",c));}
   const parts=qs.map(()=>null);
   const merge=()=>{if(!parts.every(Boolean))return;const m={};parts.forEach(p=>p.forEach(x=>m[x.id]=x));let a=Object.values(m);
     if(name==="countries"&&scoped())a=a.filter(c=>sc.some(x=>x.c===c.id));
-    if(scoped()&&["churches","clubs","visits","plans","trainings","competitions"].includes(name))a=a.filter(o=>inScope(o));S[name]=a;done()};
+    if(scoped()&&["churches","clubs","visits","plans","trainings","competitions","meetings"].includes(name))a=a.filter(o=>inScope(o));S[name]=a;done()};
   qs.forEach((q,i)=>dataUnsubs.push(q.onSnapshot(snap=>{parts[i]=snap.docs.map(x=>Object.assign({id:x.id},x.data()));merge()},err=>{console.error(name,err);parts[i]=parts[i]||[];merge()})));
 }
 // يكتب المنطقة والمنطقة الفرعية على النوادي والزيارات والخطط القديمة (علشان صلاحيات مسؤولي المناطق)
