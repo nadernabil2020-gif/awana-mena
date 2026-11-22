@@ -852,9 +852,19 @@ async function usersToTeam(btn){const list=S.users.filter(u=>!["pending","disabl
     logAct("add","member",t("usersToTeam")+" (+"+add+" / ~"+upd+")","");toast(t("usersToTeamDone").replace("{a}",nf(add)).replace("{u}",nf(upd)))}catch(e){console.error(e);toast(t("failed"))}finally{btn.disabled=false}}
 // مسؤول منطقة كبيرة (وسط/شمال/عليا) — بيشوف أدوار فريق منطقته بس
 function regionBoss(){return role()==="leader"&&myScopes().some(x=>x.r&&!x.a)}
+// مطابقة اسم مكتوب بالإيد (زي "رامز، مينا") بأعضاء الفريق — بيتجاهل الهمزات والتاء المربوطة والتشكيل
+const nName=x=>String(x||"").replace(/[\u064B-\u0652\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ة/g,"ه").replace(/ى/g,"ي").replace(/\s+/g," ").trim().toLowerCase();
+function nameMatcher(team){const P=team.map(p=>({id:p.id,c:p.countryId||"",n:nName(p.name)})).filter(p=>p.n);
+  return (txt,cid)=>{const out=new Set();const T=nName(txt);if(!T)return out;const pool=P.filter(p=>!p.c||!cid||p.c===cid);
+    for(const p of pool)if((" "+T+" ").includes(" "+p.n+" "))out.add(p.id);
+    for(const part of T.split(/\s*[،,؛;\/+&|\n]+\s*|\s+-\s+/).map(x=>x.trim()).filter(Boolean)){
+      const c=pool.filter(p=>p.n===part||p.n.startsWith(part+" ")||part.startsWith(p.n+" "));if(c.length===1)out.add(c[0].id)}
+    return out}}
 function vRoles(d){if(!isAdmin()&&!regionBoss())return"";const boss=!isAdmin();const bossR=myScopes().filter(x=>x.r&&!x.a);
   const q=(S.rolesQ||"").trim().toLowerCase();const cf=S.rolesC||"";
-  const act=p=>{const v=S.visits.filter(x=>(x.teamIds||[]).includes(p.id)),tr=S.trainings.filter(x=>(x.teamIds||[]).includes(p.id)),cp=S.competitions.filter(x=>(x.teamIds||[]).includes(p.id));
+  // الزيارات والتدريبات القديمة أو اللي اتسجلت من خطة الزيارات بيبقى فيها اسم القائم بالزيارة/المدرّب مكتوب بس، فبنطابقه بالاسم كمان
+  const who=nameMatcher(S.team);const vW=new Map(S.visits.map(x=>[x.id,who(x.visitor,x.countryId)])),tW=new Map(S.trainings.map(x=>[x.id,who(x.trainer,x.countryId)]));
+  const act=p=>{const v=S.visits.filter(x=>(x.teamIds||[]).includes(p.id)||vW.get(x.id).has(p.id)),tr=S.trainings.filter(x=>(x.teamIds||[]).includes(p.id)||tW.get(x.id).has(p.id)),cp=S.competitions.filter(x=>(x.teamIds||[]).includes(p.id));
     const last=[...v,...tr,...cp].map(x=>x.date||"").sort().pop()||"";return {v,tr,cp,last}};
   const list=S.team.filter(p=>(!boss||bossR.some(x=>x.c===p.countryId&&x.r===(p.region||"")))&&(!cf||(cf==="me"?!p.countryId:p.countryId===cf))&&(!q||((p.name||"")+" "+(p.role||"")+" "+(p.email||"")).toLowerCase().includes(q)))
     .map(p=>({p,a:act(p)})).sort((x,y)=>(x.p.type==="vol")-(y.p.type==="vol")||(x.p.name||"").localeCompare(y.p.name||""));
