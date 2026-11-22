@@ -461,7 +461,9 @@ main[data-view="reports"]{--tc:var(--blue)}
 .rpa{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:14px;background:var(--raise);border:2px solid transparent}
 .rpa small{color:var(--muted,#667085);font-size:.8rem}.rpa.on{border-color:var(--blue);background:var(--surface)}.rpa:focus-visible{outline:2px solid var(--blue)}
 .rpwrap{overflow-x:auto;margin-top:14px;border-radius:16px;box-shadow:0 2px 14px rgba(0,0,0,.08)}
-.rpv{background:#fff;color:#111;font-family:var(--f-body);width:794px;max-width:none;margin:0 auto}
+.rpv{color:#111;font-family:var(--f-body);width:794px;max-width:none;margin:0 auto;display:flex;flex-direction:column;gap:14px;padding:14px 0}
+.rpv .rpage{box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.rpwrap{background:var(--raise)}
 .rpv table{width:100%;border-collapse:collapse}
 @media (max-width:820px){.rpv{zoom:.48}}
 #reportHost{position:fixed;top:0;left:0;width:0;height:0;overflow:hidden;pointer-events:none}
@@ -1999,7 +2001,7 @@ Object.assign(T.ar,{tReports:"التقارير",rpSub:"اختار الفترة �
  rpTitle_board:"تقرير أوانا",rpTitle_field:"التقرير الميداني",rpTitle_country:"التقرير الشامل",
  rpPdf:"تنزيل PDF",rpXlsx:"تنزيل Excel",rpLoading:"بيتجهز…",rpSnap:"الصورة الحالية",rpAct:"نشاط الفترة",rpVsPrev:"مقارنة بنفس المدة اللي قبلها",
  rpServ:"خدام",rpCovP:"نوادي اتزارت في الفترة",rpVisited:"نوادي اتزارت",rpNewCh:"كنائس جديدة",rpStories:"قصص نجاح",rpTrAtt:"حضور التدريبات",rpMtAtt:"حضور اللقاءات",rpCont:"متسابقين",
- rpChVisits:"الزيارات كل شهر",rpChKids:"نمو عدد الأطفال (كل ربع)",rpChProg:"النوادي والأطفال حسب البرنامج",rpGoals:"أهداف السنة",rpBreak:"التوزيع",
+ rpChVisits:"الزيارات كل شهر",rpChKids:"نمو عدد الأطفال كل ربع",rpChProg:"النوادي والأطفال حسب البرنامج",rpGoals:"أهداف السنة",rpBreak:"التوزيع",
  rpFollow:"محتاج متابعة",rpStale:"نوادي بقالها أكتر من ٣ شهور من غير زيارة",rpUntr:"قادة نوادي لسه ما اتدربوش",rpPaused:"نوادي متوقفة",rpGaps:"بيانات ناقصة",
  rpNoVisit:"ما اتزارش خالص",rpDays:"يوم",rpLastV:"آخر زيارة",rpMissing:"الناقص",gPhone:"تليفون",gKids:"عدد الأطفال",gTime:"ميعاد النادي",gServ:"عدد الخدام",gLeader:"اسم المسؤول",gPlace:"المنطقة/المدينة",
  rpTeam:"نشاط الفريق في الفترة",rpTotal:"الإجمالي",rpPlans:"زيارات مخططة (الـ ٣٠ يوم الجايين)",rpNone:"مفيش",rpAllGood:"كله تمام 👌",rpMore:"وكمان",
@@ -2091,7 +2093,7 @@ function rpData(){
 
 /* ---- عناصر التقرير (HTML بستايل inline علشان يطلع زي ما هو في الـ PDF) ---- */
 const RC={blue:"#0057a8",red:"#e0262d",green:"#3f9b2c",yellow:"#f7b500",sky:"#5ea8f0",ink:"#1f2937",mut:"#667085",line:"#d7deea",soft:"#f3f6fb"};
-const rpH2=(s,col)=>`<div class="avoid" style="display:flex;align-items:center;gap:8px;margin:22px 0 10px"><span style="width:6px;height:22px;border-radius:3px;background:${col||RC.blue}"></span><h2 style="margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;color:${RC.blue}">${esc(s)}</h2></div>`;
+const rpH2=(s,col)=>`<div class="avoid" data-h="1" style="display:flex;align-items:center;gap:8px;margin:22px 0 10px"><span style="width:6px;height:22px;border-radius:3px;background:${col||RC.blue}"></span><h2 style="margin:0;font-family:var(--f-display);font-weight:400;font-size:19px;color:${RC.blue}">${esc(s)}</h2></div>`;
 const rpTile=(n,l,col,sub)=>`<div style="background:${col};color:${col===RC.yellow?"#231900":"#fff"};border-radius:12px;padding:10px 12px;min-width:0"><div style="font-family:var(--f-display);font-size:24px;line-height:1.2">${n}</div><div style="font-size:12px;font-weight:700">${esc(l)}</div>${sub?`<div style="font-size:11px;opacity:.9;margin-top:2px">${sub}</div>`:""}</div>`;
 const rpDelta=(a,b)=>{const p=pctCh(a,b);if(p===null)return`<span style="color:${RC.green};font-weight:700">▲ ${S.lang==="ar"?"جديد":"new"}</span>`;if(!p)return`<span style="color:${RC.mut};font-weight:700">= ${nf(0)}%</span>`;
   return `<span style="color:${p>0?RC.green:RC.red};font-weight:700">${p>0?"▲":"▼"} ${nf(Math.abs(p))}%</span>`};
@@ -2147,7 +2149,7 @@ async function rpHTML(X,withPhotos){
   // ٩) الزيارات المخططة
   if(aud==="field"){b+=rpH2(t("rpPlans"),RC.green)+rpTable([t("planDate"),t("churchName"),t("program"),t("visitor")],X.plans.map(p=>{const c=S.clubs.find(x=>x.id===p.clubId)||{};const ch=d.CH[p.churchId]||{};return [fmtDate(p.date),`<b>${esc(ch.name||"")}</b>`,esc(progName(c.program)),esc(p.visitor||"")]}))}
   const foot=`<div class="avoid" style="margin-top:24px;background:${RC.blue};color:#fff;border-radius:16px;padding:14px 20px;text-align:center"><div style="font-family:var(--f-display);font-size:15px;line-height:1.7">«${t("verse").replace(/<\/?b>/g,"")}»</div><div style="color:${RC.yellow};font-weight:700;font-size:12px;margin-top:4px">${esc(t("verseRef"))}</div></div>`;
-  return head+`<div style="padding:4px 30px 24px;color:${RC.ink}">${b}${foot}</div>`;
+  return `<div class="rphead">${head}</div><div class="rpbody" style="padding:4px 30px 24px;color:${RC.ink}">${b}${foot}</div>`;
 }
 
 /* ---- صفحة التقارير ---- */
@@ -2165,12 +2167,47 @@ function vReports(){
    <div style="font-weight:700;margin:14px 0 8px">${esc(t("rpAud"))}</div>
    <div class="rpaud">${RP_AUD.map(k=>`<button type="button" class="rpa ${R.aud===k?"on":""}" data-act="rpAud" data-id="${k}"><b>${esc(t("aud_"+k))}</b><small>${esc(t("aud_"+k+"S"))}</small></button>`).join("")}</div></div>`;
   h+=`<div class="rpwrap"><div class="rpv" id="rpPreview"><div style="padding:40px;text-align:center;color:#667085">${esc(t("rpLoading"))}</div></div></div>`;
-  const tok=++rpTok;setTimeout(async()=>{try{const html=await rpHTML(rpData(),false);if(tok!==rpTok)return;const el=$("rpPreview");if(el)el.innerHTML=html}catch(e){console.error("report",e);const el=$("rpPreview");if(el)el.innerHTML=`<div style="padding:30px;color:#e0262d">${esc(t("failed"))}</div>`}},0);
+  const tok=++rpTok;setTimeout(async()=>{try{const X=rpData();const html=await rpHTML(X,false);if(tok!==rpTok)return;const pages=await rpPaginate(html,X.R);const el=$("rpPreview");if(el&&tok===rpTok){el.innerHTML="";pages.forEach(p=>el.appendChild(p))}$("report").innerHTML=""}catch(e){console.error("report",e);const el=$("rpPreview");if(el)el.innerHTML=`<div style="padding:30px;color:#e0262d">${esc(t("failed"))}</div>`}},0);
   return h;
 }
+/* ---- تقسيم التقرير لصفحات A4 مظبوطة (٧٩٤×١١٢٠) قبل الـ PDF، ونفس الصفحات في المعاينة ---- */
+const RP_PW=794,RP_PH=1122;
+async function rpPaginate(html,R){
+  const host=$("report");host.className="a4";host.dir="ltr";host.innerHTML=`<div dir="${S.lang==="ar"?"rtl":"ltr"}">${html}</div>`;rpFixSpaces(host);
+  try{await document.fonts.ready}catch(e){}
+  const head=host.querySelector(".rphead"),body=host.querySelector(".rpbody");const blocks=[...body.children];
+  host.innerHTML="";const pages=[];
+  const mini=`<div style="padding:12px 30px 8px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:${RC.mut};border-bottom:1px solid ${RC.line};margin-bottom:6px"><b style="color:${RC.blue}">${esc(t("rpTitle_"+R.aud))} · ${esc(rpPlaceTxt(R))}</b><span class="num">${fmtDate(R.from)} – ${fmtDate(R.to)}</span></div>`;
+  const newPage=()=>{const pg=document.createElement("div");pg.className="rpage";pg.dir=S.lang==="ar"?"rtl":"ltr";pg.style.cssText=`width:${RP_PW}px;height:${RP_PH}px;background:#fff;display:flex;flex-direction:column;overflow:hidden;color:${RC.ink};font-family:var(--f-body)`;
+    pg.innerHTML=(pages.length?`<div style="display:grid;grid-template-columns:repeat(4,1fr);height:6px"><i style="background:#5ea8f0"></i><i style="background:#e0262d"></i><i style="background:#3f9b2c"></i><i style="background:#f7b500"></i></div>`+mini:head.innerHTML)+
+      `<div class="rpc" style="flex:1;min-height:0;overflow:hidden;padding:0 30px"></div><div class="rpf" style="height:30px;flex:none;padding:0 30px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:${RC.mut};border-top:1px solid ${RC.line}"><span>Awana Middle East</span><span class="num rpn"></span></div>`;
+    host.appendChild(pg);pages.push(pg);return pg.querySelector(".rpc")};
+  const over=c=>c.scrollHeight>c.clientHeight+1;
+  let c=newPage();
+  for(let i=0;i<blocks.length;i++){const bl=blocks[i];c.appendChild(bl);if(!over(c))continue;
+    const tbl=bl.tagName==="TABLE"?bl:null;
+    if(tbl&&tbl.tBodies[0]&&tbl.tBodies[0].rows.length>1){
+      // نقسم الجدول على الصفحات ونكرر العناوين
+      const rows=[...tbl.tBodies[0].rows];tbl.tBodies[0].innerHTML="";let cur=tbl;
+      if(over(c)){cur.remove();const prev=c.lastElementChild;if(prev&&prev.dataset&&prev.dataset.h){prev.remove();c=newPage();c.appendChild(prev)}else c=newPage();c.appendChild(cur)}
+      for(const r of rows){cur.tBodies[0].appendChild(r);if(over(c)&&cur.tBodies[0].rows.length>1){r.remove();c=newPage();cur=tbl.cloneNode(false);cur.appendChild(tbl.tHead.cloneNode(true));cur.appendChild(document.createElement("tbody"));c.appendChild(cur);cur.tBodies[0].appendChild(r)}}
+      continue}
+    if(c.children.length>1){bl.remove();const prev=c.lastElementChild;const moveH=prev&&prev.dataset&&prev.dataset.h;if(moveH)prev.remove();c=newPage();if(moveH)c.appendChild(prev);c.appendChild(bl)}
+    if(over(c)){const k=Math.max(.4,c.clientHeight/c.scrollHeight);bl.style.zoom=k}}
+  pages.forEach((p,i)=>{const e=p.querySelector(".rpn");e.dir="ltr";e.textContent=(i+1)+" / "+pages.length;rpFixSpaces(p)});
+  return pages}
+// html2canvas بيضيّع المسافات بين الكلمات العربي، فبنحوّلها لمسافات ثابتة قبل التصوير
+function rpFixSpaces(root){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const L=[];let n;while(n=w.nextNode())if(/[\u0621-\u064A]/.test(n.nodeValue)&&/ /.test(n.nodeValue.trim()))L.push(n);
+  L.forEach(n=>{const f=document.createDocumentFragment();n.nodeValue.split(/( +)/).forEach(p=>{if(!p)return;if(/^ +$/.test(p))f.appendChild(document.createTextNode(" "));else{const sp=document.createElement("span");sp.style.paddingInline=".14em";sp.textContent=/[\u0621-\u064A]/.test(p)?"\u200F"+p+"\u200F":p;f.appendChild(sp)}});n.parentNode.replaceChild(f,n)})}
 async function rpPdf(){toast(t("preparing"));try{await loadScript(LIB.pdf)}catch(e){toast(t("failed"));return}
-  const X=rpData();const html=await rpHTML(X,true);
-  await renderPdf(html,"a4","portrait",safeName(`${t("rpTitle_"+X.R.aud)} ${rpPlaceTxt(X.R)} ${X.R.from} - ${X.R.to}`)+".pdf")}
+  const X=rpData();const R=X.R;const html=await rpHTML(X,true);
+  try{const pages=await rpPaginate(html,R);
+    const opt={margin:0,image:{type:"jpeg",quality:.95},html2canvas:{scale:2,backgroundColor:"#ffffff",useCORS:true,windowWidth:RP_PW+40,scrollX:0,scrollY:0,x:0,y:0},jsPDF:{unit:"mm",format:"a4",orientation:"portrait"},pagebreak:{mode:[]}};
+    let w=html2pdf().set(opt).from(pages[0]).toPdf();
+    for(const pg of pages.slice(1))w=w.get("pdf").then(pdf=>{pdf.addPage("a4","portrait")}).from(pg).toContainer().toCanvas().toPdf();
+    const blob=await w.outputPdf("blob");
+    await save(safeName(`${t("rpTitle_"+R.aud)} ${rpPlaceTxt(R)} ${R.from} - ${R.to}`)+".pdf",blob);
+  }catch(e){console.error(e);toast(t("failed"))}finally{$("report").innerHTML=""}}
 async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}catch(e){toast(t("failed"));return}
   try{const X=rpData(),{R,cur,prev,d}=X;const wb=new ExcelJS.Workbook();wb.creator="Awana Middle East";const rtl=S.lang==="ar";
     const D8=s=>{if(!s)return null;const [y,m,dd]=s.split("-").map(Number);return new Date(Date.UTC(y,m-1,dd))};
