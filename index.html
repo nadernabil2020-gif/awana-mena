@@ -2069,7 +2069,7 @@ Object.assign(T.ar,{tReports:"التقارير",rpSub:"اختار الفترة �
  rpNoVisit:"ما اتزارش خالص",rpDays:"يوم",rpLastV:"آخر زيارة",rpMissing:"الناقص",gPhone:"تليفون",gKids:"عدد الأطفال",gTime:"ميعاد النادي",gServ:"عدد الخدام",gLeader:"اسم المسؤول",gPlace:"المنطقة/المدينة",
  rpTeam:"نشاط الفريق في الفترة",rpTotal:"الإجمالي",rpPlans:"زيارات مخططة (الـ ٣٠ يوم الجايين)",rpNone:"مفيش",rpAllGood:"كله تمام 👌",rpMore:"وكمان",
  rpSummary:"الملخص",rpMetric:"البند",rpCur:"الفترة دي",rpPrev:"الفترة اللي قبلها",rpChange:"التغيير",rpPhotosNote:"صور القصص بتظهر في الـ PDF",rpPeriodL:"الفترة",rpPlaceL:"المكان",rpDaysSince:"أيام من آخر زيارة",
- rpStaleSh:"محتاج زيارة",rpUntrSh:"محتاج تدريب",rpGapsSh:"بيانات ناقصة",rpTeamSh:"نشاط الفريق",rpCity:"المدينة"});
+ rpActClubs:"نوادي نشطة",rpPastor:"القسيس",rpPausedS:"متوقفة",rpNoClub:"كنائس من غير نادي نشط",rpNoClubS:"من غير نادي نشط",rpReason:"السبب",rsNone:"مفيش نادي متسجل",rsPaused:"كل نواديها متوقفة",rpPausedSh:"نوادي متوقفة",rpFollowB:"للمتابعة",rpStaleSh:"محتاج زيارة",rpUntrSh:"محتاج تدريب",rpGapsSh:"بيانات ناقصة",rpTeamSh:"نشاط الفريق",rpCity:"المدينة"});
 Object.assign(T.en,{tReports:"Reports",rpSub:"Pick the period, place and report type, preview it here, then download PDF or Excel",
  rpPeriod:"Period",rpPlace:"Place",rpAud:"Report type",rpFrom:"From",rpTo:"To",rpAllME:"Whole Middle East",rpAllReg:"All regions",
  rp_m:"This month",rp_pm:"Last month",rp_q:"This quarter",rp_pq:"Last quarter",rp_y:"This year",rp_py:"Last year",rp_c:"Custom dates",
@@ -2082,7 +2082,7 @@ Object.assign(T.en,{tReports:"Reports",rpSub:"Pick the period, place and report 
  rpNoVisit:"never visited",rpDays:"days",rpLastV:"Last visit",rpMissing:"Missing",gPhone:"phone",gKids:"children count",gTime:"club time",gServ:"servants",gLeader:"leader name",gPlace:"region/city",
  rpTeam:"Team activity in the period",rpTotal:"Total",rpPlans:"Planned visits (next 30 days)",rpNone:"None",rpAllGood:"All good 👌",rpMore:"and",
  rpSummary:"Summary",rpMetric:"Item",rpCur:"This period",rpPrev:"Previous period",rpChange:"Change",rpPhotosNote:"Story photos appear in the PDF",rpPeriodL:"Period",rpPlaceL:"Place",rpDaysSince:"Days since last visit",
- rpStaleSh:"Needs visit",rpUntrSh:"Needs training",rpGapsSh:"Missing data",rpTeamSh:"Team activity",rpCity:"City"});
+ rpActClubs:"Active clubs",rpPastor:"Pastor",rpPausedS:"paused",rpNoClub:"Churches with no active club",rpNoClubS:"with no active club",rpReason:"Reason",rsNone:"no club registered",rsPaused:"all clubs paused",rpPausedSh:"Paused clubs",rpFollowB:"For follow-up",rpStaleSh:"Needs visit",rpUntrSh:"Needs training",rpGapsSh:"Missing data",rpTeamSh:"Team activity",rpCity:"City"});
 const EXCELJS_URL="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js";
 const RP_PRESETS=["m","pm","q","pq","y","py","c"],RP_AUD=["board","field","country"];
 const dayDiff=(a,b)=>Math.round((Date.parse(b+"T12:00:00Z")-Date.parse(a+"T12:00:00Z"))/864e5);
@@ -2133,7 +2133,7 @@ function rpData(){
   const lvl=!cid?"country":!reg?"region":"city";
   const keyOf=ch=>lvl==="country"?ch.countryId:lvl==="region"?(ch.region||"—"):(ch.city||"—");
   const nameOf=k=>lvl==="country"?cname(d.C[k]):k;
-  const bk={};churches.forEach(ch=>{const k=keyOf(ch);const b=bk[k]=bk[k]||{n:nameOf(k),ch:0,cl:0,kids:0,serv:0,vis:0,v:0};b.ch++;
+  const bk={};churches.forEach(ch=>{const k=keyOf(ch);const b=bk[k]=bk[k]||{n:nameOf(k),ch:0,cl:0,pz:0,kids:0,serv:0,vis:0,v:0};b.ch++;b.pz+=(d.clubsByChurch[ch.id]||[]).filter(c=>!active(c)).length;
     (d.clubsByChurch[ch.id]||[]).filter(active).forEach(c=>{b.cl++;b.kids+=+c.kids||0;b.serv+=+c.servants||0;if(cur.vis.has(c.id))b.vis++});
     b.v+=cur.V.filter(v=>v.churchId===ch.id).length});
   const breakdown=Object.values(bk).map(b=>Object.assign(b,{pct:b.cl?Math.round(b.vis*100/b.cl):0})).sort((a,b)=>b.kids-a.kids);
@@ -2143,6 +2143,7 @@ function rpData(){
   const stale=act.map(row).filter(x=>!x.last||x.last<lim).sort((a,b)=>(a.last||"").localeCompare(b.last||""));
   const untr=act.filter(c=>!lastTraining(c.id)).map(row);
   const paused=clubs.filter(c=>!active(c)).map(row);
+  const noClub=churches.map(ch=>{const cl=d.clubsByChurch[ch.id]||[];if(cl.some(active))return null;return {ch,c:{},n:cl.length,kids:cl.reduce((s,c)=>s+(+c.kids||0),0),why:cl.length?t("rsPaused"):t("rsNone")}}).filter(Boolean).sort((a,b)=>(a.ch.region||"").localeCompare(b.ch.region||"")||(a.ch.city||"").localeCompare(b.ch.city||"")||(a.ch.name||"").localeCompare(b.ch.name||""));
   const gaps=act.map(c=>{const ch=d.CH[c.churchId]||{};const m=[];if(!c.leader)m.push(t("gLeader"));if(!c.phone)m.push(t("gPhone"));if(!(+c.kids))m.push(t("gKids"));if(!(+c.servants))m.push(t("gServ"));if(c.day===undefined||c.day===""||!c.time)m.push(t("gTime"));if(!ch.region||!ch.city)m.push(t("gPlace"));return {c,ch,m}}).filter(x=>x.m.length);
   // نشاط الفريق في الفترة
   const who=nameMatcher(S.team);
@@ -2152,7 +2153,7 @@ function rpData(){
       mt=cur.MT.filter(x=>(x.teamIds||[]).includes(p.id)).length,cp=cur.CP.filter(x=>(x.teamIds||[]).includes(p.id)).length;
     return {p,v,tr,mt,cp,tot:v+tr+mt+cp}}).filter(x=>x.tot).sort((a,b)=>b.tot-a.tot);
   const td=today();const plans=S.plans.filter(p=>chIds.has(p.churchId)&&p.date>=td&&p.date<=addDays(td,30)).sort((a,b)=>a.date.localeCompare(b.date));
-  return {R,d,cur,prev,pF,pT,churches,clubs,act,kids,serv,cov,mVis,kq,progs,goals,lvl,breakdown,stale,untr,paused,gaps,team,plans};
+  return {R,d,cur,prev,pF,pT,churches,clubs,act,kids,serv,cov,mVis,kq,progs,goals,lvl,breakdown,stale,untr,paused,noClub,gaps,team,plans};
 }
 
 /* ---- عناصر التقرير (HTML بستايل inline علشان يطلع زي ما هو في الـ PDF) ---- */
@@ -2176,7 +2177,7 @@ async function rpHTML(X,withPhotos){
   const head=`<div class="rband" style="background:${RC.blue};color:#fff;display:flex;justify-content:space-between;align-items:center;padding:24px 34px"><div><div style="font-family:var(--f-display);font-size:24px">${esc(t("rpTitle_"+aud))}</div><div style="font-size:13px;font-weight:700;margin-top:4px">${esc(rpPlaceTxt(R))}</div><div style="font-size:12px;opacity:.9;margin-top:2px" class="num">${esc(t("rpFrom"))} ${fmtDate(R.from)} ${esc(t("rpTo"))} ${fmtDate(R.to)} · ${esc(t("printed"))}: ${fmtDate(today())}</div></div><img src="${LOGO_W}" alt="Awana" style="height:44px;width:auto"></div>${rStripe}`;
   let b="";
   // ١) الصورة الحالية
-  b+=rpH2(t("rpSnap"))+rpGrid(5,rpTile(nf(X.churches.length),t("churches"),RC.blue)+rpTile(nf(X.act.length),t("clubs"),RC.red)+rpTile(nf(X.kids),t("kids"),RC.green)+rpTile(nf(X.serv),t("rpServ"),RC.yellow)+rpTile(nf(X.cov)+"%",t("coverage"),RC.sky,`${nf(cur.visited)} / ${nf(X.act.length)} ${esc(t("rpCovP"))}`));
+  b+=rpH2(t("rpSnap"))+rpGrid(5,rpTile(nf(X.churches.length),t("churches"),RC.blue,X.noClub.length?`${nf(X.noClub.length)} ${esc(t("rpNoClubS"))}`:"")+rpTile(nf(X.act.length),t("rpActClubs"),RC.red,X.paused.length?`+ ${nf(X.paused.length)} ${esc(t("rpPausedS"))}`:"")+rpTile(nf(X.kids),t("kids"),RC.green)+rpTile(nf(X.serv),t("rpServ"),RC.yellow)+rpTile(nf(X.cov)+"%",t("coverage"),RC.sky,`${nf(cur.visited)} / ${nf(X.act.length)} ${esc(t("rpCovP"))}`));
   // ٢) نشاط الفترة + المقارنة
   b+=rpH2(t("rpAct"),RC.green)+`<div style="font-size:11.5px;color:${RC.mut};margin:-4px 0 8px">${esc(t("rpVsPrev"))}: ${fmtDate(X.pF)} – ${fmtDate(X.pT)}</div>`+
     rpGrid(4,rpStat(cur.V.length,t("visits"),cur.V.length,prev.V.length)+rpStat(cur.visited,t("rpVisited"),cur.visited,prev.visited)+rpStat(cur.TR.length,t("tTrain"),cur.TR.length,prev.TR.length)+rpStat(cur.MT.length,t("tMeet"),cur.MT.length,prev.MT.length)+
@@ -2191,7 +2192,7 @@ async function rpHTML(X,withPhotos){
   if(X.goals&&aud!=="field"){const g=X.goals;b+=`<div class="avoid">${rpH2(t("rpGoals")+" "+R.to.slice(0,4),RC.blue)}${rpGoalBar(t("gChurches"),g.churches[0],g.churches[1],RC.red)}${rpGoalBar(t("gClubs"),g.clubs[0],g.clubs[1],RC.green)}${rpGoalBar(t("gKids"),g.kids[0],g.kids[1],RC.yellow)}${rpGoalBar(t("gCov"),g.cov[0],g.cov[1],RC.blue,"%")}</div>`}
   // ٥) التوزيع
   if(X.breakdown.length>1||aud==="country"){const lh={country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl];
-    b+=rpH2(t("rpBreak"),RC.sky)+rpTable([lh,t("churches"),t("clubs"),t("kids"),t("rpServ"),t("visits"),t("coverage")],X.breakdown.map(x=>[`<b>${esc(x.n)}</b>`,nf(x.ch),nf(x.cl),nf(x.kids),nf(x.serv),nf(x.v),nf(x.pct)+"%"]))}
+    b+=rpH2(t("rpBreak"),RC.sky)+rpTable([lh,t("churches"),t("rpActClubs"),t("rpPausedSh"),t("kids"),t("rpServ"),t("visits"),t("coverage")],X.breakdown.map(x=>[`<b>${esc(x.n)}</b>`,nf(x.ch),nf(x.cl),x.pz?`<span style="color:${RC.red}">${nf(x.pz)}</span>`:nf(0),nf(x.kids),nf(x.serv),nf(x.v),nf(x.pct)+"%"]))}
   // طلبات الصلاة والشكر
   if(cur.PR.length&&aud!=="field"){const L=[...cur.PR].sort((a,b)=>(b.date||"").localeCompare(a.date||""));const P=L.filter(x=>(x.prayFor||"").trim()),G=L.filter(x=>(x.thankFor||"").trim());const lim=aud==="board"?8:40;
     const li=(x,k)=>`<li style="margin:0 0 6px"><span style="white-space:pre-wrap">${esc(x[k])}</span> <span style="color:${RC.mut};font-size:10.5px">— ${esc([cname(d.C[x.countryId]),x.town||x.region].filter(Boolean).join(" › "))} · ${fmtDate(x.date)}${x.answered&&k==="prayFor"?" · ✅":""}</span></li>`;
@@ -2205,15 +2206,21 @@ async function rpHTML(X,withPhotos){
         const txt=String(s.text||"");b+=`<div class="avoid" style="display:flex;gap:12px;background:${RC.soft};border-radius:12px;padding:12px;margin-bottom:10px">${img}<div style="min-width:0"><div style="font-weight:700;color:${RC.blue};font-size:14px">${esc(s.title||"")}</div><div style="font-size:11px;color:${RC.mut};margin:2px 0 6px">${esc(cname(d.C[s.countryId]))} · ${fmtDate(s.date)}${s.author?" · "+esc(s.author):""}</div><div style="font-size:12.5px;line-height:1.8;color:${RC.ink}">${esc(txt.length>420?txt.slice(0,420)+"…":txt)}</div></div></div>`}
       if(!withPhotos&&list.some(s=>(s.images||[]).length))b+=`<div style="font-size:11px;color:${RC.mut}">📷 ${esc(t("rpPhotosNote"))}</div>`}
     else b+=rpTable([t("storyDate"),t("country"),t("storyTitle"),t("author")],cur.ST.map(s=>[fmtDate(s.date),esc(cname(d.C[s.countryId])),`<b>${esc(s.title||"")}</b>`,esc(s.author||"")]))}
+  // للمتابعة في تقرير الداعمين: النوادي المتوقفة + الكنائس من غير نادي نشط (من غير تليفونات)
+  if(aud==="board"&&(X.paused.length||X.noClub.length)){const chTxt=x=>`<b>${esc(x.ch.name||"")}</b><div style="color:${RC.mut};font-size:10px">${esc(placeTxt(x.ch))}</div>`;
+    b+=rpH2(t("rpFollowB"),RC.red);
+    if(X.paused.length)b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:10px 0 6px;color:${RC.red}">⏸ ${esc(t("rpPaused"))} (${nf(X.paused.length)})</div>`+rpTable([t("churchName"),t("program"),t("kids"),t("rpLastV")],X.paused.map(x=>[chTxt(x),esc(progName(x.c.program)),nf(x.c.kids),rpLastTxt(x)]),1);
+    if(X.noClub.length)b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.mut}">⛪ ${esc(t("rpNoClub"))} (${nf(X.noClub.length)})</div>`+rpTable([t("churchName"),t("rpReason")],X.noClub.map(x=>[chTxt(x),esc(x.why)]),1)}
   // ٧) نشاط الفريق
   if(aud!=="board"){b+=rpH2(t("rpTeam"),RC.blue)+rpTable([t("name"),t("role"),t("visits"),t("tTrain"),t("tMeet"),t("tComp"),t("rpTotal")],X.team.slice(0,aud==="field"?40:25).map(x=>[`<b>${esc(x.p.name)}</b>`,esc(x.p.role||""),nf(x.v),nf(x.tr),nf(x.mt),nf(x.cp),`<b>${nf(x.tot)}</b>`]))}
   // ٨) محتاج متابعة
   if(aud!=="board"){const lim=aud==="field"?400:30;const more=n=>n>lim?`<div style="font-size:11px;color:${RC.mut};margin-top:4px">${esc(t("rpMore"))} ${nf(n-lim)}…</div>`:"";
     const ph=x=>aud==="field"?`<td></td>`:"";const chTxt=x=>`<b>${esc(x.ch.name||"")}</b><div style="color:${RC.mut};font-size:10px">${esc(placeTxt(x.ch))}</div>`;
-    b+=rpH2(t("rpFollow")+` (${nf(X.stale.length+X.untr.length+X.gaps.length)})`,RC.red);
+    b+=rpH2(t("rpFollow")+` (${nf(X.stale.length+X.untr.length+X.paused.length+X.noClub.length+X.gaps.length)})`,RC.red);
     b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:10px 0 6px;color:${RC.red}">🕒 ${esc(t("rpStale"))} (${nf(X.stale.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone"),t("rpLastV")],X.stale.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`,rpLastTxt(x)]),1)+more(X.stale.length);
     b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.green}">🎓 ${esc(t("rpUntr"))} (${nf(X.untr.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone")],X.untr.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`]),1)+more(X.untr.length);
-    if(X.paused.length)b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.mut}">⏸ ${esc(t("rpPaused"))} (${nf(X.paused.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone"),t("kids")],X.paused.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`,nf(x.c.kids)]),1)+more(X.paused.length);
+    b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.red}">⏸ ${esc(t("rpPaused"))} (${nf(X.paused.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("phone"),t("kids"),t("rpLastV")],X.paused.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span dir="ltr">${esc(x.c.phone||"")}</span>`,nf(x.c.kids),rpLastTxt(x)]),1)+more(X.paused.length);
+    b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:${RC.mut}">⛪ ${esc(t("rpNoClub"))} (${nf(X.noClub.length)})</div>`+rpTable([t("churchName"),t("rpPastor"),t("phone"),t("rpReason")],X.noClub.slice(0,lim).map(x=>[chTxt(x),esc(x.ch.pastor||"—"),`<span dir="ltr">${esc(x.ch.pastorPhone||"")}</span>`,esc(x.why)]),1)+more(X.noClub.length);
     b+=`<div class="avoid" style="font-weight:700;font-size:13px;margin:14px 0 6px;color:#b07f00">📝 ${esc(t("rpGaps"))} (${nf(X.gaps.length)})</div>`+rpTable([t("churchName"),t("program"),t("leader"),t("rpMissing")],X.gaps.slice(0,lim).map(x=>[chTxt(x),esc(progName(x.c.program)),esc(x.c.leader||"—"),`<span style="color:${RC.red}">${esc(x.m.join("، "))}</span>`]),1)+more(X.gaps.length);
   }
   // ٩) الزيارات المخططة
@@ -2290,7 +2297,7 @@ async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}
     ws0.addRow([t("rpTitle_"+R.aud)]).font={bold:true,size:16,color:{argb:"FF0057A8"}};
     ws0.addRow([t("rpPlaceL"),rpPlaceTxt(R)]);ws0.addRow([t("rpPeriodL"),fmtDate(R.from)+" – "+fmtDate(R.to)]);ws0.addRow([t("printed"),fmtDate(today())]);ws0.addRow([]);
     const hh=ws0.addRow([t("rpSnap")]);hh.font={bold:true,color:{argb:"FF0057A8"}};
-    [[t("churches"),X.churches.length],[t("clubs"),X.act.length],[t("kids"),X.kids],[t("rpServ"),X.serv]].forEach(r=>ws0.addRow(r));
+    [[t("churches"),X.churches.length],[t("rpNoClub"),X.noClub.length],[t("rpActClubs"),X.act.length],[t("rpPausedSh"),X.paused.length],[t("kids"),X.kids],[t("rpServ"),X.serv]].forEach(r=>ws0.addRow(r));
     const cr=ws0.addRow([t("coverage"),X.act.length?X.cov/100:0]);cr.getCell(2).numFmt="0%";ws0.addRow([]);
     const h2=ws0.addRow([t("rpMetric"),t("rpCur"),t("rpPrev"),t("rpChange")]);h2.font={bold:true,color:{argb:"FFFFFFFF"}};h2.fill={type:"pattern",pattern:"solid",fgColor:{argb:"FF0057A8"}};
     [[t("visits"),cur.V.length,prev.V.length],[t("rpVisited"),cur.visited,prev.visited],[t("trainings"),cur.TR.length,prev.TR.length],[t("rpTrAtt"),cur.trAtt,prev.trAtt],[t("tMeet"),cur.MT.length,prev.MT.length],[t("rpMtAtt"),cur.mtAtt,prev.mtAtt],[t("tComp"),cur.CP.length,prev.CP.length],[t("rpCont"),cur.cpCont,prev.cpCont],[t("rpNewCh"),cur.NC.length,prev.NC.length],[t("rpStories"),cur.ST.length,prev.ST.length]]
@@ -2298,7 +2305,7 @@ async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}
     if(X.goals){ws0.addRow([]);const gh=ws0.addRow([t("rpGoals")+" "+R.to.slice(0,4),t("achieved"),t("goals"),"%"]);gh.font={bold:true,color:{argb:"FF0057A8"}};
       const g=X.goals;[[t("gChurches"),g.churches],[t("gClubs"),g.clubs],[t("gKids"),g.kids]].forEach(([l,[a,b2]])=>{const r=ws0.addRow([l,a,b2,b2?a/b2:null]);r.getCell(4).numFmt="0%"})}
     // التوزيع
-    sheet(t("rpBreak"),[[{country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl],22],[t("churches"),10],[t("clubs"),10],[t("kids"),10],[t("rpServ"),10],[t("visits"),10],[t("coverage"),10,"p"]],X.breakdown.map(x=>[x.n,x.ch,x.cl,x.kids,x.serv,x.v,x.pct/100]));
+    sheet(t("rpBreak"),[[{country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl],22],[t("churches"),10],[t("rpActClubs"),10],[t("rpPausedSh"),10],[t("kids"),10],[t("rpServ"),10],[t("visits"),10],[t("coverage"),10,"p"]],X.breakdown.map(x=>[x.n,x.ch,x.cl,x.pz,x.kids,x.serv,x.v,x.pct/100]));
     // النوادي
     sheet(t("clubs"),[[t("country"),14],[t("region"),14],[t("city"),14],[t("churchName"),24],[t("program"),14],[t("leader"),20],[t("phone"),16],[t("kidsCount"),10],[t("servants"),10],[t("meetWhen"),16],[t("clubStatus"),10],[t("rpLastV"),12,"d"],[t("rpDaysSince"),12],[t("visits")+" ("+t("rpPeriodL")+")",12]],
       X.clubs.map(c=>{const ch=d.CH[c.churchId]||{};const lv=(d.vByClub[c.id]||[]).find(v=>v.date&&v.date<=R.to);return [cname(d.C[ch.countryId]),ch.region||"",ch.city||"",ch.name||"",progName(c.program),c.leader||"",c.phone||"",+c.kids||0,+c.servants||0,meetTxt(c),t(ST[c.status||"active"][0]),lv?D8(lv.date):null,lv?dayDiff(lv.date,R.to):null,cur.V.filter(v=>v.clubId===c.id).length]}));
@@ -2318,6 +2325,8 @@ async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}
     const fc=[[t("churchName"),24],[t("region"),14],[t("city"),14],[t("program"),14],[t("leader"),20],[t("phone"),16]];
     sheet(t("rpStaleSh"),fc.concat([[t("rpLastV"),12,"d"],[t("rpDaysSince"),12]]),X.stale.map(x=>fr(x).concat([x.last?D8(x.last):null,x.days])));
     sheet(t("rpUntrSh"),fc,X.untr.map(fr));
+    sheet(t("rpPausedSh"),fc.concat([[t("kidsCount"),10],[t("rpLastV"),12,"d"],[t("rpDaysSince"),12]]),X.paused.map(x=>fr(x).concat([+x.c.kids||0,x.last?D8(x.last):null,x.days])));
+    sheet(t("rpNoClub"),[[t("churchName"),24],[t("region"),14],[t("city"),14],[t("rpPastor"),20],[t("phone"),16],[t("rpReason"),22]],X.noClub.map(x=>[x.ch.name||"",x.ch.region||"",x.ch.city||"",x.ch.pastor||"",x.ch.pastorPhone||"",x.why]));
     sheet(t("rpGapsSh"),fc.concat([[t("rpMissing"),40]]),X.gaps.map(x=>fr(x).concat([x.m.join("، ")])));
     sheet(t("rpTeamSh"),[[t("name"),22],[t("role"),20],[t("country"),14],[t("visits"),10],[t("trainings"),10],[t("tMeet"),10],[t("tComp"),10],[t("rpTotal"),10]],X.team.map(x=>[x.p.name||"",x.p.role||"",x.p.countryId?cname(d.C[x.p.countryId]):t("wholeME"),x.v,x.tr,x.mt,x.cp,x.tot]));
     const buf=await wb.xlsx.writeBuffer();
