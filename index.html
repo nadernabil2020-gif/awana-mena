@@ -247,7 +247,7 @@ body.fm .hero p{font-size:1.4rem}body.fm .splash{width:170px}
 .panel[data-c] h2.sm{color:color-mix(in srgb,var(--pc) 70%,var(--ink))}
 .panel[data-c="3"] h2.sm{color:color-mix(in srgb,var(--pc) 45%,var(--ink))}
 main{--tc:var(--blue)}
-main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="meetings"]{--tc:var(--blue)}main[data-view="users"]{--tc:var(--red)}main[data-view="finance"]{--tc:var(--yellow)}
+main[data-view="countries"]{--tc:var(--red)}main[data-view="visits"]{--tc:var(--green)}main[data-view="stories"]{--tc:var(--yellow)}main[data-view="team"]{--tc:var(--blue)}main[data-view="training"]{--tc:var(--green)}main[data-view="meetings"]{--tc:var(--blue)}main[data-view="prayers"]{--tc:var(--sky)}main[data-view="users"]{--tc:var(--red)}main[data-view="finance"]{--tc:var(--yellow)}
 main>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 78%,var(--ink))}
 main[data-view="stories"]>.sec-head h2:not(.sm){color:color-mix(in srgb,var(--tc) 50%,var(--ink))}
 .tbl-wrap{border-top:6px solid var(--tc)}
@@ -709,11 +709,11 @@ const ttName=k=>{const x=TTYPES.find(z=>z.k===k);return x?(x[S.lang]||x.ar):""};
 const ttPill=k=>k?`<span class="prog" style="background:var(--blue-soft);color:var(--blue)">${esc(ttName(k))}</span>`:"";
 const PCOL=[["var(--blue)","var(--on-blue)"],["var(--red)","var(--on-red)"],["var(--green)","var(--on-green)"],["var(--yellow)","var(--on-yellow)"],["var(--sky)","#06182f"]];
 const ME_COUNTRIES_OLD=["مصر","السودان","جنوب السودان","ليبيا","الأردن","لبنان","سوريا","العراق","فلسطين","السعودية","الإمارات","الكويت","قطر","البحرين","عُمان","اليمن","تونس","الجزائر","المغرب","موريتانيا"];
-const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources","competitions","meetings"];
+const COLS=["countries","churches","clubs","visits","team","stories","reports","plans","goals","trainings","resources","competitions","meetings","prayers"];
 
 /* ---------- state ---------- */
 const S={countries:[],churches:[],clubs:[],visits:[],team:[],stories:[],extraPrograms:[],
-  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],competitions:[],meetings:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
+  users:[],invites:[],finance:[],finMonth:"",finCountry:"",logs:[],reports:[],plans:[],goals:[],trainings:[],resources:[],competitions:[],meetings:[],prayers:[],gYear:new Date().getFullYear(),resProg:"",cmpSort:"kids",backup:null,qtr:"",auth:"loading",me:null,authErr:"",subscribed:false,
   lang:"ar",theme:null,tab:"overview",countryId:null,storyCountry:"",viewMode:false,readOnly:false,
   vf:{country:"",status:"",program:"",q:""},open:{},loaded:{},offline:false};
 let db=null,auth=null,deferredInstall=null;
@@ -1270,8 +1270,8 @@ function countryStats(cid,d){
 const cname=c=>c?((S.lang==="en"&&c.nameEn)?c.nameEn:c.name):"—";
 
 /* ---------- chrome ---------- */
-const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["training","tTrain","var(--green)"],["meetings","tMeet","var(--blue)"],["competitions","tComp","var(--red)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["reports","tReports","var(--sky)"]];
-const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],competitions:["var(--red)","#fff"],meetings:["var(--blue)","#fff"],reports:["#ffffff","var(--brand-deep)"],roles:["#ffffff","var(--brand-deep)"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
+const TABS0=[["overview","tOverview","var(--sky)"],["countries","tCountries","var(--red)"],["visits","tVisits","var(--green)"],["training","tTrain","var(--green)"],["meetings","tMeet","var(--blue)"],["competitions","tComp","var(--red)"],["prayers","tPray","var(--sky)"],["stories","tStories","var(--yellow)"],["team","tTeam","var(--sky)"],["reports","tReports","var(--sky)"]];
+const TABFILL={overview:["#ffffff","var(--brand-deep)"],countries:["var(--red)","#fff"],visits:["var(--green)","#fff"],stories:["var(--yellow)","#231900"],team:["#ffffff","var(--brand-deep)"],training:["var(--green)","#fff"],competitions:["var(--red)","#fff"],meetings:["var(--blue)","#fff"],prayers:["var(--sky)","#fff"],reports:["#ffffff","var(--brand-deep)"],roles:["#ffffff","var(--brand-deep)"],finance:["var(--yellow)","#231900"],users:["var(--red)","#fff"]};
 const TABS=()=>TABS0.concat(canFinRead()?[["finance","tFinance","var(--yellow)"]]:[]).concat(isAdmin()||regionBoss()?[["roles","tRoles","var(--sky)"]]:[]).concat(isAdmin()?[["users","tUsers","var(--red)"]]:[]);
 function applyChrome(){
   const r=document.documentElement;r.lang=S.lang;r.dir=S.lang==="ar"?"rtl":"ltr";
@@ -1311,7 +1311,7 @@ function render(){
   else if(role()==="manager")h+=`<div class="viewbar">${I.eye} ${esc(t("mgrNote"))}</div>`;
   else if(scoped())h+=`<div class="viewbar">${I.pen} ${esc(t("scopeBar"))} <b>${esc(myScopes().map(scopeTxt).join("، "))}</b> — ${esc(t("scopeBar2"))}</div>`;
   else if(role()==="leader"&&S.me.countryId)h+=`<div class="viewbar">${I.pen} ${esc(t("leaderNote"))} <b>${esc(cname(S.countries.find(c=>c.id===S.me.countryId)))}</b></div>`;
-  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,meetings:vMeets,reports:vReports,roles:vRoles,finance:vFinance}[S.tab]||vOverview)(d);
+  h+=({overview:vOverview,countries:vCountries,visits:vVisits,stories:vStories,team:vTeam,users:vUsers,training:vTraining,competitions:vComps,meetings:vMeets,prayers:vPrays,reports:vReports,roles:vRoles,finance:vFinance}[S.tab]||vOverview)(d);
   m.innerHTML=h;m.dataset.view=S.tab;if(S.tab==="users")restoreDrafts();m.querySelectorAll(".panel").forEach((p,i)=>{if(!p.closest(".sheet"))p.dataset.c=String(i%4)});hydrateImgs();
 }
 const dots=`<span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`;
@@ -1691,7 +1691,7 @@ async function setUser(uid,patch){
     toast(t("saved"))}catch(e){console.error(e);toast(t("failed")+" ("+(e.code||"")+")")}
 }
 function vLog(){
-  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",comp:"kComp",meet:"kMeet",resource:"kRes",finance:"kFin"};
+  const kn={country:"kCountry",church:"kChurch",visit:"kVisit",member:"kMember",story:"kStory",program:"kProgram",user:"kUser",place:"kPlace",restore:"kRestore",report:"kReport",plan:"kPlan",goal:"kGoal",training:"kTraining",comp:"kComp",meet:"kMeet",pray:"kPray",resource:"kRes",finance:"kFin"};
   const an={add:"aAdd",edit:"aEdit",del:"aDel"};const col={add:"var(--green)",edit:"var(--blue)",del:"var(--red)"};
   const fmt=ms=>{try{return new Date(ms).toLocaleString(S.lang==="ar"?"ar-EG":"en-GB",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"})}catch(e){return""}};
   let h=`<div class="panel"><div class="sec-head" style="margin-bottom:6px"><div><h2 class="sm">${dots}${esc(t("log"))}</h2><p>${esc(t("logSub"))}</p></div></div>`;
@@ -1983,14 +1983,74 @@ function askDelPass(label,fn){const f=openModal(t("delTitle"),`<div class="viewb
     if(val(f,"delPass")!==DEL_PASS){merr(t("badPass"));f.querySelector("#delPass").value="";f.querySelector("#delPass").focus();setTimeout(()=>{const x=$("msave");if(x)x.textContent=t("del")},0);return false}
     closeModal();await fn();return false});
   const b=$("msave");if(b){b.textContent=t("del");b.classList.add("red")}setTimeout(()=>{const i=f.querySelector("#delPass");i&&i.focus()},40)}
-function delLabel(kind,id){const ent=kind==="meet"?S.meetings.find(x=>x.id===id):kind==="comp"?S.competitions.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
+function delLabel(kind,id){if(kind==="pray"){const p=S.prayers.find(x=>x.id===id)||{};return (p.prayFor||p.thankFor||"").slice(0,40)}const ent=kind==="meet"?S.meetings.find(x=>x.id===id):kind==="comp"?S.competitions.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):null;
   if(!ent)return"";if(kind==="visit"){const ch=S.churches.find(c=>c.id===ent.churchId)||{};return (ch.name||"")+" · "+fmtDate(ent.date)}if(kind==="country")return cname(ent);return ent.title||ent.name||""}
 async function doDelete(kind,id){
   const ent=kind==="meet"?S.meetings.find(x=>x.id===id):kind==="comp"?S.competitions.find(x=>x.id===id):kind==="country"?S.countries.find(x=>x.id===id):kind==="church"?S.churches.find(x=>x.id===id):kind==="member"?S.team.find(x=>x.id===id):kind==="story"?S.stories.find(x=>x.id===id):kind==="visit"?S.visits.find(x=>x.id===id):kind==="plan"?S.plans.find(x=>x.id===id):kind==="finance"?S.finance.find(x=>x.id===id):kind==="training"?S.trainings.find(x=>x.id===id):kind==="resource"?S.resources.find(x=>x.id===id):null;
   const lab=ent?(kind==="country"?cname(ent):kind==="story"?ent.title:kind==="finance"?cname(S.countries.find(c=>c.id===ent.countryId))+" · "+(ent.month||ent.year):(kind==="visit"||kind==="plan")?((S.churches.find(c=>c.id===ent.churchId)||{}).name||"")+" · "+ent.date:(kind==="training"||kind==="resource"||kind==="meet"||kind==="comp")?(ent.title||ent.date):ent.name):"";
   const lcid=ent?(kind==="country"?ent.id:ent.countryId):"";
-  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="comp"){const x=S.competitions.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("competitions/"+id).delete()}else if(kind==="meet"){const x=S.meetings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("meetings/"+id).delete()}else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
+  try{if(kind==="country")await delCountry(id);else if(kind==="church")await delChurch(id);else if(kind==="visit")await delVisit(id);else if(kind==="comp"){const x=S.competitions.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("competitions/"+id).delete()}else if(kind==="pray"){await db.doc("prayers/"+id).delete()}else if(kind==="meet"){const x=S.meetings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("meetings/"+id).delete()}else if(kind==="member")await db.doc("team/"+id).delete();else if(kind==="story")await delStory(id);else if(kind==="plan")await db.doc("plans/"+id).delete();else if(kind==="finance")await db.doc("finance/"+id).delete();else if(kind==="training"){const x=S.trainings.find(z=>z.id===id);for(const i of (x&&x.images)||[])await db.doc("storyImages/"+i).delete().catch(()=>{});await db.doc("trainings/"+id).delete()}else if(kind==="resource")await db.doc("resources/"+id).delete();logAct("del",kind,lab,lcid);toast(t("deleted"));render()}
   catch(e){console.error(e);toast(e&&e.code==="invalid_argument"?t("noPerm"):t("failed"))}
+}
+
+
+/* ---------- طلبات الصلاة: صلاة من أجل + نشكر الله من أجل ---------- */
+Object.assign(T.ar,{tPray:"طلبات الصلاة",praySub:"طلبات الصلاة والشكر من الكنائس والنوادي والخدمة",addPray:"إضافة طلب صلاة",editPray:"تعديل طلب الصلاة",
+ prayFor:"صلاة من أجل",thankFor:"نشكر الله من أجل",prayFrom:"مقدّم من (اختياري)",prayChurch:"الكنيسة (اختياري)",prayNoCh:"— بدون كنيسة —",
+ prayNeed:"اكتب حاجة في «صلاة من أجل» أو «نشكر الله من أجل»",noPrays:"لسه مفيش طلبات صلاة",noPraysHint:"سجّل أول طلب صلاة أو شكر بالتاريخ والمكان.",
+ prayN:"طلبات صلاة",thankN:"أسباب للشكر",kPray:"طلب صلاة",prayAnswered:"اتجاوبت ✅",prayMarkAns:"اتجاوبت",rpPray:"طلبات الصلاة والشكر"});
+Object.assign(T.en,{tPray:"Prayer requests",praySub:"Prayer and thanksgiving from churches, clubs and the ministry",addPray:"Add prayer request",editPray:"Edit prayer request",
+ prayFor:"Pray for",thankFor:"Thank God for",prayFrom:"Submitted by (optional)",prayChurch:"Church (optional)",prayNoCh:"— no church —",
+ prayNeed:"Write something in “Pray for” or “Thank God for”",noPrays:"No prayer requests yet",noPraysHint:"Record the first prayer or thanksgiving with date and place.",
+ prayN:"prayer requests",thankN:"thanksgivings",kPray:"prayer request",prayAnswered:"Answered ✅",prayMarkAns:"Answered",rpPray:"Prayer & thanksgiving"});
+I.pray=sv('<path d="M12 3c-1.2 2.5-1.8 5-1.8 7.5v4.7L7 18.5V21M12 3c1.2 2.5 1.8 5 1.8 7.5v4.7l3.2 3.3V21M10.2 15.2 12 13l1.8 2.2"/>');
+function vPrays(d){
+  const ed=canAny();const f=S.prayCountry||"";
+  const ccid=effCountry(f);const list=[...S.prayers].filter(x=>(!f||x.countryId===f)&&areaPass(x,ccid)).sort((a,b)=>(b.date||"").localeCompare(a.date||""));
+  const np=list.filter(x=>(x.prayFor||"").trim()).length,nt=list.filter(x=>(x.thankFor||"").trim()).length,na=list.filter(x=>x.answered).length;
+  let h=`<div class="sec-head"><div><h2>${dots}${esc(t("tPray"))}</h2><p>${esc(t("praySub"))}</p></div><div class="chips" style="align-items:center">${S.countries.length>1?`<select id="prayCountry" class="qsel" aria-label="${esc(t("country"))}"><option value="">${esc(t("allCountries"))}</option>${S.countries.map(c=>`<option value="${c.id}" ${f===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select>`:""}${ed?`<button class="btn" data-act="addPray">${I.plus}${esc(t("addPray"))}</button>`:""}</div></div>`;
+  h+=`<div class="tiles" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))"><div class="tile blue"><b class="num">${nf(np)}</b><span>${esc(t("prayN"))}</span></div><div class="tile green"><b class="num">${nf(nt)}</b><span>${esc(t("thankN"))}</span></div><div class="tile yellow"><b class="num">${nf(na)}</b><span>${esc(t("prayAnswered"))}</span></div></div>`;
+  h+=areaBar(ccid,cntBy(S.prayers,ccid,x=>x.region,x=>x.town));
+  if(!list.length)return h+emptyBox(t("noPrays"),t("noPraysHint"),ed?`<button class="btn" data-act="addPray">${I.plus}${esc(t("addPray"))}</button>`:"");
+  return h+grouped(list,x=>({c:x.countryId,r:x.region,a:x.town}),its=>`<div class="cards prays">${its.map(x=>{const ch=x.churchId?d.CH[x.churchId]:null;const pl=[compPlace(x),ch&&ch.name].filter(Boolean);
+    return `<div class="panel pray" style="border-top:5px solid var(--sky);display:flex;flex-direction:column;gap:10px">
+     <div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><div style="min-width:0"><div class="path"><span>${esc(cname(d.C[x.countryId]))}</span>${pl.join(" › ").split(" › ").filter(Boolean).map(z=>`<span>${esc(z)}</span>`).join("")}</div>
+      ${x.from?`<small class="muted">✍️ ${esc(x.from)}</small>`:""}</div>
+      <div style="display:flex;flex-direction:column;gap:4px;align-items:end;flex:none"><span class="st ok num" style="background:var(--sky);color:#fff">${fmtDate(x.date)}</span>${x.answered?`<span class="st ok" style="background:var(--green);color:#fff">${esc(t("prayAnswered"))}</span>`:""}</div></div>
+     ${(x.prayFor||"").trim()?`<div style="background:var(--raise);border-radius:12px;padding:10px 12px;border-inline-start:4px solid var(--blue)"><b style="color:var(--blue)">🙏 ${esc(t("prayFor"))}:</b><div style="white-space:pre-wrap;overflow-wrap:anywhere;margin-top:4px">${esc(x.prayFor)}</div></div>`:""}
+     ${(x.thankFor||"").trim()?`<div style="background:var(--raise);border-radius:12px;padding:10px 12px;border-inline-start:4px solid var(--green)"><b style="color:var(--green)">🎉 ${esc(t("thankFor"))}:</b><div style="white-space:pre-wrap;overflow-wrap:anywhere;margin-top:4px">${esc(x.thankFor)}</div></div>`:""}
+     ${canE(x)?`<div style="display:flex;gap:6px;justify-content:flex-end"><button class="icon" data-act="editPray" data-id="${x.id}" aria-label="${esc(t("edit"))}">${I.edit}</button><button class="icon" data-act="del" data-kind="pray" data-id="${x.id}" aria-label="${esc(t("del"))}">${I.del}</button></div>`:""}</div>`}).join("")}</div>`,its=>nf(its.length));
+}
+function prayForm(x){
+  x=x||{countryId:(S.me&&S.me.countryId)||S.prayCountry||((myCountries()[0]||{}).id),date:today(),region:myReg(),town:myArea()};
+  const f=openModal(x.id?t("editPray"):t("addPray"),`<div class="fgrid">
+   <div class="f"><label for="prCountry">${esc(t("country"))} *</label><select id="prCountry">${myCountries().map(c=>`<option value="${c.id}" ${x.countryId===c.id?"selected":""}>${esc(cname(c))}</option>`).join("")}</select></div>
+   ${fld("prDate",t("storyDate"),x.date,{type:"date",req:1})}${fld("prRegion",t("region"),x.region,{list:"lprRegion"})}${fld("prTown",t("city"),x.town,{list:"lprTown"})}
+   <div class="f"><label for="prChurch">${esc(t("prayChurch"))}</label><select id="prChurch"></select></div>${fld("prFrom",t("prayFrom"),x.from)}
+   <div class="f full"><label for="prPray">🙏 ${esc(t("prayFor"))}</label><textarea id="prPray" rows="4">${esc(x.prayFor||"")}</textarea></div>
+   <div class="f full"><label for="prThank">🎉 ${esc(t("thankFor"))}</label><textarea id="prThank" rows="4">${esc(x.thankFor||"")}</textarea></div>
+   <label class="f full" style="flex-direction:row;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="prAns" ${x.answered?"checked":""} style="width:20px;height:20px"><span>${esc(t("prayMarkAns"))}</span></label></div>
+   <datalist id="lprRegion"></datalist><datalist id="lprTown"></datalist>`,async f=>{
+    const data={countryId:f.querySelector("#prCountry").value,date:val(f,"prDate"),region:val(f,"prRegion"),town:val(f,"prTown"),churchId:f.querySelector("#prChurch").value||"",from:val(f,"prFrom"),
+      prayFor:f.querySelector("#prPray").value.trim(),thankFor:f.querySelector("#prThank").value.trim(),answered:f.querySelector("#prAns").checked,by:(x.by||S.me.id),updatedAt:Date.now(),createdAt:x.createdAt||Date.now()};
+    if(data.churchId&&(!data.region||!data.town)){const ch=S.churches.find(c=>c.id===data.churchId)||{};data.region=data.region||ch.region||"";data.town=data.town||ch.city||""}
+    if(myReg()){data.countryId=myScopes()[0].c;data.region=myReg();if(myArea())data.town=myArea()}
+    data.area=data.town;data.center=myCenter()||x.center||"";
+    if(!canAll()&&!inScope(data))return merr(t("outScope")+" "+myScopes().map(scopeTxt).join("، "));
+    if(!data.countryId)return merr(t("needCountry"));if(!data.date)return merr(t("req"));if(!data.prayFor&&!data.thankFor)return merr(t("prayNeed"));
+    $("msave").textContent=t("saving");
+    const ref=x.id?db.doc("prayers/"+x.id):db.collection("prayers").doc();await ref.set(data);
+    logAct(x.id?"edit":"add","pray",(data.prayFor||data.thankFor).slice(0,60)+" · "+data.date,data.countryId);
+  });
+  if(myReg()){["prRegion"].concat(myArea()?["prTown"]:[]).forEach(id=>{const e=f.querySelector("#"+id);e.readOnly=true;e.style.opacity=".7"})}
+  const fill=()=>{const cid=f.querySelector("#prCountry").value,reg=f.querySelector("#prRegion").value.trim(),town=f.querySelector("#prTown").value.trim();const co=S.countries.find(c=>c.id===cid)||{};
+    const opts=a=>[...new Set(a.filter(Boolean))].map(v=>`<option value="${esc(v)}">`).join("");
+    f.querySelector("#lprRegion").innerHTML=opts((co.regions||[]).concat(S.churches.filter(c=>c.countryId===cid).map(c=>c.region)));
+    f.querySelector("#lprTown").innerHTML=opts((co.towns||[]).filter(z=>!reg||!z.r||z.r===reg).map(z=>z.n).concat(S.churches.filter(c=>c.countryId===cid&&(!reg||c.region===reg)).map(c=>c.city)));
+    const cur=f.querySelector("#prChurch").value||x.churchId||"";
+    const list=S.churches.filter(c=>c.countryId===cid&&(c.id===cur||((!reg||c.region===reg)&&(!town||c.city===town)))).sort((a,b)=>(a.name||"").localeCompare(b.name||""));
+    f.querySelector("#prChurch").innerHTML=`<option value="">${esc(t("prayNoCh"))}</option>`+list.map(c=>`<option value="${c.id}" ${c.id===cur?"selected":""}>${esc(c.name)}${c.city?" — "+esc(c.city):""}</option>`).join("")};
+  fill();["prCountry","prRegion","prTown"].forEach(id=>f.querySelector("#"+id).addEventListener(id==="prCountry"?"change":"input",fill));
 }
 
 /* ---------- التقارير: تقرير بفلتر الفترة والمكان، بـ ٣ أشكال (داعمين / ميداني / دولة) + PDF + Excel ---------- */
@@ -2050,8 +2110,9 @@ function rpData(){
     const TR=S.trainings.filter(x=>trIn(x)&&inR(x.date,a,b)),MT=S.meetings.filter(x=>inP(x)&&inR(x.date,a,b)),CP=S.competitions.filter(x=>inP(x)&&inR(x.date,a,b));
     const ST=S.stories.filter(x=>(!cid||x.countryId===cid)&&(!reg||!x.region||x.region===reg)&&inR(x.date,a,b));
     const NC=churches.filter(c=>c.createdAt&&inR(isoDay(c.createdAt),a,b));
+    const PR=S.prayers.filter(x=>inP(x)&&inR(x.date,a,b));
     const vis=new Set(V.map(v=>v.clubId));
-    return {V,TR,MT,CP,ST,NC,vis,visited:act.filter(c=>vis.has(c.id)).length,trAtt:TR.reduce((s,x)=>s+(+(x.attendees??x.count)||0),0),mtAtt:MT.reduce((s,x)=>s+(+x.attendees||0),0),cpCont:CP.reduce((s,x)=>s+(+x.contestants||0),0)}};
+    return {V,TR,MT,CP,ST,NC,PR,vis,visited:act.filter(c=>vis.has(c.id)).length,trAtt:TR.reduce((s,x)=>s+(+(x.attendees??x.count)||0),0),mtAtt:MT.reduce((s,x)=>s+(+x.attendees||0),0),cpCont:CP.reduce((s,x)=>s+(+x.contestants||0),0)}};
   const cur=per(R.from,R.to),prev=per(pF,pT);
   const kids=act.reduce((s,c)=>s+(+c.kids||0),0),serv=act.reduce((s,c)=>s+(+c.servants||0),0);
   const cov=act.length?Math.round(cur.visited*100/act.length):0;
@@ -2128,6 +2189,12 @@ async function rpHTML(X,withPhotos){
   // ٥) التوزيع
   if(X.breakdown.length>1||aud==="country"){const lh={country:t("country"),region:t("region"),city:t("rpCity")}[X.lvl];
     b+=rpH2(t("rpBreak"),RC.sky)+rpTable([lh,t("churches"),t("clubs"),t("kids"),t("rpServ"),t("visits"),t("coverage")],X.breakdown.map(x=>[`<b>${esc(x.n)}</b>`,nf(x.ch),nf(x.cl),nf(x.kids),nf(x.serv),nf(x.v),nf(x.pct)+"%"]))}
+  // طلبات الصلاة والشكر
+  if(cur.PR.length&&aud!=="field"){const L=[...cur.PR].sort((a,b)=>(b.date||"").localeCompare(a.date||""));const P=L.filter(x=>(x.prayFor||"").trim()),G=L.filter(x=>(x.thankFor||"").trim());const lim=aud==="board"?8:40;
+    const li=(x,k)=>`<li style="margin:0 0 6px"><span style="white-space:pre-wrap">${esc(x[k])}</span> <span style="color:${RC.mut};font-size:10.5px">— ${esc([cname(d.C[x.countryId]),x.town||x.region].filter(Boolean).join(" › "))} · ${fmtDate(x.date)}${x.answered&&k==="prayFor"?" · ✅":""}</span></li>`;
+    b+=rpH2(t("rpPray"),RC.sky)+`<div class="avoid" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">`+
+      `<div style="background:${RC.soft};border-radius:12px;padding:12px 14px;border-top:4px solid ${RC.blue}"><b style="color:${RC.blue}">🙏 ${esc(t("prayFor"))} (${nf(P.length)})</b><ul style="margin:8px 0 0;padding-inline-start:18px;font-size:12px;line-height:1.7">${P.slice(0,lim).map(x=>li(x,"prayFor")).join("")||`<li>${esc(t("rpNone"))}</li>`}</ul></div>`+
+      `<div style="background:${RC.soft};border-radius:12px;padding:12px 14px;border-top:4px solid ${RC.green}"><b style="color:${RC.green}">🎉 ${esc(t("thankFor"))} (${nf(G.length)})</b><ul style="margin:8px 0 0;padding-inline-start:18px;font-size:12px;line-height:1.7">${G.slice(0,lim).map(x=>li(x,"thankFor")).join("")||`<li>${esc(t("rpNone"))}</li>`}</ul></div></div>`}
   // ٦) قصص النجاح
   if(cur.ST.length&&aud!=="field"){b+=rpH2(t("rpStories"),RC.yellow);
     if(aud==="board"){const list=[...cur.ST].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).slice(0,4);
@@ -2241,6 +2308,8 @@ async function rpXlsx(){toast(t("preparing"));try{await loadScript(EXCELJS_URL)}
       [...cur.MT].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.title||"",meetTypeName(x.type||"other"),x.region||"",x.town||"",+x.attendees||0,+x.churchCount||0,teamNames(x.teamIds).join("، "),x.notes||""]));
     sheet(t("tComp"),[[t("compDate"),12,"d"],[t("country"),14],[t("compTitle"),26],[t("region"),14],[t("city"),14],[t("churchesN"),10],[t("contestants"),10],[t("teamCount"),10],[t("volCount"),10],[t("notes"),36]],
       [...cur.CP].sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.title||"",x.region||"",x.town||"",+x.churchCount||0,+x.contestants||0,+x.teamCount||0,+x.volCount||0,x.notes||""]));
+    sheet(t("tPray"),[[t("storyDate"),12,"d"],[t("country"),14],[t("region"),14],[t("city"),14],[t("churchName"),22],[t("prayFrom"),18],[t("prayFor"),50],[t("thankFor"),50],[t("prayMarkAns"),10]],
+      [...cur.PR].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[D8(x.date),cname(d.C[x.countryId]),x.region||"",x.town||"",x.churchId?((d.CH[x.churchId]||{}).name||""):"",x.from||"",x.prayFor||"",x.thankFor||"",x.answered?"✅":""]));
     sheet(t("stories"),[[t("storyDate"),12,"d"],[t("country"),14],[t("storyTitle"),30],[t("author"),18],[t("storyText"),80]],[...cur.ST].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(s=>[D8(s.date),cname(d.C[s.countryId]),s.title||"",s.author||"",s.text||""]));
     const fr=x=>{const ch=x.ch;return [ch.name||"",ch.region||"",ch.city||"",progName(x.c.program),x.c.leader||"",x.c.phone||""]};
     const fc=[[t("churchName"),24],[t("region"),14],[t("city"),14],[t("program"),14],[t("leader"),20],[t("phone"),16]];
@@ -2267,6 +2336,8 @@ document.addEventListener("click",e=>{
    case"editVisit":visitForm(null,null,id);break;
    case"addComp":compForm();break;
    case"addMeet":meetForm();break;
+   case"addPray":prayForm();break;
+   case"editPray":prayForm(S.prayers.find(x=>x.id===id));break;
    case"rpAud":rpDefaults().aud=id;render();break;
    case"rpPdf":rpPdf();break;
    case"rpXlsx":rpXlsx();break;
@@ -2332,6 +2403,7 @@ document.addEventListener("change",e=>{
   if(e.target.id==="rolesC"){S.rolesC=e.target.value;render();return}
   if(e.target.id==="compCountry"){S.compCountry=e.target.value;render();return}
   if(e.target.id==="meetCountry"){S.meetCountry=e.target.value;render();return}
+  if(e.target.id==="prayCountry"){S.prayCountry=e.target.value;render();return}
   if(/^rp(Preset|From|To|Country|Region)$/.test(e.target.id)){const R=rpDefaults(),v=e.target.value,id=e.target.id;
     if(id==="rpPreset"){if(v!=="c")rpSetPreset(R,v);else R.preset="c"}else if(id==="rpFrom"||id==="rpTo"){if(v){R[id==="rpFrom"?"from":"to"]=v;R.preset="c";if(R.from>R.to){const x=R.from;R.from=R.to;R.to=x}}}
     else if(id==="rpCountry"){R.cid=v;R.reg=""}else R.reg=v;render();return}
@@ -2382,6 +2454,7 @@ function tables(){
    stories:[t("storyDate"),t("country"),t("storyTitle"),t("author"),t("storyText")],
    goals:[t("year"),t("country"),t("gChurches"),t("gClubs"),t("gKids"),t("gCov"),t("achieved")+" "+t("gClubs"),t("achieved")+" "+t("gKids")],
    trainings:[t("storyDate"),t("country"),t("trTitle"),t("trType"),t("program"),t("trainer"),t("attCount"),t("attendees")],
+   prays:[t("storyDate"),t("country"),t("region"),t("city"),t("churchName"),t("prayFrom"),t("prayFor"),t("thankFor"),t("prayMarkAns")],
    meets:[t("meetDate"),t("country"),t("meetTitle"),t("meetType"),t("region"),t("city"),t("meetAtt"),t("churchesN"),t("meetChurches"),t("teamPart"),t("notes")],
    comps:[t("compDate"),t("country"),t("compTitle"),t("region"),t("city"),t("churchesN"),t("contestants"),t("teamCount"),t("volCount"),t("compChurches"),t("notes")],
    resources:[t("resTitle"),t("program"),t("country"),t("resUrl"),t("resDesc")],
@@ -2394,6 +2467,7 @@ function tables(){
    team:S.countries.filter(c=>c.manager).map(c=>[t("manager"),c.manager,t("manager"),cname(c),c.phone||"",c.email||"",c.notes||""]).concat(S.team.map(p=>[p.type==="vol"?t("volT"):t("teamT"),p.name,p.role||"",p.countryId?cname(d.C[p.countryId]):t("wholeME"),p.phone||"",p.email||"",p.notes||""])),
    goals:S.goals.map(g=>{const a=goalActual(g.countryId,g.year,d);return [g.year,cname(d.C[g.countryId]),g.churches||"",g.clubs||"",g.kids||"",g.cov?g.cov+"%":"",a.clubs,a.kids]}),
    trainings:[...S.trainings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(tr=>[fmtDate(tr.date),cname(d.C[tr.countryId]),tr.title||"",ttName(tr.type),tr.program?progName(tr.program):t("general"),tr.trainer||"",tr.attendees??(tr.count||0),(tr.clubIds||[]).map(id=>(S.clubs.find(c=>c.id===id)||{}).leader).filter(Boolean).concat(tr.others||[]).join("، ")]),
+   prays:[...S.prayers].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.region||"",x.town||"",x.churchId?((d.CH[x.churchId]||{}).name||""):"",x.from||"",x.prayFor||"",x.thankFor||"",x.answered?"✅":""]),
    meets:[...S.meetings].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.title||"",meetTypeName(x.type||"other"),x.region||"",x.town||"",x.attendees||0,x.churchCount||0,(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]).join("، "),teamNames(x.teamIds).join("، "),x.notes||""]),
    comps:[...S.competitions].sort((a,b)=>(b.date||"").localeCompare(a.date||"")).map(x=>[fmtDate(x.date),cname(d.C[x.countryId]),x.title||"",x.region||"",x.town||"",x.churchCount||0,x.contestants||0,x.teamCount||0,x.volCount||0,(x.churchIds||[]).map(id=>(d.CH[id]||{}).name).filter(Boolean).concat(x.otherChurches||[]).join("، "),x.notes||""]),
    resources:S.resources.map(r=>[r.title||"",r.program?progName(r.program):t("general"),r.countryId?cname(d.C[r.countryId]):t("forAll"),r.url||"",r.desc||""]),
@@ -2411,7 +2485,7 @@ async function exportXlsx(){
   add(t("countries"),"countries",[16,22,16,24,10,10,10,10,10]);add(t("clubs"),"clubs",[14,14,14,14,14,24,16,22,16,10,14,8]);
   add(t("tVisits"),"visits",[12,14,24,16,22,20,30]);add(t("stories"),"stories",[12,14,30,18,80]);if(canFinRead()&&S.finance.length){const ws=XLSX.utils.aoa_to_sheet([[t("country"),t("month"),t("income")+" ($)",t("expense")+" ($)",t("net")+" ($)",t("balance")+" ($)",t("notes")]].concat(S.countries.flatMap(c=>{let run=0;return finOf(c.id).map(f=>{const n=(+f.income||0)-(+f.expense||0);run+=n;return [cname(c),f.month,+f.income||0,+f.expense||0,n,run,f.notes||""]})})));ws["!cols"]=[18,10,14,14,14,14,40].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,t("tFinance").slice(0,31));
     const bud=S.finance.filter(f=>f.kind==="budget").sort((a,b)=>(b.year-a.year));if(bud.length){const wb2=XLSX.utils.aoa_to_sheet([[t("year"),t("country"),t("yearBudget")+" ($)",t("spentOf")+" ($)"]].concat(bud.map(b=>[b.year,cname(S.countries.find(c=>c.id===b.countryId)),+b.budget||0,spentYear(b.countryId,b.year,b.year+"-12")])));wb2["!cols"]=[8,18,16,16].map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,wb2,t("yearBudget").slice(0,31))}}
-  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("tMeet"),"meets",[12,14,26,18,14,14,10,10,40,30,30]);add(t("tComp"),"comps",[12,14,26,16,16,10,10,10,10,60,30]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
+  add(t("goals"),"goals",[8,14,10,10,10,12,14,14]);add(t("trainings"),"trainings",[12,14,30,22,14,18,10,60]);add(t("tPray"),"prays",[12,14,14,14,22,18,50,50,8]);add(t("tMeet"),"meets",[12,14,26,18,14,14,10,10,40,30,30]);add(t("tComp"),"comps",[12,14,26,16,16,10,10,10,10,60,30]);add(t("resources"),"resources",[30,14,14,50,40]);add(t("compare"),"compare",[18,10,10,12,10]);add(t("qReports"),"reports",[16,14,18,60,40,40,40,40]);add(t("tTeam"),"team",[12,22,20,16,16,24,30]);
   if(S.lang==="ar")wb.Workbook={Views:[{RTL:true}]};
   await save(`awana-middle-east-${today()}.xlsx`,new Blob([XLSX.write(wb,{type:"array",bookType:"xlsx"})]));
 }
@@ -2544,12 +2618,12 @@ function subscribe(name){
   const done=()=>{S.loaded[name]=true;if(COLS.every(k=>S.loaded[k])){S.loaded.ready=true;syncScopes();autoConvertPlans()}render()};
   let qs=[db.collection(name)];const sc=myScopes();
   if(scoped()&&name!=="countries"&&name!=="resources"){
-    if(["churches","clubs","visits","plans","trainings","competitions","meetings"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
+    if(["churches","clubs","visits","plans","trainings","competitions","meetings","prayers"].includes(name))qs=sc.map(x=>{let q=db.collection(name).where("countryId","==",x.c);if(x.r){q=q.where("region","==",x.r);if(x.a){q=q.where("area","==",x.a);if(x.m)q=q.where("center","==",x.m)}}return q});
     else qs=[...new Set(sc.map(x=>x.c))].map(c=>db.collection(name).where("countryId","==",c));}
   const parts=qs.map(()=>null);
   const merge=()=>{if(!parts.every(Boolean))return;const m={};parts.forEach(p=>p.forEach(x=>m[x.id]=x));let a=Object.values(m);
     if(name==="countries"&&scoped())a=a.filter(c=>sc.some(x=>x.c===c.id));
-    if(scoped()&&["churches","clubs","visits","plans","trainings","competitions","meetings"].includes(name))a=a.filter(o=>inScope(o));S[name]=a;done()};
+    if(scoped()&&["churches","clubs","visits","plans","trainings","competitions","meetings","prayers"].includes(name))a=a.filter(o=>inScope(o));S[name]=a;done()};
   qs.forEach((q,i)=>dataUnsubs.push(q.onSnapshot(snap=>{parts[i]=snap.docs.map(x=>Object.assign({id:x.id},x.data()));merge()},err=>{console.error(name,err);parts[i]=parts[i]||[];merge()})));
 }
 // يكتب المنطقة والمنطقة الفرعية على النوادي والزيارات والخطط القديمة (علشان صلاحيات مسؤولي المناطق)
